@@ -66,6 +66,19 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('program') ? ' has-error' : '' }}">
+                            <label for="program" class="col-md-4 control-label">Program</label>
+                            <div class="col-md-6">
+                                <select name="program" class="selectpicker form-control" title="Choose your program">
+                                @foreach($programs as $index => $program)
+                                    <option value="{{ $program->program_id }}">{{ $program->program_name }}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    
+                       
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
