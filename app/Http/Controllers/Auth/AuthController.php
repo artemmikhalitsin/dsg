@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Program;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -55,6 +56,16 @@ class AuthController extends Controller
         ]);
     }
 
+    public function showRegistrationForm()
+    {
+        if (property_exists($this, 'registerView')) {
+            return view($this->registerView);
+        }
+        $programs = Program::all();
+
+        return view('auth.register',['programs'=>$programs]);
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -67,6 +78,7 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'program_id' => $data['program'],
         ]);
     }
 }
