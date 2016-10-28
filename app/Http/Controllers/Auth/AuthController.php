@@ -53,8 +53,17 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        if (property_exists($this, 'registerView')) {
+            return view($this->registerView);
+        }
+        $programs = Program::all();
+
+        return view('auth.register',['programs'=>$programs]);
     }
 
     /**
@@ -69,13 +78,6 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'program_id' => $data['program'],
         ]);
-    }
-
-    //this function is used (inside the RegistersUsers file) to get the list of programs from the database
-    private function programsList()
-    {
-        return Program::all();
     }
 }
