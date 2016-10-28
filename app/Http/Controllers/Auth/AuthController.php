@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Program;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -53,6 +54,16 @@ class AuthController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        if (property_exists($this, 'registerView')) {
+            return view($this->registerView);
+        }
+        $programs = Program::all();
+
+        return view('auth.register',['programs'=>$programs]);
     }
 
     /**

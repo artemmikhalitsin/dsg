@@ -18,5 +18,4 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
-
-Route::get('/profile', 'UserController@profile');
+Route::get('/courses', 'CoursesController@index');
