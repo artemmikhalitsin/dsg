@@ -20,8 +20,7 @@ class CoursesTableSeeder extends Seeder
                 'description' => 'Sets. Propositional logic and predicate calculus. Functions and relations. 
                                   Elements of number theory. Proof techniques: direct proof, indirect proof, 
                                   proof by contradiction, proof by induction.',
-                'credits' => 3,
-                'instructor_id' => 1
+                'credits' => 3
             ],
             [
                 'course_code' => 'COMP 248',
@@ -29,8 +28,7 @@ class CoursesTableSeeder extends Seeder
                 'description' => 'Introduction to programming. Basic data types, variables, expressions, 
                                   assignments, control flow. Classes, objects, methods. Information hiding, 
                                   public vs. private visibility, data abstraction and encapsulation. References. Arrays.',
-                'credits' => 3,
-                'instructor_id' => 2
+                'credits' => 3
             ],
             [
                 'course_code' => 'ENGR 201',
@@ -40,8 +38,7 @@ class CoursesTableSeeder extends Seeder
                                   and specific laboratory safety pertaining to particular engineering disciplines. Review 
                                   of the legal framework in Quebec, particularly the Professional Code and the Engineers 
                                   Act, as well as professional ethics.',
-                'credits' => 1.5,
-                'instructor_id' => 4
+                'credits' => 1.5
             ],
             [
                 'course_code' => 'ENGR 213',
@@ -55,8 +52,7 @@ class CoursesTableSeeder extends Seeder
                                   reduction of order, linear models: initial value, review of power series, power series 
                                   solutions, theory, homogeneous linear systems, solution by diagonalisation, non-homogeneous 
                                   linear systems. Eigenvalues and eigenvectors.',
-                'credits' => 3,
-                'instructor_id' => 5
+                'credits' => 3
             ],
             [
                 'course_code' => 'COMP 249',
@@ -64,8 +60,7 @@ class CoursesTableSeeder extends Seeder
                 'description' => 'Design of classes. Inheritance. Polymorphism. Static and dynamic binding. 
                                   Abstract classes. Exception handling. File I/O. Recursion. Interfaces and 
                                   inner classes. Graphical user interfaces. Generics. Collections and iterators.',
-                'credits' => 3,
-                'instructor_id' => 2
+                'credits' => 3
             ],
             [
                 'course_code' => 'ENGR 233',
@@ -78,8 +73,7 @@ class CoursesTableSeeder extends Seeder
                                   triple integrals. Vector differential calculus; divergence, curl, curvature, line 
                                   integrals, Green’s theorem, surface integrals, divergence theorem, applications of 
                                   divergence theorem, Stokes’ theorem.',
-                'credits' => 3,
-                'instructor_id' => 5
+                'credits' => 3
             ],
             [
                 'course_code' => 'SOEN 228',
@@ -89,8 +83,7 @@ class CoursesTableSeeder extends Seeder
                                   disks, hierarchy of memories. I/O organization, I/O devices and their diversity, 
                                   their interconnection to CPU and Memory. Communication between computers at the 
                                   physical level. Networks and computers.',
-                'credits' => 4,
-                'instructor_id' => 1
+                'credits' => 4
             ],
             [
                 'course_code' => 'SOEN 287',
@@ -99,8 +92,7 @@ class CoursesTableSeeder extends Seeder
                                   Markup languages. Client-side programming using scripting languages. Static website 
                                   contents and dynamic page generation through server-side programming. Preserving 
                                   state (client-side) in web applications.',
-                'credits' => 3,
-                'instructor_id' => 8
+                'credits' => 3
             ],
             [
                 'course_code' => 'COMP 348',
@@ -110,8 +102,7 @@ class CoursesTableSeeder extends Seeder
                                   languages. Declaration models: binding, visibility, and scope. Type 
                                   systems, including static and dynamic typing. Parameter passing 
                                   mechanisms. Hybrid language design.',
-                'credits' => 3,
-                'instructor_id' => 7
+                'credits' => 3
             ],
             [
                 'course_code' => 'COMP 352',
@@ -120,8 +111,7 @@ class CoursesTableSeeder extends Seeder
                                   Data structures: arrays, linked lists, heaps, hash tables, search trees. 
                                   Design and analysis of algorithms: asymptotic notation, recursive algorithms, 
                                   searching and sorting, tree traversal, graph algorithms.',
-                'credits' => 3,
-                'instructor_id' => 7
+                'credits' => 3
             ],
             [
                 'course_code' => 'ENCS 282',
@@ -132,8 +122,7 @@ class CoursesTableSeeder extends Seeder
                                   processing software, computer-assisted presentation, analysis and design of 
                                   web presentation, choice and use of appropriate tools. Students will prepare an 
                                   individual major report and make an oral presentation.',
-                'credits' => 3,
-                'instructor_id' => 6
+                'credits' => 3
             ],
             [
                 'course_code' => 'ENGR 202',
@@ -143,8 +132,7 @@ class CoursesTableSeeder extends Seeder
                                   Methods for evaluating sustainability of engineering projects, including 
                                   utilization of relevant databases and software. Impact of engi­neering design and 
                                   industrial development on the environment. Case studies. ',
-                'credits' => 1.5,
-                'instructor_id' => 4
+                'credits' => 1.5
             ],
         ]);
     }

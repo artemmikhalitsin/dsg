@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLecturesTable extends Migration
+class CreateCourseAvailabilityTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,12 @@ class CreateLecturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('lectures', function (Blueprint $table) {
-            $table->increments('lecture_id');
-            $table->string('day');
-            $table->time('start_time');
-            $table->time('end_time');
+        Schema::create('courseAvailability', function (Blueprint $table) {
+            $table->increments('availability_id');
             $table->unsignedInteger('course_id');
-            $table->unsignedInteger('instructor_id');
             $table->unsignedInteger('semester_id');
+            //$table->primary(array('course_id', 'semester_id'));
             $table->foreign('course_id')->references('course_id')->on('courses')->onDelete('cascade');
-            $table->foreign('instructor_id')->references('instructor_id')->on('instructors')->onDelete('cascade');
             $table->foreign('semester_id')->references('semester_id')->on('semesters')->onDelete('cascade');
         });
     }
@@ -33,6 +29,6 @@ class CreateLecturesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('lectures');
+        Schema::drop('courseAvailability');
     }
 }
