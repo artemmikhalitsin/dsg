@@ -9,6 +9,8 @@
 
                 <div class="panel-body">
                     Your Application's Landing Page.
+                    <br>
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Start Here!</a>
                 </div>
             </div>
         </div>
