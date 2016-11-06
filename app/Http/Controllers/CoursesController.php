@@ -19,8 +19,16 @@ class CoursesController extends Controller
     
     public function index()
     {
-    	$program_id = Auth::user()->program_id;
-    	$courses = Courses::join('courseProgram', 'courses.course_id', '=', 'courseProgram.course_id')->select('courses.*')->where('courseProgram.program_id', $program_id)->get();
-    	return view('courses.index', compact('courses'));
+        $electives = Courses::getProgramElectivesList();
+        $courses = Courses::getProgramCoursesList();
+    	
+    	return view('courses.index', compact('courses', 'electives'));
+    }
+
+    public function addCompletedCourses()
+    {
+        $courses = Courses::getOneProgramCoursesList();
+
+        return view('courses.completedCourses', compact('courses'));
     }
 }
