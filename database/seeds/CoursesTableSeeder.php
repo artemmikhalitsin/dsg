@@ -15,7 +15,7 @@ class CoursesTableSeeder extends Seeder
 
         DB::table('courses')->insert([
             [
-              'course_code' => '﻿ENGR 108',
+              'course_code' => 'ENGR 108',
               'course_name' => 'Engineering Industrial Experience Reflective Learning I ',
               'description' => 'This course is a reflective learning module for students in their related field which is based on their academic requirements and their first industrial experience.',
               'credits' => 3
@@ -137,7 +137,7 @@ class CoursesTableSeeder extends Seeder
             [
               'course_code' => 'ENGR 412',
               'course_name' => 'Honours Research Project ',
-              'description' => 'Students work on a research project in their area of concentration, selected in consultation with and conducted under the supervision of a faculty member of the Department. The student’s work must culminate in a final report, as well as an oral presentation. Students planning to register for this course should consult with the Department prior to term of planned registration. Intended for students with potential interest in graduate programs.',
+              'description' => '0 or better; permission of the Department. Students work on a research project in their area of concentration, selected in consultation with and conducted under the supervision of a faculty member of the Department. The student’s work must culminate in a final report, as well as an oral presentation. Students planning to register for this course should consult with the Department prior to term of planned registration. Intended for students with potential interest in graduate programs.',
               'credits' => 3
             ],
             [
@@ -153,424 +153,118 @@ class CoursesTableSeeder extends Seeder
               'credits' => 3
             ],
             [
-              'course_code' => 'SOEN 228',
-              'course_name' => 'System Hardware ',
-              'description' => 'Processor structure, Data and Instructions, Instruction Set Processor (ISP) level view of computer hardware, assembly language level use. Memory systems — RAM and disks, hierarchy of memories. I/O organization, I/O devices and their diversity, their interconnection to CPU and Memory. Communication between computers at the physical level. Networks and computers. Lectures: three hours per week. Tutorial: two hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'SOEN 287',
-              'course_name' => 'Web Programming ',
-              'description' => 'Internet architecture and protocols. Web applications through clients and servers. Markup languages. Client-side programming using scripting languages. Static website contents and dynamic page generation through server-side programming. Preserving state (client-side) in web applications. Lectures: three hours per week. Tutorial: two hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 298',
-              'course_name' => 'System Hardware Lab ',
-              'description' => 'Digital design exercises including assembly and testing corresponding to the SOEN 228 lab. Laboratory: two hours per week.',
-              'credits' => 1
-            ],
-            [
-              'course_code' => 'SOEN 321',
-              'course_name' => 'Information Systems Security ',
-              'description' => 'Protocol layers and security protocols. Intranets and extranets. Mobile computing. Electronic commerce. Security architectures in open-network environments. Cryptographic security protocols. Threats, attacks, and vulnerabilities. Security services: confidentiality; authentication; integrity; access control; non-repudiation; and availability. Security mechanisms: encryption; data-integrity mechanisms; digital signatures; keyed hashes; access-control mechanisms; challenge-response authentication; traffic padding; routing control; and notarization. Key-management principles. Distributed and embedded firewalls. Security zones. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 331',
-              'course_name' => 'Introduction to Formal Methods for Software Engineering ',
-              'description' => 'Assertions. Static and dynamic checking. Method specification using preconditions and postconditions. Strengthening and weakening. Design by contract. Hoare logic. Invariants. Class specification using invariants. Software tools for assertion checking and verification. Reliable software development. Lectures: three hours per week. Tutorial: two hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 341',
-              'course_name' => 'Software Process ',
-              'description' => 'Basic principles of software engineering. Introduction to software process models. Activities in each phase, including review activities. Working in teams: organization; stages of formation; roles; conflict resolution. Notations used in software documentation. How to review, revise, and improve software documentation. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 342',
-              'course_name' => 'Software Requirements and Specifications ',
-              'description' => 'Requirements engineering. Functional and non-functional requirements. Traceability. Test generation. Formal and informal specifications. Formal specification languages. Reasoning with specifications. Correctness issues. Verification. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 343',
-              'course_name' => 'Software Architecture and Design I ',
-              'description' => 'From requirements to design to implementation. Planned vs. evolutionary design and refactoring. Model-driven design and Unified Modelling Language (UML). Structural and behavioural design descriptions and specifications. General and domain-specific design principles, patterns and idioms. Object-oriented design concepts such as interfaces vs. abstract types, polymorphism, generics, and delegation vs. subclassing. Introduction to software architecture (styles and view models). Design quality. Design rationale. Design methodologies (e.g. based on responsibility assignment). Test-driven development. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 344',
-              'course_name' => 'Software Architecture and Design II ',
-              'description' => 'Architectural activities, roles, and deliverables. Architectural view models. Architectural styles (including client-server, layered, pipes-and-filters, event-based, process control) and frameworks. Architectural analysis and the interplay with requirements elicitation. Notations for expressing architectural designs, structural and behavioural specifications. From architectural design to detailed design. Domain specific architectures and design patterns. Evaluation and performance estimation of designs. Advanced object-oriented design patterns and idioms. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 345',
-              'course_name' => 'Software Testing, Verification and Quality Assurance ',
-              'description' => 'Testing strategies. Specification-based vs. code-based, black-box vs. white-box, functional vs. structural testing; unit, integration, system, acceptance, and regression testing. Verification vs. validation. Test planning, design and artifacts. Introduction to software reliability and quality assurance. Formal verification methods, oracles; static and dynamic program verification. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 357',
-              'course_name' => 'User Interface Design ',
-              'description' => 'The human side: I/O; memory; and information processing. Interaction: mental models; human error; interaction frameworks and paradigms. Direct manipulation. User interface design: principles; standards; and guidelines. User-centred design: standards and design rationale; heuristic evaluation; iterative design; and prototyping. Task-centred design. Rationalized design: usability engineering; dialogue notations; user models; diagrammatic notations; and textual notations. Evaluation: with the user; without the user; quantitative; and qualitative. Implementation support. Help and documentation. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 384',
-              'course_name' => 'Management, Measurement and Quality Control ',
-              'description' => 'Organization of large software development. Roles of team members, leaders, managers, stakeholders, and users. Tools for monitoring and controlling a schedule. Financial, organizational, human, and computational resources allocation and control. Project and quality reviews, inspections, and walkthroughs. Risk management. Communication and collaboration. Cause and effects of project failure. Project management via the Internet. Quality assurance and control. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 385',
-              'course_name' => 'Control Systems and Applications ',
-              'description' => 'Mathematical modelling of dynamical systems; block diagrams; feedback; open and closed loops. Linear differential equations; time domain analysis; free, forced, and total response; steady state and transient response. Laplace transform and inverse transform; second order systems. Transfer functions and stability. Control system design: PID and root locus techniques. Computer simulation of control systems. Applications. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 387',
-              'course_name' => 'Web-Based Enterprise Application Design ',
-              'description' => 'Hypertext Transfer Protocol (HTTP), web mark-up languages and encodings. Document Object Models (DOM). Client/server and layered architectures for Web-based Enterprise Applications (WEA). Presentation, Domain and Data Source design patterns. Client-side programming. Java servlets and Java Server Pages. Authentication, security and transaction processing. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 390',
-              'course_name' => 'Software Engineering Team Design Project ',
-              'description' => 'Students work in teams to design and implement a software project from requirements provided by the coordinator. Each team will demonstrate the software and prepare adequate documentation for it. In addition, each student will write an individual report. Lectures: two hours per week. Tutorial: one hour per week. Laboratory: three hours per week.',
+              'course_code' => 'AERO 201',
+              'course_name' => 'Introduction to Flight and Aerospace Systems ',
+              'description' => 'Introduction to flight vehicles in the atmosphere and in space; elements of aerodynamics, airfoils and wings; aerospace technologies including structures, materials and propulsion systems; elements of aircraft performance; basic principles of flight stability, control and systems integration; aspects of aircraft conceptual design. Lectures: three hours per week. Laboratory: two hours per week, alternate weeks.',
               'credits' => 3.5
             ],
             [
-              'course_code' => 'SOEN 422',
-              'course_name' => 'Embedded Systems and Software ',
-              'description' => 'Characteristics of embedded systems. Microcontroller architectures and their software. Development environments. Operating system configuration. Interprocessor and remote communication. Interface, timer and interrupt configuration. Control of physical systems. Design, implementation and testing of integrated systems. Advanced topics. Lectures: three hours per week. Tutorial one hour per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'SOEN 423',
-              'course_name' => 'Distributed Systems ',
-              'description' => 'Principles of distributed computing: scalability, transparency, concurrency, consistency, fault tolerance, high availability. Client-server interaction technologies: interprocess communication, sockets, group communication, remote procedure call, remote method invocation, object request broker, CORBA, web services. Server design techniques: process replication, fault tolerance through passive replication, high availability through active replication, coordination and agreement, transactions and concurrency control. Lectures: three hours per week. Tutorial one hour per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'SOEN 448',
-              'course_name' => 'Management of Evolving Systems ',
-              'description' => 'Software maintenance: corrective; perfective; and adaptive. Software reuse; construction of reusable software. Techniques for reverse engineering and re-engineering software. Software development as “growing” software. Long-term evolution of software systems. Legacy systems. Lectures: three hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 449',
-              'course_name' => 'Component Engineering ',
-              'description' => 'Review of high-level language concepts and abstraction mechanisms. Programming with functional and logical languages. Typed vs. untyped languages. The use of scripting languages and other language-based techniques to assemble systems from high-level components. Lectures: three hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'SOEN 487',
-              'course_name' => 'Web Services and Applications ',
-              'description' => 'Analysis and design of web services and applications. Advanced architectures for the design, deployment, and testing of large multi-server web services and applications. Service Oriented Architecture (SOA). Electronic Commerce. Security. Load balancing. Stress testing. Lectures: three hours per week. Tutorial: one hour per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'SOEN 490',
-              'course_name' => 'Capstone Software Engineering Design Project ',
-              'description' => 'Students work in teams of between six and nine members to construct a significant software application. The class meets at regular intervals. Team members will give a presentation of their contribution to the project. Lectures: one hour per week. Laboratory: two hours per week. Two terms.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'SOEN 491',
-              'course_name' => 'Software Engineering Project ',
-              'description' => 'Theoretical or practical project in an advanced topic in software engineering.',
-              'credits' => 1
-            ],
-            [
-              'course_code' => 'SOEN 498',
-              'course_name' => 'Topics in Software Engineering ',
-              'description' => 'This course may be offered in a given year upon the authorization of the Department. The content may vary from offering to offering and will be chosen to complement the available elective courses. Lectures: three hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'COMP 108',
-              'course_name' => 'Computer Science Industrial Experience Reflective Learning I ',
-              'description' => 'This course is a reflective learning module for students in their related field which is based on their academic requirements and their first industrial experience.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'COMP 201',
-              'course_name' => 'Introduction to Computing ',
-              'description' => 'Overview of computing systems. Problem solving and algorithms. Introduction to computer programming. Hardware, software and data storage, programming languages, data organization, program design and development. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'COMP 208',
-              'course_name' => 'Computer Science Industrial Experience Reflective Learning II ',
-              'description' => 'This course expands on the students’ second industrial experience term in their related field of study to further develop their knowledge and work-related skills.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'COMP 218',
-              'course_name' => 'Fundamentals of Programming ',
-              'description' => 'Computers and computing: problem solving with computers, basic data types, expressions, assignments, control structures, simple library functions, programmer-defined functions, arrays of basic types. Basic elements of object-oriented programming: classes, objects and methods. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'COMP 228',
-              'course_name' => 'System Hardware ',
-              'description' => 'Levels of system abstraction and von Neumann model. Basics of digital logic design. Data representation and manipulation. Instruction set architecture. Processor internals. Assembly language programming. Memory subsystem and cache management. I/O subsystem. Introduction to network organization and architecture. Lectures: three hours per week. Tutorial: two hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'COMP 232',
-              'course_name' => 'Mathematics for Computer Science ',
-              'description' => 'Sets. Propositional logic and predicate calculus. Functions and relations. Elements of number theory. Proof techniques: direct proof, indirect proof, proof by contradiction, proof by induction. Lectures: three hours per week. Tutorial: two hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'COMP 233',
-              'course_name' => 'Probability and Statistics for Computer Science ',
-              'description' => 'Combinatorics. Axioms of probability. Conditional probability. Discrete and continuous probability distributions. Expectation and moments. Hypothesis testing. Parameter estimation. Correlation and linear regression. Applications to computer science. Lectures: three hours per week. Tutorial: two hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'COMP 248',
-              'course_name' => 'Object-Oriented Programming I ',
-              'description' => 'Introduction to programming. Basic data types, variables, expressions, assignments, control flow. Classes, objects, methods. Information hiding, public vs. private visibility, data abstraction and encapsulation. References. Arrays. Lectures: three hours per week. Tutorial: two hours per week. Laboratory: one hour per week.',
+              'course_code' => 'AERO 371',
+              'course_name' => 'Modelling and Control Systems ',
+              'description' => 'Definition and classification of dynamic systems and components. Modelling of system components using ordinary differential equations: mechanical, electrical, electromechanical, and electrohydraulic subsystems in an airplane. Modelling of systems using transfer function models, block diagrams and signal flow graphs. Linearization of non-linear systems. Transient and steady-state character-istics of dynamic systems. Systems analyses using time domain methods, root-locus methods, and frequency response methods. Characteristics and performance of linear feedback control systems. System stability. Proportional, integral and derivative controllers. Simulation technique using Matlab/Simulink. Lectures: three hours per week. Tutorial: one hour per week. Laboratory: two hours per week, alternate weeks.',
               'credits' => 3.5
             ],
             [
-              'course_code' => 'COMP 249',
-              'course_name' => 'Object-Oriented Programming II ',
-              'description' => 'Design of classes. Inheritance. Polymorphism. Static and dynamic binding. Abstract classes. Exception handling. File I/O. Recursion. Interfaces and inner classes. Graphical user interfaces. Generics. Collections and iterators. Lectures: three hours per week. Tutorial: two hours per week. Laboratory: one hour per week.',
+              'course_code' => 'AERO 390',
+              'course_name' => 'Aerospace Engineering Design Project ',
+              'description' => 'General design philosophy and the design process. Design factors such as product safety, reliability, life cycle costs and manufacturability. Design in the aerospace context: vehicle and system design with regard to mission requirements, configuration, sizing, loads, etc. Mathematical modelling, analysis, and validation. Introduction to Computer-Aided Design and Engineering (CAD and CAE). Design documentation. A team-based project in which an aerospace system/subsystem is designed, implemented, documented and presented is an intrinsic part of this course. Lectures: three hours per week. Tutorial: two hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'AERO 417',
+              'course_name' => 'Standards, Regulations and Certification ',
+              'description' => 'Overview of DoT and other international aviation standards (e.g. FAA), regulations and certification procedures; regulatory areas, namely, pilot training/testing, air traffic procedures, aircraft systems design and airworthiness; development process for new regulations and criteria for certification. Lectures: three hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'AERO 431',
+              'course_name' => 'Principles of Aeroelasticity ',
+              'description' => 'Aerodynamic loading of elastic airfoils. Phenomenon of divergence. Effect of flexible control surface on divergence of main structure. Divergence of one- and two-dimensional wing models. Phenomenon of flutter. Flutter of two- and three-dimensional wings. Flutter prevention and control. Panel flutter in high speed vehicles, flutter of turbomachine bladings, galloping vortex-induced oscillations, bridge buffeting. Lectures: three hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'AERO 444',
+              'course_name' => 'Concurrent Engineering in Aerospace Systems ',
+              'description' => 'Introduction: objectives, definitions, impact on product development; process modelling and optimization; forming of engineering team; selection of techniques, methodology and tools; market design focus vs. quality design focus; development time management; process integration; aerospace case studies/projects, future trends. Lectures: three hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'AERO 446',
+              'course_name' => 'Aerospace Vehicle Performance ',
+              'description' => 'Introduction to fixed-wing aircraft operation. Flying environment and its measurement by aircraft instrumentation. Computation of lift and drag, effects of viscosity and compressibility. Review of piston, turboprop, turbojet and turbofan power plants. Operational performance of aircraft in climb, cruise, descent and on ground. Advanced aircraft systems. Operational considerations in aircraft design. Projects on selected topics. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'AERO 455',
+              'course_name' => 'Computational Fluid Dynamics for Aerospace Applications ',
+              'description' => 'Introduction to computational methods in fluid dynamics using commercial CFD codes; aspects of geometry modelling, structured and unstructured grid generation, solution strategy, and post-processing; conversion of CAD to CFD models; an overview of basic numerical methods for the Navier-Stokes equations with emphasis on accuracy evaluation and efficiency. Elements of turbulence closure modelling. User-defined function for customized physical models into commercial CFD codes. Lectures: three hours per week. Laboratory: three hours per week, alternate weeks.',
+              'credits' => 3.75
+            ],
+            [
+              'course_code' => 'AERO 462',
+              'course_name' => 'Turbomachinery and Propulsion ',
+              'description' => 'Aircraft design process, preliminary sizing and thrust requirements. Rotary and fixed wing aerodynamics and stability. Helicopter configurations. Structure and fatigue design considerations. Review of the gas turbine cycle and components arrangement. Turbo-propulsion: turboprop, turbofan, turbojet and turboshafts. Energy transfer in turbo­machines: Euler equation, velocity triangles. Dimensional analysis of turbomachines. Flow in turbomachines. Three-dimensional flow in turbomachines. Mechanisms of losses in turbo­machines. Axial-flow turbines and compressors. Centrifugal compressors. Compressor and turbine performance maps; surge and stall. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'AERO 464',
+              'course_name' => 'Aerodynamics ',
+              'description' => 'Flow conservation equations, incompressible Navier-Stokes equations, inviscid irrotational and rotational flows: the Euler equations, the potential and stream function equations. Dynamics of an incompressible inviscid flow field: the Kelvin, Stokes, and Helmholtz theorems. Elementary flows and their superposition, panel method for non-lifting bodies. Airfoil and wing characteristics, aerodynamic forces and moments coefficients. Incompressible flows around thin airfoils, Biot-Savart law, vortex sheets. Incompressible flow around thick airfoils, the panel method for lifting bodies. Incompressible flow around wings, Prandtl’s lifting line theory, induced angle and down-wash, unswept wings, swept wings. Compressible subsonic flow: linearized theory, Prandlt-Glauert equation and other compressibility correction rules, the area rule. Transonic flow: Von Karman’s ransonic small disturbance equation, transonic full potential equation, super-critical airfoils. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'AERO 465',
+              'course_name' => 'Gas Turbine Design ',
+              'description' => 'Review of turbo-propulsion types and energy transfer in turbomachines. Two- and three-dimensional flow. Lift and drag for airfoils. Cascade tests and correlations. Aerodynamic losses: physics, mechanisms, control of viscous effects. Preliminary and detailed design of turbines and compressors. Structural and thermal design requirements. Failure considerations: creep, fatigue and corrosion. Performance matching. Combustion and gearbox design. Air and oil systems design requirements. Installations and acoustics. Evolution of design. Recent trends in technologies. Lectures: three hours per week. Laboratory: two hours per week, alternate weeks.',
               'credits' => 3.5
             ],
             [
-              'course_code' => 'COMP 318',
-              'course_name' => 'Introduction to Database Applications ',
-              'description' => 'This is a hands-on course on database technology intended for non-computer science students in engineering, science, business, or arts. It emphasizes practical issues in application development while introducing the fundamentals of databases with a focus on the relational data model and the Structured Query Language (SQL). Upon completion of this course, students will be able to design and implement databases, and develop user interfaces to access, search, and update the database through the Internet using the web technology. Lectures: three hours per week. Tutorial: one hour per week. Laboratory: two hours per week.',
-              'credits' => 4
+              'course_code' => 'AERO 480',
+              'course_name' => 'Flight Control Systems ',
+              'description' => 'Basic flight control and flight dynamics principles. Aircraft dynamic equations and performance data. Implementation of aircraft control: control surfaces and their operations, development of thrust and its control; autopilot systems, their algorithms, dynamics and interaction problems. Flight instruments, principles of operation and dynamics. Cockpit layouts — basic configuration, ergonomic design, control field forces; advanced concepts in instruments, avionics and displays; HUD; flight management systems, and communication equipment. Introduction to flight simulation: overview of visual, audio and motion simulator systems; advanced concepts in flight simulators. Lectures: three hours per week. Laboratory: two hours per week, alternate weeks.',
+              'credits' => 3.5
             ],
             [
-              'course_code' => 'COMP 326',
-              'course_name' => 'Computer Architecture ',
-              'description' => 'Computer architecture models: control-flow and data-flow. Concurrency and locality, data dependency theory. Instruction level parallelism. Instruction scheduling. Pipelined processors. Vector processors. Thread level parallelism. Multiprocessors. Shared memory models. Coherence protocols. Interconnection networks. Performance issues. Advanced topics in contemporary computer architectures. Lectures: three hours per week. Tutorial: one hour per week.',
+              'course_code' => 'AERO 481',
+              'course_name' => 'Materials Engineering for Aerospace ',
+              'description' => 'Different types of materials used in aerospace. Metals, composites, ceramics, polymers. Failure prediction and prevention. Modes of material failure, fracture, fatigue, creep, corrosion, impact. Effect of high temperature and multiaxial loadings. High temperature materials. Cumulative damage in fatigue and creep. Materials selection. Lectures: three hours per week. Laboratory: two hours per week, alternate weeks.',
+              'credits' => 3.5
+            ],
+            [
+              'course_code' => 'AERO 482',
+              'course_name' => 'Avionic Navigation Systems ',
+              'description' => 'Basics of modern electronic navigation systems, history of air navigation, earth coordinate and mapping systems; basic theory and analysis of modern electronic navigation instrumentation, communication and radar systems, approach aids, airborne systems, transmitters and antenna coverage; noise and losses, target detection, digital processing, display systems and technology; demonstration of avionic systems using flight simulator. Lectures: three hours per week. Tutorial: one hour per week.',
               'credits' => 3
             ],
             [
-              'course_code' => 'COMP 335',
-              'course_name' => 'Introduction to Theoretical Computer Science ',
-              'description' => 'Finite state automata and regular languages. Push-down automata and context-free languages. Pumping lemmas. Applications to parsing. Turing machines. Unde­cidability and decidability. Lectures: three hours per week. Tutorial: one hour per week.',
+              'course_code' => 'AERO 483',
+              'course_name' => 'Integration of Avionics Systems ',
+              'description' => 'Introduction to the basic principles of integration of avionics systems; review of Earth’s geometry and Newton’s laws; inertial navigation sensors and systems (INS); errors and uncertainty in navigation; Global Positioning System (GPS); differential and carrier tracking GPS applications; terrestrial radio navigation systems; Kalman filtering; integration of navigation systems using Kalman filtering; integration of GPS and INS using Kalman filtering. Lectures: three hours per week.',
               'credits' => 3
             ],
             [
-              'course_code' => 'COMP 339',
-              'course_name' => 'Combinatorics ',
-              'description' => 'General principles of counting, permutations, combinations, identities, partitions, generating functions, Fibonacci numbers, Stirling numbers, Catalan numbers, principle of inclusion-exclusion. Graphs, subgraphs, isomorphism, Euler graphs, Hamilton paths and cycles, planar graphs, Kuratowski’s Theorem, trees, colouring, 5-colour theorem, matching, Hall’s theorem.',
+              'course_code' => 'AERO 485',
+              'course_name' => 'Introduction to Space Systems ',
+              'description' => 'Classification of space propulsion systems; Tsiolkovskj’s equation; ideal rocket and nozzle design; flight performance; basic orbital mechanics; chemical propellant rocket performance analysis; fundamentals of liquid and solid propellant rocket motors; electric, solar, fusion thruster. Lectures: three hours per week.',
               'credits' => 3
             ],
             [
-              'course_code' => 'COMP 345',
-              'course_name' => 'Advanced Program Design with C++ ',
-              'description' => 'Introduction to C++. I/O with stream classes. Pointers and their uses. The Standard Template Library (STL): containers, algorithms, iterators, adaptors, function objects. Class design: constructors, destructors, operator overloading, inheritance, virtual functions, exception handling, memory management. Advanced topics: libraries, locales, STL conventions, concurrency, template metaprogramming. Applications of C++: systems, engineering, games programming. Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 346',
-              'course_name' => 'Operating Systems ',
-              'description' => 'Fundamentals of operating system functionalities, design and implementation. Multiprogramming: processes and threads, context switching, queuing models and scheduling. Interprocess communication and synchronization. Principles of concurrency. Synchronization primitives. Deadlock detection and recovery, prevention and avoidance schemes. Memory management. Device management. File systems. Protection models and schemes. Lectures: three hours per week. Tutorial: one hour per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 348',
-              'course_name' => 'Principles of Programming Languages ',
-              'description' => 'Survey of programming paradigms: Imperative, functional, and logic programming. Issues in the design and implementation of programming languages. Declaration models: binding, visibility, and scope. Type systems, including static and dynamic typing. Parameter passing mechanisms. Hybrid language design. Lectures: three hours per week. Tutorial: one hour per week.',
+              'course_code' => 'AERO 486',
+              'course_name' => 'Aircraft Stress Analysis ',
+              'description' => 'Definition of load paths in typical aircraft structures. Derivation of analysis procedures to enable the designer to size preliminary designs. Internal shear flow distributions that balance external loads. Stress analysis of open and closed cell beams; statically indeterminate beams and frames; single and multi cell torque boxes; symmetric heavy fuselage frames. Structural instability of columns, beams, plates and flanges in compression and shear. Centres of twist and flexure; structural warping; margins of safety; concepts of optimum design; lug analysis and mechanical joints; matrix analysis methods leading to the Finite Element method. Stress analysis of thin-walled metallic structures. Lectures: three hours per week.',
               'credits' => 3
             ],
             [
-              'course_code' => 'COMP 352',
-              'course_name' => 'Data Structures and Algorithms ',
-              'description' => 'Abstract data types: stacks and queues, trees, priority queues, dictionaries. Data structures: arrays, linked lists, heaps, hash tables, search trees. Design and analysis of algorithms: asymptotic notation, recursive algorithms, searching and sorting, tree traversal, graph algorithms. Lectures: three hours per week. Tutorial: one hour per week.',
+              'course_code' => 'AERO 487',
+              'course_name' => 'Design of Aircraft Structures ',
+              'description' => 'Design process for aircraft structures. Aero/performance aspects of aircraft structures. Airworthiness and design considerations. Materials. Static, vibratory and aeroelastic loadings. Propulsion-induced loadings. Functions and fabrication of structural components. Design for buckling of aircraft structures: local buckling, instability of stiffened panels, flexural torsional buckling. Design for fracture and fatigue failures. Stress analysis and design of wings, fuselages, stringers, fuselage frames, wing ribs, cut-outs in wings and fuselages, and laminated structures. Design using Finite Element Method. Concept of Optimum Design of Aircraft Structures. Design case studies. Lectures: three hours per week.',
               'credits' => 3
             ],
             [
-              'course_code' => 'COMP 353',
-              'course_name' => 'Databases ',
-              'description' => 'Introduction to database management systems. Conceptual database design: the entity-relationship model. The relational data model and relational algebra: functional dependencies and normalization. The SQL language and its application in defining, querying, and updating databases; integrity constraints; triggers. Developing database applications. Other data models: Datalog. Object-oriented data model and ODL. Semi-structured data. Project. Lectures: three hours per week. Tutorial: one hour per week. Laboratory: two hours per week.',
+              'course_code' => 'AERO 490',
+              'course_name' => 'Capstone Aerospace Engineering Design Project ',
+              'description' => 'A supervised design, simulation or experimental capstone design project including a preliminary project proposal with complete project plan and a technical report at the end of the fall term; a final report by the group and presentation at the end of the winter term. Lectures: one hour per week, one term. Equivalent laboratory time: three hours per week, two terms.',
               'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 354',
-              'course_name' => 'Introduction to Software Engineering ',
-              'description' => 'Software development process models (e.g. linear vs. iterative). Project management; roles, activities and deliverables for each software life cycle phase. Requirements management: analysis, elicitation, and scope. Architecture, design and the mapping of requirements to design and design to implementation. Traceability. Software quality assurance: verification, validation and the role of testing. Maintenance and evolution. Project. Lectures: three hours per week. Tutorial: one hour per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 361',
-              'course_name' => 'Elementary Numerical Methods ',
-              'description' => 'Vector and matrix norms. Numerical methods for solving linear systems, Gaussian elimination, LU decomposition, error analysis. Numerical solution of nonlinear equations, Newton’s method, fixed point iterations. Interpolation and approximation, Taylor, Lagrange, Chebyshev and Legendre polynomials. Cubic spline interpolation. Numerical differentiation, numerical integration, Gauss quadrature. Discrete least-squares approximation. Initial value problems in ordinary differential equations, stiff differential equations. Boundary value problems in ordinary differential equations. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'COMP 367',
-              'course_name' => 'Techniques in Symbolic Computation ',
-              'description' => 'Symbolic computation and its use in pure and applied mathematics, in particular in algebra, number theory, cryptography, coding theory, and combinatorics. Programming in a symbolic computing system (e.g. MAPLE).',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'COMP 371',
-              'course_name' => 'Computer Graphics ',
-              'description' => 'Introduction to computer graphics and graphics hardware. Introduction to graphics API and graphics systems architecture. Mathematics of 2D and 3D transformations, and 2D and 3D viewing. Colour and basic rendering algorithms. Visual realism and visibility. Illumination and shading, global illumination techniques, and textures. Introduction to curves and surfaces, and 3D object modelling. Introduction to computer animation. Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 376',
-              'course_name' => 'Introduction to Game Development ',
-              'description' => 'Introduction to design and implementation aspects of computer gaming: basic game design, storytelling and narratives, and game genres. Virtual environments, 2D and 3D game engines, and game development tools. Character development, gameplay strategies, level design in games, and user interfaces. Architecture of game consoles, analog and digital controllers, and the incorporation of graphics, sound, and music in game implementations. Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 426',
-              'course_name' => 'Multicore Programming ',
-              'description' => 'Fundamental concepts of computer architecture. Architecture of the selected multicore platform. Review of shared-memory parallel programming. The difficulties inherent to parallel programming. Scalability of programming models. The stream programming model for multicore. Implicit and explicit threading. Implicit and explicit orchestration of data movement, both on chip and off. Adapting standard algorithms to multicore. Critical assessment of the available system-software support. Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 428',
-              'course_name' => 'Parallel Programming ',
-              'description' => 'Parallel programming techniques as a natural extension to sequential programming. Overview of parallel programming architectures and models. Parallel programming issues: locality, granularity, scheduling, data decomposition and distribution, load balancing, communication and synchronization, determinacy and non-determinacy, cost and performance. Techniques and tools for message-passing parallel programming. Case studies. Project. Lectures: three hours per week. Tutorial: one hour per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 442',
-              'course_name' => 'Compiler Design ',
-              'description' => 'Compiler organization and implementation: lexical analysis and parsing, syntax-directed translation, code optimization. Run-time systems. Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 444',
-              'course_name' => 'System Software Design ',
-              'description' => 'Detailed examination of the design, implementation and system call interface of a contemporary operating system: its kernel, file system, process and thread management including scheduling, file system design and implementation, memory management, device management, I/O management, interprocess communication and synchronization mechanisms, system call interface, interrupt handling, and other advanced issues. Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 445',
-              'course_name' => 'Data Communication and Computer Networks ',
-              'description' => 'Network architectures: OSI and Internet models. Link layer: error detection, multiple access protocols, addressing. Local area networks: Ethernet, ATM, switches and hubs. Network layer: forwarding and routing, IP, routing algorithms, multicast. Transport layer: connectionless and connection-oriented transport, reliable data transport, congestion control, QoS, UDP and TCP. Application layer: DNS, the web and http, file transfer, and email. Introduction to network security, multimedia protocols and wireless networking. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 451',
-              'course_name' => 'Database Design ',
-              'description' => 'Storage management. Buffer management. Data organization. Index structures. Query optimization and execution. Transaction management. Recovery. Concur­rency control. Database performance analysis and tuning. New trends in database technology. Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 465',
-              'course_name' => 'Design and Analysis of Algorithms ',
-              'description' => 'Order statistics: worst-case, average-case and amortized analysis. Algorithm design techniques: greedy algorithms, dynamic programming. Selected algorithms from graph theory, linear programming, number theory, string matching, and computational geometry. A survey of hard problems, NP-completeness, and approximation algorithms. Lectures: three hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'COMP 472',
-              'course_name' => 'Artificial Intelligence ',
-              'description' => 'Scope of AI. First-order logic. Automated reasoning. Search and heuristic search. Game-playing. Planning. Knowledge representation. Probabilistic reasoning. Introduction to machine learning. Introduction to natural language processing. Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 473',
-              'course_name' => 'Pattern Recognition ',
-              'description' => 'Preprocessing. Feature extraction and selection. Similarity between patterns and distance measurements. Syntactic and statistical approaches. Clustering analysis. Bayesian decision theory and discriminant functions. Neural networks and machine learning. Applications. Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 474',
-              'course_name' => 'Intelligent Systems ',
-              'description' => 'Rule-based expert systems, blackboard architecture, and agent-based. Knowledge acquisition and representation. Uncertainty and conflict resolution. Reasoning and explanation. Design of intelligent systems. Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 476',
-              'course_name' => 'Advanced Game Development ',
-              'description' => 'Introduction to advanced aspects of computer games. Game engine design. Artificial Intelligence (AI): non-player character movement, coordinated movement, pathfinding, world representations; decision making; tactical AI, strategic AI, learning in games. Physics-based techniques: collision detection and response. Networked gaming: multi-player games, networking and distributed game design, mobile gaming. Improving realism: cut scenes, 3D sound. Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 477',
-              'course_name' => 'Animation for Computer Games ',
-              'description' => 'Introduction to the algorithms, data structures, and techniques used in modelling and rendering dynamic scenes. Topics include principles of traditional animation, production pipeline, animation hardware and software, orientation representation and interpolation, modelling physical and articulated objects, forward and inverse kinematics, motion control and capture, key-frame, procedural, and behavioural animation, camera animation, scripting system, and free-form deformation. Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 478',
-              'course_name' => 'Image Processing ',
-              'description' => 'Digital image fundamentals, image transforms (Fourier, Walsh, Haar, Hotelling, wavelet), image enhancement (histogram processing, spatial filtering, high- and low-pass filtering), image restoration, image compression (elements of information theory, image compression models, error-free compression, lossy compression, image compression standards), image segmentation (line detection, Hough transform, edge detection and linking, thresholding, region splitting and merging), representation and description (chain codes, signatures, skeletons, shape descriptors, moments, texture). Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 479',
-              'course_name' => 'Information Retrieval and Web Search ',
-              'description' => 'Basics of information retrieval (IR): boolean, vector space and probabilistic models. Tokenization and creation of inverted files. Weighting schemes. Evaluation of IR systems: precision, recall, F-measure. Relevance feedback and query expansion. Application of IR to web search engines: XML, link analysis, PageRank algorithm. Text categorization and clustering techniques as used in spam filtering. Project. Lectures: three hours per week. Laboratory: two hours per week.',
-              'credits' => 4
-            ],
-            [
-              'course_code' => 'COMP 490',
-              'course_name' => 'Computer Science Project I ',
-              'description' => 'Students work on a computer science project under the supervision of a faculty member and submit a suitable written report on the work carried out. Students planning to register for this course should consult with the Department prior to registration in the final year of study.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'COMP 492',
-              'course_name' => 'Computer Science Project II ',
-              'description' => 'Students work on a computer science project under the supervision of a faculty member and submit a suitable written report on the work carried out. Students planning to register for this course should consult with the Department prior to registration in their final year of study.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'COMP 495',
-              'course_name' => 'Honours Seminar ',
-              'description' => 'Students are required to attend a number of departmental seminars and submit a written report on them.',
-              'credits' => 1
-            ],
-            [
-              'course_code' => 'COMP 498',
-              'course_name' => 'Topics in Computer Science ',
-              'description' => 'This course may be offered in a given year upon the authorization of the Department. The content may vary from offering to offering and will be chosen to complement the available elective courses. Lectures: three hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'ENCS 272',
-              'course_name' => 'Composition and Argumentation for Engineers ',
-              'description' => 'Fundamentals of English composition and argumentation: grammar; reasoning and persuasion; persuasive proofs; argumentation; structuring and outlining; the problem statement; the body; and the conclusions. Language and persuasion for effective communication in professional engineering. Cultivation of a writing style firmly based on clear and critical thinking skills. Lectures: three hours per week. Tutorial: one hour per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'ENCS 282',
-              'course_name' => 'Technical Writing and Communication ',
-              'description' => 'Technical writing form and style. Technical and scientific papers, abstracts, reports. Library research and referencing methods for engineers and computer scientists. Technical communication using information technology: document processing software, computer-assisted presentation, analysis and design of web presentation, choice and use of appropriate tools. Students will prepare an individual major report and make an oral presentation. Lectures: three hours per week. Tutorial: two hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'ENCS 393',
-              'course_name' => 'Social and Ethical Dimensions of Information and Communication Technologies ',
-              'description' => 'Ethics in an information society; surveillance and privacy; economic globalization and intellectual property in a digital world: the digital divide; computer-based profiling and hacking; electronic democracy; computer-mediated experience; and information productivity and the work/life balance. Lectures: three hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'ENCS 483',
-              'course_name' => 'Creativity, Innovation and Critical Thinking in Science and Technology ',
-              'description' => 'Understanding, thinking, arguing, and creativity in science and technology; analyzing and critiquing complex problems using multidisciplinary theories of creativity; exploring the processes of invention and innovation and their impact on economics, popular media, and social and cultural structures; case studies of why some inventions fail and others succeed. Students will be evaluated on case studies, assignments, and a project. Lectures: three hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'ENCS 484',
-              'course_name' => 'Development and Global Engineering ',
-              'description' => 'International development and global engineering: globalization; development projects; planning and analysis; and participatory data gathering. A project. Lectures: three hours per week.',
-              'credits' => 3
-            ],
-            [
-              'course_code' => 'ENCS 498',
-              'course_name' => 'Topics in Engineering and Computer Science ',
-              'description' => 'This course may be offered in a given year upon the authorization of the Faculty. The course content may vary from offering to offering.',
-              'credits' => 3
             ],
             [
               'course_code' => 'COEN 212',
@@ -1254,6 +948,558 @@ class CoursesTableSeeder extends Seeder
               'course_code' => 'MECH 498',
               'course_name' => 'Topics in Mechanical Engineering ',
               'description' => 'This course may be offered in a given year upon the authorization of the Mechanical and Industrial Engineering Department. The course content may vary from offering to offering and will be chosen to complement the elective courses available in a given option or options. Lectures: three hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 108',
+              'course_name' => 'Computer Science Industrial Experience Reflective Learning I ',
+              'description' => 'This course is a reflective learning module for students in their related field which is based on their academic requirements and their first industrial experience.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 201',
+              'course_name' => 'Introduction to Computing ',
+              'description' => 'Overview of computing systems. Problem solving and algorithms. Introduction to computer programming. Hardware, software and data storage, programming languages, data organization, program design and development. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 208',
+              'course_name' => 'Computer Science Industrial Experience Reflective Learning II ',
+              'description' => 'This course expands on the students’ second industrial experience term in their related field of study to further develop their knowledge and work-related skills.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 218',
+              'course_name' => 'Fundamentals of Programming ',
+              'description' => 'Computers and computing: problem solving with computers, basic data types, expressions, assignments, control structures, simple library functions, programmer-defined functions, arrays of basic types. Basic elements of object-oriented programming: classes, objects and methods. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 228',
+              'course_name' => 'System Hardware ',
+              'description' => 'Levels of system abstraction and von Neumann model. Basics of digital logic design. Data representation and manipulation. Instruction set architecture. Processor internals. Assembly language programming. Memory subsystem and cache management. I/O subsystem. Introduction to network organization and architecture. Lectures: three hours per week. Tutorial: two hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 232',
+              'course_name' => 'Mathematics for Computer Science ',
+              'description' => 'Sets. Propositional logic and predicate calculus. Functions and relations. Elements of number theory. Proof techniques: direct proof, indirect proof, proof by contradiction, proof by induction. Lectures: three hours per week. Tutorial: two hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 233',
+              'course_name' => 'Probability and Statistics for Computer Science ',
+              'description' => 'Combinatorics. Axioms of probability. Conditional probability. Discrete and continuous probability distributions. Expectation and moments. Hypothesis testing. Parameter estimation. Correlation and linear regression. Applications to computer science. Lectures: three hours per week. Tutorial: two hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 248',
+              'course_name' => 'Object-Oriented Programming I ',
+              'description' => 'Introduction to programming. Basic data types, variables, expressions, assignments, control flow. Classes, objects, methods. Information hiding, public vs. private visibility, data abstraction and encapsulation. References. Arrays. Lectures: three hours per week. Tutorial: two hours per week. Laboratory: one hour per week.',
+              'credits' => 3.5
+            ],
+            [
+              'course_code' => 'COMP 249',
+              'course_name' => 'Object-Oriented Programming II ',
+              'description' => 'Design of classes. Inheritance. Polymorphism. Static and dynamic binding. Abstract classes. Exception handling. File I/O. Recursion. Interfaces and inner classes. Graphical user interfaces. Generics. Collections and iterators. Lectures: three hours per week. Tutorial: two hours per week. Laboratory: one hour per week.',
+              'credits' => 3.5
+            ],
+            [
+              'course_code' => 'COMP 318',
+              'course_name' => 'Introduction to Database Applications ',
+              'description' => 'This is a hands-on course on database technology intended for non-computer science students in engineering, science, business, or arts. It emphasizes practical issues in application development while introducing the fundamentals of databases with a focus on the relational data model and the Structured Query Language (SQL). Upon completion of this course, students will be able to design and implement databases, and develop user interfaces to access, search, and update the database through the Internet using the web technology. Lectures: three hours per week. Tutorial: one hour per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 326',
+              'course_name' => 'Computer Architecture ',
+              'description' => 'Computer architecture models: control-flow and data-flow. Concurrency and locality, data dependency theory. Instruction level parallelism. Instruction scheduling. Pipelined processors. Vector processors. Thread level parallelism. Multiprocessors. Shared memory models. Coherence protocols. Interconnection networks. Performance issues. Advanced topics in contemporary computer architectures. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 335',
+              'course_name' => 'Introduction to Theoretical Computer Science ',
+              'description' => 'Finite state automata and regular languages. Push-down automata and context-free languages. Pumping lemmas. Applications to parsing. Turing machines. Unde­cidability and decidability. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 339',
+              'course_name' => 'Combinatorics ',
+              'description' => 'General principles of counting, permutations, combinations, identities, partitions, generating functions, Fibonacci numbers, Stirling numbers, Catalan numbers, principle of inclusion-exclusion. Graphs, subgraphs, isomorphism, Euler graphs, Hamilton paths and cycles, planar graphs, Kuratowski’s Theorem, trees, colouring, 5-colour theorem, matching, Hall’s theorem.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 345',
+              'course_name' => 'Advanced Program Design with C++ ',
+              'description' => 'Introduction to C++. I/O with stream classes. Pointers and their uses. The Standard Template Library (STL): containers, algorithms, iterators, adaptors, function objects. Class design: constructors, destructors, operator overloading, inheritance, virtual functions, exception handling, memory management. Advanced topics: libraries, locales, STL conventions, concurrency, template metaprogramming. Applications of C++: systems, engineering, games programming. Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 346',
+              'course_name' => 'Operating Systems ',
+              'description' => 'Fundamentals of operating system functionalities, design and implementation. Multiprogramming: processes and threads, context switching, queuing models and scheduling. Interprocess communication and synchronization. Principles of concurrency. Synchronization primitives. Deadlock detection and recovery, prevention and avoidance schemes. Memory management. Device management. File systems. Protection models and schemes. Lectures: three hours per week. Tutorial: one hour per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 348',
+              'course_name' => 'Principles of Programming Languages ',
+              'description' => 'Survey of programming paradigms: Imperative, functional, and logic programming. Issues in the design and implementation of programming languages. Declaration models: binding, visibility, and scope. Type systems, including static and dynamic typing. Parameter passing mechanisms. Hybrid language design. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 352',
+              'course_name' => 'Data Structures and Algorithms ',
+              'description' => 'Abstract data types: stacks and queues, trees, priority queues, dictionaries. Data structures: arrays, linked lists, heaps, hash tables, search trees. Design and analysis of algorithms: asymptotic notation, recursive algorithms, searching and sorting, tree traversal, graph algorithms. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 353',
+              'course_name' => 'Databases ',
+              'description' => 'Introduction to database management systems. Conceptual database design: the entity-relationship model. The relational data model and relational algebra: functional dependencies and normalization. The SQL language and its application in defining, querying, and updating databases; integrity constraints; triggers. Developing database applications. Other data models: Datalog. Object-oriented data model and ODL. Semi-structured data. Project. Lectures: three hours per week. Tutorial: one hour per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 354',
+              'course_name' => 'Introduction to Software Engineering ',
+              'description' => 'Software development process models (e.g. linear vs. iterative). Project management; roles, activities and deliverables for each software life cycle phase. Requirements management: analysis, elicitation, and scope. Architecture, design and the mapping of requirements to design and design to implementation. Traceability. Software quality assurance: verification, validation and the role of testing. Maintenance and evolution. Project. Lectures: three hours per week. Tutorial: one hour per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 361',
+              'course_name' => 'Elementary Numerical Methods ',
+              'description' => 'Vector and matrix norms. Numerical methods for solving linear systems, Gaussian elimination, LU decomposition, error analysis. Numerical solution of nonlinear equations, Newton’s method, fixed point iterations. Interpolation and approximation, Taylor, Lagrange, Chebyshev and Legendre polynomials. Cubic spline interpolation. Numerical differentiation, numerical integration, Gauss quadrature. Discrete least-squares approximation. Initial value problems in ordinary differential equations, stiff differential equations. Boundary value problems in ordinary differential equations. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 367',
+              'course_name' => 'Techniques in Symbolic Computation ',
+              'description' => 'Symbolic computation and its use in pure and applied mathematics, in particular in algebra, number theory, cryptography, coding theory, and combinatorics. Programming in a symbolic computing system (e.g. MAPLE).',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 371',
+              'course_name' => 'Computer Graphics ',
+              'description' => 'Introduction to computer graphics and graphics hardware. Introduction to graphics API and graphics systems architecture. Mathematics of 2D and 3D transformations, and 2D and 3D viewing. Colour and basic rendering algorithms. Visual realism and visibility. Illumination and shading, global illumination techniques, and textures. Introduction to curves and surfaces, and 3D object modelling. Introduction to computer animation. Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 376',
+              'course_name' => 'Introduction to Game Development ',
+              'description' => 'Introduction to design and implementation aspects of computer gaming: basic game design, storytelling and narratives, and game genres. Virtual environments, 2D and 3D game engines, and game development tools. Character development, gameplay strategies, level design in games, and user interfaces. Architecture of game consoles, analog and digital controllers, and the incorporation of graphics, sound, and music in game implementations. Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 426',
+              'course_name' => 'Multicore Programming ',
+              'description' => 'Fundamental concepts of computer architecture. Architecture of the selected multicore platform. Review of shared-memory parallel programming. The difficulties inherent to parallel programming. Scalability of programming models. The stream programming model for multicore. Implicit and explicit threading. Implicit and explicit orchestration of data movement, both on chip and off. Adapting standard algorithms to multicore. Critical assessment of the available system-software support. Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 428',
+              'course_name' => 'Parallel Programming ',
+              'description' => 'Parallel programming techniques as a natural extension to sequential programming. Overview of parallel programming architectures and models. Parallel programming issues: locality, granularity, scheduling, data decomposition and distribution, load balancing, communication and synchronization, determinacy and non-determinacy, cost and performance. Techniques and tools for message-passing parallel programming. Case studies. Project. Lectures: three hours per week. Tutorial: one hour per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 442',
+              'course_name' => 'Compiler Design ',
+              'description' => 'Compiler organization and implementation: lexical analysis and parsing, syntax-directed translation, code optimization. Run-time systems. Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 444',
+              'course_name' => 'System Software Design ',
+              'description' => 'Detailed examination of the design, implementation and system call interface of a contemporary operating system: its kernel, file system, process and thread management including scheduling, file system design and implementation, memory management, device management, I/O management, interprocess communication and synchronization mechanisms, system call interface, interrupt handling, and other advanced issues. Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 445',
+              'course_name' => 'Data Communication and Computer Networks ',
+              'description' => 'Network architectures: OSI and Internet models. Link layer: error detection, multiple access protocols, addressing. Local area networks: Ethernet, ATM, switches and hubs. Network layer: forwarding and routing, IP, routing algorithms, multicast. Transport layer: connectionless and connection-oriented transport, reliable data transport, congestion control, QoS, UDP and TCP. Application layer: DNS, the web and http, file transfer, and email. Introduction to network security, multimedia protocols and wireless networking. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 451',
+              'course_name' => 'Database Design ',
+              'description' => 'Storage management. Buffer management. Data organization. Index structures. Query optimization and execution. Transaction management. Recovery. Concur­rency control. Database performance analysis and tuning. New trends in database technology. Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 465',
+              'course_name' => 'Design and Analysis of Algorithms ',
+              'description' => 'Order statistics: worst-case, average-case and amortized analysis. Algorithm design techniques: greedy algorithms, dynamic programming. Selected algorithms from graph theory, linear programming, number theory, string matching, and computational geometry. A survey of hard problems, NP-completeness, and approximation algorithms. Lectures: three hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 472',
+              'course_name' => 'Artificial Intelligence ',
+              'description' => 'Scope of AI. First-order logic. Automated reasoning. Search and heuristic search. Game-playing. Planning. Knowledge representation. Probabilistic reasoning. Introduction to machine learning. Introduction to natural language processing. Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 473',
+              'course_name' => 'Pattern Recognition ',
+              'description' => 'Preprocessing. Feature extraction and selection. Similarity between patterns and distance measurements. Syntactic and statistical approaches. Clustering analysis. Bayesian decision theory and discriminant functions. Neural networks and machine learning. Applications. Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 474',
+              'course_name' => 'Intelligent Systems ',
+              'description' => 'Rule-based expert systems, blackboard architecture, and agent-based. Knowledge acquisition and representation. Uncertainty and conflict resolution. Reasoning and explanation. Design of intelligent systems. Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 476',
+              'course_name' => 'Advanced Game Development ',
+              'description' => 'Introduction to advanced aspects of computer games. Game engine design. Artificial Intelligence (AI): non-player character movement, coordinated movement, pathfinding, world representations; decision making; tactical AI, strategic AI, learning in games. Physics-based techniques: collision detection and response. Networked gaming: multi-player games, networking and distributed game design, mobile gaming. Improving realism: cut scenes, 3D sound. Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 477',
+              'course_name' => 'Animation for Computer Games ',
+              'description' => 'Introduction to the algorithms, data structures, and techniques used in modelling and rendering dynamic scenes. Topics include principles of traditional animation, production pipeline, animation hardware and software, orientation representation and interpolation, modelling physical and articulated objects, forward and inverse kinematics, motion control and capture, key-frame, procedural, and behavioural animation, camera animation, scripting system, and free-form deformation. Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 478',
+              'course_name' => 'Image Processing ',
+              'description' => 'Digital image fundamentals, image transforms (Fourier, Walsh, Haar, Hotelling, wavelet), image enhancement (histogram processing, spatial filtering, high- and low-pass filtering), image restoration, image compression (elements of information theory, image compression models, error-free compression, lossy compression, image compression standards), image segmentation (line detection, Hough transform, edge detection and linking, thresholding, region splitting and merging), representation and description (chain codes, signatures, skeletons, shape descriptors, moments, texture). Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 479',
+              'course_name' => 'Information Retrieval and Web Search ',
+              'description' => 'Basics of information retrieval (IR): boolean, vector space and probabilistic models. Tokenization and creation of inverted files. Weighting schemes. Evaluation of IR systems: precision, recall, F-measure. Relevance feedback and query expansion. Application of IR to web search engines: XML, link analysis, PageRank algorithm. Text categorization and clustering techniques as used in spam filtering. Project. Lectures: three hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'COMP 490',
+              'course_name' => 'Computer Science Project I ',
+              'description' => 'Students work on a computer science project under the supervision of a faculty member and submit a suitable written report on the work carried out. Students planning to register for this course should consult with the Department prior to registration in the final year of study.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 492',
+              'course_name' => 'Computer Science Project II ',
+              'description' => 'Students work on a computer science project under the supervision of a faculty member and submit a suitable written report on the work carried out. Students planning to register for this course should consult with the Department prior to registration in their final year of study.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMP 495',
+              'course_name' => 'Honours Seminar ',
+              'description' => 'Students are required to attend a number of departmental seminars and submit a written report on them.',
+              'credits' => 1
+            ],
+            [
+              'course_code' => 'COMP 498',
+              'course_name' => 'Topics in Computer Science ',
+              'description' => 'This course may be offered in a given year upon the authorization of the Department. The content may vary from offering to offering and will be chosen to complement the available elective courses. Lectures: three hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 228',
+              'course_name' => 'System Hardware ',
+              'description' => 'Processor structure, Data and Instructions, Instruction Set Processor (ISP) level view of computer hardware, assembly language level use. Memory systems — RAM and disks, hierarchy of memories. I/O organization, I/O devices and their diversity, their interconnection to CPU and Memory. Communication between computers at the physical level. Networks and computers. Lectures: three hours per week. Tutorial: two hours per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'SOEN 287',
+              'course_name' => 'Web Programming ',
+              'description' => 'Internet architecture and protocols. Web applications through clients and servers. Markup languages. Client-side programming using scripting languages. Static website contents and dynamic page generation through server-side programming. Preserving state (client-side) in web applications. Lectures: three hours per week. Tutorial: two hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 298',
+              'course_name' => 'System Hardware Lab ',
+              'description' => 'Digital design exercises including assembly and testing corresponding to the SOEN 228 lab. Laboratory: two hours per week.',
+              'credits' => 1
+            ],
+            [
+              'course_code' => 'SOEN 321',
+              'course_name' => 'Information Systems Security ',
+              'description' => 'Protocol layers and security protocols. Intranets and extranets. Mobile computing. Electronic commerce. Security architectures in open-network environments. Cryptographic security protocols. Threats, attacks, and vulnerabilities. Security services: confidentiality; authentication; integrity; access control; non-repudiation; and availability. Security mechanisms: encryption; data-integrity mechanisms; digital signatures; keyed hashes; access-control mechanisms; challenge-response authentication; traffic padding; routing control; and notarization. Key-management principles. Distributed and embedded firewalls. Security zones. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 331',
+              'course_name' => 'Introduction to Formal Methods for Software Engineering ',
+              'description' => 'Assertions. Static and dynamic checking. Method specification using preconditions and postconditions. Strengthening and weakening. Design by contract. Hoare logic. Invariants. Class specification using invariants. Software tools for assertion checking and verification. Reliable software development. Lectures: three hours per week. Tutorial: two hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 341',
+              'course_name' => 'Software Process ',
+              'description' => 'Basic principles of software engineering. Introduction to software process models. Activities in each phase, including review activities. Working in teams: organization; stages of formation; roles; conflict resolution. Notations used in software documentation. How to review, revise, and improve software documentation. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 342',
+              'course_name' => 'Software Requirements and Specifications ',
+              'description' => 'Requirements engineering. Functional and non-functional requirements. Traceability. Test generation. Formal and informal specifications. Formal specification languages. Reasoning with specifications. Correctness issues. Verification. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 343',
+              'course_name' => 'Software Architecture and Design I ',
+              'description' => 'From requirements to design to implementation. Planned vs. evolutionary design and refactoring. Model-driven design and Unified Modelling Language (UML). Structural and behavioural design descriptions and specifications. General and domain-specific design principles, patterns and idioms. Object-oriented design concepts such as interfaces vs. abstract types, polymorphism, generics, and delegation vs. subclassing. Introduction to software architecture (styles and view models). Design quality. Design rationale. Design methodologies (e.g. based on responsibility assignment). Test-driven development. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 344',
+              'course_name' => 'Software Architecture and Design II ',
+              'description' => 'Architectural activities, roles, and deliverables. Architectural view models. Architectural styles (including client-server, layered, pipes-and-filters, event-based, process control) and frameworks. Architectural analysis and the interplay with requirements elicitation. Notations for expressing architectural designs, structural and behavioural specifications. From architectural design to detailed design. Domain specific architectures and design patterns. Evaluation and performance estimation of designs. Advanced object-oriented design patterns and idioms. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 345',
+              'course_name' => 'Software Testing, Verification and Quality Assurance ',
+              'description' => 'Testing strategies. Specification-based vs. code-based, black-box vs. white-box, functional vs. structural testing; unit, integration, system, acceptance, and regression testing. Verification vs. validation. Test planning, design and artifacts. Introduction to software reliability and quality assurance. Formal verification methods, oracles; static and dynamic program verification. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 357',
+              'course_name' => 'User Interface Design ',
+              'description' => 'The human side: I/O; memory; and information processing. Interaction: mental models; human error; interaction frameworks and paradigms. Direct manipulation. User interface design: principles; standards; and guidelines. User-centred design: standards and design rationale; heuristic evaluation; iterative design; and prototyping. Task-centred design. Rationalized design: usability engineering; dialogue notations; user models; diagrammatic notations; and textual notations. Evaluation: with the user; without the user; quantitative; and qualitative. Implementation support. Help and documentation. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 384',
+              'course_name' => 'Management, Measurement and Quality Control ',
+              'description' => 'Organization of large software development. Roles of team members, leaders, managers, stakeholders, and users. Tools for monitoring and controlling a schedule. Financial, organizational, human, and computational resources allocation and control. Project and quality reviews, inspections, and walkthroughs. Risk management. Communication and collaboration. Cause and effects of project failure. Project management via the Internet. Quality assurance and control. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 385',
+              'course_name' => 'Control Systems and Applications ',
+              'description' => 'Mathematical modelling of dynamical systems; block diagrams; feedback; open and closed loops. Linear differential equations; time domain analysis; free, forced, and total response; steady state and transient response. Laplace transform and inverse transform; second order systems. Transfer functions and stability. Control system design: PID and root locus techniques. Computer simulation of control systems. Applications. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 387',
+              'course_name' => 'Web-Based Enterprise Application Design ',
+              'description' => 'Hypertext Transfer Protocol (HTTP), web mark-up languages and encodings. Document Object Models (DOM). Client/server and layered architectures for Web-based Enterprise Applications (WEA). Presentation, Domain and Data Source design patterns. Client-side programming. Java servlets and Java Server Pages. Authentication, security and transaction processing. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 390',
+              'course_name' => 'Software Engineering Team Design Project ',
+              'description' => 'Students work in teams to design and implement a software project from requirements provided by the coordinator. Each team will demonstrate the software and prepare adequate documentation for it. In addition, each student will write an individual report. Lectures: two hours per week. Tutorial: one hour per week. Laboratory: three hours per week.',
+              'credits' => 3.5
+            ],
+            [
+              'course_code' => 'SOEN 422',
+              'course_name' => 'Embedded Systems and Software ',
+              'description' => 'Characteristics of embedded systems. Microcontroller architectures and their software. Development environments. Operating system configuration. Interprocessor and remote communication. Interface, timer and interrupt configuration. Control of physical systems. Design, implementation and testing of integrated systems. Advanced topics. Lectures: three hours per week. Tutorial one hour per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'SOEN 423',
+              'course_name' => 'Distributed Systems ',
+              'description' => 'Principles of distributed computing: scalability, transparency, concurrency, consistency, fault tolerance, high availability. Client-server interaction technologies: interprocess communication, sockets, group communication, remote procedure call, remote method invocation, object request broker, CORBA, web services. Server design techniques: process replication, fault tolerance through passive replication, high availability through active replication, coordination and agreement, transactions and concurrency control. Lectures: three hours per week. Tutorial one hour per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'SOEN 448',
+              'course_name' => 'Management of Evolving Systems ',
+              'description' => 'Software maintenance: corrective; perfective; and adaptive. Software reuse; construction of reusable software. Techniques for reverse engineering and re-engineering software. Software development as “growing” software. Long-term evolution of software systems. Legacy systems. Lectures: three hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 449',
+              'course_name' => 'Component Engineering ',
+              'description' => 'Review of high-level language concepts and abstraction mechanisms. Programming with functional and logical languages. Typed vs. untyped languages. The use of scripting languages and other language-based techniques to assemble systems from high-level components. Lectures: three hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOEN 487',
+              'course_name' => 'Web Services and Applications ',
+              'description' => 'Analysis and design of web services and applications. Advanced architectures for the design, deployment, and testing of large multi-server web services and applications. Service Oriented Architecture (SOA). Electronic Commerce. Security. Load balancing. Stress testing. Lectures: three hours per week. Tutorial: one hour per week. Laboratory: two hours per week.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'SOEN 490',
+              'course_name' => 'Capstone Software Engineering Design Project ',
+              'description' => 'Students work in teams of between six and nine members to construct a significant software application. The class meets at regular intervals. Team members will give a presentation of their contribution to the project. Lectures: one hour per week. Laboratory: two hours per week. Two terms.',
+              'credits' => 4
+            ],
+            [
+              'course_code' => 'SOEN 491',
+              'course_name' => 'Software Engineering Project ',
+              'description' => 'Theoretical or practical project in an advanced topic in software engineering.',
+              'credits' => 1
+            ],
+            [
+              'course_code' => 'SOEN 498',
+              'course_name' => 'Topics in Software Engineering ',
+              'description' => 'This course may be offered in a given year upon the authorization of the Department. The content may vary from offering to offering and will be chosen to complement the available elective courses. Lectures: three hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'CIVI 231',
+              'course_name' => 'Geology for Civil Engineers ',
+              'description' => 'Basic principles of physical and structural geology with emphasis on topics related to civil engineering, study of minerals, rocks and soil types, load formation, techniques of air-photo interpretations, and geological mapping. Geological site investigation. Preparation and interpretation of engineering geology reports. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHYS 204',
+              'course_name' => 'Mechanics ',
+              'description' => 'Kinematics, Newton’s laws of motion. Statics, dynamics. Conservation of momentum and energy. Rotational motion. Periodic motion. Lectures only.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHYS 205',
+              'course_name' => 'Electricity and Magnetism ',
+              'description' => 'Electrical charge and Coulomb’s law. Electrical field and potential. Capacity, steady state, and transient currents. Electromagnetic induction and alternating currents. Lectures only.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHYS 206',
+              'course_name' => 'Waves and Modern Physics ',
+              'description' => 'Simple harmonic motion. Wave propagation. Superposition. Stationary waves. Doppler effect. Interference. Diffraction. Photoelectric effect. Compton effect. Bohr’s atom. Radioactivity, fission, fusion. Lectures only.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHYS 252',
+              'course_name' => 'Optics ',
+              'description' => 'Wave equation, phasors, EM waves, linear, circular and elliptical polarization, polariscope, Malus’ law, dichroism, polaroid, polarizing Prism, quarter and half wave plates, wave superposition, interference, Young’s double slit experiment, Michelson interferometer, reflectance and transmittance of thin films, interferometers, dispersion, elements of Fourier analysis, diffraction, single slit diffraction, double slit, Fraunhofer and Fresnel limits, diffraction grating, Fresnel diffraction, instruments, introduction to lasers.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHYS 284',
+              'course_name' => 'Introduction to Astronomy ',
+              'description' => 'This course explores current knowledge of the cosmos from the celestial sphere towards the farthest reaches of the universe. The journey begins with a description of planet earth, its place in the solar system, and resulting seasonal changes, tidal movements, and earth’s precession. Farther out, the solar system, the planets, star clusters, the Milky Way galaxy, and modern strange systems such as black holes, quasars, and supernovae are explored. The physical, theoretical and experimental grounds for understanding are described including Newton’s laws, quantum and relativistic theories of light and matter, the science of visual and microwave telescopes, and techniques for discovering the existence of planets in other solar systems are also described. Lectures only.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHYS 385',
+              'course_name' => 'Astrophysics ',
+              'description' => 'The stars, stellar atmospheres, motion, interiors, and populations. Variable stars. Nebulae. Radio, X-ray, and infrared sources. The galaxy — population and dynamics. The extragalactic universe. Lectures only.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'BIOL 206',
+              'course_name' => 'Elementary Genetics ',
+              'description' => 'A survey of classical and contemporary developments in the study of heredity, with particular attention to human examples. This course is open to the general student body. Lectures only.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'BIOL 261',
+              'course_name' => 'Molecular and General Genetics ',
+              'description' => 'Basic genetic principles, including mechanisms of meiosis and mitosis, Mendelian genetics, recombination, gene mapping, and chromosome rearrangements; an introduction to molecular genetics, including nucleic acid structure and biosynthesis transcription and translation; the course also includes an introduction to recombinant DNA technology and to concepts of population genetics. Lectures and tutorials.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'BIOL 201',
+              'course_name' => 'Introductory Biology ',
+              'description' => 'Fundamentals of plant and animal biology: basic physics and chemistry of life; cell and tissue structures and functions; anatomy and physiology of human systems; survey of plant and animal taxonomy, ecology, heredity, and evolution. Lectures and laboratory.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'CHEM 205',
+              'course_name' => 'General Chemistry I ',
+              'description' => 'Stoichiometry, states of matter, atomic structure, electron structure of atoms, the periodic table, periodic properties, bonding, solids. Lectures and laboratory.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'CHEM 206',
+              'course_name' => 'General Chemistry II ',
+              'description' => 'Thermochemistry, solutions and their properties, equilibrium, ionic equilibrium, pH, buffers, kinetics, reaction mechanisms, other selected topics related to biochemistry, biology, and engineering. Lectures and laboratory.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'CHEM 217',
+              'course_name' => 'Introductory Analytical Chemistry I ',
+              'description' => 'Precipitation methods and solubility products; activity, chemical equilibria and titration curves of neutralization and complexation systems; treatment of analytical data. Lectures and laboratory.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'CHEM 221',
+              'course_name' => 'Introductory Organic Chemistry I ',
+              'description' => 'Basic aspects of orbitals and their role in covalent bonding; delocalization of electrons. Alkanes: structure, nomenclature, isomerism, reactions. Introductory stereochemistry: enantiomers, diastereomers, conformers, Fischer and Newman projections, specification of chirality, E/Z isomerism. Conformations of cyclic compounds. Alkylhalides: SN1; SN2; E1; E2 reaction mechanisms. Free-radical reactions, organometallic compounds. Chemistry of alkenes, alkynes, and dienes. Lectures and laboratory.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHYS 224',
+              'course_name' => 'Introductory Experimental Mechanics ',
+              'description' => 'This laboratory course covers fundamental experiments in classical mechanics. Experiments include resolution of forces, centrifugal force and conservation of energy, pendulums. Laboratory only, 10 experiments.',
+              'credits' => 1
+            ],
+            [
+              'course_code' => 'PHYS 226',
+              'course_name' => 'Introductory Experimental Waves and Modern Physics ',
+              'description' => 'This laboratory course covers the fundamental experiments in waves and modern physics. Experiments include spectrometer measurements. Newton’s rings and measurements involving radioactivity. Laboratory only, 10 experiments.',
+              'credits' => 1
+            ],
+            [
+              'course_code' => 'MATH 201',
+              'course_name' => 'Elementary Functions ',
+              'description' => 'Sets, inequalities, graphs of functions, and relations. Trigonometric, exponential, and logarithmic functions. Lectures and tutorials.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'MATH 202',
+              'course_name' => 'College Algebra ',
+              'description' => 'Progressions, combinations, permutations, binomial theorem, mathematical induction, inequalities, polynomials, cartesian and polar forms of complex numbers, conics. Lectures and tutorials.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'MATH 203',
+              'course_name' => 'Differential and Integral Calculus I ',
+              'description' => 'Functional notation. Differentiation of polynomials. The power, product, quotient, and chain rules. Differentiation of elementary functions. Implicit differentiation. Higher derivatives. Maxima and minima. Applications: tangents to plane curves, graphing, related rates. Approximations using the differential. Antiderivatives, definite integrals, area. Lectures and laboratory.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'MATH 204',
+              'course_name' => 'Vectors and Matrices ',
+              'description' => 'Algebra and geometry of vectors, dot and cross products, lines and planes. System of equations, operations on matrices, rank, inverse, quadratic form, and rotation of axes. Lectures and tutorials.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'MATH 205',
+              'course_name' => 'Differential and Integral Calculus II ',
+              'description' => 'Techniques of integration: substitutions, integration by parts, partial fractions. Improper integrals. Physical applications of the definite integral. Infinite series: tests for convergence. Power series, Taylor’s theorem. Lectures and laboratory.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'MATH 206',
+              'course_name' => 'Algebra and Functions ',
+              'description' => 'Coordinate systems. Radicals and distance formula. Polynomials, factoring, and graphing. Relations and functions. Linear and quadratic functions, equations, and systems. Exponents, exponential and logarithmic functions and equations. Lectures and tutorials.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ENCS 272',
+              'course_name' => 'Composition and Argumentation for Engineers ',
+              'description' => 'Fundamentals of English composition and argumentation: grammar; reasoning and persuasion; persuasive proofs; argumentation; structuring and outlining; the problem statement; the body; and the conclusions. Language and persuasion for effective communication in professional engineering. Cultivation of a writing style firmly based on clear and critical thinking skills. Lectures: three hours per week. Tutorial: one hour per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ENCS 282',
+              'course_name' => 'Technical Writing and Communication ',
+              'description' => 'Technical writing form and style. Technical and scientific papers, abstracts, reports. Library research and referencing methods for engineers and computer scientists. Technical communication using information technology: document processing software, computer-assisted presentation, analysis and design of web presentation, choice and use of appropriate tools. Students will prepare an individual major report and make an oral presentation. Lectures: three hours per week. Tutorial: two hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ENCS 393',
+              'course_name' => 'Social and Ethical Dimensions of Information and Communication Technologies ',
+              'description' => 'Ethics in an information society; surveillance and privacy; economic globalization and intellectual property in a digital world: the digital divide; computer-based profiling and hacking; electronic democracy; computer-mediated experience; and information productivity and the work/life balance. Lectures: three hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'MAST 217',
+              'course_name' => 'Introduction to Mathematical Thinking ',
+              'description' => 'This course aims to foster analytical thinking through a problem-solving approach. Topics include construction of proofs, number systems, ordinality and cardinality, role of examples and counter examples, role of generalizations and specializations; role of symbols, notations and definitions; styles of mathematical discourse.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'MAST 234',
+              'course_name' => 'Linear Algebra and Applications I ',
+              'description' => 'System of linear equations, matrix operations, echelon forms and LU-factorization; Rn: subspaces, linear dependence, basis, dimension, matrix transformations; eigenvalues and eigenvectors in Rn and applications (e.g. Markov chains, dynamical systems). The software MAPLE is extensively used.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'BCEE 231',
+              'course_name' => 'Structured Programming and Applications for Building and Civil Engineers ',
+              'description' => 'Elements of procedural programming: variables, primitive data types, scope, operators and expressions, control structures, functions, derived data types and basic data structures. Program structure and development: specifications, analysis of requirements, flow charting, incremental development, testing, validation and program documenting. Application of procedural programming, graphics and numerical tool box to mathematics and building, civil and environmental engineering. Lectures: three hours per week. Tutorial: two hours per week.',
               'credits' => 3
             ],
         ]);
