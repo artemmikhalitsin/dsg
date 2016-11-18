@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Auth;
+
 class UserController extends Controller
 {
      public function __construct()
@@ -16,6 +18,13 @@ class UserController extends Controller
 
      public function profile()
      {
-          return view('users/profile');
+       $user= Auth::user();
+          return view('users/profile', compact('user'));
      }
+
+     public function preferences()
+     {
+       return view('users/preferences');
+     }
+
 }
