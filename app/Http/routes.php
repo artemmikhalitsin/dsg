@@ -15,7 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/AddcompletedCourses', function () {
+//     return view('courses/completedCourses');
+// });
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/courses', 'CoursesController@index');
+Route::get('/addCompletedCourses', 'CoursesController@addCompletedCourses');

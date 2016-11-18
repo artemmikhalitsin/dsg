@@ -16,6 +16,7 @@ class CreateCourseProgramTable extends Migration
             $table->increments('composite_id');
             $table->unsignedInteger('course_id');
             $table->unsignedInteger('program_id');
+            $table->string('course_type');
             //$table->primary(array('course_id', 'program_id'));
             $table->foreign('course_id')->references('course_id')->on('courses')->onDelete('cascade');
             $table->foreign('program_id')->references('program_id')->on('programs')->onDelete('cascade');

@@ -56,6 +56,11 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * Overrides the function in the RegistersUsers file
+     *
+     * @return the register view with the list of programs
+     */
     public function showRegistrationForm()
     {
         if (property_exists($this, 'registerView')) {
@@ -78,7 +83,7 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'program_id' => $data['program'], //hello
+            'program_id' => $data['program'],
         ]);
     }
 }
