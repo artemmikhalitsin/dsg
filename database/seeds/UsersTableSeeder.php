@@ -16,27 +16,27 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'name' => 'Ajay Singh',
-                'email' => 'ajmergadreh@yahoo.ca',
+                'email' => 'ajmer226@yahoo.ca',
                 'password' => bcrypt("123456"),
-                'program_id' => 1
+                'program_id' => DB::table('programs')->where('program_code', 'SOEN')->value('program_id')
             ],
             [
                 'name' => 'Artem',
                 'email' => 'artem@yahoo.ca',
-                'password' => bcrypt("password"),
-                'program_id' => 1
+                'password' => bcrypt("123456"),
+                'program_id' => DB::table('programs')->where('program_code', 'SOEN')->value('program_id')
             ],
             [
                 'name' => 'Daniel',
                 'email' => 'daniel@yahoo.ca',
-                'password' => bcrypt("123123"),
-                'program_id' => 2
+                'password' => bcrypt("123456"),
+                'program_id' => DB::table('programs')->where('program_code', 'COEN')->value('program_id')
             ],
             [
                 'name' => 'Wai',
                 'email' => 'wai@hotmail.com',
-                'password' => bcrypt("654321"),
-                'program_id' => 8
+                'password' => bcrypt("123456"),
+                'program_id' => DB::table('programs')->where('program_code', 'COEN')->value('program_id')
             ],
         ]);
     }

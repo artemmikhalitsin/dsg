@@ -15,8 +15,8 @@ class CreatePreferencesTable extends Migration
         Schema::create('preferences', function (Blueprint $table) {
             $table->increments('preference_id');
             $table->string('day_off');
-            $table->time('starting_time');
-            $table->time('finishing_time');
+            $table->string('starting_time');
+            $table->string('finishing_time');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
