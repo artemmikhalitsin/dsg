@@ -10,6 +10,8 @@ use App\Http\Requests;
 
 use App\Courses;
 
+use App\SequenceTree;
+
 class CoursesController extends Controller
 {
 	public function __construct()
@@ -18,7 +20,7 @@ class CoursesController extends Controller
     }
 
 		public function generateSequence(){
-			$sequenceInfo = '5';
+			$sequenceInfo = SequenceTree::getOutput();
 			return view('courses.sequence', compact('sequenceInfo'));
 		}
 
