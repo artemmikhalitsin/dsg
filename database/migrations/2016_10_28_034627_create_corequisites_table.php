@@ -15,9 +15,9 @@ class CreateCorequisitesTable extends Migration
         Schema::create('corequisites', function (Blueprint $table) {
             $table->increments('coreq_id');
             $table->unsignedInteger('prereq_id');
-            $table->unsignedInteger('course_id');
+            $table->unsignedInteger('corequisite');
             //$table->primary(array('course_id', 'prereq_id'));
-            $table->foreign('course_id')->references('course_id')->on('courses')->onDelete('cascade');
+            $table->foreign('corequisite')->references('course_id')->on('courses')->onDelete('cascade');
             $table->foreign('prereq_id')->references('prereq_id')->on('prerequisites')->onDelete('cascade');
         });
     }

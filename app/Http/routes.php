@@ -24,3 +24,4 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/courses', 'CoursesController@index');
 Route::get('/addCompletedCourses', 'CoursesController@addCompletedCourses');
+Route::get('/sequence', 'CoursesController@generateSequence');

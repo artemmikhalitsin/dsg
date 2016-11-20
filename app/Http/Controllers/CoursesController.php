@@ -16,12 +16,12 @@ class CoursesController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         $electives = Courses::getProgramElectivesList();
         $courses = Courses::getProgramCoursesList();
-    	
+
     	return view('courses.index', compact('courses', 'electives'));
     }
 
@@ -30,5 +30,12 @@ class CoursesController extends Controller
         $courses = Courses::getOneProgramCoursesList();
 
         return view('courses.completedCourses', compact('courses'));
+    }
+
+		public function generateSequence()
+    {
+        $sequence = Courses::getCoursePrerequisitesAvailibilities();
+
+        return view('courses.sequence', compact('sequence'));
     }
 }
