@@ -15,60 +15,120 @@ class CompletedCoursesTableSeeder extends Seeder
 
         DB::table('completedCourses')->insert([
             [
-                'user_id' => 1,
-                'course_id' => 1
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'PHYS 204')->value('course_id')
             ],
             [
-                'user_id' => 1,
-                'course_id' => 2
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'CHEM 205')->value('course_id')
             ],
             [
-                'user_id' => 1,
-                'course_id' => 4
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'MATH 203')->value('course_id')
             ],
             [
-                'user_id' => 1,
-                'course_id' => 6
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'MATH 204')->value('course_id')
             ],
             [
-                'user_id' => 2,
-                'course_id' => 1
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'MATH 205')->value('course_id')
             ],
             [
-                'user_id' => 2,
-                'course_id' => 7
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'PHIL 210')->value('course_id')
             ],
             [
-                'user_id' => 2,
-                'course_id' => 3
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'COMP 232')->value('course_id')
             ],
             [
-                'user_id' => 2,
-                'course_id' => 4
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'COMP 248')->value('course_id')
             ],
             [
-                'user_id' => 2,
-                'course_id' => 9
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'COMP 249')->value('course_id')
             ],
             [
-                'user_id' => 2,
-                'course_id' => 10
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'COMP 348')->value('course_id')
             ],
             [
-                'user_id' => 3,
-                'course_id' => 1
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'COMP 352')->value('course_id')
             ],
             [
-                'user_id' => 3,
-                'course_id' => 2
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'ENGR 201')->value('course_id')
             ],
             [
-                'user_id' => 3,
-                'course_id' => 3
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'ENGR 213')->value('course_id')
             ],
             [
-                'user_id' => 3,
-                'course_id' => 4
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'ENGR 233')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'ENGR 371')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'SOEN 228')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'SOEN 287')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'artem@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'PHYS 204')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'artem@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'PHYS 205')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'artem@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'CHEM 205')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'artem@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'MATH 203')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'artem@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'MATH 204')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'artem@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'MATH 205')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'daniel@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'PHYS 204')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'daniel@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'PHYS 205')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'daniel@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'CHEM 205')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'daniel@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'MATH 203')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'daniel@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'MATH 204')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'daniel@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'MATH 205')->value('course_id')
             ],
         ]);
     }

@@ -1485,6 +1485,24 @@ class CoursesTableSeeder extends Seeder
               'credits' => 3
             ],
             [
+              'course_code' => 'ENCS 483',
+              'course_name' => 'Creativity, Innovation and Critical Thinking in Science and Technology ',
+              'description' => 'Understanding, thinking, arguing, and creativity in science and technology; analyzing and critiquing complex problems using multidisciplinary theories of creativity; exploring the processes of invention and innovation and their impact on economics, popular media, and social and cultural structures; case studies of why some inventions fail and others succeed. Students will be evaluated on case studies, assignments, and a project. Lectures: three hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ENCS 484',
+              'course_name' => 'Development and Global Engineering ',
+              'description' => 'International development and global engineering: globalization; development projects; planning and analysis; and participatory data gathering. A project. Lectures: three hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ENCS 498',
+              'course_name' => 'Topics in Engineering and Computer Science ',
+              'description' => 'This course may be offered in a given year upon the authorization of the Faculty. The course content may vary from offering to offering.',
+              'credits' => 3
+            ],
+            [
               'course_code' => 'MAST 217',
               'course_name' => 'Introduction to Mathematical Thinking ',
               'description' => 'This course aims to foster analytical thinking through a problem-solving approach. Topics include construction of proofs, number systems, ordinality and cardinality, role of examples and counter examples, role of generalizations and specializations; role of symbols, notations and definitions; styles of mathematical discourse.',
@@ -1500,6 +1518,354 @@ class CoursesTableSeeder extends Seeder
               'course_code' => 'BCEE 231',
               'course_name' => 'Structured Programming and Applications for Building and Civil Engineers ',
               'description' => 'Elements of procedural programming: variables, primitive data types, scope, operators and expressions, control structures, functions, derived data types and basic data structures. Program structure and development: specifications, analysis of requirements, flow charting, incremental development, testing, validation and program documenting. Application of procedural programming, graphics and numerical tool box to mathematics and building, civil and environmental engineering. Lectures: three hours per week. Tutorial: two hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ARTH 353',
+              'course_name' => 'Technology and Contemporary Art ',
+              'description' => 'A selective examination of the relationship between technology and contemporary art.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ARTH 354',
+              'course_name' => 'Studies in Interdisciplinarity in the Visual Arts ',
+              'description' => 'A selective examination of historical and contemporary art that utilizes a number of media.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'COMS 360',
+              'course_name' => 'Mass Communication ',
+              'description' => 'The course examines the nature and forms of mass communication, the social sources and uses of mass communication, its psychology, audiences, and effects. The ethics of mass communication are also discussed. Through guest lecturers from the various media and readings of contemporary analyses/critiques, issues such as media ownership and access, government and self-regulation, technological implications, and media accountability are raised.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ENGL 224',
+              'course_name' => 'The Creative Process ',
+              'description' => 'This course introduces students to some options for developing their own process of literary creation, from the development of an idea through to the writing and editing of works of prose fiction, poetry, and/or drama. Coursework may include writing assignments, in-class exercises, readings, group presentations, and discussions. This course is open to all students.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ENGL 233',
+              'course_name' => 'Critical Reading ',
+              'description' => 'This course is an introduction to the practice of close reading of selections chosen from poetry, fiction, drama, and non-literary prose with the aim of developing the skills necessary to respond to written texts.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'FLIT 230',
+              'course_name' => 'Introduction aux cultures de la francophonie ',
+              'description' => 'Introduction aux diverses cultures de la francophonie et à leurs spécificités historiques, sociales et linguistiques.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'FLIT 240',
+              'course_name' => 'Introduction aux littératures de la francophonie ',
+              'description' => 'Étude des littératures de la francophonie, lecture d’œuvres représentatives de leur diversité.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'FMST 214',
+              'course_name' => 'English-Canadian Film ',
+              'description' => 'A survey of English-Canadian film from the earliest surviving works to the present. Topics include fictional, documentary, animated, and experimental film, and the role of the National Film Board is discussed. Weekly screenings.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'FMST 215',
+              'course_name' => 'Le cinéma québécois ',
+              'description' => 'Tour d’horizon du cinéma québécois mettant l’accent sur des œuvres contemporaines. Les films sont examinés en fonction de leur valeur culturelle et politique. On y traite également de la structure de l’industrie du cinéma au Québec et du rôle joué, entre autres, par l’Office national du film. Visionnements hebdomadaires.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'HIST 202',
+              'course_name' => 'Modern Europe ',
+              'description' => 'A survey of the history of Europe from the French Revolution to the present, with emphasis on the development of ideas and political institutions.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'HIST 205',
+              'course_name' => 'History of Canada, Post-Confederation ',
+              'description' => 'A survey of Canadian history from Confederation to the present, emphasizing readings and discussions on selected problems.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'HIST 281',
+              'course_name' => 'Film in History ',
+              'description' => 'This course examines how selected commercial films interpret historical events or provide insight into the politics, society, and culture of the times in which they were produced. The course is designed to help develop critical skills for the understanding of film in an historical framework.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'HIST 283',
+              'course_name' => 'The 20th Century: A Global History ',
+              'description' => 'This course introduces students to the history of some of the forces and institutions that have shaped the history of the world in the 20th century, which has been characterized by widespread warfare, genocides, and massive violations against human rights and the natural environment. It has also been a time of unprecedented prosperity of some groups and parts of the globe, as well as an era of tremendous scientific advances.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'LBCL 201',
+              'course_name' => 'Great Books: Western History and Thought from Antiquity through the Renaissance ',
+              'description' => 'Social and political theory are central, and art, music, and scientific thought are represented. Key texts may include the Bible, Plato’s Republic, Thucydides’ Peloponnesian Wars, St. Augustine’s City of God, and Machiavelli’s Prince and Discourses.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'LBCL 202',
+              'course_name' => 'Great Books: Western Culture and Expression from Antiquity through the Renaissance ',
+              'description' => 'Literature, religion, and philosophy are central, and art and music are represented. Key texts may include Homer’s Odyssey, Virgil’s Aeneid, Montaigne’s Essays, and Shakespeare’s King Lear.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'LBCL 203',
+              'course_name' => 'Great Books: Western History and Thought from the Reformation through Modernity ',
+              'description' => 'Social and political theory are central, and art, music, and scientific thought are represented. Key texts may include Calvin’s Institutes, Descartes’ Discourses on Method, Hobbes’ Leviathan, and Mill’s Essay on Liberty.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'LBCL 204',
+              'course_name' => 'Great Books: Western Culture and Expression from the Reformation through Modernity ',
+              'description' => 'Literature, religion, and philosophy are central, and art and music are represented. Key texts may include Milton’s Paradise Lost, Rousseau’s Confessions, Stendhal’s The Red and the Black, and Nietzsche’s Genealogy of Morals.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHIL 201',
+              'course_name' => 'Problems of Philosophy ',
+              'description' => 'In this course, students are introduced to philosophical problems such as: What is the nature of reality? How does one know what is real, and how is it distinct from misleading appearances or illusion? What is knowledge? Does knowledge require certainty? How is knowledge distinct from belief? Are people free? That is to say, do they choose their actions or are their actions determined by causes beyond their control? If people are not free, then how can they be held responsible for their actions? Can God’s existence be proven? How is the mind related to the body, if at all? What is it to be a morally good person?',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHIL 210',
+              'course_name' => 'Critical Thinking ',
+              'description' => 'This course is an introduction to argumentation and reasoning. It focuses on the kinds of arguments one is likely to encounter in academic work, in the media, and in philosophical, social, and political debate. The course aims to improve students’ ability to advance arguments persuasively and their ability to respond critically to the arguments of others. Students will find the skills they gain in this course useful in virtually every area of study.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHIL 232',
+              'course_name' => 'Introduction to Ethics ',
+              'description' => 'This course is about philosophical discussions of ethics which have both practical significance (What should one do?) and theoretical interest (What does it mean to say “That’s the right thing to do”?). In this course, students are introduced to some representative approaches to ethical thought and action. General questions about the nature of ethical reasoning are also considered. For example: Are there objective ethical truths or are ethical judgments merely relative to social norms? An effort is made to incorporate those ethical issues which are of specific importance to contemporary society.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHIL 233',
+              'course_name' => 'Applied Ethics ',
+              'description' => 'This course focuses on ethical theory and its application to contemporary issues. The course covers central ethical theories such as virtue ethics (Aristotle), deontology (Kant), and utilitarianism (Mill). It applies these theories to contemporary moral issues such as humans’ relation to the environment and nonhuman animals, abortion, consumerism, the use of recreational drugs, the rationing of health-care resources, and national and international distributive justice.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHIL 235',
+              'course_name' => 'Biomedical Ethics ',
+              'description' => 'This course is primarily concerned with contemporary biomedical debates, many of which are of current social and political significance: euthanasia and physician-assisted suicide, patients’ rights, animal experimentation, organ donation and transplantation, palliative care, abortion, genetic engineering, and new reproductive technologies.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHIL 275',
+              'course_name' => 'From Modern to Postmodern: Philosophical Thought and Cultural Critique ',
+              'description' => 'This course focuses on key developments in modern and postmodern philosophy and their cultural influences. The course provides an introduction to philosophers (such as Kant, Nietzsche, and Foucault) and philosophical movements (such as empiricism, existentialism, and post-structuralism) of the modern era. It also introduces students to the tremendous influence that philosophical theory has had on the arts, on social and political movements, and on virtually every field of study in the humanities and social sciences.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'PHIL 330',
+              'course_name' => 'Contemporary Ethical Theory ',
+              'description' => 'This course provides an examination of contemporary ethical theories such as deontology, utilitarianism, virtue theory, feminist ethics, and narrative ethics.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'THEO 202',
+              'course_name' => 'Introduction to Biblical Studies ',
+              'description' => 'This course provides a survey of the contents of the Bible, from Genesis to Revelation, and a practical introduction to the skills required to understand biblical texts. Attention is paid to diverse approaches to interpretation which are used in historical, literary, or theological study of the Bible.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'THEO 204',
+              'course_name' => 'Introduction to Christian Ethics ',
+              'description' => 'This course is an introduction to the field of ethics in the context of Christian faith. Christian ethics is presented as an active quest towards understanding and guiding Christian moral living. There is a brief presentation of the historical background to Christian ethics, an exploration of the points of convergence with other religious traditions, as well as the interrelationship between morality and freedom. The course will include a reflection on the problem of evil as a diminishment of persons and societies as well as a section on moral development and moral maturity.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'THEO 233',
+              'course_name' => 'Religious Pluralism in a Secular Culture ',
+              'description' => 'This course focuses on the relationships between religion, pluralism, and secular culture. It deals specifically with secularization, secularism and theological responses that are rooted in historical discourses of church/state relations.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ANTH 202',
+              'course_name' => 'Introduction to Culture ',
+              'description' => 'An introduction to the anthropological study of culture. The course begins with a consideration of the concepts, models, and methods used by anthropologists. This is followed by an examination of the many ways in which peoples of the world, past and present, have organized the activities, institutions, and belief systems that sustain social life. The course concludes with a discussion of the relevance of cultural anthropology to contemporary issues.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ECON 201',
+              'course_name' => 'Introduction to Microeconomics ',
+              'description' => 'Introduction to the functioning of the market system; concepts of supply and demand, the role of prices in resource allocation; production decisions by firms. Analysis of differences between competition and monopoly, and the implications for economic efficiency; theories of labour markets and wage determination.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ECON 203',
+              'course_name' => 'Introduction to Macroeconomics ',
+              'description' => 'An introductory analysis of aggregate economic activity. The focus is on the principles of determination of the level of employment, national income, real output, inflation, and international balance of payments. The course also analyzes the principles which govern trade relations among countries. These topics are integrated by a discussion of government monetary and fiscal policies to stabilize economic activity.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'EDUC 230',
+              'course_name' => 'Introduction to Philosophy of Education ',
+              'description' => 'This course introduces the student to the content and form of several major educational theories, and to conceptual and logical procedures of philosophizing about education, with particular reference to teaching and learning.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ENCS 483',
+              'course_name' => 'Creativity, Innovation and Critical Thinking in Science and Technology ',
+              'description' => 'Understanding, thinking, arguing, and creativity in science and technology; analyzing and critiquing complex problems using multidisciplinary theories of creativity; exploring the processes of invention and innovation and their impact on economics, popular media, and social and cultural structures; case studies of why some inventions fail and others succeed. Students will be evaluated on case studies, assignments, and a project. Lectures: three hours per week.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'GEOG 203',
+              'course_name' => 'Canadian Environmental Issues ',
+              'description' => 'This course examines the diversity and complexity of Canadian environmental issues from an interdisciplinary perspective. Natural science considerations are explored as well as the relationship of scientific understanding to policy and wider social action. Issues addressed include fisheries, animal rights, biodiversity conservation, protected areas, energy, and climate change.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'GEOG 204',
+              'course_name' => 'Global Environmental Issues ',
+              'description' => 'This course examines a number of global environmental issues from an interdisciplinary perspective. The complex interactions and interdependencies among the biophysical, socio-economic, political, and cultural aspects of global environmental change are explored in relation to issues such as global warming, desertification, deforestation, declining biodiversity, and acid rain.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'GEOG 210',
+              'course_name' => 'Geography of Global Change ',
+              'description' => 'This course examines a variety of geographical changes related to globalization. It focuses mainly on the global political system and the global economy, and also considers transport and communications systems, culture, and environmental issues.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'GEOG 220',
+              'course_name' => 'The Human Environment: Place, Space, and Identity ',
+              'description' => 'This course examines how geographers construct the meaning of place, the unique identity of places, the contests over identity of place, and how space is socially constructed. The ways in which these have been affected by migration and globalization are then examined within the context of an already constituted social and geographical unevenness (political, economic, environmental, and cultural).',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'LING 222',
+              'course_name' => 'Language and Mind: The Chomskyan Program ',
+              'description' => 'This course uses language as a tool to examine the workings of the human mind. It approaches the study of language from the perspective of generative grammar as developed by Noam Chomsky and his collaborators. It deals with patterns of linguistic structure, rather than content or meaning. The goal of this course is to develop an understanding of the field of cognitive science (the study of knowledge and the mind/brain) and determine how linguistics fits in with disciplines like the study of vision, auditory perception and reasoning.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'LING 300',
+              'course_name' => 'Sociolinguistics ',
+              'description' => 'This course studies the beliefs, interrelationships, and values of societal groups as reflected in language.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'POLI 202',
+              'course_name' => 'Introduction to Political Science ',
+              'description' => 'This course seeks to develop a broad basis from which to pursue further political inquiry. It offers an introductory examination of basic ideas regarding the state, power, authority, and systems of government. The course examines the diverse approaches to the specific study of political phenomena and provides a fundamental understanding of political concepts.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'POLI 213',
+              'course_name' => 'Contemporary Issues in Global Politics ',
+              'description' => 'This course introduces students to major trends and issues in world politics, such as human rights, refugees, ethnic conflict, environmental degradation, migration, and the peacekeeping role of the U.N.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'RELI 214',
+              'course_name' => 'Religions of the West ',
+              'description' => 'This course surveys the history, doctrines, institutions, and practices of religions that arose in Western Asia, including Judaism, Christianity, and Islam. The course examines contemporary forms of religious life in those parts of the world where these traditions have spread, as well as indigenous religions. The course explores the religious activities and experiences of both women and men within these various traditions.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'RELI 215',
+              'course_name' => 'Religions of Asia ',
+              'description' => 'This course surveys the history, doctrines, institutions, and practices of religions that have arisen in and spread throughout Asia, including Hinduism, Buddhism, and the religions of China and Japan. The course explores the religious activities and experiences of both women and men within these traditions.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'RELI 216',
+              'course_name' => 'Encountering Religions ',
+              'description' => 'This course serves as an introduction to some of the religions of today’s world, and explores several contemporary contexts where people of diverse religious backgrounds come into contact with one another.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'RELI 310',
+              'course_name' => 'Self and Other: Identity and Ethical Development ',
+              'description' => 'This course considers ethical issues arising in the context of personal and interpersonal relations, families and friendships, and health and medical care. These issues are discussed in relation to traditional and contemporary moral perspectives, both religious and non-religious. Topics covered may vary from year to year, but may include discussions of conscience and career, privacy, sexual relations, harassment, substance abuse, abortion, euthanasia, and gay and lesbian relations.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'RELI 312',
+              'course_name' => 'Justice and Social Conflict in a Globalized World ',
+              'description' => 'This course considers ethical issues arising in the context of social, legal, and political relations. These issues are discussed in relation to both traditional and contemporary moral perspectives, both religious and non-religious. Topics covered typically include discussions of social and economic inequality, welfare, poverty, just punishment, business ethics, public ethics, economic development, and sustainable development.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'RELI 374',
+              'course_name' => 'Religion and Science ',
+              'description' => 'How has religion viewed science, and how has science viewed religion? This course explores the relationship between religion and science both within particular religio-cultural contexts and in comparative perspective. The contexts considered may include those belonging to Christian, Jewish, Muslim, Hindu, or other Asian worldviews. Points of conflict and contact between scientific and religious discourses are also explored.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SCPA 201',
+              'course_name' => 'Introduction to Public Policy and the Public Interest ',
+              'description' => 'This course introduces students to the theoretical, philosophical, and ethical foundations as well as the social logic of public policy formulation in modern societies. Using a multidisciplinary approach, it pays particular attention to the complex interaction between groups, individuals, and institutions in society, and brings students to consider issues related to the nature of the modern state, business-government relations, the labour movement, non-profit and community organizations, the influence of interest groups, media and international institutions on the policy agenda.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SCPA 215',
+              'course_name' => 'Economics for Public Policy and Community Development ',
+              'description' => 'Based on an overview of current economic issues, this course introduces students to the fundamental analytical tools and concepts that are necessary to understand economic public policy and relevant to community development and empowerment.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'SOCI 203',
+              'course_name' => 'Introduction to Society ',
+              'description' => 'An introduction to the sociological study of society. The course begins with a consideration of the concepts, models, and methods used by sociologists. This is followed by an examination of selected substantive areas of social life, ranging from the relations between individuals and groups to total societies.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'URBS 230',
+              'course_name' => 'Urban Development ',
+              'description' => 'This course examines how and why cities grow and change over time. The relationships between socio-cultural, economic, and physical aspects of urban development are considered at the local, city, and regional scales.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'WSDB 290',
+              'course_name' => 'Introduction to Historical Perspectives in Women’s Studies ',
+              'description' => 'This course provides an introduction to theories and writing that affect the lives of women. Through the writing of feminist authors, students examine, from mainly the 20th century, the development of feminist theories and debate. Specific authors may include Simone de Beauvoir, Audre Lorde, Gloria Anzaldua, Angela Davis, Adrienne Rich, Monique Wittig, and Chandra Mohanty.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'WSDB 291',
+              'course_name' => 'Introduction to Contemporary Concerns in Women’s Studies ',
+              'description' => 'This course explores a range of current issues and debates within feminism. Using interdisciplinary feminist theories that consider how systems of power such as patriarchy, capitalism, racism, and heterosexism constitute one another, it examines particular local and global topics of interest/concern which may include health, education, work, violence against women, globalization, militarism, media and cultural representations, families, and feminist activism.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ADMI 201',
+              'course_name' => 'Introduction to Administration ',
+              'description' => 'This course is intended to develop a basic understanding of the role of administration in our society. The course includes a survey of different forms of organizations, their social and legal responsibilities, and how they function to achieve their goals.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'ADMI 202',
+              'course_name' => 'Perspective on Canadian Business ',
+              'description' => 'This course is designed to review the historical development of business in Canada and to examine the relationships between the firm (management) and the owners, the employees, the customers, the government, and the community. Further, it studies some of the problems facing Canadian business today: the dehumanizing aspect, pollution problems, large vs. small firms, foreign ownership, and competition.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'MANA 201',
+              'course_name' => 'Introduction to Business and Management ',
+              'description' => 'This course introduces students to the basic principles of management within a contemporary business context. The managerial process (e.g. planning, organizing, controlling, motivating) is explored in relation to issues such as ethical behaviour, the environment, global and economic forces as well as political, legal, and cultural changes. In addition to using basic readings in management, the course also relies on contemporary text from the newspaper and business publications to raise students’ awareness of contemporary issues in business and develop the business knowledge and skills that will be applicable in their career.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'MANA 202',
+              'course_name' => 'Human Behaviour in Organizations ',
+              'description' => 'This course seeks to give students an understanding of behaviour in the workplace from an individual, group, and organizational perspective. Conceptual frameworks, case discussions, and self-assessment tools complement the course material. Topics include motivation, personality, job satisfaction, group dynamics, leadership skills, power and influence, managing change, diversity, and organizational culture.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'MANA 300',
+              'course_name' => 'Entrepreneurship: Launching Your Business ',
+              'description' => 'This final-year course offers students the opportunity to learn how to capitalize on their domain-specific knowledge and recognize opportunities for self-employment or new venture creation. The course assumes no background courses in business, but presumes that students have already developed an interest in entrepreneurial careers within their respective fields of study. The first phase of the course exposes fundamental concepts and issues in entrepreneurship and related business fields. The second phase introduces students to the elements of business planning in the context of entrepreneurial projects, followed by the third phase where students formulate their own business plans.',
+              'credits' => 3
+            ],
+            [
+              'course_code' => 'MARK 201',
+              'course_name' => 'Introduction to Marketing ',
+              'description' => 'This course introduces non-Commerce students to the managerial concepts and practices of marketing. The process of developing a marketing strategy is examined along with the factors and interrelationships related thereto. Readings and cases are used to help students apply these concepts in a variety of business settings.',
               'credits' => 3
             ],
         ]);

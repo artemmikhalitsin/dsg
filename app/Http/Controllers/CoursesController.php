@@ -16,12 +16,17 @@ class CoursesController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
+		public function generateSequence(){
+			$sequenceInfo = '5';
+			return view('courses.sequence', compact('sequenceInfo'));
+		}
+
     public function index()
     {
         $electives = Courses::getProgramElectivesList();
         $courses = Courses::getProgramCoursesList();
-    	
+
     	return view('courses.index', compact('courses', 'electives'));
     }
 
