@@ -15,10 +15,10 @@ class CreateCourseAvailabilityTable extends Migration
         Schema::create('courseAvailability', function (Blueprint $table) {
             $table->increments('availability_id');
             $table->unsignedInteger('course_id');
-            $table->unsignedInteger('semester_id');
+            $table->boolean('fall');
+            $table->boolean('winter');
             //$table->primary(array('course_id', 'semester_id'));
             $table->foreign('course_id')->references('course_id')->on('courses')->onDelete('cascade');
-            $table->foreign('semester_id')->references('semester_id')->on('semesters')->onDelete('cascade');
         });
     }
 
