@@ -1,0 +1,362 @@
+[33mcommit 16cefd17e721ccef67d7152f809561edfebdb5d5[m
+Merge: 1c423d0 92bc5e2
+Author: artemmikhalitsin@gmail.com <artemmikhalitsin@gmail.com>
+Date:   Sat Nov 19 22:37:49 2016 -0500
+
+    Merge branch 'master' into artem
+
+[33mcommit 92bc5e239703553dc9b52b93214f2ca386c0f5dd[m
+Merge: 28be260 7197486
+Author: artemmikhalitsin <artemmikhalitsin@gmail.com>
+Date:   Sat Nov 19 22:05:03 2016 -0500
+
+    Merge pull request #12 from artemmikhalitsin/Ajmer
+    
+    added CourseAvailabilityTableSeeder. All the seeders are DONE
+
+[33mcommit 28be26019c997d8209b874f1d065ae93f2096a65[m
+Merge: bac78e7 9be9eb1
+Author: artemmikhalitsin <artemmikhalitsin@gmail.com>
+Date:   Sat Nov 19 22:04:35 2016 -0500
+
+    Merge pull request #10 from artemmikhalitsin/Ricardo
+    
+    Ricardo
+
+[33mcommit 719748625961df17d7e1fab0244ef40be549a865[m
+Author: AjmerSingh7537 <ajmer226@yahoo.ca>
+Date:   Sat Nov 19 15:15:46 2016 -0500
+
+    modified usersTableSeeder and completedCourseTableSeeder; added preferencesTableSeeder;
+
+[33mcommit 797d5ac66d62b1f2f8ae7920e278fe453a1593e9[m
+Author: AjmerSingh7537 <ajmer226@yahoo.ca>
+Date:   Sat Nov 19 01:16:34 2016 -0500
+
+    added CourseAvailabilityTableSeeder. All the seeders are DONE
+
+[33mcommit bac78e7a38149ffdbab77d77863729783e911af3[m
+Merge: fc68615 5a20178
+Author: artemmikhalitsin <artemmikhalitsin@gmail.com>
+Date:   Fri Nov 18 22:11:05 2016 -0500
+
+    Merge pull request #11 from artemmikhalitsin/Ajmer
+    
+    lecture, tutorial, lab, and instructor seeder are DONE
+
+[33mcommit 5a20178bf4edde49bb564b4def0599e330610e13[m
+Author: AjmerSingh7537 <ajmer226@yahoo.ca>
+Date:   Fri Nov 18 22:03:20 2016 -0500
+
+    lecture, tutorial, lab, and instructor seeder are DONE
+
+[33mcommit fc68615d92ca4dda543f26349a576cd16138d7ed[m
+Merge: f74bc77 172650f
+Author: Wai Lau <wl.wailau@gmail.com>
+Date:   Fri Nov 18 13:57:23 2016 -0500
+
+    Merge branch 'master' into wai
+
+[33mcommit 172650f1f058c80a7b21851e42b12562b80f223c[m
+Author: Wai Lau <wl.wailau@gmail.com>
+Date:   Fri Nov 18 13:51:15 2016 -0500
+
+    Fired up and ready to serve.
+
+[33mcommit 9be9eb1ac030b9025b750e6e8c4c99a3865c4678[m
+Author: Ricardo Liganor <Ricardo Liganor>
+Date:   Fri Nov 18 12:56:23 2016 -0500
+
+    Profile page & start of preference page
+
+[33mcommit 5b2c134b1117f5e8470e0298759735bc46ffa8f3[m
+Merge: 731cb3a 98de0e4
+Author: Ricardo Liganor <Ricardo Liganor>
+Date:   Fri Nov 18 11:08:48 2016 -0500
+
+    Merge branch 'artem' of https://github.com/artemmikhalitsin/dsg into Artem
+
+[33mcommit 731cb3aacd1c0b65ea87a9b6ddd38cfa75317a61[m
+Merge: 1499710 5208d30
+Author: Ricardo Liganor <Ricardo Liganor>
+Date:   Fri Nov 18 11:08:07 2016 -0500
+
+    Merge branch 'Ajmer' of https://github.com/artemmikhalitsin/dsg
+
+[33mcommit 149971011550528381c8d2da00f86c13ff89919d[m
+Author: Ricardo Liganor <Ricardo Liganor>
+Date:   Wed Nov 16 19:10:36 2016 -0500
+
+    TA doing garbadge
+
+[33mcommit 5208d304a1caf38c1848d2cd08974e4a719f2d29[m
+Author: AjmerSingh7537 <ajmer226@yahoo.ca>
+Date:   Mon Nov 14 19:23:45 2016 -0500
+
+    added HtmlFacade and FormFacade
+
+[33mcommit e4b869be97b388edc22123f001d9c22b815253fd[m
+Author: AjmerSingh7537 <ajmer226@yahoo.ca>
+Date:   Sat Nov 12 00:26:42 2016 -0500
+
+    added seeder for prerequisites, co_requisites, and or_prerequisites tables
+
+[33mcommit b88929dac8aa5f8e4c11024c624267938c0f0249[m
+Author: AjmerSingh7537 <ajmer226@yahoo.ca>
+Date:   Sun Nov 6 17:17:58 2016 -0500
+
+    created a view addCompletedCourses; listing all the courses in a specific program; added css and js for datatables
+
+[33mcommit d8b8526265d1f55b45185ee78e24d1ba30181d0a[m
+Author: AjmerSingh7537 <ajmer226@yahoo.ca>
+Date:   Mon Oct 31 01:34:23 2016 -0400
+
+    added courseProgramTableSeeder; changed ProgramTableSeeder to add only 2 programs; modified the query in CoursesController to get the list of courses that are specific to the program of the login user
+
+[33mcommit b00184be28a02fe206bdcd428280ce338f6f4761[m
+Merge: a9f46c9 9c253e8
+Author: AjmerSingh7537 <ajmer226@yahoo.ca>
+Date:   Sat Oct 29 00:24:42 2016 -0400
+
+    merged master into my local branch; updating my branch with the latest changes
+
+[33mcommit f74bc77a7f03b2177adb6fc98d80ca713f7cdd68[m
+Author: Wai Lau <wl.wailau@gmail.com>
+Date:   Fri Oct 28 22:31:36 2016 -0400
+
+    free open space
+
+[33mcommit 95c77cccef0c6b055d0fdd0448831be8bfa281df[m
+Author: Wai Lau <wl.wailau@gmail.com>
+Date:   Fri Oct 28 22:25:53 2016 -0400
+
+    occupies
+
+[33mcommit 28b33749d1ea3243845e548f986ad1817379ebfb[m
+Author: Wai Lau <wl.wailau@gmail.com>
+Date:   Fri Oct 28 22:18:02 2016 -0400
+
+    useless
+
+[33mcommit 9c253e8b4d9219a4d611eefaeeb072cc24a29022[m
+Merge: ad738a7 1660cea
+Author: Wai-Lau <wailunlau@hotmail.com>
+Date:   Fri Oct 28 20:32:22 2016 -0400
+
+    Merge pull request #9 from artemmikhalitsin/wai
+    
+    start here
+
+[33mcommit 1660cea1891564e0d5d91f3ea957be1947f5cee2[m
+Author: Wai Lau <wl.wailau@gmail.com>
+Date:   Fri Oct 28 20:30:37 2016 -0400
+
+    start here
+
+[33mcommit ad738a772e13172da9483168ea373a6f004679d0[m
+Merge: 1185677 6014b8a
+Author: Amanda Wai <amawai@hotmail.com>
+Date:   Fri Oct 28 20:05:37 2016 -0400
+
+    Merge branch 'amanda' of https://github.com/artemmikhalitsin/dsg into amanda
+
+[33mcommit 11856774f86d548e9be181c9e089749e250061a0[m
+Author: Amanda Wai <amawai@hotmail.com>
+Date:   Fri Oct 28 20:03:55 2016 -0400
+
+    //hello
+
+[33mcommit 6014b8ad32e3bcaeae7c39320c64e08e33f3600a[m
+Merge: 2544406 5dabc89
+Author: Amanda Wai <amawai@users.noreply.github.com>
+Date:   Fri Oct 28 19:46:37 2016 -0400
+
+    Merge pull request #8 from artemmikhalitsin/master
+    
+    Update to Master
+
+[33mcommit 5dabc89489048fd583c60dccfed746249be530da[m
+Merge: 8b2739a ca6a1cc
+Author: Wai-Lau <wailunlau@hotmail.com>
+Date:   Fri Oct 28 19:44:17 2016 -0400
+
+    Merge pull request #7 from artemmikhalitsin/wai
+    
+    changed to RTEAM
+
+[33mcommit ca6a1cc498f6b04412ec2f4753731e3aba689288[m
+Author: Wai Lau <wl.wailau@gmail.com>
+Date:   Fri Oct 28 19:41:08 2016 -0400
+
+    RTEAM
+
+[33mcommit 1295052f55cce9f591d7bedfe8d061aac87319c2[m
+Merge: c4b9757 35aaeff
+Author: Wai Lau <wl.wailau@gmail.com>
+Date:   Fri Oct 28 19:40:05 2016 -0400
+
+    Merge branch 'wai' of https://github.com/artemmikhalitsin/dsg into wai
+
+[33mcommit 35aaeff1b4bf5a03702b9ed6708cf0b196185f46[m
+Merge: 7f45d9b 8b2739a
+Author: Wai-Lau <wailunlau@hotmail.com>
+Date:   Fri Oct 28 19:31:39 2016 -0400
+
+    Merge pull request #6 from artemmikhalitsin/master
+    
+    Merge with master.
+
+[33mcommit 1c423d0651a2c9a9666409a36781bb3fb9679b59[m
+Author: artemmikhalitsin@gmail.com <artemmikhalitsin@gmail.com>
+Date:   Fri Oct 28 19:27:01 2016 -0400
+
+    thing
+
+[33mcommit c4b97576b10bed6a433e8fa9957a44bf9e0a0b65[m
+Author: Wai Lau <wl.wailau@gmail.com>
+Date:   Fri Oct 28 19:22:02 2016 -0400
+
+    hello
+
+[33mcommit a9f46c9b61378783413bffba4252b693b1393c61[m
+Author: AjmerSingh7537 <ajmer226@yahoo.ca>
+Date:   Fri Oct 28 19:18:16 2016 -0400
+
+    added completedCoursesSeeder
+
+[33mcommit 98de0e472938b5745d2a14769aacc0a1bf0e8d09[m
+Author: artemmikhalitsin@gmail.com <artemmikhalitsin@gmail.com>
+Date:   Fri Oct 28 19:12:24 2016 -0400
+
+    Testing a commit to show ajmer
+
+[33mcommit 56cb460108917ecccbbd9445d10a5e8a35349d22[m
+Merge: 6dee071 8b2739a
+Author: Wai Lau <wl.wailau@gmail.com>
+Date:   Fri Oct 28 19:10:31 2016 -0400
+
+    Merge branch 'master' of https://github.com/artemmikhalitsin/dsg
+
+[33mcommit 8b2739ae88edd3c0cb5cf3508446562dc08a1272[m
+Author: artemmikhalitsin@gmail.com <artemmikhalitsin@gmail.com>
+Date:   Fri Oct 28 19:09:08 2016 -0400
+
+    Fixed registration
+
+[33mcommit 6dee071d3849df7b45d9e5e58b469b2020d3593b[m
+Merge: 0a547e5 2544406
+Author: Wai Lau <wl.wailau@gmail.com>
+Date:   Fri Oct 28 16:27:00 2016 -0400
+
+    Merge branch 'master' of https://github.com/artemmikhalitsin/dsg
+
+[33mcommit 0a547e589467ffa8cd973a80b6d15a386b4fe0f0[m
+Author: Wai Lau <wl.wailau@gmail.com>
+Date:   Fri Oct 28 16:26:48 2016 -0400
+
+    merging
+
+[33mcommit 2544406b5e8c9d38d0af9934c00835718efa5440[m
+Merge: 8bc1df5 88f138a
+Author: artemmikhalitsin@gmail.com <artemmikhalitsin@gmail.com>
+Date:   Fri Oct 28 15:23:57 2016 -0400
+
+    merging?
+
+[33mcommit 88f138a024400d73135e10d54ac7f29bcf24adcf[m
+Merge: fd9e50a 329109c
+Author: artemmikhalitsin <artemmikhalitsin@gmail.com>
+Date:   Fri Oct 28 15:21:20 2016 -0400
+
+    Merge pull request #3 from artemmikhalitsin/artem
+    
+    Artem
+
+[33mcommit 329109cf3850ad3ee42b1a8c8611e9214428dd30[m
+Merge: 99678c5 fd9e50a
+Author: artemmikhalitsin@gmail.com <artemmikhalitsin@gmail.com>
+Date:   Fri Oct 28 15:14:11 2016 -0400
+
+    Merge branch 'master' of https://github.com/artemmikhalitsin/dsg into artem
+
+[33mcommit 99678c55216d2fea11eeb77062c9e0c13faa0119[m
+Author: artemmikhalitsin@gmail.com <artemmikhalitsin@gmail.com>
+Date:   Fri Oct 28 15:13:35 2016 -0400
+
+    Changed AuthController to provide courses
+
+[33mcommit fd9e50a48fe9ca362b47e6a856d0525d3587742f[m
+Merge: 7f45d9b 99fb0eb
+Author: artemmikhalitsin <artemmikhalitsin@gmail.com>
+Date:   Fri Oct 28 15:09:45 2016 -0400
+
+    Merge pull request #2 from artemmikhalitsin/artem
+    
+    Artem
+
+[33mcommit 99fb0eb244500afc8478ebe5ed7fee4e7f8db9ca[m
+Merge: 38462ce 0513b27
+Author: artemmikhalitsin@gmail.com <artemmikhalitsin@gmail.com>
+Date:   Fri Oct 28 15:04:49 2016 -0400
+
+    Merge branch 'Ajmer' into artem
+
+[33mcommit 8bc1df5613166bd8ab8f5a9ca5623ec2c64bb133[m
+Author: artemmikhalitsin@gmail.com <artemmikhalitsin@gmail.com>
+Date:   Fri Oct 28 11:04:23 2016 -0400
+
+    Added bootstrap to local development
+
+[33mcommit 0513b271be8c547377a0fa66a0d29551ef196b23[m
+Author: AjmerSingh7537 <ajmer226@yahoo.ca>
+Date:   Fri Oct 28 01:33:51 2016 -0400
+
+    added all the migrations
+
+[33mcommit dd4dd04cbc4c6358bffcbd6a5c879e4542964591[m
+Author: AjmerSingh7537 <ajmer226@yahoo.ca>
+Date:   Thu Oct 27 20:13:36 2016 -0400
+
+    created Program model, program migration, and programTableSeeder; Added program select in register view; program list in the register view is generated from the database; passing the array containing list of programs to the register view through the RegistersUsers file
+
+[33mcommit 9662da3a6cb2ae47cf40bdac3a9096fea4c3318c[m
+Author: AjmerSingh7537 <ajmer226@yahoo.ca>
+Date:   Sat Oct 22 19:39:22 2016 -0400
+
+    added header and footer images; reset password WORKS (change .env file); added some migrations and database seeders; header and footer images does not work properly on email.blade.php and reset.blade.php views; UI people will fix it
+
+[33mcommit 49b9f4f5ca56365e13abdfd8391a5ab93ce45cb4[m
+Author: artemmikhalitsin@gmail.com <artemmikhalitsin@gmail.com>
+Date:   Fri Oct 7 13:01:21 2016 -0400
+
+    Added a profile page (thanks Ajmer). Nothing there yet.
+
+[33mcommit 38462ceaf99326973a4173cc48ecc5b28d1942cd[m
+Author: artemmikhalitsin@gmail.com <artemmikhalitsin@gmail.com>
+Date:   Thu Sep 22 14:39:58 2016 -0400
+
+    Trying this commit
+
+[33mcommit 7f45d9b32d82e97f61292b67f678029f248885ff[m
+Author: AjmerSingh7537 <ajmer226@yahoo.ca>
+Date:   Sun Sep 18 18:35:46 2016 -0400
+
+    Laravel application with Login and Registration pages already working
+
+[33mcommit 78242ece539ce17955e5987f5f3ad74778881e85[m
+Author: Ajmer Singh Gadreh <a_gadreh@cauliflower.encs.concordia.ca>
+Date:   Fri Sep 16 12:32:18 2016 -0400
+
+    test
+
+[33mcommit 46999922518d0ade0e308a33bc828a5c5b59bffa[m
+Author: Ajmer Singh Gadreh <a_gadreh@cauliflower.encs.concordia.ca>
+Date:   Fri Sep 16 12:29:11 2016 -0400
+
+    testing2
+
+[33mcommit b4e5aa1c110cab7ea898f1910bb97ae0863ddf4a[m
+Author: Ajmer Singh Gadreh <a_gadreh@cauliflower.encs.concordia.ca>
+Date:   Fri Sep 16 12:25:50 2016 -0400
+
+    testing
