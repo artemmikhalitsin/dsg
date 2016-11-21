@@ -11,18 +11,28 @@ class SequenceTree extends Model
 
     public static function getOutput(){
         $CourseList = [];
-        $courseInfo = json_decode(Courses::getProgramCoursesInfo());
+        $courseInfoList = json_decode(Courses::getProgramCoursesInfo());
+        $prerequisiteObjectList = [];
 
-        foreach ($courseInfo as $course){
+        foreach ($courseInfoList as $courseInfo){
           $already = false;
-          foreach ($CourseList as $c){
-            if ($c->id == $course->course_id){
-              $c->prerequisite[] = $course->prerequisite;
+
+          foreach ($CourseList as $course){
+            if ($course->id == $courseInfo->course_id){
+              $course->addPrerequisiteObject($courseInfo->prerequisite, $CourseList);
               $already = true;
             }
           }
-          if (!$already)
-            $CourseList[] = new Course($course->course_id, $course->course_code, $course->course_type, $course->prerequisite);
+          //if duplicate add prerequisite to it, else generate new course object
+
+          if (!$already){
+            $CourseList[] = $course = new Course(
+              $courseInfo->course_id, 
+              $courseInfo->course_code, 
+              $courseInfo->course_type
+              );
+            $course->addPrerequisiteObject($courseInfo->prerequisite, $CourseList);
+          }
         }
         return json_encode($CourseList);
     }
@@ -30,25 +40,31 @@ class SequenceTree extends Model
 
 class Course
 {
-  var $name;
+  //var $name;
   var $id;
-  var $type;
+  //var $type;
   var $prerequisites = array();
-  var $corequisites = array();
-  var $height = 0;
+  //var $corequisites = array();
+  //var $height = 0;
 
-  function __construct($id, $code, $type, $prerequisite) {
-    $this->name = $code;
+  function __construct($id) {
     $this->id = $id;
-    $this->type = $type;
-    $this->prerequisite[] = $prerequisite;
+  }
 
-/*
-    foreach ($DB_prelist as $DB_prereq){
-            $prerequisites[] = new course($DB_prereq->course_id);
-            $corequisites[] = new course($DB_coreq->coreq_id);
+  function addPrerequisiteObject($prerequisiteId, $CourseList){
+    $already = false;
+    foreach ($CourseList as $course){
+      if ($course->id == $prerequisiteId){
+        $this->prerequisites[] = $course;
+        $already = true;
+      }
     }
-*/
+    if (!$already){
+      $CourseList[] = $course = new Course($prerequisiteId);
+      $course->addPrerequisiteObject($prerequisiteId, $CourseList);
+    }
   }
 }
+
+
 ?>
