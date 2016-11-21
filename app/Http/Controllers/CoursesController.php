@@ -19,10 +19,17 @@ class CoursesController extends Controller
         $this->middleware('auth');
     }
 
+<<<<<<< HEAD
 		public function generateSequence(){
 			$sequenceInfo = SequenceTree::getOutput();
 			return view('courses.sequence', compact('sequenceInfo'));
 		}
+=======
+	public function generateSequence(){
+		$sequenceInfo = '5';
+		return view('courses.sequence', compact('sequenceInfo'));
+	}
+>>>>>>> 28ee6ba5cca0b5403d4b58e4eb33fe0fe23232ef
 
     public function index()
     {
@@ -32,6 +39,7 @@ class CoursesController extends Controller
     	return view('courses.index', compact('courses', 'electives'));
     }
 
+    // sends a list of courses that are left to do for the logged in user to a view
     public function addCompletedCourses()
     {
         $courses = Courses::getOneProgramCoursesList();
