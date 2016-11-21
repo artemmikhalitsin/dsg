@@ -3,7 +3,6 @@
 @section('content')
 	@if (!empty($courses))
 		<h1>Courses in your program</h1>
-		{{ $courses }}
 	@endif
 	@foreach ($courses as $course)
 		<article>
