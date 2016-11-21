@@ -41,7 +41,7 @@
                                 </thead>
                                 <tbody>
                                 	@foreach($courses as $course)
-                                    <tr class="odd gradeX">
+                                    <tr class="odd gradeX" id="classrow-{{$course->course_id}}">
                                         <td>{{ $course->course_code }}</td>
                                         <td>{{ $course->course_name }}</td>
                                         <td>{{ $course->course_type }}</td>
@@ -80,24 +80,32 @@
 
     <script>
      $(document).ready(function() {
-          $('#dataTables-example').DataTable({
-            responsive: true
+           var table = $('#dataTables-example').DataTable({
+               responsive: true
           });
 
-          $('.add-course').click(function(){
+          $('#dataTables-example tbody').on('click', 'td button', function(){
              var course_id = $(this).val();
-             
-          $.ajax({
-              url: '/completedCourses',
-              type: 'POST',
-              data: {
-                   course_id: course_id
-              },
-              success: function (data) {
-                  console.log(data);
-              }
+
+               $.ajax({
+                   url: '/completedCourses',
+                   type: 'POST',
+                   data: {
+                        course_id: course_id
+                   },
+                   success: function (data) {
+                       console.log(data);
+                       if(data['response'] == true)
+                       {
+                            var row = document.getElementById('classrow-'+course_id);
+                            $('#dataTables-example').DataTable()
+                                                       .row(row)
+                                                       .remove()
+                                                       .draw(false);
+                       }
+                    }
+               });
           });
-        });
     });
 
     </script>
