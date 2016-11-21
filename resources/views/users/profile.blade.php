@@ -10,7 +10,7 @@
                 <div class="panel-body">
                   <b>  NAME <br> </b>
                     {{ $user->name}} <br> <br>
-                    <b> DEPARTMENT <br> </b>
+                    <b> PROGRAM <br> </b>
                     {{ $user->program_id}}  <br> <br>
                     <b> EMAIL <br> </b>
                     {{ $user->email}} <br><br>
@@ -26,5 +26,6 @@
 
         </div>
     </div>
+</div>
 </div>
 @endsection
