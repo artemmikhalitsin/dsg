@@ -36,6 +36,13 @@
 					@endif
 					</div>
 					
+					<div class="img">
+					@if (!Auth::guest())
+						<a href="{{ url('/#') }}"><img src="{{{ asset('schedule.png') }}}"></a>
+						<div class="desc">GENERATE SCHEDULE</div>
+					@endif
+					</div>
+					
 					
                 </div>
             </div>
