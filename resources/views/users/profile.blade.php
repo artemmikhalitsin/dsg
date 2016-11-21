@@ -8,12 +8,12 @@
                 <div class="panel-heading">User Profile</div>
 
                 <div class="panel-body">
-                  <b>  NAME <br> </b>
-                    {{ $user->name}} <br> <br>
+                  <b>  NAME </b><br>
+                    <span contenteditable="">{{ $user->name}}</span> <br> <br>
                     <b> PROGRAM <br> </b>
-                    {{ $user->program_id}}  <br> <br>
+                    <span contenteditable="">{{ $user->program->program_name}}</span>  <br> <br>
                     <b> EMAIL <br> </b>
-                    {{ $user->email}} <br><br>
+                    <span contenteditable="">{{ $user->email}}</span> <br><br>
                     <a href="#">Change your profile</a>
 
                 </div>
