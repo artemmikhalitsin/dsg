@@ -10,6 +10,7 @@ use DB;
 
 class SequenceTree extends Model
 {
+  //Everything starts here:
   public static function getOutput(){
     $userProgram = array('174'); //,'218','39'
     $CourseList = [];
@@ -36,40 +37,50 @@ class Course
     $courseInfo = DB::table('courses')
       ->join('courseavailability','courses.course_id', '=','courseavailability.course_id')
       ->join('prerequisites','prerequisites.course_id', '=','courses.course_id')
-      ->select('courses.course_code','courses.course_id','winter','fall','prerequisite')
+      ->select('courses.course_code','courses.course_id','winter','fall','prerequisite','prereq_id')
       ->where('courses.course_id','=',$id)
       ->get();
-    $this->name = $courseInfo[0]->course_code;
-    $this->winter = $courseInfo[0]->winter;
-    $this->fall = $courseInfo[0]->fall;
 
-    //coursePrereq is actually not just a prereq, it's more info
-    foreach ($courseInfo as $coursePrereq){
-      $this->addPrerequisiteObject($coursePrereq->prerequisite, $CourseList);
+    if (empty($courseInfo)){
+      $courseInfo = DB::table('courses')
+        ->join('courseavailability','courses.course_id', '=','courseavailability.course_id')
+        ->select('courses.course_code','courses.course_id','winter','fall')
+        ->where('courses.course_id','=',$id)
+        ->get();
+    }
+
+    if (!empty($courseInfo)){
+        $this->name = $courseInfo[0]->course_code;
+        $this->winter = $courseInfo[0]->winter;
+        $this->fall = $courseInfo[0]->fall;
+      foreach ($courseInfo as $coursePrereq){
+        if (!empty($coursePrereq->prerequisite))
+          $this->addPrerequisiteObject($coursePrereq->prerequisite, $CourseList);
+      }
     }
   }
 
   //adds a prerequisite object to the current course, checks if that object exists already
-  function addPrerequisiteObject($prerequisiteId, &$CourseList){
+  function addPrerequisiteObject($prerequisiteCourseId, &$CourseList){
 
     $courseInfo = DB::table('courses')
     ->join('courseavailability','courses.course_id', '=','courseavailability.course_id')
     ->join('prerequisites','prerequisites.course_id','=','courses.course_id')
-    ->select('courses.course_code','courses.course_id','winter','fall','prerequisite')
-    ->where('courses.course_id','=',$prerequisiteId)
+    ->select('courses.course_code','courses.course_id','winter','fall','prerequisite','prereq_id')
+    ->where('courses.course_id','=',$prerequisiteCourseId)
     ->get();
 
     $already = false;
     foreach ($CourseList as $course){
-      if ($course->id == $prerequisiteId){
-        $this->prerequisiteList[] = new Prerequisite($course);
+      if ($course->id == $prerequisiteCourseId){
+        $this->prerequisiteList[] = new Prerequisite($course, $this->id);
         $already = true;
       }
     }
 
     if (!$already && !empty($courseInfo)){
-      $CourseList[] = $course = new Course ($prerequisiteId, $CourseList);
-      $this->prerequisiteList[] = new Prerequisite($course);
+      $CourseList[] = $course = new Course ($prerequisiteCourseId, $CourseList);
+      $this->prerequisiteList[] = new Prerequisite($course, $this->id);
     }
   }
 
@@ -133,10 +144,19 @@ class Prerequisite
 {
   var $isCorequisite = 0;
   var $prerequisite;
+  var $parent_id;
+  var $prereq_id;
   var $orPrereq = Array();
 
-  function __construct($course){
-    $this->prerequisite = $course;
+  function __construct($prerequisite, $parent_id){
+    $this->prerequisite = $prerequisite;
+    $this->parent_id = $parent_id;
+    $prereqInfo = DB::table('prerequisites')
+    ->select('prereq_id')
+    ->where('prerequisite','=', $prerequisite->id)
+    ->where('course_id','=', $parent_id)
+    ->get();
+    $this->prereq_id = $prereqInfo[0]->prereq_id;
   }
 }
 

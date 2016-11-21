@@ -1,7 +1,7 @@
 <?php
 
-include 'courses.php';
-include 'SequenceTree.php';
+namespace App;
+
 /**
 *finds the last semester where there is room to plant a tree. Our semesters are the rows of $sequence
 */
@@ -50,6 +50,7 @@ function findAndReplace($c, $cl)
 	}
 	return $cl;
 }
+
 /**
 *assigns level to a single class and all of its children, and also generates subtrees. Meant to go in a for loop
 */
