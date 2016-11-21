@@ -19,17 +19,10 @@ class CoursesController extends Controller
         $this->middleware('auth');
     }
 
-<<<<<<< HEAD
-		public function generateSequence(){
-			$sequenceInfo = SequenceTree::getOutput();
-			return view('courses.sequence', compact('sequenceInfo'));
-		}
-=======
 	public function generateSequence(){
-		$sequenceInfo = '5';
+		$sequenceInfo = SequenceTree::getOutput();
 		return view('courses.sequence', compact('sequenceInfo'));
 	}
->>>>>>> 28ee6ba5cca0b5403d4b58e4eb33fe0fe23232ef
 
     public function index()
     {
