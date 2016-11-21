@@ -7,24 +7,35 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use Auth;
+use DB;
+
+use App\User;
 
 class UserController extends Controller
 {
-     public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
 
+    // gets the profile info of the logged in user and their completed courses list
+    public function profile()
+    {
+        $user= Auth::user();
+        $completedCourses = User::getCompletedCourses();
+        return view('users/profile', compact('user', 'completedCourses'));
+    }
 
-     public function profile()
+    // used to load the preferences form view
+    public function preferences()
+    {
+        return view('users/preferences');
+    }
+
+     public function addCompletedCourse(Request $request)
      {
-       $user= Auth::user();
-          return view('users/profile', compact('user'));
+          $course = $request->input('course_id');
+          $added = Auth::user()->addCompletedCourse($course);
+          return response()->json(['response' => $added]);
      }
-
-     public function preferences()
-     {
-       return view('users/preferences');
-     }
-
 }
