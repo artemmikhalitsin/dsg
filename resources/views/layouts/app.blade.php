@@ -16,6 +16,11 @@
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
+	
+		.panel-heading{background-color:#3893aa!important}
+		.panel{color:grey;
+		margin:20px;}
+
         body {
             font-family: 'Lato';
         }
@@ -37,6 +42,23 @@
             overflow:hidden;
             color: white;
         }
+		div.img img {
+			width: 90%;
+			height: auto;
+		}
+		div.img {
+			
+			margin: 10px;
+			float: left;
+			width: 190px;
+			height:230px;
+		}
+
+		div.desc {
+			padding: 15px;
+			text-align: center;
+		}
+
     </style>
 
     @yield('extraCSS')
@@ -70,7 +92,10 @@
                         <li><a href="{{ url('/addCompletedCourses') }}"><span class="glyphicon glyphicon-plus"></span> Add Completed Courses</a></li>
                     @endif
 					@if (!Auth::guest())
-                        <li><a href="{{ url('/preferences') }}"> <span class="glyphicon glyphicon-plus"></span> Add Preferences</a></li>
+                        <li><a href="{{ url('/preferences') }}"> <span class="glyphicon glyphicon-cog"></span> Add Preferences</a></li>
+                    @endif
+					@if (!Auth::guest())
+                        <li><a href="{{ url('/#') }}"> <span class="glyphicon glyphicon-calendar"></span> Generate Schedule</a></li>
                     @endif
                     <li><a href="#"> <span class="glyphicon glyphicon-list"></span> Browse Courses</a></li>
 
