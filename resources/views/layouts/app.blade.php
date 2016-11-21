@@ -43,20 +43,22 @@
             color: white;
         }
 		div.img img {
-			width: 90%;
+			width: 100%;
 			height: auto;
 		}
 		div.img {
 			
 			margin: 10px;
 			float: left;
-			width: 190px;
-			height:230px;
+			width: 150px;
+			height:190px;
 		}
 
 		div.desc {
-			padding: 15px;
+			padding: 10px;
 			text-align: center;
+			bottom:60px;;
+			font-size:12px;
 		}
 
     </style>
