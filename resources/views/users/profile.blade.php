@@ -23,7 +23,7 @@
               <div class="panel-heading">Completed Courses</div>
               <div class="panel-body">
                     @foreach($completedCourses as $course)
-                        <button type="button" class="btn btn-success">{{ $course->course_code }}</button> 
+                        <button type="button" class="btn btn-success">{{ $course->course_code }}</button>
                     @endforeach
               </div>
               <div class="panel-body">
@@ -32,5 +32,6 @@
 
         </div>
     </div>
+</div>
 </div>
 @endsection

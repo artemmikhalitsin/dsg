@@ -17,6 +17,11 @@
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
+	
+		.panel-heading{background-color:#3893aa!important}
+		.panel{color:grey;
+		margin:20px;}
+
         body {
             font-family: 'Lato';
         }
@@ -38,6 +43,25 @@
             overflow:hidden;
             color: white;
         }
+		div.img img {
+			width: 100%;
+			height: auto;
+		}
+		div.img {
+			
+			margin: 10px;
+			float: left;
+			width: 150px;
+			height:190px;
+		}
+
+		div.desc {
+			padding: 10px;
+			text-align: center;
+			bottom:60px;;
+			font-size:12px;
+		}
+
     </style>
 
     @yield('extraCSS')
@@ -68,8 +92,16 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                     @if (!Auth::guest())
-                        <li><a href="{{ url('/addCompletedCourses') }}"> AddCompletedCourses</a></li>
+                        <li><a href="{{ url('/addCompletedCourses') }}"><span class="glyphicon glyphicon-plus"></span> Add Completed Courses</a></li>
                     @endif
+					@if (!Auth::guest())
+                        <li><a href="{{ url('/preferences') }}"> <span class="glyphicon glyphicon-cog"></span> Add Preferences</a></li>
+                    @endif
+					@if (!Auth::guest())
+                        <li><a href="{{ url('/#') }}"> <span class="glyphicon glyphicon-calendar"></span> Generate Schedule</a></li>
+                    @endif
+                    <li><a href="#"> <span class="glyphicon glyphicon-list"></span> Browse Courses</a></li>
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->

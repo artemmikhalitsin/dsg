@@ -1,18 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-{!!  Form::open()   !!}
 
-  {!! Form::label('startTime', 'Start Time:') !!}
-  {!! Form::text('startTime', 'NEVER') !!}
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Preferences</div>
+					<div class="panel-body">
+						{!!  Form::open()   !!}
 
-  {!! Form::label('endTime', 'End Time:') !!}
-  {!! Form::select('size', array('L' => 'Large', 'S' => 'Small')); !!}
+						{!! Form::label('startTime', 'Start Time:') !!}<br>
+						{!! Form::time('startTime', 'NEVER') !!}<br><br>
+						{!! Form::label('endTime', 'End Time:') !!}<br>
+						{!! Form::time('startTime', 'NEVER') !!}<br><br>
+						{!! Form::label('courseLoad', 'Desired Course Load:') !!}<br>
+						{!! Form::select('size', array('1' => '1 course', '2' => '2 courses', '3' => '3 courses', '4' => '4 courses', '5' => '5 courses', '6' => '6 courses')); !!}
 
-  {!! Form::label('courseLoad', 'Desired Course Load:') !!}
-  {!! Form::text('courseLoad') !!}
-
-
-
-{!! Form::close() !!}
+						{!! Form::close() !!}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
