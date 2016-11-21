@@ -47,8 +47,8 @@
                                         <td>{{ $course->course_type }}</td>
                                         <td style="text-align: center;">{{ $course->credits }}</td>
                                         <td style="text-align: center;">
-                                        	<a href="#" class="btn btn-primary btn-xs">
-                                        	<span class="glyphicon glyphicon-plus"></span> Add</a>
+                                        	<button class="btn btn-primary btn-xs add-course" value="{{$course->course_id}}">
+                                        	<span class="glyphicon glyphicon-plus"></span> Add</button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -79,10 +79,26 @@
     <script src="/js/dataTables/dataTables.responsive.js"></script>
 
     <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
+     $(document).ready(function() {
+          $('#dataTables-example').DataTable({
             responsive: true
+          });
+
+          $('.add-course').click(function(){
+             var course_id = $(this).val();
+             
+          $.ajax({
+              url: '/completedCourses',
+              type: 'POST',
+              data: {
+                   course_id: course_id
+              },
+              success: function (data) {
+                  console.log(data);
+              }
+          });
         });
     });
+
     </script>
 @endsection

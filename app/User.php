@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use DB;
 
 class User extends Authenticatable
 {
@@ -39,5 +40,17 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Courses', 'completedCourses', 'user_id', 'course_id');
     }
-    
+
+    public function addCompletedCourse($course_id)
+    {
+         DB::table('completedCourses')->insert(
+              [
+                   [
+                        'course_id' => $course_id,
+                        'user_id'=>$this->id
+                   ]
+              ]
+         );
+         return true;
+    }
 }
