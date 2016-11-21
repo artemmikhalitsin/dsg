@@ -21,7 +21,9 @@
             <div class="panel panel-primary">
               <div class="panel-heading">Completed Courses</div>
               <div class="panel-body">
-                empty for now
+                    @foreach($completedCourses as $course)
+                        <button type="button" class="btn btn-success">{{ $course->course_code }}</button></br></br>
+                    @endforeach
               </div>
 
         </div>
