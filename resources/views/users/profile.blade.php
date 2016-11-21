@@ -22,7 +22,9 @@
             <div class="panel panel-primary">
               <div class="panel-heading">Completed Courses</div>
               <div class="panel-body">
-                   <!--Here we'll put a php code that will go through courses-->
+                    @foreach($completedCourses as $course)
+                        <button type="button" class="btn btn-success">{{ $course->course_code }}</button></br></br>
+                    @endforeach
               </div>
               <div class="panel-body">
               <a href="{{ url('/addCompletedCourses') }}">Add completed courses</a>
