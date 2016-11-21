@@ -6,43 +6,43 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\Auth;
 
+use DB;
+
 class SequenceTree extends Model
 {
+  public static function getOutput(){
+    $userProgram = array('218','39');
+    $CourseList = [];
 
-    public static function getOutput(){
-        $CourseList = [];
-        $courseInfoList = json_decode(Courses::getProgramCoursesInfo());
-        $prerequisiteObjectList = [];
+    foreach ($userProgram as $userCourse){
 
-        foreach ($courseInfoList as $courseInfo){
-          $already = false;
+    $courseInfo = DB::table('courses')
+      ->join('courseavailability','courses.course_id', '=','courseavailability.course_id')
+      ->join('prerequisites','prerequisites.course_id', '=','courses.course_id')
+      ->select('courses.course_code','courses.course_id','winter','fall','prerequisite')
+      ->where('courses.course_id','=',$userCourse)
+      ->get();
 
-          foreach ($CourseList as $course){
-            if ($course->id == $courseInfo->course_id){
-              $course->addPrerequisiteObject($courseInfo->prerequisite, $CourseList);
-              $already = true;
-            }
-          }
-          //if duplicate add prerequisite to it, else generate new course object
+    $CourseList[] = $course = new Course($userCourse);
+    $course->name = $courseInfo[0]->course_code;
+    $course->winter = $courseInfo[0]->winter;
+    $course->fall = $courseInfo[0]->fall;
 
-          if (!$already){
-            $CourseList[] = $course = new Course(
-              $courseInfo->course_id, 
-              $courseInfo->course_code, 
-              $courseInfo->course_type
-              );
-            $course->addPrerequisiteObject($courseInfo->prerequisite, $CourseList);
-          }
-        }
-        return json_encode($CourseList);
+    //coursePrereq is actually not just a prereq, it's more info
+    foreach ($courseInfo as $coursePrereq)
+      $course->addPrerequisiteObject($coursePrereq->prerequisite, $CourseList);
     }
+
+    return json_encode($CourseList);
+  }
 }
 
 class Course
 {
-  //var $name;
+  var $name;
   var $id;
-  //var $type;
+  var $winter;
+  var $fall;
   var $prerequisites = array();
   //var $corequisites = array();
   //var $height = 0;
@@ -51,7 +51,15 @@ class Course
     $this->id = $id;
   }
 
-  function addPrerequisiteObject($prerequisiteId, $CourseList){
+  function addPrerequisiteObject($prerequisiteId, &$CourseList){
+
+    $courseInfo = DB::table('courses')
+    ->join('courseavailability','courses.course_id', '=','courseavailability.course_id')
+    ->join('prerequisites','prerequisites.course_id','=','courses.course_id')
+    ->select('courses.course_code','courses.course_id','winter','fall','prerequisite')
+    ->where('courses.course_id','=',$prerequisiteId)
+    ->get();
+
     $already = false;
     foreach ($CourseList as $course){
       if ($course->id == $prerequisiteId){
@@ -59,9 +67,15 @@ class Course
         $already = true;
       }
     }
-    if (!$already){
-      $CourseList[] = $course = new Course($prerequisiteId);
-      $course->addPrerequisiteObject($prerequisiteId, $CourseList);
+
+    if (!$already && !empty($courseInfo)){
+      $CourseList[] = $course = new Course ($prerequisiteId);
+      $course->name = $courseInfo[0]->course_code;
+      $course->winter = $courseInfo[0]->winter;
+      $course->fall = $courseInfo[0]->fall;
+      foreach ($courseInfo as $coursePrereq)
+        $course->addPrerequisiteObject($coursePrereq->prerequisite, $CourseList);
+      $this->prerequisites[] = $course;
     }
   }
 }

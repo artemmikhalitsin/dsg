@@ -12,6 +12,7 @@ class Courses extends Model
     	'course_name', 'course_code', 'description', 'credits', 'instructor_id'
     ];
 
+/*
     public static function getProgramCoursesInfo(){
       return Courses::join('courseProgram', 'courses.course_id', '=', 'courseProgram.course_id')
       ->join('prerequisites','courses.course_id','=','prerequisites.course_id')
@@ -22,6 +23,7 @@ class Courses extends Model
               ])
       ->get();
     }
+*/
 
     public static function getProgramCoursesList()
     {
