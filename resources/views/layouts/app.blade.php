@@ -67,8 +67,13 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                     @if (!Auth::guest())
-                        <li><a href="{{ url('/addCompletedCourses') }}"> AddCompletedCourses</a></li>
+                        <li><a href="{{ url('/addCompletedCourses') }}"><span class="glyphicon glyphicon-plus"></span> Add Completed Courses</a></li>
                     @endif
+					@if (!Auth::guest())
+                        <li><a href="{{ url('/preferences') }}"> <span class="glyphicon glyphicon-plus"></span> Add Preferences</a></li>
+                    @endif
+                    <li><a href="#"> <span class="glyphicon glyphicon-list"></span> Browse Courses</a></li>
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -84,7 +89,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                                <li><a href="{{ url('/profile') }}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                             </ul>
                         </li>
