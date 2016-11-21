@@ -34,5 +34,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Program');
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany('App\Courses', 'completedCourses', 'user_id', 'course_id');
+    }
     
 }

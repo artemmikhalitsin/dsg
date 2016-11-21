@@ -12,4 +12,9 @@ class Program extends Model
     {
     	return $this->hasMany('App\User');
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany('App\Courses', 'courseProgram', 'program_id', 'course_id')->withPivot('course_type');
+    }
 }
