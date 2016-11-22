@@ -156,7 +156,7 @@ class Courses extends Model
                               ->where('lab_id', $timeslot->lab_id);
                    $days = $lab->value('day');
                    $lecture = DB::table('lectures')
-                              ->where('lecture_id', $labs->value('lecture_id'));
+                              ->where('lecture_id', $lab->value('lecture_id'));
                    $course_id = $lecture->value('course_id');
                    $course = DB::table('courses')->where('course_id', $course_id);
                    $course_code = $course->value('course_code');
