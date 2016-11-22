@@ -15,7 +15,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Your Schedule</div>
 
-                <div class="panel-body" style="padding-bottom:65%;">
+                <div class="panel-body">
                     <div id="schedule-reset">
                     	<div id="schedule">
                     		<div class="cd-schedule loading">
