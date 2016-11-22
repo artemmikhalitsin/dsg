@@ -39,6 +39,8 @@ class CoursesController extends Controller
 
         return view('courses.completedCourses', compact('courses'));
     }
+
+		
 }
 
 ?>
