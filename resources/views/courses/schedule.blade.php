@@ -63,7 +63,7 @@
                     						<ul>
                     							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="event-1">
                     								<a href="#0">
-                    									<em class="event-name">{{$timeslot["course_code"]}}<br>{{$timeslot["course_name"]}}</em>
+                    									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
                     							</li>
                     						</ul>
@@ -76,7 +76,7 @@
                     						<ul>
                     							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="event-1">
                     								<a href="#0">
-                    									<em class="event-name">{{$timeslot["course_code"]}}<br>{{$timeslot["course_name"]}}</em>
+                    									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
                     							</li>
                     						</ul>
@@ -89,7 +89,7 @@
                     						<ul>
                     							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="event-1">
                     								<a href="#0">
-                    									<em class="event-name">{{$timeslot["course_code"]}}<br>{{$timeslot["course_name"]}}</em>
+                    									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
                     							</li>
                     						</ul>
@@ -102,7 +102,7 @@
                     						<ul>
                     							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="event-1">
                     								<a href="#0">
-                    									<em class="event-name">{{$timeslot["course_code"]}}<br>{{$timeslot["course_name"]}}</em>
+                    									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
                     							</li>
                     						</ul>
@@ -115,7 +115,7 @@
                     						<ul>
                     							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="event-1">
                     								<a href="#0">
-                    									<em class="event-name">{{$timeslot["course_code"]}}<br>{{$timeslot["course_name"]}}</em>
+                    									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
                     							</li>
                     						</ul>
@@ -128,7 +128,7 @@
                     						<ul>
                     							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="event-1">
                     								<a href="#0">
-                    									<em class="event-name">{{$timeslot["course_code"]}}<br>{{$timeslot["course_name"]}}</em>
+                    									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
                     							</li>
                     						</ul>

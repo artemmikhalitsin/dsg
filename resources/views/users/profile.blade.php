@@ -14,23 +14,41 @@
 @section('content')
 <div class="container">
     <div class="row">
+         <div class="col-md-5 col-md-offset-1">
+              <div class="panel panel-primary">
+                 <div class="panel-heading">User Profile</div>
+
+                 <div class="panel-body">
+                   <b>  NAME </b><br>
+                     <span contenteditable="">{{ $user->name}}</span> <br> <br>
+                     <b> PROGRAM <br> </b>
+                     <span contenteditable="">{{ $user->program->program_name}}</span>  <br> <br>
+                     <b> EMAIL <br> </b>
+                     <span contenteditable="">{{ $user->email}}</span> <br><br>
+                     <a href="#">Change your profile</a>
+
+                 </div>
+
+             </div>
+         </div>
+         <div class="col-md-5">
+              <div class="panel panel-primary" style="padding-bottom:4%">
+                   <div class="panel-heading">Preferences</div>
+                        <div class="panel-body">
+                             {!!  Form::open()   !!}
+
+                             {!! Form::label('startTime', 'Start Time:') !!}<br>
+                             {!! Form::time('startTime', 'NEVER') !!}<br><br>
+                             {!! Form::label('endTime', 'End Time:') !!}<br>
+                             {!! Form::time('startTime', 'NEVER') !!}<br><br>
+                             {!! Form::label('courseLoad', 'Desired Course Load:') !!}<br>
+                             {!! Form::select('size', array('1' => '1 course', '2' => '2 courses', '3' => '3 courses', '4' => '4 courses', '5' => '5 courses', '6' => '6 courses')); !!}
+
+                             {!! Form::close() !!}
+                   </div>
+              </div>
+         </div>
         <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-primary">
-                <div class="panel-heading">User Profile</div>
-
-                <div class="panel-body">
-                  <b>  NAME </b><br>
-                    <span contenteditable="">{{ $user->name}}</span> <br> <br>
-                    <b> PROGRAM <br> </b>
-                    <span contenteditable="">{{ $user->program->program_name}}</span>  <br> <br>
-                    <b> EMAIL <br> </b>
-                    <span contenteditable="">{{ $user->email}}</span> <br><br>
-                    <a href="#">Change your profile</a>
-
-                </div>
-
-            </div>
-
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     List of Completed Courses
