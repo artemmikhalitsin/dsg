@@ -14,7 +14,16 @@ class Courses extends Model
     protected $fillable = [
     	'course_name', 'course_code', 'description', 'credits', 'instructor_id'
     ];
-
+/*
+    public static function getProgramCoursesInfo(){
+      return Courses::join('courseProgram', 'courses.course_id', '=', 'courseProgram.course_id')
+      ->join('prerequisites','courses.course_id','=','prerequisites.course_id')
+      ->select('courses.*', 'courseProgram.course_type', 'prerequisites.prerequisite')
+      ->where([
+                ['courseProgram.program_id', Auth::user()->program_id],
+                ['courseProgram.course_type', "program_course"]
+              ])
+      ->get();
     // gets the list of users who have completed a specific course
     public function users()
     {
@@ -43,6 +52,7 @@ class Courses extends Model
       ->join('corequisites', 'courses.course_id', '=', 'corequisites.course_id')
       ->select('courses.course_id', 'corequisites.corequisite', 'prerequisites.prerequisite')->get();
     }
+*/
 
     // gets the list of program courses (core) of the logged in user's program
     public static function getProgramCoursesList()
@@ -79,3 +89,5 @@ class Courses extends Model
             ])->get();
     }
 }
+
+?>
