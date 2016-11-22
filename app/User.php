@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use DB;
 
 use Auth;
 
@@ -42,8 +43,28 @@ class User extends Authenticatable
     public function courses()
     {
         return $this->belongsToMany('App\Courses', 'completedCourses', 'user_id', 'course_id');
+   }
+
+    public function addCompletedCourse($course_id)
+    {
+         $exists = DB::table('completedCourses')->where('user_id',$this->id)
+                                                  ->where('course_id',$course_id)
+                                                  ->exists();
+          if(!$exists)
+               {
+                    DB::table('completedCourses')->insert(
+                    [
+                         [
+                         'course_id' => $course_id,
+                         'user_id'=>$this->id
+                         ]
+                    ]
+                    );
+                    return true;
+               }
+          return false;
     }
-    
+
     // gets the list of completed courses of the logged in user
     public static function getCompletedCourses()
     {

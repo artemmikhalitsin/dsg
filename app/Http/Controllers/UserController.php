@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use Auth;
+use DB;
 
 use App\User;
 
@@ -31,4 +32,10 @@ class UserController extends Controller
         return view('users/preferences');
     }
 
+     public function addCompletedCourse(Request $request)
+     {
+          $course = $request->input('course_id');
+          $added = Auth::user()->addCompletedCourse($course);
+          return response()->json(['response' => $added]);
+     }
 }

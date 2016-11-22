@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Dream Schedule Generator</title>
@@ -16,6 +17,11 @@
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
+	
+		.panel-heading{background-color:#3893aa!important}
+		.panel{color:grey;
+		margin:20px;}
+
         body {
             font-family: 'Lato';
         }
@@ -37,6 +43,42 @@
             overflow:hidden;
             color: white;
         }
+		div.img img {
+			width: 100%;
+			height: auto;
+		}
+		div.img {
+			
+			margin: 10px;
+			float: left;
+			width: 120px;
+			height:180px;
+		}
+
+		div.img:hover{
+			
+			background-color: lightblue;
+			 border-radius: 15px;
+		}
+		div.desc {
+			padding: 10px;
+			text-align: center;
+			bottom:60px;;
+			font-size:12px;
+			text-decoration:none;
+			color:grey;
+		}
+		
+		div.desc:hover {
+			
+			color: white;
+			text-decoration: none;
+		}
+		
+		a:hover {
+		text-decoration: none;
+		}
+
     </style>
 
     @yield('extraCSS')
@@ -67,8 +109,19 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                     @if (!Auth::guest())
-                        <li><a href="{{ url('/addCompletedCourses') }}"> AddCompletedCourses</a></li>
+                        <li><a href="{{ url('/addCompletedCourses') }}"><span class="glyphicon glyphicon-plus"></span> Add Completed Courses</a></li>
                     @endif
+					@if (!Auth::guest())
+                        <li><a href="{{ url('/preferences') }}"> <span class="glyphicon glyphicon-cog"></span> Add Preferences</a></li>
+                    @endif
+					@if (!Auth::guest())
+                    <li><a href="{{ url('/sequence') }}"> <span class="glyphicon glyphicon-tasks"></span> Generate Sequence</a></li>
+                    @endif
+					@if (!Auth::guest())
+                        <li><a href="{{ url('/#') }}"> <span class="glyphicon glyphicon-calendar"></span> Generate Schedule</a></li>
+                    @endif
+                    <li><a href="#"> <span class="glyphicon glyphicon-list"></span> Browse Courses</a></li>
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -84,7 +137,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                                <li><a href="{{ url('/profile') }}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                             </ul>
                         </li>
@@ -104,6 +157,13 @@
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script>
+          $.ajaxSetup({
+               headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+               }
+          });
+    </script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
     @yield('extraJS')
