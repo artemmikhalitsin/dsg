@@ -28,5 +28,4 @@ Route::get('/sequence', 'CoursesController@generateSequence');
 Route::get('/profile', 'UserController@profile');
 Route::get('/preferences', 'UserController@preferences');
 
-
 Route::post('/completedCourses', 'UserController@addCompletedCourse');

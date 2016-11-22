@@ -51,15 +51,32 @@
 			
 			margin: 10px;
 			float: left;
-			width: 150px;
-			height:190px;
+			width: 120px;
+			height:180px;
 		}
 
+		div.img:hover{
+			
+			background-color: lightblue;
+			 border-radius: 15px;
+		}
 		div.desc {
 			padding: 10px;
 			text-align: center;
 			bottom:60px;;
 			font-size:12px;
+			text-decoration:none;
+			color:grey;
+		}
+		
+		div.desc:hover {
+			
+			color: white;
+			text-decoration: none;
+		}
+		
+		a:hover {
+		text-decoration: none;
 		}
 
     </style>
@@ -96,6 +113,9 @@
                     @endif
 					@if (!Auth::guest())
                         <li><a href="{{ url('/preferences') }}"> <span class="glyphicon glyphicon-cog"></span> Add Preferences</a></li>
+                    @endif
+					@if (!Auth::guest())
+                    <li><a href="{{ url('/sequence') }}"> <span class="glyphicon glyphicon-tasks"></span> Generate Sequence</a></li>
                     @endif
 					@if (!Auth::guest())
                         <li><a href="{{ url('/#') }}"> <span class="glyphicon glyphicon-calendar"></span> Generate Schedule</a></li>
