@@ -39,10 +39,13 @@ class UserController extends Controller
           return response()->json(['response' => $added]);
      }
 
+<<<<<<< Updated upstream
      public function removeCompletedCourse(Request $request)
      {
           $course = $request->input('course_id');
           $removed = Auth::user()->removeCompletedCourse($course);
           return response()->json(['response' => $removed]);
      }
+=======
+>>>>>>> Stashed changes
 }

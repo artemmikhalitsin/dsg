@@ -82,4 +82,138 @@ class User extends Authenticatable
     {
         return Auth::user()->courses;
     }
+
+    public function addLectureToSchedule($lecture_id)
+    {
+         $schedule = DB::table('schedule');
+         $exists = DB::table('schedule')->where('user_id', $this->id)
+                                        ->where('lecture_id', $lecture_id)->exists();
+          if(!$exists)
+          {
+               $schedule->insert(
+                    [
+                         [
+                              'lecture_id' => $lecture_id,
+                              'user_id' => $user_id
+                         ]
+                    ]
+               );
+          }
+    }
+    public function addTutorialToSchedule($tutorial_id)
+    {
+         $schedule = DB::table('schedule');
+         $exists = DB::table('schedule')->where('user_id', $this->id)
+                                        ->where('tutorial_id', $tutorial_id)->exists();
+          if(!$exists)
+          {
+               $schedule->insert(
+                    [
+                         [
+                              'tutorial_id' => $tutorial_id,
+                              'user_id' => $user_id
+                         ]
+                    ]
+               );
+          }
+    }
+
+    public function addLabToSchedule($lab_id)
+    {
+         $schedule = DB::table('schedule');
+         $exists = DB::table('schedule')->where('user_id', $this->id)
+                                        ->where('lab_id', $lab_id)->exists();
+          if(!$exists)
+          {
+               $schedule->insert(
+                    [
+                         [
+                              'lab_id' => $lab_id,
+                              'user_id' => $user_id
+                         ]
+                    ]
+               );
+          }
+    }
+
+    public static function getDayCourses()
+    {
+         $result = [
+              '0' => [],
+              '1' => [],
+              '2' => [],
+              '3' => [],
+              '4' => [],
+              '5' => [],
+              '6' => [],
+         ];
+         $schedule = DB::table('schedule')->where('user_id', $this->id)->get();
+         foreach($schedule as $timeslot)
+         {
+              if(isset($timeslot->lecture_id))
+              {
+                   $days = DB::table('lectures')
+                              ->where('lecture_id', $timeslot->lecture_id)
+                              ->value('day');
+                    if($days == "TBA")
+                    {
+                         $result[6]->array_push($timeslot);
+                    }
+                    else
+                    {
+                         $days = str_split($days);
+                         foreach($days as $key => $day)
+                         {
+                              if(!($day == '-'))
+                              {
+                                   array_push($result[$key], $timeslot);
+                              }
+                         }
+                    }
+              }
+              if(isset($timeslot->tutorial_id))
+              {
+                   $days = DB::table('tutorials')
+                              ->where('tutorial_id', $timeslot->tutorial_id)
+                              ->value('day');
+                    if($days == "TBA")
+                    {
+                         $result[6]->array_push($timeslot);
+                    }
+                    else
+                    {
+                         $days = str_split($days);
+                         foreach($days as $key => $day)
+                         {
+                              if(!($day == '-'))
+                              {
+                                   array_push($result[$key], $timeslot);
+                              }
+                         }
+                    }
+              }
+              if(isset($timeslot->lab_id))
+              {
+                   $days = DB::table('labs')
+                              ->where('lab_id', $timeslot->lab_id)
+                              ->value('day');
+                    if($days == "TBA")
+                    {
+                         $result[6]->array_push($timeslot);
+                    }
+                    else
+                    {
+                         $days = str_split($days);
+                         foreach($days as $key => $day)
+                         {
+                              if(!($day == '-'))
+                              {
+                                   array_push($result[$key], $timeslot);
+                              }
+                         }
+                    }
+              }
+         }
+         return $result;
+    }
 }
