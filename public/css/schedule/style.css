@@ -283,7 +283,7 @@
     margin-left: 60px;
   }
 }
-#schedule-reset #schedule .cd-schedule.loading .events .single-event {
+#schedule-reset #schecdule .cd-schedule.loading .events .single-event {
   /* the class .loading is added by default to the .cd-schedule element
 	   it is removed as soon as the single events are placed in the schedule plan (using javascript) */
   opacity: 0;
@@ -297,11 +297,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 #schedule-reset #schedule .cd-schedule .event-name {
-  font-size: 2.4rem;
+  font-size: 1.5rem;
 }
 @media only screen and (min-width: 800px) {
   #schedule-reset #schedule .cd-schedule .event-name {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 }
 #schedule-reset #schedule .cd-schedule .event-date {
