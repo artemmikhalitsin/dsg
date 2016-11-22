@@ -1,0 +1,10 @@
+*Create a function that can subtract two lists of courses (academic record from program).
+*Implement winter/summer mechanic for sequence generation. 
+*Implement corequisites (there is a prototype in functionsForFutureUse.php). 
+*Implement orrequisites. 
+*re-organize files
+*Make printSeq output a JSON file instead of just echos
+*take input from front end: courseLoad and desired courses
+*implement desired courses function
+*My assignLevel functions overwrite the prerequisites of each course in order the update them because I didnt bother passing by value.
+	This may or may not cause issues in the future.
