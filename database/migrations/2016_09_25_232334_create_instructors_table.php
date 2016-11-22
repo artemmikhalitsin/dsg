@@ -15,7 +15,6 @@ class CreateInstructorsTable extends Migration
         Schema::create('instructors', function (Blueprint $table) {
             $table->increments('instructor_id');
             $table->string('name');
-            //$table->string('department');
         });
     }
 

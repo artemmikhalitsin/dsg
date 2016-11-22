@@ -17,10 +17,10 @@ class CoursesController extends Controller
         $this->middleware('auth');
     }
 
-		public function generateSequence(){
-			$sequenceInfo = '5';
-			return view('courses.sequence', compact('sequenceInfo'));
-		}
+	public function generateSequence(){
+		$sequenceInfo = '5';
+		return view('courses.sequence', compact('sequenceInfo'));
+	}
 
     public function index()
     {
@@ -30,6 +30,7 @@ class CoursesController extends Controller
     	return view('courses.index', compact('courses', 'electives'));
     }
 
+    // sends a list of courses that are left to do for the logged in user to a view
     public function addCompletedCourses()
     {
         $courses = Courses::getOneProgramCoursesList();
