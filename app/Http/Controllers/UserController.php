@@ -38,4 +38,11 @@ class UserController extends Controller
           $added = Auth::user()->addCompletedCourse($course);
           return response()->json(['response' => $added]);
      }
+
+     public function schedule()
+    {
+        $schedule = User::getUserSchedule();
+
+        return view('courses.schedule', compact('schedule'));
+    }
 }
