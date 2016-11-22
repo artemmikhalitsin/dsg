@@ -48,13 +48,13 @@
                         </thead>
                         <tbody>
                             @foreach($completedCourses as $course)
-                            <tr class="odd gradeX">
+                            <tr class="odd gradeX" id="classrow-{{$course->course_id}}">
                                 <td>{{ $course->course_code }}</td>
                                 <td>{{ $course->course_name }}</td>
                                 <td style="text-align: center;">{{ $course->credits }}</td>
                                 <td style="text-align: center;">
-                                    <a href="#" class="btn btn-danger btn-sm">
-                                    <span class="glyphicon glyphicon-remove-sign"></span> Delete</a>
+                                    <button class="btn btn-danger btn-sm" value="{{$course->course_id}}">
+                                    <span class="glyphicon glyphicon-remove-sign"></span> Delete</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -78,10 +78,33 @@
 
     <script>
     $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
-        });
-    });
+          var table = $('#dataTables-example').DataTable({
+              responsive: true
+         });
+
+         $('#dataTables-example tbody').on('click', 'td button', function(){
+            var course_id = $(this).val();
+
+              $.ajax({
+                  url: '/profile',
+                  type: 'POST',
+                  data: {
+                       course_id: course_id
+                  },
+                  success: function (data) {
+                     console.log(data);
+                     if(data['response'] == true)
+                     {
+                          var row = document.getElementById('classrow-'+course_id);
+                          $('#dataTables-example').DataTable()
+                                                      .row(row)
+                                                      .remove()
+                                                      .draw(false);
+                     }
+                   }
+              });
+         });
+   });
     </script>
 
 @endsection

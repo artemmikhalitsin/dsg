@@ -65,6 +65,18 @@ class User extends Authenticatable
           return false;
     }
 
+    public function removeCompletedCourse($course_id)
+    {
+         $table = DB::table('completedCourses')->where('user_id',$this->id)
+                                                  ->where('course_id',$course_id);
+          if($table->exists())
+               {
+                    $table->delete();
+                    return true;
+               }
+          return false;
+    }
+
     // gets the list of completed courses of the logged in user
     public static function getCompletedCourses()
     {
