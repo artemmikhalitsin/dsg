@@ -44,7 +44,7 @@ class Courses extends Model
 
     public function prerequisites()
     {
-        return $this->belongsToMany('App\Prerequisites', 'Prerequisites', 'course_id', 'prerequisite');
+        return $this->belongsToMany('App\Courses', 'Prerequisites', 'course_id', 'prerequisite');
     }
 
     public static function getCoursePrerequisitesAvailibilities(){
