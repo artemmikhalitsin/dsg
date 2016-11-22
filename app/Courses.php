@@ -126,6 +126,29 @@ class Courses extends Model
                          $end_time = $lecture->value('end_time');
                     }
                     $type = 'Lecture';
+                    $object =
+                    [
+                         'course_code' => $course_code,
+                         'course_name' => $course_name,
+                         'start_time' => $start_time,
+                         'end_time' => $end_time,
+                         'type' => $type
+                    ];
+                    if($days == "TBA")
+                    {
+                         $result[6]->array_push($object);
+                    }
+                    else
+                    {
+                         $days = str_split($days);
+                         foreach($days as $key => $day)
+                         {
+                              if(!($day == '-'))
+                              {
+                                   array_push($result[$key], $object);
+                              }
+                         }
+                    }
               }
               if(isset($timeslot->tutorial_id))
               {
@@ -149,6 +172,29 @@ class Courses extends Model
                          $end_time = $tutorial->value('end_time');
                     }
                     $type = 'Tutorial';
+                    $object =
+                    [
+                         'course_code' => $course_code,
+                         'course_name' => $course_name,
+                         'start_time' => $start_time,
+                         'end_time' => $end_time,
+                         'type' => $type
+                    ];
+                    if($days == "TBA")
+                    {
+                         $result[6]->array_push($object);
+                    }
+                    else
+                    {
+                         $days = str_split($days);
+                         foreach($days as $key => $day)
+                         {
+                              if(!($day == '-'))
+                              {
+                                   array_push($result[$key], $object);
+                              }
+                         }
+                    }
               }
               if(isset($timeslot->lab_id))
               {
@@ -156,7 +202,7 @@ class Courses extends Model
                               ->where('lab_id', $timeslot->lab_id);
                    $days = $lab->value('day');
                    $lecture = DB::table('lectures')
-                              ->where('lecture_id', $labs->value('lecture_id'));
+                              ->where('lecture_id', $lab->value('lecture_id'));
                    $course_id = $lecture->value('course_id');
                    $course = DB::table('courses')->where('course_id', $course_id);
                    $course_code = $course->value('course_code');
@@ -172,29 +218,29 @@ class Courses extends Model
                          $end_time = $lab->value('end_time');
                     }
                     $type = 'Lab';
-              }
-              $object =
-              [
-                   'course_code' => $course_code,
-                   'course_name' => $course_name,
-                   'start_time' => $start_time,
-                   'end_time' => $end_time,
-                   'type' => $type
-              ];
-              if($days == "TBA")
-              {
-                   $result[6]->array_push($object);
-              }
-              else
-              {
-                   $days = str_split($days);
-                   foreach($days as $key => $day)
-                   {
-                        if(!($day == '-'))
-                        {
-                             array_push($result[$key], $object);
-                        }
-                   }
+                    $object =
+                    [
+                         'course_code' => $course_code,
+                         'course_name' => $course_name,
+                         'start_time' => $start_time,
+                         'end_time' => $end_time,
+                         'type' => $type
+                    ];
+                    if($days == "TBA")
+                    {
+                         $result[6]->array_push($object);
+                    }
+                    else
+                    {
+                         $days = str_split($days);
+                         foreach($days as $key => $day)
+                         {
+                              if(!($day == '-'))
+                              {
+                                   array_push($result[$key], $object);
+                              }
+                         }
+                    }
               }
          }
          return $result;

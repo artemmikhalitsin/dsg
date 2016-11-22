@@ -42,8 +42,13 @@ class User extends Authenticatable
     // gets the list of completed courses for the logged in user
     public function courses()
     {
-        return $this->belongsToMany('App\Courses', 'completedCourses', 'user_id', 'course_id');
-   }
+         return $this->belongsToMany('App\Courses', 'completedCourses', 'user_id', 'course_id');
+    }
+
+    public function changeName($newName)
+    {
+         
+    }
 
     public function addCompletedCourse($course_id)
     {
