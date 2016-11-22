@@ -11,9 +11,6 @@
 	<title>Schedule Template | CodyHouse</title>
 </head>
 <body>
-@if(!empty($schedule))
-	{{ implode("|",$schedule[0]) }}
-@endif
 <div class="cd-schedule loading">
 	<div class="timeline">
 		<ul>
@@ -45,7 +42,6 @@
 		<ul>
 			<li class="events-group">
 				<div class="top-info"><span>Monday</span></div>
-
 				<ul>
 					@foreach($schedule[0] as $course)
 					<li class="single-event" data-start="{{ $course['start_time'] }}" data-end="{{ $course['end_time'] }}" data-content="event-abs-circuit" data-event="event-1">
@@ -59,33 +55,53 @@
 
 			<li class="events-group">
 				<div class="top-info"><span>Tuesday</span></div>
-
 				<ul>
-					
+					@foreach($schedule[1] as $course)
+                         <li class="single-event" data-start="{{ $course['start_time'] }}" data-end="{{ $course['end_time'] }}" data-content="event-abs-circuit" data-event="event-1">
+                              <a href="#0">
+                                   <em class="event-name">{{ $course['course_code']}}</br>{{ $course['course_name'] }} ({{$course['type']}})</em>
+                              </a>
+                         </li>
+                         @endforeach
 				</ul>
 			</li>
 
 			<li class="events-group">
 				<div class="top-info"><span>Wednesday</span></div>
-
 				<ul>
-					
+					@foreach($schedule[2] as $course)
+                         <li class="single-event" data-start="{{ $course['start_time'] }}" data-end="{{ $course['end_time'] }}" data-content="event-abs-circuit" data-event="event-1">
+                              <a href="#0">
+                                   <em class="event-name">{{ $course['course_code']}}</br>{{ $course['course_name'] }} ({{$course['type']}})</em>
+                              </a>
+                         </li>
+                         @endforeach
 				</ul>
 			</li>
 
 			<li class="events-group">
 				<div class="top-info"><span>Thursday</span></div>
-
 				<ul>
-					
+					@foreach($schedule[3] as $course)
+                         <li class="single-event" data-start="{{ $course['start_time'] }}" data-end="{{ $course['end_time'] }}" data-content="event-abs-circuit" data-event="event-1">
+                              <a href="#0">
+                                   <em class="event-name">{{ $course['course_code']}}</br>{{ $course['course_name'] }} ({{$course['type']}})</em>
+                              </a>
+                         </li>
+                         @endforeach
 				</ul>
 			</li>
 
 			<li class="events-group">
 				<div class="top-info"><span>Friday</span></div>
-
 				<ul>
-					
+					@foreach($schedule[4] as $course)
+                         <li class="single-event" data-start="{{ $course['start_time'] }}" data-end="{{ $course['end_time'] }}" data-content="event-abs-circuit" data-event="event-1">
+                              <a href="#0">
+                                   <em class="event-name">{{ $course['course_code']}}</br>{{ $course['course_name'] }} ({{$course['type']}})</em>
+                              </a>
+                         </li>
+                         @endforeach
 				</ul>
 			</li>
 		</ul>
