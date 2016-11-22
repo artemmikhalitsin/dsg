@@ -18,12 +18,22 @@ class SequenceTree extends Model
       $listOfCourseTrees[] = $course = new Course ($userCourse, $listOfCourseTrees);
     }
 
+    foreach ($listOfCourseTrees as &$course){
+      $currentPrereq = array();
+      foreach ($course->prerequisiteList as $key => &$p){
+        if (array_search($p->prereq_id,$currentPrereq)){
+          unset($course->prerequisiteList[$key]);
+        }
+        else
+          array_push($currentPrereq, $p->prereq_id);
+      }
+    }
+
     
     foreach ($listOfCourseTrees as $course){
       $course->assignLevel($course);
     }
     
-
     return $listOfCourseTrees;
   }
 }
@@ -64,14 +74,13 @@ class Course
         }
       foreach ($courseInfo as $coursePrereq){
         if (!empty($coursePrereq->prerequisite))
-          $this->addPrerequisiteObject($coursePrereq->prerequisite, $listOfCourseTrees);
+          $this->addPrerequisiteObject($coursePrereq->prerequisite, $this->id, $listOfCourseTrees);
       }
     }
   }
 
   //adds a prerequisite object to the current course, checks if that object exists already
-  function addPrerequisiteObject($prerequisiteCourseId, &$listOfCourseTrees){
-
+  function addPrerequisiteObject($prerequisiteCourseId, $parent_id, &$listOfCourseTrees){
     $already = false;
     foreach ($listOfCourseTrees as $course){
       if ($course->id == $prerequisiteCourseId){
@@ -81,7 +90,7 @@ class Course
     }
 
     if (!$already){
-      $listOfCourseTrees[] = $course = new Course ($prerequisiteCourseId, $listOfCourseTrees, $listOfCourseTrees);
+      $listOfCourseTrees[] = $course = new Course ($prerequisiteCourseId, $listOfCourseTrees);
       $this->prerequisiteList[] = new Prerequisite($course, $this->id, $listOfCourseTrees);
     }
   }

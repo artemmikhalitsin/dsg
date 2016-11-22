@@ -22,14 +22,11 @@ class CoursesController extends Controller
     }
 
 	public function generateSequence(){
-        /*
-
-        GENERATE COURSE POOL HERE (get ID's of desired courses)
-
-        */
-        $userProgram = array('527');//,'218','39','174'
+        $userProgram = DB::table('courses')
+        ->lists('course_id');
+        //$userProgram = array('348');//,'218','39','174'
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
-		return view('courses.sequence')->with(['sequenceInfo'=>$sequenceInfo]);
+		return view('courses.sequence', compact('sequenceInfo'));
 	}
 
     public function index()
