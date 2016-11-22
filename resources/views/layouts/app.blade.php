@@ -17,7 +17,7 @@
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
-	
+
 		.panel-heading{background-color:#3893aa!important}
 		.panel{color:grey;
 		margin:20px;}
@@ -48,7 +48,7 @@
 			height: auto;
 		}
 		div.img {
-			
+
 			margin: 10px;
 			float: left;
 			width: 120px;
@@ -56,7 +56,7 @@
 		}
 
 		div.img:hover{
-			
+
 			background-color: lightblue;
 			 border-radius: 15px;
 		}
@@ -68,13 +68,13 @@
 			text-decoration:none;
 			color:grey;
 		}
-		
+
 		div.desc:hover {
-			
+
 			color: white;
 			text-decoration: none;
 		}
-		
+
 		a:hover {
 		text-decoration: none;
 		}
@@ -99,9 +99,17 @@
                 </button>
 
                 <!-- Branding Image -->
+                @if (!Auth::guest())
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    <img class="img-responsive" src="{{{ asset('DSG_logo.jpg') }}}" style="width: 20px;height: 20px;">
+                </a>
+                @else
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img class="img-responsive" src="{{{ asset('DSG_logo.jpg') }}}" style="width: 20px;height: 20px;">
                 </a>
+                @endif
+
+
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -151,7 +159,8 @@
 
     <div class="footer">
         <br><br><br><br>
-        <p id="foot">RTEAM. All rights reserved.</p>
+        <p id="foot">RTEAM. All rights reserved. <br> Donations welcome!</p><br>
+
     </div>
 
     <!-- JavaScripts -->

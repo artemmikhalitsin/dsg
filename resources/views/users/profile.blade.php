@@ -14,23 +14,41 @@
 @section('content')
 <div class="container">
     <div class="row">
+         <div class="col-md-5 col-md-offset-1">
+              <div class="panel panel-primary">
+                 <div class="panel-heading">User Profile</div>
+
+                 <div class="panel-body">
+                   <b>  NAME </b><br>
+                     <span contenteditable="">{{ $user->name}}</span> <br> <br>
+                     <b> PROGRAM <br> </b>
+                     <span contenteditable="">{{ $user->program->program_name}}</span>  <br> <br>
+                     <b> EMAIL <br> </b>
+                     <span contenteditable="">{{ $user->email}}</span> <br><br>
+                     <a href="#">Change your profile</a>
+
+                 </div>
+
+             </div>
+         </div>
+         <div class="col-md-5">
+              <div class="panel panel-primary" style="padding-bottom:4%">
+                   <div class="panel-heading">Preferences</div>
+                        <div class="panel-body">
+                             {!!  Form::open()   !!}
+
+                             {!! Form::label('startTime', 'Start Time:') !!}<br>
+                             {!! Form::time('startTime', 'NEVER') !!}<br><br>
+                             {!! Form::label('endTime', 'End Time:') !!}<br>
+                             {!! Form::time('startTime', 'NEVER') !!}<br><br>
+                             {!! Form::label('courseLoad', 'Desired Course Load:') !!}<br>
+                             {!! Form::select('size', array('1' => '1 course', '2' => '2 courses', '3' => '3 courses', '4' => '4 courses', '5' => '5 courses', '6' => '6 courses')); !!}
+
+                             {!! Form::close() !!}
+                   </div>
+              </div>
+         </div>
         <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-primary">
-                <div class="panel-heading">User Profile</div>
-
-                <div class="panel-body">
-                  <b>  NAME </b><br>
-                    <span contenteditable="">{{ $user->name}}</span> <br> <br>
-                    <b> PROGRAM <br> </b>
-                    <span contenteditable="">{{ $user->program->program_name}}</span>  <br> <br>
-                    <b> EMAIL <br> </b>
-                    <span contenteditable="">{{ $user->email}}</span> <br><br>
-                    <a href="#">Change your profile</a>
-
-                </div>
-
-            </div>
-
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     List of Completed Courses
@@ -48,13 +66,13 @@
                         </thead>
                         <tbody>
                             @foreach($completedCourses as $course)
-                            <tr class="odd gradeX">
+                            <tr class="odd gradeX" id="classrow-{{$course->course_id}}">
                                 <td>{{ $course->course_code }}</td>
                                 <td>{{ $course->course_name }}</td>
                                 <td style="text-align: center;">{{ $course->credits }}</td>
                                 <td style="text-align: center;">
-                                    <a href="#" class="btn btn-danger btn-sm">
-                                    <span class="glyphicon glyphicon-remove-sign"></span> Delete</a>
+                                    <button class="btn btn-danger btn-sm" value="{{$course->course_id}}">
+                                    <span class="glyphicon glyphicon-remove-sign"></span> Delete</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -78,10 +96,33 @@
 
     <script>
     $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
-        });
-    });
+          var table = $('#dataTables-example').DataTable({
+              responsive: true
+         });
+
+         $('#dataTables-example tbody').on('click', 'td button', function(){
+            var course_id = $(this).val();
+
+              $.ajax({
+                  url: '/profile',
+                  type: 'POST',
+                  data: {
+                       course_id: course_id
+                  },
+                  success: function (data) {
+                     console.log(data);
+                     if(data['response'] == true)
+                     {
+                          var row = document.getElementById('classrow-'+course_id);
+                          $('#dataTables-example').DataTable()
+                                                      .row(row)
+                                                      .remove()
+                                                      .draw(false);
+                     }
+                   }
+              });
+         });
+   });
     </script>
 
 @endsection
