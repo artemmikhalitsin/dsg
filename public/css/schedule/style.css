@@ -311,26 +311,26 @@
   line-height: 1.2;
   margin-bottom: .2em;
 }
-#schedule-reset #schedule .cd-schedule .single-event[data-event="event-1"],
-#schedule-reset #schedule .cd-schedule [data-event="event-1"] .header-bg {
+#schedule-reset #schedule .cd-schedule .single-event[data-event="Lecture"],
+#schedule-reset #schedule .cd-schedule [data-event="Lecture"] .header-bg {
   /* this is used to set a background color for the event and the modal window */
   background: #577F92;
 }
-#schedule-reset #schedule .cd-schedule .single-event[data-event="event-1"]:hover {
+#schedule-reset #schedule .cd-schedule .single-event[data-event="Lecture"]:hover {
   background: #618da1;
 }
-#schedule-reset #schedule .cd-schedule .single-event[data-event="event-2"],
-#schedule-reset #schedule .cd-schedule [data-event="event-2"] .header-bg {
+#schedule-reset #schedule .cd-schedule .single-event[data-event="Tutorial"],
+#schedule-reset #schedule .cd-schedule [data-event="Tutorial"] .header-bg {
   background: #443453;
 }
-#schedule-reset #schedule .cd-schedule .single-event[data-event="event-2"]:hover {
+#schedule-reset #schedule .cd-schedule .single-event[data-event="Tutorial"]:hover {
   background: #513e63;
 }
-#schedule-reset #schedule .cd-schedule .single-event[data-event="event-3"],
-#schedule-reset #schedule .cd-schedule [data-event="event-3"] .header-bg {
+#schedule-reset #schedule .cd-schedule .single-event[data-event="Lab"],
+#schedule-reset #schedule .cd-schedule [data-event="Lab"] .header-bg {
   background: #A2B9B2;
 }
-#schedule-reset #schedule .cd-schedule .single-event[data-event="event-3"]:hover {
+#schedule-reset #schedule .cd-schedule .single-event[data-event="Lab"]:hover {
   background: #b1c4be;
 }
 #schedule-reset #schedule .cd-schedule .single-event[data-event="event-4"],

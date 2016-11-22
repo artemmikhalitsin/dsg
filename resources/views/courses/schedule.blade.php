@@ -61,7 +61,7 @@
                     						<div class="top-info"><span>Monday</span></div>
                                                   <ul>
                     						@foreach($schedule[0] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="event-1">
+                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="{{$timeslot["type"]}}">
                     								<a href="#0">
                     									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}"</em>
                     								</a>
@@ -74,7 +74,7 @@
                     						<div class="top-info"><span>Tuesday</span></div>
                                                   <ul>
                     						@foreach($schedule[1] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="event-1">
+                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="{{$timeslot["type"]}}">
                     								<a href="#0">
                     									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
@@ -87,7 +87,7 @@
                     						<div class="top-info"><span>Wednesday</span></div>
                     						<ul>
                                                        @foreach($schedule[2] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="event-1">
+                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="{{$timeslot["type"]}}">
                     								<a href="#0">
                     									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
@@ -100,7 +100,7 @@
                     						<div class="top-info"><span>Thursday</span></div>
                     						<ul>
                                                        @foreach($schedule[3] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="event-1">
+                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="{{$timeslot["type"]}}">
                     								<a href="#0">
                     									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
@@ -113,7 +113,7 @@
                     						<div class="top-info"><span>Friday</span></div>
                     						<ul>
                                                        @foreach($schedule[4] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="event-1">
+                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="{{$timeslot["type"]}}">
                     								<a href="#0">
                     									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
@@ -126,7 +126,7 @@
                     						<div class="top-info"><span>Saturday</span></div>
                     						<ul>
                                                        @foreach($schedule[5] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="event-1">
+                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="{{$timeslot["type"]}}">
                     								<a href="#0">
                     									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
