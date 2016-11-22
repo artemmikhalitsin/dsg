@@ -65,9 +65,74 @@ class User extends Authenticatable
           return false;
     }
 
+    public function removeCompletedCourse($course_id)
+    {
+         $table = DB::table('completedCourses')->where('user_id',$this->id)
+                                                  ->where('course_id',$course_id);
+          if($table->exists())
+               {
+                    $table->delete();
+                    return true;
+               }
+          return false;
+    }
+
     // gets the list of completed courses of the logged in user
     public static function getCompletedCourses()
     {
         return Auth::user()->courses;
     }
+
+    public function addLectureToSchedule($lecture_id)
+    {
+         $schedule = DB::table('schedule');
+         $exists = DB::table('schedule')->where('user_id', $this->id)
+                                        ->where('lecture_id', $lecture_id)->exists();
+          if(!$exists)
+          {
+               $schedule->insert(
+                    [
+                         [
+                              'lecture_id' => $lecture_id,
+                              'user_id' => $user_id
+                         ]
+                    ]
+               );
+          }
+    }
+    public function addTutorialToSchedule($tutorial_id)
+    {
+         $schedule = DB::table('schedule');
+         $exists = DB::table('schedule')->where('user_id', $this->id)
+                                        ->where('tutorial_id', $tutorial_id)->exists();
+          if(!$exists)
+          {
+               $schedule->insert(
+                    [
+                         [
+                              'tutorial_id' => $tutorial_id,
+                              'user_id' => $user_id
+                         ]
+                    ]
+               );
+          }
+    }
+
+    public function addLabToSchedule($lab_id)
+    {
+         $schedule = DB::table('schedule');
+         $exists = DB::table('schedule')->where('user_id', $this->id)
+                                        ->where('lab_id', $lab_id)->exists();
+          if(!$exists)
+          {
+               $schedule->insert(
+                    [
+                         [
+                              'lab_id' => $lab_id,
+                              'user_id' => $user_id
+                         ]
+                    ]
+               );
+          }
+}
 }

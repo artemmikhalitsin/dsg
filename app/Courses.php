@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\Auth;
 
+use DB;
+
 class Courses extends Model
 {
 
@@ -30,7 +32,7 @@ class Courses extends Model
         return $this->belongsToMany('App\User', 'completedCourses', 'course_id', 'user_id');
     }
 
-    // gets the list of programs in which a specific course is offered 
+    // gets the list of programs in which a specific course is offered
     public function program()
     {
         return $this->belongsToMany('App\Program', 'courseProgram', 'course_id', 'program_id')->withPivot('course_type');
@@ -87,6 +89,115 @@ class Courses extends Model
                 ['programs.program_id', Auth::user()->program_id],
                 ['users.id', Auth::user()->id]
             ])->get();
+    }
+
+    public static function getUserSchedule()
+    {
+         $result = [
+              '0' => [],
+              '1' => [],
+              '2' => [],
+              '3' => [],
+              '4' => [],
+              '5' => [],
+              '6' => [],
+         ];
+         $user = Auth::user();
+         $schedule = DB::table('schedule')->where('user_id', $user->id)->get();
+         foreach($schedule as $timeslot)
+         {
+              if(isset($timeslot->lecture_id))
+              {
+                   $lecture = DB::table('lectures')
+                              ->where('lecture_id', $timeslot->lecture_id);
+                   $days = $lecture->value('day');
+                   $course_id = $lecture->value('course_id');
+                   $course = DB::table('courses')->where('course_id', $course_id);
+                   $course_code = $course->value('course_code');
+                   $course_name = $course->value('course_name');
+                   if($lecture->value('start_time') != "TBA")
+                   {
+                        $start_time = date("G:i", strtotime($lecture->value('start_time')));
+                        $end_time = date("G:i", strtotime($lecture->value('end_time')));
+                    }
+                    else
+                    {
+                         $start_time = $lecture->value('start_time');
+                         $end_time = $lecture->value('end_time');
+                    }
+                    $type = 'Lecture';
+              }
+              if(isset($timeslot->tutorial_id))
+              {
+                   $tutorial = DB::table('tutorials')
+                              ->where('tutorial_id', $timeslot->tutorial_id);
+                   $days = $tutorial->value('day');
+                   $lecture = DB::table('lectures')
+                              ->where('lecture_id', $tutorial->value('lecture_id'));
+                   $course_id = $lecture->value('course_id');
+                   $course = DB::table('courses')->where('course_id', $course_id);
+                   $course_code = $course->value('course_code');
+                   $course_name = $course->value('course_name');
+                   if($lecture->value('start_time') != "TBA")
+                   {
+                        $start_time = date("G:i", strtotime($tutorial->value('start_time')));
+                        $end_time = date("G:i", strtotime($tutorial->value('end_time')));
+                    }
+                    else
+                    {
+                         $start_time = $tutorial->value('start_time');
+                         $end_time = $tutorial->value('end_time');
+                    }
+                    $type = 'Tutorial';
+              }
+              if(isset($timeslot->lab_id))
+              {
+                   $lab = DB::table('labs')
+                              ->where('lab_id', $timeslot->lab_id);
+                   $days = $lab->value('day');
+                   $lecture = DB::table('lectures')
+                              ->where('lecture_id', $labs->value('lecture_id'));
+                   $course_id = $lecture->value('course_id');
+                   $course = DB::table('courses')->where('course_id', $course_id);
+                   $course_code = $course->value('course_code');
+                   $course_name = $course->value('course_name');
+                   if($lab->value('start_time') != "TBA")
+                   {
+                        $start_time = date("G:i", strtotime($lab->value('start_time')));
+                        $end_time = date("G:i", strtotime($lab->value('end_time')));
+                    }
+                    else
+                    {
+                         $start_time = $lab->value('start_time');
+                         $end_time = $lab->value('end_time');
+                    }
+                    $type = 'Lab';
+              }
+              $object =
+              [
+                   'course_code' => $course_code,
+                   'course_name' => $course_name,
+                   'start_time' => $start_time,
+                   'end_time' => $end_time,
+                   'type' => $type
+              ];
+              if($days == "TBA")
+              {
+                   $result[6]->array_push($object);
+              }
+              else
+              {
+                   $days = str_split($days);
+                   foreach($days as $key => $day)
+                   {
+                        if(!($day == '-'))
+                        {
+                             array_push($result[$key], $object);
+                        }
+                   }
+              }
+         }
+         return $result;
     }
 }
 
