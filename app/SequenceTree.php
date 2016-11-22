@@ -12,7 +12,7 @@ class SequenceTree extends Model
 {
   //Everything starts here:
   public static function getOutput(){
-    $userProgram = array('18'); //,'218','39','174'
+    $userProgram = array('18','218','39','174'); //,'218','39','174'
     $CourseList = [];
 
     foreach ($userProgram as $userCourse){
