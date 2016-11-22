@@ -20,7 +20,8 @@ class CoursesController extends Controller
     }
 
 	public function generateSequence(){
-		$sequenceInfo = SequenceTree::getOutput();
+        $userProgram = array('348');//,'218','39','174'
+		$sequenceInfo = SequenceTree::getOutput($userProgram);
 		return view('courses.sequence', compact('sequenceInfo'));
 	}
 

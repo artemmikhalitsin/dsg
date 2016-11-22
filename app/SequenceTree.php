@@ -11,13 +11,18 @@ use DB;
 class SequenceTree extends Model
 {
   //Everything starts here:
-  public static function getOutput(){
-    $userProgram = array('18','218','39','174'); //,'218','39','174'
+  public static function getOutput($userProgram){
     $CourseList = [];
 
     foreach ($userProgram as $userCourse){
       $CourseList[] = $course = new Course ($userCourse, $CourseList);
     }
+
+    
+    foreach ($CourseList as $course){
+      $course->assignLevel($course);
+    }
+    
 
     return json_encode($CourseList);
   }
@@ -74,6 +79,25 @@ class Course
     if (!$already){
       $CourseList[] = $course = new Course ($prerequisiteCourseId, $CourseList, $CourseList);
       $this->prerequisiteList[] = new Prerequisite($course, $this->id, $CourseList);
+    }
+  }
+
+  //a course and the final list of courses to take
+  function assignLevel(&$rootCourse) {
+    if ($this->level == -1){
+      $maxLevel = -1; //OVER 9000
+      if (empty($this->prerequisiteList)) 
+        $this-> level = 0;
+      else {
+        foreach($this->prerequisiteList as &$prerequisite){
+          foreach($prerequisite->prerequisiteChoices as &$course){
+            $course->assignLevel($course);
+            if ($course->level > $maxLevel)
+              $maxLevel = $course->level;
+          }
+        }
+        $this->level = $maxLevel + 1;
+      }
     }
   }
 
@@ -150,13 +174,13 @@ class Prerequisite
     $this->parent_id = $parent_id;
     
     $prereqInfo = DB::table('prerequisites')
-    ->select('prereq_id')
+    ->select('prereq_id', 'iscorequisite')
     ->where('prerequisite', '=', $prerequisite->id)
     ->where('course_id', '=', $parent_id)
     ->get();
 
     $this->prereq_id = $prereqInfo[0]->prereq_id;
-
+    $this->isCorequisite = $prereqInfo[0]->iscorequisite;
     //this gets the other options
     $this->getOrReq($CourseList);
   }
