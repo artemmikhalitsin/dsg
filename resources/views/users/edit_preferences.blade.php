@@ -7,7 +7,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Preferences</div>
                 <div class="panel-body">
-				{!!  Form::open(['url' => '', 'class' => 'form-horizontal'])   !!}
+				{!!  Form::model([$preferences, 'url' => '', 'method' => 'PATCH', class' => 'form-horizontal'])   !!}
 					@include('users.preferences_form')
 				{!! Form::close() !!}
 				</div>
