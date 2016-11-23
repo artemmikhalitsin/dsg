@@ -27,9 +27,9 @@ Route::get('/addCompletedCourses', 'CoursesController@addCompletedCourses');
 Route::get('/schedule', 'CoursesController@schedule');
 Route::get('/sequence', 'CoursesController@generateSequence');
 Route::get('/profile', 'UserController@profile');
-Route::get('/preferences', 'UserController@preferences');
+Route::get('/preferences', 'PreferencesController@create');
 
 Route::post('/completedCourses', 'UserController@addCompletedCourse');
-
-//Route::get('/schedule', 'UserController@schedule');
 Route::post('/profile', 'UserController@removeCompletedCourse');
+Route::post('/preferences', 'PreferencesController@store');
+Route::post('/updatePreferences', 'PreferencesController@update');
