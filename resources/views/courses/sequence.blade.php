@@ -6,7 +6,7 @@
     {{$s->name}} | {{$s->level}} |
     @foreach ($s->prerequisiteList as $p)
     (
-    [{{$p->prereq_id}}] 
+    [{{$p->prereq_id}}] [{{$p->isCorequisite}}]
         @for ($i = 0; $i < (sizeof($p->prerequisiteChoices) - 1); $i++)
 
             {{$p->prerequisiteChoices[$i]->name}} or

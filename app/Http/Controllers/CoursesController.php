@@ -26,16 +26,23 @@ class CoursesController extends Controller
 	public function generateSequence(){
 
         $userProgram = DB::table('courses')
-        ->lists('course_id');
-        //$userProgram = array('348');//,'218','39','174'
+		->join('courseprogram' , 'courses.course_id', '=' , 'courseprogram.course_id')
+		->where('program_id','=','1')
+		->where('course_type','=','program_course')
+        ->lists('courses.course_id');
+        //$userProgram = array('218');//,'218','39','174'
+		
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
 		$sequenceInfo = sortByLevel($sequenceInfo);
+		
 		$sequence = initSequence(4);
+		
 		foreach($sequenceInfo as $si)
 		{
 			$sequence=plantTrees(0, $sequence, $si);
 		}
 		printSeq($sequence);
+
 		return view('courses.sequence')->with(['sequenceInfo'=>$sequenceInfo]);
 		
 	}
@@ -171,19 +178,17 @@ function plantTrees($start, $seq, $co) // semester, sequence, and current course
 			$seq[$start][$a]=null;
 		}
 	}
+	
 	$spotsOnLevel = findNumberOfPlaces($seq, $start);
-	$myfile = fopen("errlog.txt", "w") or die("Unable to open file!");
-	fwrite($myfile, $start);
-	fclose($myfile);
 	
 	//printSeq($seq);
-	if(!empty($co -> prerequisites))
+	if(!empty($co -> prerequisiteList))
 	{	
 		//echo "HAS PRQS MAN \n";
-		foreach($co -> prerequisites as $p) //extract prerequistes and corequistes
+		foreach($co -> prerequisiteList as $p) //extract prerequistes and corequistes
 		{
 			//echo "prqCount: ".count($co -> prerequisites)."\n";
-			//echo "prqID: ".$p -> prerequisiteChoices[0]->id."\n";
+			//echo "prqID: ".$p -> prerequisiteChoices[0]->name."\n";
 			if($p ->isCorequisite == 0)
 				$prereqs[] = $p -> prerequisiteChoices[0];
 			
@@ -218,15 +223,16 @@ function plantTrees($start, $seq, $co) // semester, sequence, and current course
 		//place prereqs
 		if(!empty($prereqs)) 
 		{	
+			//echo "pRQ";
 			foreach($prereqs as &$prq)
 					$seq=plantTrees($nextStart, $seq, $prq);
 		}
-		
 		//place coreqs
 		if(!empty($coreqs))
 		{
 			foreach($coreqs as &$crq)
 			{
+				//echo "CRQ".$crq -> name;
 				if($crq -> level >= $start) //if the level of the crq is higher the current semester, then it must be first attempted to be placed at the same level as its parent.
 					$seq=plantTrees($nextStart-1, $seq, $crq);
 				else
