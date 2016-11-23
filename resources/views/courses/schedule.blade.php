@@ -173,7 +173,7 @@
 <script>
 	if(!window.jQuery){
 		document.write(
-	'<script src="/js/schedule/jquery-3.0.0.min.js"><\/script>');
+	'<script src="/js/schedule/jquery-3.0.0.min.js"><\/script>)';
 	}
 </script>
 <script src="/js/schedule/main.js"></script>
