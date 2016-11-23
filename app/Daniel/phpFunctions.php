@@ -54,45 +54,7 @@ function findAndReplace($c, $cl)
 /**
 *assigns level to a single class and all of its children, and also generates subtrees. Meant to go in a for loop
 */
-function assignLevel($c, $cl) //a course and the final list of courses to take
-{
-	echo "id: ".$c -> getId()." :: ";
-	$currentLevel = -1;
-	$prereqs = '';
-	$prereqs = $c -> getPrq(); //gets prerequisites
-	$c = (array)$c;
-	//$c['subtree']=array();
-	//$c['subtree'][0]= $c;
-	$c = (object)$c; //creates subtree
-	
-	if(empty($prereqs)) //if course is a leaf, it is treated as a leaf
-		$c -> level = 0;
-	else
-	{
-		foreach($prereqs as &$prq)  
-		{
-			echo $prq -> getId()." ";
-			if(!(inArrayCourse($prq, $cl))) 		//if its prerequisites are not meant to be taken (for example they were taken before)
-				;					//nothing happens. It will be treated as leaf because of the last line in the else
-			else if($prq ->level != -1) //if its prerequisite was already visited and got a height
-			{
-				$currentLevel=max($currentLevel, $prq->level); //level of parent must be higher
-				//$c['subtree']=array_merge($c['subtree'], $prq['subtree']); //its subtree is added to subtree
-			}
-			else //else the child are unvisited
-			{
-				$prq=assignLevel($prq, $cl); //get visited
-				$prereqs=findAndReplace($prq, $prereqs); //updates prerequisites
-				$currentLevel=max($currentLevel, $prq->level); //checks level
-				//$c['subtree']=array_merge($c['subtree'], $prq['subtree']); //subtrees added
-			}
-		}
-		$c -> level = ($currentLevel + 1); //level becomes +1 above highest child
-	}
-	$c -> prerequisites = $prereqs; //ipdates prerequisites
-	return $c;
-	
-}
+
 
 /*
 Ensures all corequisites must have the same height

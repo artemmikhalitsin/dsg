@@ -12,6 +12,8 @@ use App\Courses;
 
 use App\SequenceTree;
 
+use DB;
+
 class CoursesController extends Controller
 {
 	public function __construct()
@@ -20,7 +22,10 @@ class CoursesController extends Controller
     }
 
 	public function generateSequence(){
-		$sequenceInfo = SequenceTree::getOutput();
+        $userProgram = DB::table('courses')
+        ->lists('course_id');
+        //$userProgram = array('348');//,'218','39','174'
+		$sequenceInfo = SequenceTree::getOutput($userProgram);
 		return view('courses.sequence', compact('sequenceInfo'));
 	}
 
