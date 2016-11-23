@@ -31,11 +31,13 @@ class CoursesController extends Controller
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
 		$sequenceInfo = sortByLevel($sequenceInfo);
 		$sequence = initSequence(4);
-		/*foreach($sequenceInfo as $si)
+		foreach($sequenceInfo as $si)
 		{
 			$sequence=plantTrees(0, $sequence, $si);
-		}*/
+		}
+		printSeq($sequence);
 		return view('courses.sequence')->with(['sequenceInfo'=>$sequenceInfo]);
+		
 	}
 
     public function index()
@@ -55,9 +57,6 @@ class CoursesController extends Controller
     }
 }
 
-/**
-*finds the last semester where there is room to plant a tree. Our semesters are the rows of $sequence
-*/
 function findLastEmptySemester($s) //initialized sequence as input
 {
 	$rows = (count($s)); //these are our total semeseters
@@ -167,15 +166,24 @@ function plantTrees($start, $seq, $co) // semester, sequence, and current course
 	if(!array_key_exists($start, $seq)) //if the current semester doesn't exists, we create it. haha
 	{
 		$seq[]=array();
+		for($a=0; $a<count($seq[0]); $a++)
+		{
+			$seq[$start][$a]=null;
+		}
 	}
 	$spotsOnLevel = findNumberOfPlaces($seq, $start);
 	$myfile = fopen("errlog.txt", "w") or die("Unable to open file!");
 	fwrite($myfile, $start);
 	fclose($myfile);
-	if(!empty ($co -> prerequisiteList))
+	
+	//printSeq($seq);
+	if(!empty($co -> prerequisites))
 	{	
-		foreach($co -> prerequisiteList as $p) //extract prerequistes and corequistes
+		//echo "HAS PRQS MAN \n";
+		foreach($co -> prerequisites as $p) //extract prerequistes and corequistes
 		{
+			//echo "prqCount: ".count($co -> prerequisites)."\n";
+			//echo "prqID: ".$p -> prerequisiteChoices[0]->id."\n";
 			if($p ->isCorequisite == 0)
 				$prereqs[] = $p -> prerequisiteChoices[0];
 			
@@ -191,6 +199,7 @@ function plantTrees($start, $seq, $co) // semester, sequence, and current course
 		//place course
 		if($spotsOnLevel>0) //if there is room in current semester
 		{
+			//echo "placing course".$co->level."\n";
 			for($b = 0; $b<count($seq[$start]); $b++)  //find room and place course
 			{
 				if(is_null($seq[$start][$b]))
@@ -227,6 +236,19 @@ function plantTrees($start, $seq, $co) // semester, sequence, and current course
 	}
 	return $seq;
 }	
+
+function printSeq($seqs) //prints sequence I guess
+{
+	for($a = 0; $a<count($seqs); $a++)
+	{
+		for($b = 0; $b<count($seqs[$a]); $b++)
+		{
+			if(!is_null($seqs[$a][$b]))
+				echo $seqs[$a][$b] -> name." "; 
+		}
+		echo '<br>';
+	}
+}
 
 
 ?>
