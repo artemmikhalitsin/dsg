@@ -30,4 +30,6 @@ Route::get('/profile', 'UserController@profile');
 Route::get('/preferences', 'UserController@preferences');
 
 Route::post('/completedCourses', 'UserController@addCompletedCourse');
+
+//Route::get('/schedule', 'UserController@schedule');
 Route::post('/profile', 'UserController@removeCompletedCourse');
