@@ -21,15 +21,9 @@ class UserController extends Controller
     // gets the profile info of the logged in user and their completed courses list
     public function profile()
     {
-        $user= Auth::user();
+        $user = Auth::user();
         $completedCourses = User::getCompletedCourses();
         return view('users/profile', compact('user', 'completedCourses'));
-    }
-
-    // used to load the preferences form view
-    public function preferences()
-    {
-        return view('users/preferences');
     }
 
      public function addCompletedCourse(Request $request)

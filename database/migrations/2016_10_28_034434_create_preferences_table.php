@@ -14,9 +14,10 @@ class CreatePreferencesTable extends Migration
     {
         Schema::create('preferences', function (Blueprint $table) {
             $table->increments('preference_id');
-            $table->string('day_off');
+            $table->string('days_off');
             $table->string('starting_time');
             $table->string('finishing_time');
+            $table->string('course_load');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

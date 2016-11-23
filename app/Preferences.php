@@ -6,7 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Preferences extends Model
 {
-     protected $fillable = [];
+     protected $fillable = [
+     	'days_off',
+     	'starting_time',
+     	'finishing_time',
+     	'course_load',
+     	'user_id'
+     ];
+
+     public $timestamps = false;
+
      // lists the user's info to whome a preference belongs to
      public function user()
      {
