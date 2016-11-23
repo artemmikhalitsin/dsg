@@ -16,21 +16,24 @@ class PreferencesTableSeeder extends Seeder
         DB::table('preferences')->insert([
         	[
                 'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
-                'day_off' => 'Mo',
+                'days_off' => 'Mo',
                 'starting_time' => '8:45AM',
-                'finishing_time' => '5:30PM'
+                'finishing_time' => '5:30PM',
+                'course_load' => 5
             ],
             [
                 'user_id' => DB::table('users')->where('email', 'artem@yahoo.ca')->value('id'),
-                'day_off' => 'Fr',
+                'days_off' => 'Fr',
                 'starting_time' => '10:15AM',
-                'finishing_time' => '5:30PM'
+                'finishing_time' => '5:30PM',
+                'course_load' => 5
             ],
             [
                 'user_id' => DB::table('users')->where('email', 'daniel@yahoo.ca')->value('id'),
                 'day_off' => 'We',
                 'starting_time' => '11:45AM',
-                'finishing_time' => '8:30PM'
+                'finishing_time' => '8:30PM',
+                'course_load' => 4
             ],
         ]);
     }

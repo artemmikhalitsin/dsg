@@ -9,6 +9,10 @@
 
     <!-- Custom CSS -->
     <link href="/css/dataTables/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="/css/preferences/bootstrap-timepicker.min.css">
 @endsection
 
 @section('content')
@@ -35,16 +39,9 @@
               <div class="panel panel-primary" style="padding-bottom:4%">
                    <div class="panel-heading">Preferences</div>
                         <div class="panel-body">
-                             {!!  Form::open()   !!}
-
-                             {!! Form::label('startTime', 'Start Time:') !!}<br>
-                             {!! Form::time('startTime', 'NEVER') !!}<br><br>
-                             {!! Form::label('endTime', 'End Time:') !!}<br>
-                             {!! Form::time('startTime', 'NEVER') !!}<br><br>
-                             {!! Form::label('courseLoad', 'Desired Course Load:') !!}<br>
-                             {!! Form::select('size', array('1' => '1 course', '2' => '2 courses', '3' => '3 courses', '4' => '4 courses', '5' => '5 courses', '6' => '6 courses')); !!}
-
-                             {!! Form::close() !!}
+                          {!!  Form::model($preferences, ['url' => 'updatePreferences', 'class' => 'form-horizontal'])   !!}
+                              @include('users.preferences_form')
+                          {!! Form::close() !!}
                    </div>
               </div>
          </div>
@@ -93,6 +90,12 @@
     <script src="/js/dataTables/jquery.dataTables.min.js"></script>
     <script src="/js/dataTables/dataTables.bootstrap.min.js"></script>
     <script src="/js/dataTables/dataTables.responsive.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+    <script src="/js/preferences/bootstrap-timepicker.min.js"></script>
+    <script type="text/javascript">
+        $('#timepicker1').timepicker();
+        $('#timepicker2').timepicker();
+    </script>
 
     <script>
     $(document).ready(function() {
