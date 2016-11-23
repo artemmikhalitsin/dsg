@@ -17,7 +17,7 @@ class SequenceTree extends Model
     foreach ($userProgram as $userCourse){
       $listOfCourseTrees[] = $course = new Course ($userCourse, $listOfCourseTrees);
     }
-
+	
     foreach ($listOfCourseTrees as &$course){
       $currentPrereq = array();
       foreach ($course->prerequisiteList as $key => &$p){
@@ -28,12 +28,13 @@ class SequenceTree extends Model
           array_push($currentPrereq, $p->prereq_id);
       }
     }
-
-    
-    foreach ($listOfCourseTrees as $course){
+	
+	
+    foreach ($listOfCourseTrees as &$course){
       $course->assignLevel($course);
     }
-    
+
+	
     return $listOfCourseTrees;
   }
 }
@@ -48,6 +49,7 @@ class Course
   var $level = -1;  
 
   function __construct($id, &$listOfCourseTrees) {
+
     $this->id = $id;
     $courseInfo = DB::table('courses')
       ->join('courseavailability','courses.course_id', '=','courseavailability.course_id')
@@ -72,6 +74,7 @@ class Course
           $this->fall = 1;
           $this->winter = 1;
         }
+	//echo 'creating '.$this->name. '<br>';
       foreach ($courseInfo as $coursePrereq){
         if (!empty($coursePrereq->prerequisite))
           $this->addPrerequisiteObject($coursePrereq->prerequisite, $this->id, $listOfCourseTrees);
@@ -96,14 +99,14 @@ class Course
   }
 
   //a course and the final list of courses to take
-  function assignLevel(&$rootCourse) {
+  function assignLevel($rootCourse) {
     if ($this->level == -1){
       $maxLevel = -1; //OVER 9000
       if (empty($this->prerequisiteList)) 
         $this-> level = 0;
       else {
-        foreach($this->prerequisiteList as &$prerequisite){
-          foreach($prerequisite->prerequisiteChoices as &$course){
+        foreach($this->prerequisiteList as $prerequisite){
+          foreach($prerequisite->prerequisiteChoices as $course){
             $course->assignLevel($course);
             if ($course->level > $maxLevel)
               $maxLevel = $course->level;

@@ -17,7 +17,7 @@
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
-	
+
 		.panel-heading{background-color:#3893aa!important}
 		.panel{color:grey;
 		margin:20px;}
@@ -48,18 +48,35 @@
 			height: auto;
 		}
 		div.img {
-			
+
 			margin: 10px;
 			float: left;
-			width: 150px;
-			height:190px;
+			width: 120px;
+			height:180px;
 		}
 
+		div.img:hover{
+
+			background-color: lightblue;
+			 border-radius: 15px;
+		}
 		div.desc {
 			padding: 10px;
 			text-align: center;
 			bottom:60px;;
 			font-size:12px;
+			text-decoration:none;
+			color:grey;
+		}
+
+		div.desc:hover {
+
+			color: white;
+			text-decoration: none;
+		}
+
+		a:hover {
+		text-decoration: none;
 		}
 
     </style>
@@ -82,9 +99,17 @@
                 </button>
 
                 <!-- Branding Image -->
+                @if (!Auth::guest())
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    <img class="img-responsive" src="{{{ asset('DSG_logo.jpg') }}}" style="width: 20px;height: 20px;">
+                </a>
+                @else
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img class="img-responsive" src="{{{ asset('DSG_logo.jpg') }}}" style="width: 20px;height: 20px;">
                 </a>
+                @endif
+
+
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -96,6 +121,9 @@
                     @endif
 					@if (!Auth::guest())
                         <li><a href="{{ url('/preferences') }}"> <span class="glyphicon glyphicon-cog"></span> Add Preferences</a></li>
+                    @endif
+					@if (!Auth::guest())
+                    <li><a href="{{ url('/sequence') }}"> <span class="glyphicon glyphicon-tasks"></span> Generate Sequence</a></li>
                     @endif
 					@if (!Auth::guest())
                         <li><a href="{{ url('/#') }}"> <span class="glyphicon glyphicon-calendar"></span> Generate Schedule</a></li>
@@ -131,7 +159,8 @@
 
     <div class="footer">
         <br><br><br><br>
-        <p id="foot">RTEAM. All rights reserved.</p>
+        <p id="foot">RTEAM. All rights reserved. <br> Donations welcome!</p><br>
+
     </div>
 
     <!-- JavaScripts -->

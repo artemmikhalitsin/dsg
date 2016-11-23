@@ -13,33 +13,42 @@
 					<div class="img">
 					@if (!Auth::guest())
 						<a href="{{ url('/addCompletedCourses') }}"><img src="{{{ asset('add.png') }}}"></a>
-						<div class="desc">ADD COMPLETED COURSES</div>
+						<a href="{{ url('/addCompletedCourses') }}" text-decoration="none"><div class="desc">ADD COMPLETED COURSES</div></a>
 					@endif
 					</div>
 					
 					<div class="img">
 					@if (!Auth::guest())
 						<a href="{{ url('/preferences') }}"><img src="{{{ asset('pref.png') }}}"></a>
-						<div class="desc">ADD PREFERENCES</div>
+						<a href="{{ url('/preferences') }}"><div class="desc">ADD PREFERENCES</div></a>
 					@endif
 					</div>
 					
 					<div class="img">
-					<a href="{{ url('/#') }}"><img src="{{{ asset('list.png') }}}"></a>
-						<div class="desc">BROWSE COURSES</div>
+						<a href="{{ url('/#') }}"><img src="{{{ asset('list.png') }}}"></a>
+						<a href="{{ url('/#') }}"><div class="desc">BROWSE COURSES</div></a>
 					</div>
 					
 					<div class="img">
 					@if (!Auth::guest())
 						<a href="{{ url('/profile') }}"><img src="{{{ asset('profile.png') }}}"></a>
-						<div class="desc">VIEW PROFILE</div>
+						<a href="{{ url('/profile') }}"><div class="desc">VIEW PROFILE</div></a>
 					@endif
 					</div>
 					
 					<div class="img">
 					@if (!Auth::guest())
+						<a href="{{ url('/sequence') }}"><img src="{{{ asset('sequence.png') }}}"></a>
+						<a href="{{ url('/sequence') }}"><div class="desc">GENERATE SEQUENCE</div></a>
+					@endif
+					</div>
+					
+					
+					
+					<div class="img">
+					@if (!Auth::guest())
 						<a href="{{ url('/#') }}"><img src="{{{ asset('schedule.png') }}}"></a>
-						<div class="desc">GENERATE SCHEDULE</div>
+						<a href="{{ url('/#') }}"><div class="desc">GENERATE SCHEDULE</div></a>
 					@endif
 					</div>
 					

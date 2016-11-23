@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+	{{$courses}}
 	@if (!empty($courses))
 		<h1>Courses in your program</h1>
 	@endif
