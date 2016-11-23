@@ -21,7 +21,7 @@
 <div class="form-group">
     {!! Form::label('course_load', 'Course Load', ['class' => 'col-md-2 col-md-offset-2 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::selectRange('course_load', 1, 6, 5, ['class' => 'form-control']) !!}
+        {!! Form::selectRange('course_load', 1, 6, null, ['class' => 'form-control']) !!}
     </div>
 </div>
 <div class="form-group">

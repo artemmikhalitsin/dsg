@@ -11,6 +11,8 @@ use DB;
 
 use App\User;
 
+use App\Preferences;
+
 class UserController extends Controller
 {
     public function __construct()
@@ -22,8 +24,15 @@ class UserController extends Controller
     public function profile()
     {
         $user = Auth::user();
+        $pref = Preferences::where('user_id', $user->id);
+        $exists = $pref->exists();
+        $preferences = array();
+        if ($exists) {
+          $pref_id = $pref->value('preference_id');
+          $preferences = Preferences::find($pref_id);
+        }
         $completedCourses = User::getCompletedCourses();
-        return view('users/profile', compact('user', 'completedCourses'));
+        return view('users/profile', compact('user', 'completedCourses', 'preferences'));
     }
 
      public function addCompletedCourse(Request $request)

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Preferences extends Model
 {
+     public $primaryKey = 'preference_id';
+
      protected $fillable = [
      	'days_off',
      	'starting_time',

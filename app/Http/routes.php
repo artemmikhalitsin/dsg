@@ -32,4 +32,4 @@ Route::get('/preferences', 'PreferencesController@create');
 Route::post('/completedCourses', 'UserController@addCompletedCourse');
 Route::post('/profile', 'UserController@removeCompletedCourse');
 Route::post('/preferences', 'PreferencesController@store');
-
+Route::post('/updatePreferences', 'PreferencesController@update');
