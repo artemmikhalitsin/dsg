@@ -15,7 +15,7 @@ class CreateScheduleTable extends Migration
         Schema::create('schedule', function (Blueprint $table) {
             $table->increments('schedule_id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('lecture_id')->nullable();
+            $table->unsignedInteger('lecture_id');
             $table->unsignedInteger('tutorial_id')->nullable();
             $table->unsignedInteger('lab_id')->nullable();
             //$table->primary(array('user_id', 'lecture_id'));

@@ -45,9 +45,7 @@
 }
 #schedule-reset #schedule {
   /* --------------------------------
-
   Main Components
-
   -------------------------------- */
 }
 #schedule-reset #schedule *, #schedule-reset #schedule *::after, #schedule-reset #schedule *::before {
@@ -207,7 +205,7 @@
     width: 100%;
   }
   #schedule-reset #schedule .cd-schedule .events .events-group {
-    width: 16.5%;
+    width: 16.65%;
     float: left;
     border: 1px solid #EAEAEA;
     /* reset style */
@@ -235,7 +233,7 @@
     margin-bottom: 0;
   }
   #schedule-reset #schedule .cd-schedule .events .events-group > ul {
-    height: 950px;
+    height: 1500px;
     /* reset style */
     display: block;
     overflow: visible;
@@ -285,7 +283,7 @@
 }
 #schedule-reset #schecdule .cd-schedule.loading .events .single-event {
   /* the class .loading is added by default to the .cd-schedule element
-	   it is removed as soon as the single events are placed in the schedule plan (using javascript) */
+     it is removed as soon as the single events are placed in the schedule plan (using javascript) */
   opacity: 0;
 }
 #schedule-reset #schedule .cd-schedule .event-name,
@@ -555,8 +553,8 @@
 @media only screen and (min-width: 800px) {
   #schedule-reset #schedule .cd-schedule.animation-completed .event-modal .close,
   #schedule-reset #schedule .cd-schedule.content-loaded.animation-completed .event-modal .event-info {
-    /* 	the .animation-completed class is added when the modal animation is completed
-			the .content-loaded class is added when the modal content has been loaded (using ajax) */
+    /*  the .animation-completed class is added when the modal animation is completed
+      the .content-loaded class is added when the modal content has been loaded (using ajax) */
     opacity: 1;
     -webkit-transition: opacity .2s;
     transition: opacity .2s;

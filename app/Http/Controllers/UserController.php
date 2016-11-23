@@ -38,10 +38,18 @@ class UserController extends Controller
           $added = Auth::user()->addCompletedCourse($course);
           return response()->json(['response' => $added]);
      }
-     public function removeCompletedCourse(Request $request)
-     {
+
+    public function schedule()
+    {
+        $schedule = User::getUserSchedule();
+
+        return view('courses.schedule', compact('schedule'));
+    }
+
+    public function removeCompletedCourse(Request $request)
+    {
           $course = $request->input('course_id');
           $removed = Auth::user()->removeCompletedCourse($course);
           return response()->json(['response' => $removed]);
-     }
+    }
 }

@@ -105,6 +105,7 @@ class User extends Authenticatable
                );
           }
     }
+
     public function addTutorialToSchedule($tutorial_id)
     {
          $schedule = DB::table('schedule');
@@ -139,5 +140,5 @@ class User extends Authenticatable
                     ]
                );
           }
-}
+    }
 }
