@@ -3,7 +3,7 @@
 @section('content')
 
 @foreach ($sequenceInfo as $s)
-    {{$s->name}} | {{$s->level}} |
+    {{$s->id}} | {{$s->name}} | {{$s->level}} |
     @foreach ($s->prerequisiteList as $p)
     (
     [{{$p->prereq_id}}] 
