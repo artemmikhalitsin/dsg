@@ -207,7 +207,7 @@
     width: 100%;
   }
   #schedule-reset #schedule .cd-schedule .events .events-group {
-    width: 16.5%;
+    width: 16.65%;
     float: left;
     border: 1px solid #EAEAEA;
     /* reset style */
@@ -235,7 +235,7 @@
     margin-bottom: 0;
   }
   #schedule-reset #schedule .cd-schedule .events .events-group > ul {
-    height: 277vh;
+    height: 1500px;
     /* reset style */
     display: block;
     overflow: visible;
