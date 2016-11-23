@@ -39,6 +39,15 @@ class CoursesController extends Controller
 
         return view('courses.completedCourses', compact('courses'));
     }
+
+    public function schedule()
+    {
+	    $schedule = Courses::getUserSchedule();
+
+	    return view('courses.schedule',  compact('schedule'));
+    }
+
+
 }
 
 ?>

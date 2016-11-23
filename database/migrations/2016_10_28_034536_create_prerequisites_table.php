@@ -16,7 +16,7 @@ class CreatePrerequisitesTable extends Migration
             $table->increments('prereq_id');
             $table->unsignedInteger('course_id');
             $table->unsignedInteger('prerequisite');
-            //$table->primary(array('course_id', 'prerequisite'));
+            $table->boolean('iscorequisite');
             $table->foreign('course_id')->references('course_id')->on('courses')->onDelete('cascade');
             $table->foreign('prerequisite')->references('course_id')->on('courses')->onDelete('cascade');
         });
