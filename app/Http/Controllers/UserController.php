@@ -20,7 +20,7 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    // gets the profile info of the logged in user and their completed courses list
+    // gets the profile info of the logged in user and their completed courses list and their preferences
     public function profile()
     {
         $user = Auth::user();
@@ -30,17 +30,19 @@ class UserController extends Controller
         if ($exists) {
           $pref_id = $pref->value('preference_id');
           $preferences = Preferences::find($pref_id);
+          $days_off = explode("|", $preferences->days_off);
+          $preferences->days_off = $days_off;
         }
         $completedCourses = User::getCompletedCourses();
         return view('users/profile', compact('user', 'completedCourses', 'preferences'));
     }
 
-     public function addCompletedCourse(Request $request)
-     {
-          $course = $request->input('course_id');
-          $added = Auth::user()->addCompletedCourse($course);
-          return response()->json(['response' => $added]);
-     }
+    public function addCompletedCourse(Request $request)
+    {
+        $course = $request->input('course_id');
+        $added = Auth::user()->addCompletedCourse($course);
+        return response()->json(['response' => $added]);
+    }
 
     public function schedule()
     {
