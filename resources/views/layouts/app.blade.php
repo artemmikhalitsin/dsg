@@ -118,18 +118,11 @@
                     <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                     @if (!Auth::guest())
                         <li><a href="{{ url('/addCompletedCourses') }}"><span class="glyphicon glyphicon-plus"></span> Add Completed Courses</a></li>
-                    @endif
-					@if (!Auth::guest())
                         <li><a href="{{ url('/preferences') }}"> <span class="glyphicon glyphicon-cog"></span> Add Preferences</a></li>
-                    @endif
-					@if (!Auth::guest())
-                    <li><a href="{{ url('/sequence') }}"> <span class="glyphicon glyphicon-tasks"></span> Generate Sequence</a></li>
-                    @endif
-					@if (!Auth::guest())
-                        <li><a href="{{ url('/#') }}"> <span class="glyphicon glyphicon-calendar"></span> Generate Schedule</a></li>
+                        <li><a href="{{ url('/sequence') }}"> <span class="glyphicon glyphicon-tasks"></span> Generate Sequence</a></li>
+                        <li><a href="#"> <span class="glyphicon glyphicon-calendar"></span> Generate Schedule</a></li>
                     @endif
                     <li><a href="#"> <span class="glyphicon glyphicon-list"></span> Browse Courses</a></li>
-
                 </ul>
 
                 <!-- Right Side Of Navbar -->
