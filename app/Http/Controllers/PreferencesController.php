@@ -22,49 +22,11 @@ class PreferencesController extends Controller
         return view('users/preferences');
     }
 
-    public function store(AddPreferencesRequest $request)
-    {
-    	$input = $request->all();
-    	$days = $input['days_off'];
-    	$days_off = "";
-
-    	foreach ($days as $key => $value) {
-    		$days_off .= $value; 
-    	}
-
-    	$existsAlready = Preferences::where('user_id', Auth::user()->id)->exists();
-
-    	if ($existsAlready) {
-    		Preferences::where('user_id', Auth::user()->id)
-    			->update([
-    					'days_off' => $days_off,
-		    			'starting_time' => $input['starting_time'],
-		    			'finishing_time' => $input['finishing_time'],
-		    			'course_load' => $input['course_load']
-    				]);
-    	}else{
-    		Preferences::Create(
-	    		[
-	    			'days_off' => $days_off,
-	    			'starting_time' => $input['starting_time'],
-	    			'finishing_time' => $input['finishing_time'],
-	    			'course_load' => $input['course_load'],
-	    			'user_id' => Auth::user()->id
-	    		]
-    		);
-    	}
-    	return redirect('/profile');
-    }
-
-    public function update(AddPreferencesRequest $request)
+    public function createOrUpdatePreferences($request)
     {
         $input = $request->all();
         $days = $input['days_off'];
-        $days_off = "";
-
-        foreach ($days as $key => $value) {
-            $days_off .= $value; 
-        }
+        $days_off = implode("|", $days);
 
         $existsAlready = Preferences::where('user_id', Auth::user()->id)->exists();
 
@@ -87,6 +49,17 @@ class PreferencesController extends Controller
                 ]
             );
         }
+    }
+
+    public function store(AddPreferencesRequest $request)
+    {
+    	Self::createOrUpdatePreferences($request);
+    	return redirect('/profile');
+    }
+
+    public function update(AddPreferencesRequest $request)
+    {
+        Self::createOrUpdatePreferences($request);
         return redirect('/home');
     }
 }
