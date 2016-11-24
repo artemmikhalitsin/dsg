@@ -118,7 +118,7 @@
                     <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                     @if (!Auth::guest())
                         <li><a href="{{ url('/addCompletedCourses') }}"><span class="glyphicon glyphicon-plus"></span> Add Completed Courses</a></li>
-                        <li><a href="{{ url('/preferences') }}"> <span class="glyphicon glyphicon-cog"></span> Add Preferences</a></li>
+                        <li><a href="{{ url('/profile') }}"> <span class="glyphicon glyphicon-cog"></span> Add Preferences</a></li>
                         <li><a href="{{ url('/sequence') }}"> <span class="glyphicon glyphicon-tasks"></span> Generate Sequence</a></li>
                         <li><a href="#"> <span class="glyphicon glyphicon-calendar"></span> Generate Schedule</a></li>
                     @endif
@@ -134,11 +134,12 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ ucwords(strtolower(Auth::user()->name)) }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/profile') }}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                                <li><a href="{{ url('/schedule') }}"><span class="glyphicon glyphicon-calendar"></span> View Schedule</a></li>
                                 <li><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                             </ul>
                         </li>
