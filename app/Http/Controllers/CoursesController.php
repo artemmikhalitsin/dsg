@@ -24,6 +24,7 @@ class CoursesController extends Controller
 		return view('courses.sequence', compact('sequenceInfo'));
 	}
 
+    // this will be removed
     public function index()
     {
         $electives = Courses::getProgramElectivesList();
@@ -39,15 +40,6 @@ class CoursesController extends Controller
 
         return view('courses.completedCourses', compact('courses'));
     }
-
-    public function schedule()
-    {
-	    $schedule = Courses::getUserSchedule();
-
-	    return view('courses.schedule',  compact('schedule'));
-    }
-
-
 }
 
 ?>

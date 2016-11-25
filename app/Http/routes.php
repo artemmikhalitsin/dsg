@@ -12,24 +12,24 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	if (!Auth::guest()) {
+		return redirect('/home');
+	}else{
+		return view('welcome');
+	}
 });
-
-// Route::get('/AddcompletedCourses', function () {
-//     return view('courses/completedCourses');
-// });
 
 Route::auth();
 
+// all the get requests
 Route::get('/home', 'HomeController@index');
 Route::get('/courses', 'CoursesController@index');
 Route::get('/addCompletedCourses', 'CoursesController@addCompletedCourses');
-Route::get('/schedule', 'CoursesController@schedule');
+Route::get('/schedule', 'UserController@schedule');
 Route::get('/sequence', 'CoursesController@generateSequence');
 Route::get('/profile', 'UserController@profile');
-Route::get('/preferences', 'PreferencesController@create');
 
+// all the post requests
 Route::post('/completedCourses', 'UserController@addCompletedCourse');
 Route::post('/profile', 'UserController@removeCompletedCourse');
-Route::post('/preferences', 'PreferencesController@store');
 Route::post('/updatePreferences', 'PreferencesController@update');

@@ -17,12 +17,7 @@ class PreferencesController extends Controller
         $this->middleware('auth');
     }
 
-	public function create()
-    {
-        return view('users/preferences');
-    }
-
-    public function createOrUpdatePreferences($request)
+    public function update(AddPreferencesRequest $request)
     {
         $input = $request->all();
         $days = $input['days_off'];
@@ -49,17 +44,6 @@ class PreferencesController extends Controller
                 ]
             );
         }
-    }
-
-    public function store(AddPreferencesRequest $request)
-    {
-    	Self::createOrUpdatePreferences($request);
-    	return redirect('/profile');
-    }
-
-    public function update(AddPreferencesRequest $request)
-    {
-        Self::createOrUpdatePreferences($request);
-        return redirect('/home');
+        return redirect('/profile');
     }
 }
