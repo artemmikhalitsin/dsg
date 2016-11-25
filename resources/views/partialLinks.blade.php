@@ -24,6 +24,6 @@
 </div>
 
 <div class="img">
-	<a href="#"><img src="{{{ asset('list.png') }}}"></a>
-	<a href="#"><div class="desc">BROWSE COURSES</div></a>
+	<a href="{{ url('/browseCourses') }}"><img src="{{{ asset('list.png') }}}"></a>
+	<a href="{{ url('/browseCourses') }}"><div class="desc">BROWSE COURSES</div></a>
 </div>
