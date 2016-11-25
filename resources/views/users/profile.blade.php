@@ -28,8 +28,7 @@
                      <b> PROGRAM <br> </b>
                      <span contenteditable="">{{ $user->program->program_name}}</span>  <br> <br>
                      <b> EMAIL <br> </b>
-                     <span contenteditable="">{{ $user->email}}</span> <br><br>
-                     <a href="#">Change your profile</a>
+                     <span contenteditable="">{{ $user->email}}</span> <br>
 
                  </div>
 

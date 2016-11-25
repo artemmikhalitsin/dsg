@@ -101,7 +101,7 @@
                 <!-- Branding Image -->
                 @if (!Auth::guest())
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    <img class="img-responsive" src="{{{ asset('DSG_logo.jpg') }}}" style="width: 20px;height: 20px;">
+                    <img class="img-responsive" src="{{{ asset('DSG_logo.jpg') }}}" style="width: 100px;height: 100px;">
                 </a>
                 @else
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -122,7 +122,7 @@
                         <li><a href="{{ url('/sequence') }}"> <span class="glyphicon glyphicon-tasks"></span> Generate Sequence</a></li>
                         <li><a href="#"> <span class="glyphicon glyphicon-calendar"></span> Generate Schedule</a></li>
                     @endif
-                    <li><a href="#"> <span class="glyphicon glyphicon-list"></span> Browse Courses</a></li>
+                    <li><a href="{{ url('/browseCourses') }}"> <span class="glyphicon glyphicon-list"></span> Browse Courses</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
