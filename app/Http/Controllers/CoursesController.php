@@ -40,6 +40,13 @@ class CoursesController extends Controller
 
         return view('courses.completedCourses', compact('courses'));
     }
+
+		public function browseCourses()
+    {
+        $courses = Courses::getOneProgramCoursesList();
+
+        return view('courses.browseCourses', compact('courses'));
+    }
 }
 
 ?>
