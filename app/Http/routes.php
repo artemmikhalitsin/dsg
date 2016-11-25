@@ -25,7 +25,7 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/courses', 'CoursesController@index');
 Route::get('/addCompletedCourses', 'CoursesController@addCompletedCourses');
-Route::get('/schedule', 'CoursesController@schedule');
+Route::get('/schedule', 'UserController@schedule');
 Route::get('/sequence', 'CoursesController@generateSequence');
 Route::get('/profile', 'UserController@profile');
 
