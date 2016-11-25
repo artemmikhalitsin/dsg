@@ -1,19 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<!--<div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-primary">
-				<div class="panel-heading">Sequence</div>
-					<div class="panel-body">
 
-					Sequence will appear here
+@foreach ($sequenceInfo as $s)
+    {{$s->name}} | {{$s->level}} |
+    @foreach ($s->prerequisiteList as $p)
+    (
+    [{{$p->prereq_id}}] [{{$p->isCorequisite}}]
+        @for ($i = 0; $i < (sizeof($p->prerequisiteChoices) - 1); $i++)
 
-				</div>
-			</div>
-		</div>
-	</div>
-</div>-->
-    {{ $sequenceInfo }}
+            {{$p->prerequisiteChoices[$i]->name}} or
+        @endfor
+        {{array_values(array_slice($p->prerequisiteChoices, -1))[0]->name}}
+    )
+    @endforeach
+    <br>
+@endforeach
+
 @endsection
