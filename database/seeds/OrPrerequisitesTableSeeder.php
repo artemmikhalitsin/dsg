@@ -51,10 +51,80 @@ class OrPrerequisitesTableSeeder extends Seeder
 			],
 			[
 				'prereq_id' => DB::table('prerequisites')->where([
+					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 371')->value('course_id')],
+					['prerequisite', '=', DB::table('courses')->where('course_code', 'ENGR 311')->value('course_id')]
+				])->value('prereq_id'), 
+				'course_id' => DB::table('courses')->where('course_code', 'ELEC 342')->value('course_id')
+			],
+			[
+				'prereq_id' => DB::table('prerequisites')->where([
+					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 371')->value('course_id')],
+					['prerequisite', '=', DB::table('courses')->where('course_code', 'ENGR 311')->value('course_id')]
+				])->value('prereq_id'), 
+				'course_id' => DB::table('courses')->where('course_code', 'ELEC 364')->value('course_id')
+			],
+			[
+				'prereq_id' => DB::table('prerequisites')->where([
+					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 480')->value('course_id')],
+					['prerequisite', '=', DB::table('courses')->where('course_code', 'AERO 371')->value('course_id')]
+				])->value('prereq_id'), 
+				'course_id' => DB::table('courses')->where('course_code', 'ELEC 372')->value('course_id')
+			],
+			[
+				'prereq_id' => DB::table('prerequisites')->where([
+					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 480')->value('course_id')],
+					['prerequisite', '=', DB::table('courses')->where('course_code', 'AERO 371')->value('course_id')]
+				])->value('prereq_id'), 
+				'course_id' => DB::table('courses')->where('course_code', 'MECH 371')->value('course_id')
+			],
+			[
+				'prereq_id' => DB::table('prerequisites')->where([
+					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 480')->value('course_id')],
+					['prerequisite', '=', DB::table('courses')->where('course_code', 'AERO 371')->value('course_id')]
+				])->value('prereq_id'), 
+				'course_id' => DB::table('courses')->where('course_code', 'SOEN 385')->value('course_id')
+			],
+			[
+				'prereq_id' => DB::table('prerequisites')->where([
+					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 482')->value('course_id')],
+					['prerequisite', '=', DB::table('courses')->where('course_code', 'ENGR 371')->value('course_id')]
+				])->value('prereq_id'), 
+				'course_id' => DB::table('courses')->where('course_code', 'COMP 233')->value('course_id')
+			],
+			[
+				'prereq_id' => DB::table('prerequisites')->where([
+					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 482')->value('course_id')],
+					['prerequisite', '=', DB::table('courses')->where('course_code', 'AERO 371')->value('course_id')]
+				])->value('prereq_id'), 
+				'course_id' => DB::table('courses')->where('course_code', 'ELEC 372')->value('course_id')
+			],
+			[
+				'prereq_id' => DB::table('prerequisites')->where([
+					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 482')->value('course_id')],
+					['prerequisite', '=', DB::table('courses')->where('course_code', 'AERO 371')->value('course_id')]
+				])->value('prereq_id'), 
+				'course_id' => DB::table('courses')->where('course_code', 'MECH 370')->value('course_id')
+			],
+			[
+				'prereq_id' => DB::table('prerequisites')->where([
+					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 482')->value('course_id')],
+					['prerequisite', '=', DB::table('courses')->where('course_code', 'AERO 371')->value('course_id')]
+				])->value('prereq_id'), 
+				'course_id' => DB::table('courses')->where('course_code', 'SOEN 385')->value('course_id')
+			],
+			[
+				'prereq_id' => DB::table('prerequisites')->where([
 					['course_id', '=', DB::table('courses')->where('course_code', 'COEN 317')->value('course_id')],
 					['prerequisite', '=', DB::table('courses')->where('course_code', 'COEN 311')->value('course_id')]
 				])->value('prereq_id'), 
 				'course_id' => DB::table('courses')->where('course_code', 'COMP 228')->value('course_id')
+			],
+			[
+				'prereq_id' => DB::table('prerequisites')->where([
+					['course_id', '=', DB::table('courses')->where('course_code', 'COEN 317')->value('course_id')],
+					['prerequisite', '=', DB::table('courses')->where('course_code', 'COEN 311')->value('course_id')]
+				])->value('prereq_id'), 
+				'course_id' => DB::table('courses')->where('course_code', 'SOEN 228')->value('course_id')
 			],
 			[
 				'prereq_id' => DB::table('prerequisites')->where([
@@ -83,48 +153,6 @@ class OrPrerequisitesTableSeeder extends Seeder
 					['prerequisite', '=', DB::table('courses')->where('course_code', 'ELEC 311')->value('course_id')]
 				])->value('prereq_id'), 
 				'course_id' => DB::table('courses')->where('course_code', 'SOEN 341')->value('course_id')
-			],
-			[
-				'prereq_id' => DB::table('prerequisites')->where([
-					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 371')->value('course_id')],
-					['prerequisite', '=', DB::table('courses')->where('course_code', 'ENGR 311')->value('course_id')]
-				])->value('prereq_id'), 
-				'course_id' => DB::table('courses')->where('course_code', 'ELEC 342')->value('course_id')
-			],
-			[
-				'prereq_id' => DB::table('prerequisites')->where([
-					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 480')->value('course_id')],
-					['prerequisite', '=', DB::table('courses')->where('course_code', 'AERO 371')->value('course_id')]
-				])->value('prereq_id'), 
-				'course_id' => DB::table('courses')->where('course_code', 'ELEC 372')->value('course_id')
-			],
-			[
-				'prereq_id' => DB::table('prerequisites')->where([
-					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 480')->value('course_id')],
-					['prerequisite', '=', DB::table('courses')->where('course_code', 'MECH 371')->value('course_id')]
-				])->value('prereq_id'), 
-				'course_id' => DB::table('courses')->where('course_code', 'SOEN 385')->value('course_id')
-			],
-			[
-				'prereq_id' => DB::table('prerequisites')->where([
-					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 482')->value('course_id')],
-					['prerequisite', '=', DB::table('courses')->where('course_code', 'ENGR 371')->value('course_id')]
-				])->value('prereq_id'), 
-				'course_id' => DB::table('courses')->where('course_code', 'COMP 233')->value('course_id')
-			],
-			[
-				'prereq_id' => DB::table('prerequisites')->where([
-					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 482')->value('course_id')],
-					['prerequisite', '=', DB::table('courses')->where('course_code', 'AERO 371')->value('course_id')]
-				])->value('prereq_id'), 
-				'course_id' => DB::table('courses')->where('course_code', 'ELEC 372')->value('course_id')
-			],
-			[
-				'prereq_id' => DB::table('prerequisites')->where([
-					['course_id', '=', DB::table('courses')->where('course_code', 'AERO 482')->value('course_id')],
-					['prerequisite', '=', DB::table('courses')->where('course_code', 'MECH 370')->value('course_id')]
-				])->value('prereq_id'), 
-				'course_id' => DB::table('courses')->where('course_code', 'SOEN 385')->value('course_id')
 			],
 			[
 				'prereq_id' => DB::table('prerequisites')->where([
@@ -160,6 +188,13 @@ class OrPrerequisitesTableSeeder extends Seeder
 					['prerequisite', '=', DB::table('courses')->where('course_code', 'ELEC 342')->value('course_id')]
 				])->value('prereq_id'), 
 				'course_id' => DB::table('courses')->where('course_code', 'ELEC 364')->value('course_id')
+			],
+			[
+				'prereq_id' => DB::table('prerequisites')->where([
+					['course_id', '=', DB::table('courses')->where('course_code', 'ELEC 437')->value('course_id')],
+					['prerequisite', '=', DB::table('courses')->where('course_code', 'COEN 390')->value('course_id')]
+				])->value('prereq_id'), 
+				'course_id' => DB::table('courses')->where('course_code', 'ELEC 390')->value('course_id')
 			],
 			[
 				'prereq_id' => DB::table('prerequisites')->where([
@@ -209,6 +244,13 @@ class OrPrerequisitesTableSeeder extends Seeder
 					['prerequisite', '=', DB::table('courses')->where('course_code', 'ELEC 372')->value('course_id')]
 				])->value('prereq_id'), 
 				'course_id' => DB::table('courses')->where('course_code', 'MECH 371')->value('course_id')
+			],
+			[
+				'prereq_id' => DB::table('prerequisites')->where([
+					['course_id', '=', DB::table('courses')->where('course_code', 'MECH 370')->value('course_id')],
+					['prerequisite', '=', DB::table('courses')->where('course_code', 'ENGR 245')->value('course_id')]
+				])->value('prereq_id'), 
+				'course_id' => DB::table('courses')->where('course_code', 'ENGR 243')->value('course_id')
 			],
 			[
 				'prereq_id' => DB::table('prerequisites')->where([

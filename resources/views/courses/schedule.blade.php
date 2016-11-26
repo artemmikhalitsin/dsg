@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -61,7 +62,7 @@
                     						<div class="top-info"><span>Monday</span></div>
                                                   <ul>
                     						@foreach($schedule[0] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="{{$timeslot["type"]}}">
+                    							<li class="single-event" data-start="{{$timeslot['start_time']}}" data-end="{{$timeslot['end_time']}}" data-content="{{$timeslot['type']}}" data-event="{{$timeslot['type']}}">
                     								<a href="#0">
                     									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}"</em>
                     								</a>
@@ -74,7 +75,7 @@
                     						<div class="top-info"><span>Tuesday</span></div>
                                                   <ul>
                     						@foreach($schedule[1] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot["type"]}}" data-event="{{$timeslot["type"]}}">
+                    							<li class="single-event" data-start="{{$timeslot['start_time']}}" data-end="{{$timeslot['end_time']}}" data-content="{{$timeslot['type']}}" data-event="{{$timeslot['type']}}">
                     								<a href="#0">
                     									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
@@ -173,7 +174,7 @@
 <script>
 	if(!window.jQuery){
 		document.write(
-	'<script src="/js/schedule/jquery-3.0.0.min.js"><\/script>)';
+	'<script src="/js/schedule/jquery-3.0.0.min.js"><\/script>');
 	}
 </script>
 <script src="/js/schedule/main.js"></script>

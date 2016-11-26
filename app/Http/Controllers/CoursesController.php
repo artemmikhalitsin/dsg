@@ -53,6 +53,7 @@ class CoursesController extends Controller
 
 	}
 
+    // this will be removed
     public function index()
     {
         $electives = Courses::getProgramElectivesList();
