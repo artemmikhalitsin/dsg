@@ -18,6 +18,12 @@ use DB;
 
 class CoursesController extends Controller
 {
+    public function schedule()
+    {
+	    $schedule = Courses::getUserSchedule();
+	    return view('courses.schedule',  compact('schedule'));
+    }
+
 	public function __construct()
     {
         $this->middleware('auth');
@@ -25,18 +31,18 @@ class CoursesController extends Controller
 
 	public function generateSequence(){
 
-        $userProgram = DB::table('courses')
+    $userProgram = DB::table('courses')
 		->join('courseprogram' , 'courses.course_id', '=' , 'courseprogram.course_id')
 		->where('program_id','=','1')
 		->where('course_type','=','program_course')
         ->lists('courses.course_id');
-        //$userProgram = array('218');//,'218','39','174'
-		
+    //$userProgram = array('218');//,'218','39','174'
+
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
 		$sequenceInfo = sortByLevel($sequenceInfo);
-		
+
 		$sequence = initSequence(4);
-		
+
 		foreach($sequenceInfo as $si)
 		{
 			$sequence=plantTrees(0, $sequence, $si);
@@ -44,7 +50,7 @@ class CoursesController extends Controller
 		printSeq($sequence);
 
 		return view('courses.sequence')->with(['sequenceInfo'=>$sequenceInfo]);
-		
+
 	}
 
     public function index()
@@ -69,7 +75,7 @@ function findLastEmptySemester($s) //initialized sequence as input
 	$rows = (count($s)); //these are our total semeseters
 	$cols = (count($s[0])); //these are our slots per semester
 	$ret = $rows-1;
-	
+
 	for($a = $rows-1; $a >= 0; $a--)
 	{
 		for($b = (count($s[$a]))-1; $b >= 0; $b--)
@@ -81,7 +87,7 @@ function findLastEmptySemester($s) //initialized sequence as input
 		}
 		$ret = $ret-1;
 	}
-	return 0; 
+	return 0;
 }
 
 /**
@@ -111,7 +117,7 @@ function notContain($co, $seq)
 	$rows=count($seq);
 	$courseId = $co -> id;
 	$objToTest;
-	
+
 	for ($a=0; $a<$rows; $a++){
 		//echo "\n a".$a." ";
 		for($b=0; $b<count($seq[$a]); $b++){
@@ -130,7 +136,7 @@ function sortByLevel($cl)
 {
 	for($i = 0; $i< count($cl); $i++)
 		$cl=sortaSorter($i, $cl);
-	
+
 	return $cl;
 }
 
@@ -150,7 +156,7 @@ function sortaSorter($i, $cl) //position in array and array
 			$cl = sortaSorter($i-1, $cl);
 		}
 	}
-	return $cl;	
+	return $cl;
 }
 
 function findNumberOfPlaces($seq, $sem)//sequence and semester
@@ -165,7 +171,7 @@ function findNumberOfPlaces($seq, $sem)//sequence and semester
 	return $ret;
 }
 
-function plantTrees($start, $seq, $co) // semester, sequence, and current course. 
+function plantTrees($start, $seq, $co) // semester, sequence, and current course.
 {
 	$prereqs= array();
 	$coreqs= array();
@@ -178,12 +184,12 @@ function plantTrees($start, $seq, $co) // semester, sequence, and current course
 			$seq[$start][$a]=null;
 		}
 	}
-	
+
 	$spotsOnLevel = findNumberOfPlaces($seq, $start);
-	
+
 	//printSeq($seq);
 	if(!empty($co -> prerequisiteList))
-	{	
+	{
 		//echo "HAS PRQS MAN \n";
 		foreach($co -> prerequisiteList as $p) //extract prerequistes and corequistes
 		{
@@ -191,11 +197,11 @@ function plantTrees($start, $seq, $co) // semester, sequence, and current course
 			//echo "prqID: ".$p -> prerequisiteChoices[0]->name."\n";
 			if($p ->isCorequisite == 0)
 				$prereqs[] = $p -> prerequisiteChoices[0];
-			
+
 			else if($p ->isCorequisite == 1)
 				$coreqs[] = $p -> prerequisiteChoices[0];
 		}
-		
+
 		$prereqs=sortByLevel($prereqs);
 		$coreqs=sortByLevel($coreqs);
 	}
@@ -215,14 +221,14 @@ function plantTrees($start, $seq, $co) // semester, sequence, and current course
 			}
 		}
 		else //if there is only room bellow
-		{	
-			$seq=plantTrees($nextStart, $seq, $co);	
+		{
+			$seq=plantTrees($nextStart, $seq, $co);
 			$nextStart=$nextStart+1; //decremented to ensure prereqs will then be properly placed
 		}
-			
+
 		//place prereqs
-		if(!empty($prereqs)) 
-		{	
+		if(!empty($prereqs))
+		{
 			//echo "pRQ";
 			foreach($prereqs as &$prq)
 					$seq=plantTrees($nextStart, $seq, $prq);
@@ -237,11 +243,11 @@ function plantTrees($start, $seq, $co) // semester, sequence, and current course
 					$seq=plantTrees($nextStart-1, $seq, $crq);
 				else
 					$seq=plantTrees($nextStart, $seq, $crq);
-			}	
+			}
 		}
 	}
 	return $seq;
-}	
+}
 
 function printSeq($seqs) //prints sequence I guess
 {
@@ -250,7 +256,7 @@ function printSeq($seqs) //prints sequence I guess
 		for($b = 0; $b<count($seqs[$a]); $b++)
 		{
 			if(!is_null($seqs[$a][$b]))
-				echo $seqs[$a][$b] -> name." "; 
+				echo $seqs[$a][$b] -> name." ";
 		}
 		echo '<br>';
 	}
