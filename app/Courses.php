@@ -16,7 +16,7 @@ class Courses extends Model
     protected $fillable = [
     	'course_name', 'course_code', 'description', 'credits', 'instructor_id'
     ];
-    
+
     // gets the list of users who have completed a specific course
     public function users()
     {
@@ -80,6 +80,20 @@ class Courses extends Model
                 ['programs.program_id', Auth::user()->program_id],
                 ['users.id', Auth::user()->id]
             ])->get();
+    }
+
+    public static function getCourseInfo($seciond_id)
+    {
+         $course = Courses::where('course_id', $course_id);
+         $course_code = $course->value('course_code');
+         $course_name = $course->value('course_name');
+         $description = $course->value('description');
+
+         return  [
+                   'course_code'=>$course_code,
+                   'course_name'=>$course_name,
+                   'description'=>$description
+              ];
     }
 }
 
