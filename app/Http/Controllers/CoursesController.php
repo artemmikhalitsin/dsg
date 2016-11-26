@@ -47,10 +47,9 @@ class CoursesController extends Controller
 		{
 			$sequence=plantTrees(0, $sequence, $si);
 		}
-		printSeq($sequence);
+		//printSeq($sequence);
 
-		return view('courses.sequence')->with(['sequenceInfo'=>$sequenceInfo]);
-
+		return view('courses.sequence')->with(['sequence'=>$sequence, 'sequenceInfo'=>$sequenceInfo]);
 	}
 
     // this will be removed
