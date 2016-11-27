@@ -12,6 +12,10 @@ use App\Courses;
 
 use App\SequenceTree;
 
+use App\Semesters;
+
+use App\Lectures;
+
 class CoursesController extends Controller
 {
 	public function __construct()

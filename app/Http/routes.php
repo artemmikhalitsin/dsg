@@ -28,8 +28,13 @@ Route::get('/addCompletedCourses', 'CoursesController@addCompletedCourses');
 Route::get('/schedule', 'UserController@schedule');
 Route::get('/sequence', 'CoursesController@generateSequence');
 Route::get('/profile', 'UserController@profile');
+Route::get('/schedule/addCourse', 'ScheduleController@addCourse');
 
 // all the post requests
 Route::post('/completedCourses', 'UserController@addCompletedCourse');
 Route::post('/profile', 'UserController@removeCompletedCourse');
 Route::post('/updatePreferences', 'PreferencesController@update');
+Route::post('/schedule/getCoursesList', 'ScheduleController@getCoursesList');
+Route::post('/schedule/getLecturesList', 'ScheduleController@getLecturesList');
+Route::post('/schedule/getTutorialsAndLabsList', 'ScheduleController@getTutorialsAndLabsList');
+Route::post('/schedule/addCourse', 'ScheduleController@store');
