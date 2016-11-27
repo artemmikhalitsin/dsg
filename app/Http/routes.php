@@ -30,6 +30,9 @@ Route::get('/sequence', 'CoursesController@generateSequence');
 Route::get('/profile', 'UserController@profile');
 Route::get('/schedule/addCourse', 'ScheduleController@addCourse');
 
+//TODO:FINISH EVERYTHING RELATED TO THIS
+Route::get('/courseinfo/{type}/{id}', 'CoursesController@showInfo');
+
 // all the post requests
 Route::post('/completedCourses', 'UserController@addCompletedCourse');
 Route::post('/profile', 'UserController@removeCompletedCourse');

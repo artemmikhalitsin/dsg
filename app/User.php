@@ -45,10 +45,11 @@ class User extends Authenticatable
          return $this->belongsToMany('App\Courses', 'completedCourses', 'user_id', 'course_id');
     }
 
-    public static function separateCoursesByDay(&$result, $course_day, $course_code, $course_name, $start_time, $end_time, $course_type)
+    public static function separateCoursesByDay(&$result, $id, $course_day, $course_code, $course_name, $start_time, $end_time, $course_type)
     {
        $object =
        [
+          'id'=> $id,
           'course_code' => $course_code,
           'course_name' => $course_name,
           'start_time' => $start_time,
@@ -79,7 +80,7 @@ class User extends Authenticatable
             $end_time = $end;
         }
         return array($start_time, $end_time);
-    } 
+    }
     public static function getUserSchedule()
     {
        $schedule = User::join('schedule', 'users.id', '=', 'schedule.user_id')
@@ -91,28 +92,28 @@ class User extends Authenticatable
            ->get(
                [
                    'courses.course_code', 'courses.course_name',
-                   'lectures.day as Lec_day', 'lectures.start_time as Lec_STime', 'lectures.end_time as Lec_ETime',
-                   'tutorials.day as Tut_day', 'tutorials.start_time as Tut_STime', 'tutorials.end_time as Tut_ETime',
-                   'labs.day as Lab_day', 'labs.start_time as Lab_STime', 'labs.end_time as Lab_ETime'
+                   'lectures.day as Lec_day', 'lectures.start_time as Lec_STime', 'lectures.end_time as Lec_ETime', 'lectures.lecture_id as lecture_id',
+                   'tutorials.day as Tut_day', 'tutorials.start_time as Tut_STime', 'tutorials.end_time as Tut_ETime', 'tutorials.tutorial_id as tutorial_id',
+                   'labs.day as Lab_day', 'labs.start_time as Lab_STime', 'labs.end_time as Lab_ETime', 'labs.lab_id as lab_id'
                ]);
 
-       $result = ['0' => [], '1' => [], '2' => [], '3' => [], '4' => [], '5' => [], '6' => [],];
+       $result = ['0' => [], '1' => [], '2' => [], '3' => [], '4' => [], '5' => [], '6' => []];
 
        foreach ($schedule as $value) {
 
           if ($value->Lec_day != 'TBA') {
             $times = self::getTimeOfCourses($value->Lec_STime, $value->Lec_ETime);
-            self::separateCoursesByDay($result, $value->Lec_day, $value->course_code, 
+            self::separateCoursesByDay($result, $value->lecture_id, $value->Lec_day, $value->course_code,
                 $value->course_name, $times[0], $times[1], 'Lecture');
           }
           if ($value->Tut_day != 'TBA' && !is_null($value->Tut_day)) {
             $times = self::getTimeOfCourses($value->Tut_STime, $value->Tut_ETime);
-            self::separateCoursesByDay($result, $value->Tut_day, $value->course_code, 
+            self::separateCoursesByDay($result, $value->tutorial_id, $value->Tut_day, $value->course_code,
                     $value->course_name, $times[0], $times[1], 'Tutorial');
           }
           if ($value->Lab_day != 'TBA' && !is_null($value->Lab_day)) {
             $times = self::getTimeOfCourses($value->Lab_STime, $value->Lab_ETime);
-            self::separateCoursesByDay($result, $value->Lab_day, $value->course_code, 
+            self::separateCoursesByDay($result, $value->lab_id, $value->Lab_day, $value->course_code,
                     $value->course_name, $times[0], $times[1], 'Lab');
           }
        }
@@ -156,59 +157,5 @@ class User extends Authenticatable
     public static function getCompletedCourses()
     {
         return Auth::user()->courses;
-    }
-
-    public function addLectureToSchedule($lecture_id)
-    {
-         $schedule = DB::table('schedule');
-         $exists = DB::table('schedule')->where('user_id', $this->id)
-                                        ->where('lecture_id', $lecture_id)->exists();
-          if(!$exists)
-          {
-               $schedule->insert(
-                    [
-                         [
-                              'lecture_id' => $lecture_id,
-                              'user_id' => $user_id
-                         ]
-                    ]
-               );
-          }
-    }
-
-    public function addTutorialToSchedule($tutorial_id)
-    {
-         $schedule = DB::table('schedule');
-         $exists = DB::table('schedule')->where('user_id', $this->id)
-                                        ->where('tutorial_id', $tutorial_id)->exists();
-          if(!$exists)
-          {
-               $schedule->insert(
-                    [
-                         [
-                              'tutorial_id' => $tutorial_id,
-                              'user_id' => $user_id
-                         ]
-                    ]
-               );
-          }
-    }
-
-    public function addLabToSchedule($lab_id)
-    {
-         $schedule = DB::table('schedule');
-         $exists = DB::table('schedule')->where('user_id', $this->id)
-                                        ->where('lab_id', $lab_id)->exists();
-          if(!$exists)
-          {
-               $schedule->insert(
-                    [
-                         [
-                              'lab_id' => $lab_id,
-                              'user_id' => $user_id
-                         ]
-                    ]
-               );
-          }
     }
 }
