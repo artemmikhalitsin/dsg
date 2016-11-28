@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 
 use App\Courses;
+use App\Lectures;
+use App\Tutorials;
+use App\Labs;
 
 use App\SequenceTree;
 
@@ -24,6 +27,7 @@ class CoursesController extends Controller
 		return view('courses.sequence', compact('sequenceInfo'));
 	}
 
+    // this will be removed
     public function index()
     {
         $electives = Courses::getProgramElectivesList();
@@ -40,14 +44,38 @@ class CoursesController extends Controller
         return view('courses.completedCourses', compact('courses'));
     }
 
-    public function schedule()
+    public function showInfo(Request $request, $sectiontype, $sectionid)
     {
-	    $schedule = Courses::getUserSchedule();
+	    $sectiontype = strtolower($sectiontype);
+	    switch($sectiontype)
+	    {
+		    case('lecture'):
+		    		$section = Lectures::find($sectionid);
+				$section['instructor_name'] = $section->instructor->name;
+		    		$course = $section->getCourse();
+		    		break;
+		    case('tutorial'):
+			    $section = Tutorials::find($sectionid);
+			    $course = $section->getCourse();
+		    		break;
+		    case('lab'):
+			    $section = Labs::find($sectionid);
+			    $course = $section->getCourse();
+		    		break;
+	    }
 
-	    return view('courses.schedule',  compact('schedule'));
+	    $sectiontype = ucwords($sectiontype);
+
+	    return view('courses.courseInfo', compact('section', 'course', 'sectiontype'));
     }
 
+	public function browseCourses()
+	{
+			$courses = Courses::getProgramCoursesList();
+			$electives = Courses::getProgramElectivesList();
 
+			return view('courses.browseCourses', compact('courses', 'electives'));
+	}
 }
 
 ?>

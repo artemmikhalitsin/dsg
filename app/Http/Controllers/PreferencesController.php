@@ -10,6 +10,8 @@ use App\Http\Requests\AddPreferencesRequest;
 
 use App\Preferences;
 
+
+//ARTEM:Should this handle the update, or should it pass the values to the model???
 class PreferencesController extends Controller
 {
 	public function __construct()
@@ -17,76 +19,43 @@ class PreferencesController extends Controller
         $this->middleware('auth');
     }
 
-	public function create()
-    {
-        return view('users/preferences');
-    }
-
-    public function store(AddPreferencesRequest $request)
-    {
-    	$input = $request->all();
-    	$days = $input['days_off'];
-    	$days_off = "";
-
-    	foreach ($days as $key => $value) {
-    		$days_off .= $value; 
-    	}
-
-    	$existsAlready = Preferences::where('user_id', Auth::user()->id)->exists();
-
-    	if ($existsAlready) {
-    		Preferences::where('user_id', Auth::user()->id)
-    			->update([
-    					'days_off' => $days_off,
-		    			'starting_time' => $input['starting_time'],
-		    			'finishing_time' => $input['finishing_time'],
-		    			'course_load' => $input['course_load']
-    				]);
-    	}else{
-    		Preferences::Create(
-	    		[
-	    			'days_off' => $days_off,
-	    			'starting_time' => $input['starting_time'],
-	    			'finishing_time' => $input['finishing_time'],
-	    			'course_load' => $input['course_load'],
-	    			'user_id' => Auth::user()->id
-	    		]
-    		);
-    	}
-    	return redirect('/profile');
-    }
-
     public function update(AddPreferencesRequest $request)
     {
-        $input = $request->all();
-        $days = $input['days_off'];
-        $days_off = "";
+		$user_id = Auth::user()->id;
+		$input = $request->all();
+		$days = $input['days_off'];
+		$days_off = implode("|", $days);
+		$start = date("G:i", strtotime($input['starting_time']));
+		$end = date("G:i", strtotime($input['finishing_time']));
 
-        foreach ($days as $key => $value) {
-            $days_off .= $value; 
-        }
 
-        $existsAlready = Preferences::where('user_id', Auth::user()->id)->exists();
+	   if($start > $end)
+	   {
+		   $start = Preferences::where('user_id', $user_id)->value('starting_time');
+		   $end = Preferences::where('user_id', $user_id)->value('finishing_time');
+	   }
+
+        $existsAlready = Preferences::where('user_id', $user_id)->exists();
 
         if ($existsAlready) {
-            Preferences::where('user_id', Auth::user()->id)
+            Preferences::where('user_id', $user_id)
                 ->update([
                         'days_off' => $days_off,
-                        'starting_time' => $input['starting_time'],
-                        'finishing_time' => $input['finishing_time'],
+                        'starting_time' => $start,
+                        'finishing_time' => $end,
                         'course_load' => $input['course_load']
                     ]);
         }else{
             Preferences::Create(
                 [
                     'days_off' => $days_off,
-                    'starting_time' => $input['starting_time'],
-                    'finishing_time' => $input['finishing_time'],
+                    'starting_time' => $start,
+                    'finishing_time' => $end,
                     'course_load' => $input['course_load'],
-                    'user_id' => Auth::user()->id
+                    'user_id' => $user_id
                 ]
             );
         }
-        return redirect('/home');
+        return redirect('/profile');
     }
 }

@@ -17,17 +17,6 @@ class Courses extends Model
     	'course_name', 'course_code', 'description', 'credits', 'instructor_id'
     ];
 
-    // public static function getProgramCoursesInfo(){
-    //   return Courses::join('courseProgram', 'courses.course_id', '=', 'courseProgram.course_id')
-    //   ->join('prerequisites','courses.course_id','=','prerequisites.course_id')
-    //   ->select('courses.*', 'courseProgram.course_type', 'prerequisites.prerequisite')
-    //   ->where([
-    //             ['courseProgram.program_id', Auth::user()->program_id],
-    //             ['courseProgram.course_type', "program_course"]
-    //           ])
-    //   ->get();
-    // }
-
     // gets the list of users who have completed a specific course
     public function users()
     {
@@ -71,7 +60,7 @@ class Courses extends Model
     public static function getProgramElectivesList()
     {
     	return Courses::join('courseProgram', 'courses.course_id', '=', 'courseProgram.course_id')->select('courses.*', 'courseProgram.course_type')->where([
-                ['courseProgram.program_id', Auth::user()->program_id],
+                ['courseProgram.program_id', '2'],
                 ['courseProgram.course_type', "program_elective"],
             ])->get();
     }
@@ -91,161 +80,6 @@ class Courses extends Model
                 ['programs.program_id', Auth::user()->program_id],
                 ['users.id', Auth::user()->id]
             ])->get();
-    }
-
-    public static function getUserSchedule()
-    {
-         $result = [
-              '0' => [],
-              '1' => [],
-              '2' => [],
-              '3' => [],
-              '4' => [],
-              '5' => [],
-              '6' => [],
-         ];
-         $user = Auth::user();
-         $schedule = DB::table('schedule')->where('user_id', $user->id)->get();
-         foreach($schedule as $timeslot)
-         {
-              if(isset($timeslot->lecture_id))
-              {
-                   $lecture = DB::table('lectures')
-                              ->where('lecture_id', $timeslot->lecture_id);
-                   $days = $lecture->value('day');
-                   $course_id = $lecture->value('course_id');
-                   $course = DB::table('courses')->where('course_id', $course_id);
-                   $course_code = $course->value('course_code');
-                   $course_name = $course->value('course_name');
-                   if($lecture->value('start_time') != "TBA")
-                   {
-                        $start_time = date("G:i", strtotime($lecture->value('start_time')));
-                        $end_time = date("G:i", strtotime($lecture->value('end_time')));
-                    }
-                    else
-                    {
-                         $start_time = $lecture->value('start_time');
-                         $end_time = $lecture->value('end_time');
-                    }
-                    $type = 'Lecture';
-                    $object =
-                    [
-                         'course_code' => $course_code,
-                         'course_name' => $course_name,
-                         'start_time' => $start_time,
-                         'end_time' => $end_time,
-                         'type' => $type
-                    ];
-                    if($days == "TBA")
-                    {
-                         $result[6]->array_push($object);
-                    }
-                    else
-                    {
-                         $days = str_split($days);
-                         foreach($days as $key => $day)
-                         {
-                              if(!($day == '-'))
-                              {
-                                   array_push($result[$key], $object);
-                              }
-                         }
-                    }
-              }
-              if(isset($timeslot->tutorial_id))
-              {
-                   $tutorial = DB::table('tutorials')
-                              ->where('tutorial_id', $timeslot->tutorial_id);
-                   $days = $tutorial->value('day');
-                   $lecture = DB::table('lectures')
-                              ->where('lecture_id', $tutorial->value('lecture_id'));
-                   $course_id = $lecture->value('course_id');
-                   $course = DB::table('courses')->where('course_id', $course_id);
-                   $course_code = $course->value('course_code');
-                   $course_name = $course->value('course_name');
-                   if($lecture->value('start_time') != "TBA")
-                   {
-                        $start_time = date("G:i", strtotime($tutorial->value('start_time')));
-                        $end_time = date("G:i", strtotime($tutorial->value('end_time')));
-                    }
-                    else
-                    {
-                         $start_time = $tutorial->value('start_time');
-                         $end_time = $tutorial->value('end_time');
-                    }
-                    $type = 'Tutorial';
-                    $object =
-                    [
-                         'course_code' => $course_code,
-                         'course_name' => $course_name,
-                         'start_time' => $start_time,
-                         'end_time' => $end_time,
-                         'type' => $type
-                    ];
-                    if($days == "TBA")
-                    {
-                         $result[6]->array_push($object);
-                    }
-                    else
-                    {
-                         $days = str_split($days);
-                         foreach($days as $key => $day)
-                         {
-                              if(!($day == '-'))
-                              {
-                                   array_push($result[$key], $object);
-                              }
-                         }
-                    }
-              }
-              if(isset($timeslot->lab_id))
-              {
-                   $lab = DB::table('labs')
-                              ->where('lab_id', $timeslot->lab_id);
-                   $days = $lab->value('day');
-                   $lecture = DB::table('lectures')
-                              ->where('lecture_id', $lab->value('lecture_id'));
-                   $course_id = $lecture->value('course_id');
-                   $course = DB::table('courses')->where('course_id', $course_id);
-                   $course_code = $course->value('course_code');
-                   $course_name = $course->value('course_name');
-                   if($lab->value('start_time') != "TBA")
-                   {
-                        $start_time = date("G:i", strtotime($lab->value('start_time')));
-                        $end_time = date("G:i", strtotime($lab->value('end_time')));
-                    }
-                    else
-                    {
-                         $start_time = $lab->value('start_time');
-                         $end_time = $lab->value('end_time');
-                    }
-                    $type = 'Lab';
-                    $object =
-                    [
-                         'course_code' => $course_code,
-                         'course_name' => $course_name,
-                         'start_time' => $start_time,
-                         'end_time' => $end_time,
-                         'type' => $type
-                    ];
-                    if($days == "TBA")
-                    {
-                         $result[6]->array_push($object);
-                    }
-                    else
-                    {
-                         $days = str_split($days);
-                         foreach($days as $key => $day)
-                         {
-                              if(!($day == '-'))
-                              {
-                                   array_push($result[$key], $object);
-                              }
-                         }
-                    }
-              }
-         }
-         return $result;
     }
 }
 

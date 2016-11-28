@@ -8,10 +8,15 @@ class Lectures extends Model
 {
 	public $primaryKey = 'lecture_id';
 
-    // list the course to which a lecture belongs to 
+    // list the course to which a lecture belongs to
     public function course()
     {
     	return $this->belongsTo('App\Courses', 'course_id', 'course_id');
+    }
+
+    public function getCourse()
+    {
+	    return $this->course;
     }
 
     // lists the instructor info associated with a lecture
