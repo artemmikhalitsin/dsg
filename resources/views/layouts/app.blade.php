@@ -101,11 +101,11 @@
                 <!-- Branding Image -->
                 @if (!Auth::guest())
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    <img class="img-responsive" src="{{{ asset('DSG_logo.jpg') }}}" style="width: 20px;height: 20px;">
+                    <img class="img-responsive" src="{{{ asset('DSG_logo.jpg') }}}" style="width: 50px;height: 30px;">
                 </a>
                 @else
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="img-responsive" src="{{{ asset('DSG_logo.jpg') }}}" style="width: 20px;height: 20px;">
+                    <img class="img-responsive" src="{{{ asset('DSG_logo.jpg') }}}" style="width: 50px;height: 30px;">
                 </a>
                 @endif
 
