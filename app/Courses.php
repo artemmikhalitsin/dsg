@@ -81,20 +81,6 @@ class Courses extends Model
                 ['users.id', Auth::user()->id]
             ])->get();
     }
-
-    public static function getCourseInfo($seciond_id)
-    {
-         $course = Courses::where('course_id', $course_id);
-         $course_code = $course->value('course_code');
-         $course_name = $course->value('course_name');
-         $description = $course->value('description');
-
-         return  [
-                   'course_code'=>$course_code,
-                   'course_name'=>$course_name,
-                   'description'=>$description
-              ];
-    }
 }
 
 ?>
