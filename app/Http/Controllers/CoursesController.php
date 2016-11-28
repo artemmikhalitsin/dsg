@@ -44,8 +44,6 @@ class CoursesController extends Controller
         return view('courses.completedCourses', compact('courses'));
     }
 
-
-	//TODO: Find a way to get the course for the lab.
     public function showInfo(Request $request, $sectiontype, $sectionid)
     {
 	    $sectiontype = strtolower($sectiontype);
@@ -70,6 +68,14 @@ class CoursesController extends Controller
 
 	    return view('courses.courseInfo', compact('section', 'course', 'sectiontype'));
     }
+
+	public function browseCourses()
+	{
+			$courses = Courses::getProgramCoursesList();
+			$electives = Courses::getProgramElectivesList();
+
+			return view('courses.browseCourses', compact('courses', 'electives'));
+	}
 }
 
 ?>

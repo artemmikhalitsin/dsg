@@ -60,7 +60,7 @@ class Courses extends Model
     public static function getProgramElectivesList()
     {
     	return Courses::join('courseProgram', 'courses.course_id', '=', 'courseProgram.course_id')->select('courses.*', 'courseProgram.course_type')->where([
-                ['courseProgram.program_id', Auth::user()->program_id],
+                ['courseProgram.program_id', '2'],
                 ['courseProgram.course_type', "program_elective"],
             ])->get();
     }
