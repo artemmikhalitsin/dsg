@@ -10,6 +10,8 @@ use App\Http\Requests\AddPreferencesRequest;
 
 use App\Preferences;
 
+
+//ARTEM:Should this handle the update, or should it pass the values to the model???
 class PreferencesController extends Controller
 {
 	public function __construct()
@@ -19,28 +21,38 @@ class PreferencesController extends Controller
 
     public function update(AddPreferencesRequest $request)
     {
-        $input = $request->all();
-        $days = $input['days_off'];
-        $days_off = implode("|", $days);
+		$user_id = Auth::user()->id;
+		$input = $request->all();
+		$days = $input['days_off'];
+		$days_off = implode("|", $days);
+		$start = date("G:i", strtotime($input['starting_time']));
+		$end = date("G:i", strtotime($input['finishing_time']));
 
-        $existsAlready = Preferences::where('user_id', Auth::user()->id)->exists();
+
+	   if($start > $end)
+	   {
+		   $start = Preferences::where('user_id', $user_id)->value('starting_time');
+		   $end = Preferences::where('user_id', $user_id)->value('finishing_time');
+	   }
+
+        $existsAlready = Preferences::where('user_id', $user_id)->exists();
 
         if ($existsAlready) {
-            Preferences::where('user_id', Auth::user()->id)
+            Preferences::where('user_id', $user_id)
                 ->update([
                         'days_off' => $days_off,
-                        'starting_time' => $input['starting_time'],
-                        'finishing_time' => $input['finishing_time'],
+                        'starting_time' => $start,
+                        'finishing_time' => $end,
                         'course_load' => $input['course_load']
                     ]);
         }else{
             Preferences::Create(
                 [
                     'days_off' => $days_off,
-                    'starting_time' => $input['starting_time'],
-                    'finishing_time' => $input['finishing_time'],
+                    'starting_time' => $start,
+                    'finishing_time' => $end,
                     'course_load' => $input['course_load'],
-                    'user_id' => Auth::user()->id
+                    'user_id' => $user_id
                 ]
             );
         }
