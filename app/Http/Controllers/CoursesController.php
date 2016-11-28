@@ -45,17 +45,17 @@ class CoursesController extends Controller
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
 		$sequenceInfo = sortByLevel($sequenceInfo);
 
-		//$sequence = initSequence(4);
+		$sequence = initSequence(4);
 
-		/*
+
 		foreach($sequenceInfo as $si)
 		{
 			$sequence=plantTrees(0, $sequence, $si);
 		}
 		//printSeq($sequence);
-		*/
 
-		return view('courses.sequence')->with(['sequenceInfo'=>$sequenceInfo, 'courseLoad'=>$courseLoad]);
+
+		return view('courses.sequence')->with(['sequenceInfo'=>$sequenceInfo, 'sequence'=>$sequence]);
 	}
 
     // this will be removed
