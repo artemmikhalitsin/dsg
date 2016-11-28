@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d
+class ComposerStaticInit5d3cfbb3cd6ba3342d1dac402fcbfc87
 {
     public static $files = array (
         '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
@@ -12,8 +12,11 @@ class ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
+        'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
@@ -56,6 +59,7 @@ class ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d
         array (
             'Psy\\' => 4,
             'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
             'PhpParser\\' => 10,
         ),
         'M' => 
@@ -65,10 +69,17 @@ class ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d
         'L' => 
         array (
             'League\\Flysystem\\' => 17,
+            'Laravel\\Installer\\Console\\' => 26,
         ),
         'I' => 
         array (
             'Illuminate\\' => 11,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
         ),
         'F' => 
         array (
@@ -182,6 +193,10 @@ class ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -194,9 +209,25 @@ class ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
         ),
+        'Laravel\\Installer\\Console\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/installer/src',
+        ),
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'GuzzleHttp\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
         'Faker\\' => 
         array (
@@ -272,12 +303,10 @@ class ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d
 
     public static $classMap = array (
         'CompletedCoursesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CompletedCoursesTableSeeder.php',
-        'CorequisitesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CorequisitesTableSeeder.php',
         'CourseAvailabilityTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CourseAvailabilityTableSeeder.php',
         'CourseProgramTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CourseProgramTableSeeder.php',
         'CoursesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CoursesTableSeeder.php',
         'CreateCompletedCoursesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_28_031830_create_completedCourses_table.php',
-        'CreateCorequisitesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_28_034627_create_corequisites_table.php',
         'CreateCourseAvailabilityTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_28_034415_create_courseAvailability_table.php',
         'CreateCourseProgramTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_28_034329_create_courseProgram_table.php',
         'CreateCoursesTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_26_003930_create_courses_table.php',
@@ -734,6 +763,7 @@ class ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d
         'PHP_Token_STRING' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_STRING_CAST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_STRING_VARNAME' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_SUPER' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_SWITCH' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_Stream' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token/Stream.php',
         'PHP_Token_Stream_CachingFactory' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token/Stream/CachingFactory.php',
@@ -748,6 +778,7 @@ class ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d
         'PHP_Token_UNSET' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_UNSET_CAST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_USE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_USE_FUNCTION' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_VAR' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_VARIABLE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_WHERE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
@@ -814,10 +845,10 @@ class ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit3e2bdd232f0c37f8ba366534f3b78d5d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5d3cfbb3cd6ba3342d1dac402fcbfc87::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5d3cfbb3cd6ba3342d1dac402fcbfc87::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit5d3cfbb3cd6ba3342d1dac402fcbfc87::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit5d3cfbb3cd6ba3342d1dac402fcbfc87::$classMap;
 
         }, null, ClassLoader::class);
     }

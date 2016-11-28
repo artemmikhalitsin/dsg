@@ -37,19 +37,22 @@ class CoursesController extends Controller
 		->where('course_type','=','program_course')
         ->lists('courses.course_id');
     //$userProgram = array('218');//,'218','39','174'
+    $courseLoad = 4;
 
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
 		$sequenceInfo = sortByLevel($sequenceInfo);
 
-		$sequence = initSequence(4);
+		//$sequence = initSequence(4);
 
+		/*
 		foreach($sequenceInfo as $si)
 		{
 			$sequence=plantTrees(0, $sequence, $si);
 		}
 		//printSeq($sequence);
+		*/
 
-		return view('courses.sequence')->with(['sequence'=>$sequence, 'sequenceInfo'=>$sequenceInfo]);
+		return view('courses.sequence')->with(['sequenceInfo'=>$sequenceInfo, 'courseLoad'=>$courseLoad]);
 	}
 
     // this will be removed
