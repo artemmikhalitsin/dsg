@@ -9,6 +9,11 @@ use App\Http\Requests;
 use Auth;
 use DB;
 
+use App\Courses;
+use App\Lectures;
+use App\Tutorials;
+use App\Labs;
+
 use App\User;
 
 use App\Preferences;
@@ -47,8 +52,9 @@ class UserController extends Controller
     public function schedule()
     {
         $schedule = User::getUserSchedule();
+        $courses = Courses::getOneProgramCoursesList();
 
-        return view('courses.schedule', compact('schedule'));
+        return view('courses.schedule', compact('schedule', 'courses' ));
     }
 
     public function removeCompletedCourse(Request $request)
