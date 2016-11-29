@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 
 use App\Courses;
-use App\Lectures;
-use App\Tutorials;
-use App\Labs;
 
 use App\SequenceTree;
 
@@ -21,12 +18,6 @@ use DB;
 
 class CoursesController extends Controller
 {
-    public function schedule()
-    {
-	    $schedule = Courses::getUserSchedule();
-	    return view('courses.schedule',  compact('schedule'));
-    }
-
 	public function __construct()
     {
         $this->middleware('auth');
@@ -40,24 +31,27 @@ class CoursesController extends Controller
 		->where('course_type','=','program_course')
         ->lists('courses.course_id');
     //$userProgram = array('218');//,'218','39','174'
-    $courseLoad = 4;
 
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
 		$sequenceInfo = sortByLevel($sequenceInfo);
+		$courseLoad=4;
 
-		$sequence = initSequence(4);
+		$sequence = initSequence($courseLoad);
+		foreach($sequenceInfo as $si2)
+			$sequence = outputByLevel(0, $sequence, $si2);
 
+		for ($i = 0; $i < sizeof($sequence); $i++)
+			compressIt($sequenceInfo, $sequence, $i, []);
 
-		foreach($sequenceInfo as $si)
-		{
-			$sequence=plantTrees(0, $sequence, $si);
-		}
 		//printSeq($sequence);
+		//$sequence=compressSequence($sequence);
+		//printSeq($sequence);
+		//moveCourse($sequence[1][0], $sequence[1], $sequence[0]);
 
+		return view('courses.sequence')->with(['sequence'=>$sequence, 'sequenceInfo'=>$sequenceInfo]);
 
-		return view('courses.sequence')->with(['sequenceInfo'=>$sequenceInfo, 'sequence'=>$sequence]);
 	}
-
+		/*
     // this will be removed
     public function index()
     {
@@ -71,44 +65,112 @@ class CoursesController extends Controller
     public function addCompletedCourses()
     {
         $courses = Courses::getOneProgramCoursesList();
-
         return view('courses.completedCourses', compact('courses'));
     }
+		*/
+}
 
-    public function showInfo(Request $request, $sectiontype, $sectionid)
-    {
-	    $sectiontype = strtolower($sectiontype);
-	    switch($sectiontype)
-	    {
-		    case('lecture'):
-		    		$section = Lectures::find($sectionid);
-				$section['instructor_name'] = $section->instructor->name;
-		    		$course = $section->getCourse();
-		    		break;
-		    case('tutorial'):
-			    $section = Tutorials::find($sectionid);
-			    $course = $section->getCourse();
-		    		break;
-		    case('lab'):
-			    $section = Labs::find($sectionid);
-			    $course = $section->getCourse();
-		    		break;
-	    }
+function compressIt($sequenceInfo, &$sequence, $rowNumber, $requiredSoFar){
+	//gets prerequisites required of every course in this row
 
-	    $sectiontype = ucwords($sectiontype);
+	foreach ($sequence[$rowNumber] as $course){
+		//for every course in side your row
+		if($course != null)
+		foreach ($course->prerequisiteList as $prerequisite){
+			if($prerequisite != null)
+				$requiredSoFar = array_merge($requiredSoFar,getPrerequisitesFirstRun($course));
+		}
+	}
 
-	    return view('courses.courseInfo', compact('section', 'course', 'sectiontype'));
-    }
 
-	public function browseCourses()
-	{
-			$courses = Courses::getProgramCoursesList();
-			$electives = Courses::getProgramElectivesList();
+	foreach ($sequence[$rowNumber] as $blank){
+		$realGhetto = 0;
+		if ($blank == null){
+			//for every blank space
+			for ($i = $rowNumber+1; $i < sizeof($sequence) ; $i++){
+				//for every semester after this one
+				foreach ($sequence[$i] as $course){
+					//for every course in those semesters
 
-			return view('courses.browseCourses', compact('courses', 'electives'));
+					$THISONE = $course;
+					//if it's not required (i.e. can be moved)
+					foreach ($requiredSoFar as $required){
+						if ($course != null && $course->name == $required->name){
+							$THISONE = null;
+						}
+					}
+
+					//do THIS!
+					if ($THISONE != null){
+						moveCourse($course, $sequence[$i], $sequence[$rowNumber]);
+						$requiredSoFar = array_merge($requiredSoFar,getPrerequisitesFirstRun($course));
+						$realGhetto = 1;
+					}
+				if ($realGhetto == 1)
+					break;
+				}
+				if ($realGhetto == 1)
+					break;
+			}
+		}
+	}
+
+	foreach ($sequence[$rowNumber] as $course){
+		//get's corequisites
+		if($course != null)
+		foreach ($course->prerequisiteList as $prerequisite){
+			if($prerequisite != null)
+				if($prerequisite->isCorequisite == 1)
+					$requiredSoFar[] = $prerequisite->prerequisiteChoices[0];
+		}
+	}
+
+	if ($rowNumber+1 < sizeof($sequence))
+		compressIt($sequenceInfo, $sequence, $rowNumber+1, $requiredSoFar);
+}
+
+function getPrerequisitesFirstRun($course){
+	$prerequisites =  array();
+	if($course != null)
+	foreach ($course->prerequisiteList as $prerequisite){
+		if($prerequisite != null){
+			$prerequisites = array_merge($prerequisites, getPrerequisites($prerequisite->prerequisiteChoices[0]));
+			if ($prerequisite->isCorequisite == 0)
+				$prerequisites[] = $prerequisite->prerequisiteChoices[0];
+		}
+	}
+	return $prerequisites;
+}
+
+function getPrerequisites($course){
+	$prerequisites =  array();
+	if($course != null)
+	foreach ($course->prerequisiteList as $prerequisite){
+		if($prerequisite != null){
+			$prerequisites = array_merge($prerequisites, getPrerequisites($prerequisite->prerequisiteChoices[0]));
+			$prerequisites[] = $prerequisite->prerequisiteChoices[0];
+		}
+	}
+	return $prerequisites;
+}
+
+function moveCourse($course, &$source, &$destination){
+	foreach ($source as $key => $here){
+		if ($here != null && $here->name == $course->name){
+			$source[$key] = null;
+		}
+	}
+	foreach ($destination as $key => $here){
+		if ($here == null){
+			$destination[$key] = $course;
+			break;
+		}
 	}
 }
 
+/**
+ * Returns earliest empty semester
+ */
 function findLastEmptySemester($s) //initialized sequence as input
 {
 	$rows = (count($s)); //these are our total semeseters
@@ -119,8 +181,6 @@ function findLastEmptySemester($s) //initialized sequence as input
 	{
 		for($b = (count($s[$a]))-1; $b >= 0; $b--)
 		{
-			//echo "a: $a\n";
-			//echo "b: $b\n";
 			if(($s[$a][$b]) == '')
 				return $ret;
 		}
@@ -142,6 +202,9 @@ function inArrayCourse($c, $cl)
 	return false;
 }
 
+/**
+ * Initializes a sequence based on course load
+ */
 function initSequence($cLoad)
 {
 	$sequence = array();
@@ -151,6 +214,9 @@ function initSequence($cLoad)
 	return $sequence;
 }
 
+/**
+ * Checks if a course is contained in a semester
+ */
 function notContain($co, $seq)
 {
 	$rows=count($seq);
@@ -158,9 +224,7 @@ function notContain($co, $seq)
 	$objToTest;
 
 	for ($a=0; $a<$rows; $a++){
-		//echo "\n a".$a." ";
 		for($b=0; $b<count($seq[$a]); $b++){
-			//echo "b".$b." ";
 			if(is_object($seq[$a][$b]))
 			{
 				if($courseId==($seq[$a][$b] -> id))
@@ -198,9 +262,11 @@ function sortaSorter($i, $cl) //position in array and array
 	return $cl;
 }
 
+/**
+ * Finds number of empty places in a semester
+ */
 function findNumberOfPlaces($seq, $sem)//sequence and semester
 {
-	//echo"\n offset? : ".$sem."\n";
 	$ret = 0;
 	for($b = 0; $b<count($seq[$sem]); $b++)
 	{
@@ -210,6 +276,9 @@ function findNumberOfPlaces($seq, $sem)//sequence and semester
 	return $ret;
 }
 
+/**
+ * This function plants a course and their their prereq/coreq trees within a sequence starting at a specified semeseter
+ */
 function plantTrees($start, $seq, $co) // semester, sequence, and current course.
 {
 	$prereqs= array();
@@ -232,7 +301,7 @@ function plantTrees($start, $seq, $co) // semester, sequence, and current course
 		//echo "HAS PRQS MAN \n";
 		foreach($co -> prerequisiteList as $p) //extract prerequistes and corequistes
 		{
-			//echo "prqCount: ".count($co -> prerequisites)."\n";
+			//echo " prqCount: ".count($co -> prerequisites)." ";
 			//echo "prqID: ".$p -> prerequisiteChoices[0]->name."\n";
 			if($p ->isCorequisite == 0)
 				$prereqs[] = $p -> prerequisiteChoices[0];
@@ -288,6 +357,46 @@ function plantTrees($start, $seq, $co) // semester, sequence, and current course
 	return $seq;
 }
 
+function outputByLevel($start, $seq, $co)
+{
+	$courseload = count($seq[0]);
+	if(!array_key_exists($start, $seq)) //if the current semester doesn't exists, we create it. haha :)
+	{
+		$seq[]=array();
+		for($a=0; $a<count($seq[0]); $a++)
+			$seq[$start][$a]=null;
+	}
+	$spotsOnLevel = findNumberOfPlaces($seq, $start);
+	if($spotsOnLevel != $courseload) //if there are unclaimed spots on this row
+	{
+		if($co -> level != $seq[$start][0]->level || $spotsOnLevel == 0)// if current course
+			$seq = outputByLevel($start+1, $seq, $co);
+		else
+		{
+			for($b = 0; $b<count($seq[$start]); $b++)  //find room and place course
+			{
+				if(is_null($seq[$start][$b]))
+				{
+					$seq[$start][$b]=$co;
+					$b=count($seq[$start]);
+				}
+			}
+		}
+	}
+	else
+	{
+		for($b = 0; $b<count($seq[$start]); $b++)  //find room and place course
+		{
+			if(is_null($seq[$start][$b]))
+			{
+				$seq[$start][$b]=$co;
+				$b=count($seq[$start]);
+			}
+		}
+	}
+	return $seq;
+}
+
 function printSeq($seqs) //prints sequence I guess
 {
 	for($a = 0; $a<count($seqs); $a++)
@@ -300,6 +409,210 @@ function printSeq($seqs) //prints sequence I guess
 		echo '<br>';
 	}
 }
+
+function compressSequence($seq)
+{
+	$seqsize = count($seq);
+	$sem = $seqsize - 2;  //starting semester is the second semester.
+	for ($x = $sem; $x>=0; $x--)
+	{
+		//echo "<br> x:$x (Semeseter: ".($seqsize-$x).")";
+		for ($i = 0; $i<count($seq[$x]); $i++)
+		{
+			$co = $seq[$x][$i];
+			$height; //semester where course is meant to be taken
+			$highestprq=0;  //semester of the latest prerequiste
+			$highestcrq=0; //semester of the latest corequiste
+			$prereqs=array(); //all prerequisites
+			$coreqs=array(); //all corequisites
+			//echo "<br> i: ".$i." ";
+			if(!is_null($co)) //if course exists
+			{
+				$height = findSemester($co, $seq);
+				//echo "ceci n'est pas un null";
+				if(!is_null($co -> prerequisiteList))
+				{
+					//echo " ".$co -> name." ";
+					foreach($co -> prerequisiteList as $p) //extract prerequistes and corequistes
+					{
+						//echo " prqCount: ".count($co -> prerequisiteList)." ";
+						//echo "prqID: ".$p -> prerequisiteChoices[0]->name."\n";
+						if($p ->isCorequisite == 0)
+							$prereqs = array_merge($prereqs, $p -> prerequisiteChoices);
+						else if($p ->isCorequisite == 1)
+							$coreqs= array_merge($coreqs, $p -> prerequisiteChoices);
+					}
+					$highestprq=findHighestSem($prereqs, $seq, 0);
+					$highestcrq=findHighestSem($coreqs, $seq, 1);
+				}
+
+				if((max($highestprq, $highestcrq) == $highestprq || $highestprq == $highestcrq) && $highestprq != -1) //if the lates prereq is after the latest coreq
+				{
+					//echo " prq rule: ".$highestprq."<br>";
+					//echo "height: $height ,highest prereq: $highestprq";
+					for($a = $highestprq-1; $a>$height; $a--) //from the semester after the highest prq to the current semester
+					{
+						//echo " place num: ".findNumberOfPlaces($seq, $a);
+						if(findNumberOfPlaces($seq, $a) > 0) //if there is room in the verified semester
+						{
+							//echo " got if prq ";
+							$seq = removeCourse($seq, $co);
+							$seq = tryPlaceCourse($seq, $co, $a);
+							$a = $height;
+						}
+					}
+				}
+				else if(max($highestprq, $highestcrq) == $highestcrq && $highestcrq != -1)//corequisites have the highest height.
+				{
+					//echo " crq rule: ".$highestcrq."<br>";
+					//echo "height: $height ,highest coreq: $highestcrq";
+					for($a = $highestcrq; $a>$height; $a--) //from the highest coreq
+					{
+						if(findNumberOfPlaces($seq, $a) > 0) //if there is room in the verified semester
+						{
+							$seq = removeCourse($seq, $co);
+							$seq = tryPlaceCourse($seq, $co, $a);
+							$a = $height;
+						}
+					}
+				}
+				else //has no coreqs nor prereqs
+				{
+					//echo "no coreqs or prereqs";
+					$highestprq=findLastEmptySemester($seq);
+					for($a = $highestprq; $a>$height; $a--)
+					{
+						if(findNumberOfPlaces($seq, $a) > 0)
+						{
+							$seq = removeCourse($seq, $co);
+							$seq = tryPlaceCourse($seq, $co, $a);
+							$a = $height;
+						}
+					}
+				}
+			}
+		}
+		/*
+		if(empty($seq[$x][0]))
+		{
+			echo $x;
+			unset($seq[$x]);
+		}
+		*/
+	}
+
+	return $seq;
+}
+
+
+function reCompressSequence($seq)
+{
+	$seqsize = count($seq);
+	for($a = 0; $a<$seqsize; $a++)
+	{
+		for($b = 0; $b<count($seqsize); $b++)
+		{
+
+		}
+
+	}
+	return $seq;
+}
+
+
+function removeCourse($s, $co)
+{
+	//echo var_dump($co);
+	//echo "removing: ".$co -> name;
+	$rows = (count($s)); //these are our total semeseters
+	$cols = (count($s[0])); //these are our slots per semester
+
+	for($a = $rows-1; $a >= 0; $a--)
+	{
+		for($b = (count($s[$a]))-1; $b >= 0; $b--)
+		{
+			//echo "a: $a\n";
+			//echo "b: $b\n";
+			if (!is_null($s[$a][$b]))
+			{
+				//echo ($s[$a][$b])->id;
+
+				//echo $co->id;
+				if($s[$a][$b]->id == $co->id)
+				{
+					//echo "a: $a\n";
+					//echo "b: $b\n";
+					$s[$a][$b]=null;
+				}
+			}
+		}
+	}
+	if(notContain($co, $s))
+		//echo "removal successfull!";
+	return $s;
+}
+
+
+
+function tryPlaceCourse($seq, $co, $sem)
+{
+	//echo " placing: ".$co->name." in semester: ".(count($seq)-$sem);
+	for($b = 0; $b<count($seq[$sem]); $b++)  //find room and place course
+		{
+			if(is_null($seq[$sem][$b]))
+			{
+				//echo "placed in $sem and $b!";
+				$seq[$sem][$b]=$co;
+				$b=count($seq[$sem]);
+			}
+		}
+	return $seq;
+}
+
+/**
+ * Finds the highest semester of a list of multiple courses
+ */
+function findHighestSem($rq, $seq)
+{
+	//echo "<br> rq size: ".count($rq)."\n";
+	if(array_key_exists(0, $rq))
+	{
+		foreach($rq as $co)
+		{
+			if(!is_null($co))
+				$ret[] = findSemester($co, $seq);
+		}
+		return max($ret);
+	}
+	else
+		return -1;
+}
+
+function findSemester($co, $s)
+{
+	//echo "finding semester for \n".$co -> id;
+	$rows = (count($s)); //these are our total semeseters
+	$cols = (count($s[0])); //these are our slots per semester
+	$ret = $rows-1;
+	if(is_null($co))
+		return 0;
+	else {
+		for($a = $rows-1; $a >= 0; $a--)
+		{
+			for($b = (count($s[$a]))-1; $b >= 0; $b--)
+			{
+				if(!is_null($s[$a][$b]))
+				{
+					if(($s[$a][$b] -> id) == ($co -> id))
+						return $ret;
+				}
+			}
+			$ret = $ret-1;
+		}
+	}
+	return 0;
+}
+
 
 
 ?>
