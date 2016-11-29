@@ -12,8 +12,8 @@ use App\Courses;
 use App\Lectures;
 use App\Tutorials;
 use App\Labs;
-
 use App\SequenceTree;
+use App\Semesters;
 
 class CoursesController extends Controller
 {

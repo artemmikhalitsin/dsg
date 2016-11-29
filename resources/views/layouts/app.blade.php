@@ -39,7 +39,7 @@
             width:100%;
             background-size: cover;
             background-repeat: no-repeat;
-            background-image: url("footer.png");
+            background-image: url("{{{ asset('footer.png') }}}");
             overflow:hidden;
             color: white;
         }

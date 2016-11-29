@@ -62,9 +62,9 @@
                     						<div class="top-info"><span>Monday</span></div>
                                                   <ul>
                     						@foreach($schedule[0] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot['start_time']}}" data-end="{{$timeslot['end_time']}}" data-content="{{$timeslot['id']}}" data-event="{{$timeslot['type']}}">
+                    							<li class="single-event" data-start="{{$timeslot['start_time']}}" data-end="{{$timeslot['end_time']}}" data-content="{{$timeslot['id']}}" data-event="{{$timeslot['type']}}" data-code="{{$timeslot['course_code']}}">
                     								<a href="#0">
-                    									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}"</em>
+                    									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
                     							</li>
                     						@endforeach
@@ -75,7 +75,7 @@
                     						<div class="top-info"><span>Tuesday</span></div>
                                                   <ul>
                     						@foreach($schedule[1] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot['start_time']}}" data-end="{{$timeslot['end_time']}}" data-content="{{$timeslot['id']}}" data-event="{{$timeslot['type']}}">
+                    							<li class="single-event" data-start="{{$timeslot['start_time']}}" data-end="{{$timeslot['end_time']}}" data-content="{{$timeslot['id']}}" data-event="{{$timeslot['type']}}" data-code="{{$timeslot['course_code']}}">
                     								<a href="#0">
                     									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
@@ -88,7 +88,7 @@
                     						<div class="top-info"><span>Wednesday</span></div>
                     						<ul>
                                                        @foreach($schedule[2] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot['id']}}" data-event="{{$timeslot["type"]}}">
+                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot['id']}}" data-event="{{$timeslot["type"]}}" data-code="{{$timeslot['course_code']}}">
                     								<a href="#0">
                     									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
@@ -101,7 +101,7 @@
                     						<div class="top-info"><span>Thursday</span></div>
                     						<ul>
                                                        @foreach($schedule[3] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot['id']}}" data-event="{{$timeslot["type"]}}">
+                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot['id']}}" data-event="{{$timeslot["type"]}}" data-code="{{$timeslot['course_code']}}">
                     								<a href="#0">
                     									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
@@ -114,7 +114,7 @@
                     						<div class="top-info"><span>Friday</span></div>
                     						<ul>
                                                        @foreach($schedule[4] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot['id']}}" data-event="{{$timeslot["type"]}}">
+                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot['id']}}" data-event="{{$timeslot["type"]}}" data-code="{{$timeslot['course_code']}}">
                     								<a href="#0">
                     									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
@@ -127,7 +127,7 @@
                     						<div class="top-info"><span>Saturday</span></div>
                     						<ul>
                                                        @foreach($schedule[5] as $timeslot)
-                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot['id']}}" data-event="{{$timeslot["type"]}}">
+                    							<li class="single-event" data-start="{{$timeslot["start_time"]}}" data-end="{{$timeslot["end_time"]}}" data-content="{{$timeslot['id']}}" data-event="{{$timeslot["type"]}}" data-code="{{$timeslot['course_code']}}">
                     								<a href="#0">
                     									<em class="event-name">{{$timeslot["course_code"]}} <br>{{$timeslot["course_name"]}}</em>
                     								</a>
@@ -176,6 +176,32 @@
 		document.write(
 	'<script src="/js/schedule/jquery-3.0.0.min.js"><\/script>');
 	}
+
+    $(document).ready(function() {
+         $('.event-modal').on('click', '#modal-delete-button', function(){
+
+              var course_code = $(this).attr("course-code");
+              var tag = 'p[data-code="' + course_code +'"]';
+              console.log(tag);
+              $(tag).each($(this).remove());
+
+              $.ajax({
+                  url: '/schedule/removeCourse',
+                  type: 'POST',
+                  data: {
+                       course_code: course_code
+                  },
+                  success: function (data) {
+                     console.log(data);
+                     if(data['response'] == true)
+                     {
+                          var tag = 'p[data-code="' + course_code +'"]'
+                          $('#schedule').find(tag).remove();
+                     }
+                   }
+              });
+         });
+   });
 </script>
 <script src="/js/schedule/main.js"></script>
 @endsection

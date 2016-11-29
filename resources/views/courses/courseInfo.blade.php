@@ -7,4 +7,5 @@
      @endif
      <li>Room: {{$section->place}}</li>
 </ul>
+<div id="modal-delete-button" course-code="{{$course->course_code}}"></div>
 </div>
