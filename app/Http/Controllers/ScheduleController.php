@@ -87,5 +87,5 @@ class ScheduleController extends Controller
                 'semester_id' => $request->input('semester_id')
             ]);
         return redirect('/schedule');
-    })
+   }
 }
