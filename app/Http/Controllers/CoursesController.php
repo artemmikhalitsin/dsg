@@ -50,16 +50,21 @@ class CoursesController extends Controller
 
     	//gets completed courses
 	    $completedCourses = User::getCompletedCourses();
+	    $math_201_id = DB::table('courses')
+	    ->where('course_code','=','MATH 201')
+	    ->lists('course_id')[0];
+	    
 	    //hacky fix to convert from collection object to array
 	    $completedCourses = json_decode(json_encode($completedCourses));
 	    foreach ($completedCourses as $key => $completeCourse){
 	    	echo $completeCourse->course_code.'<br>';
 	    	$completedCourses[$key] = $completedCourses[$key]->course_id;
 	    }
-	    //removes completed courses from program
-	    $userProgram = array_diff($userProgram, $completedCourses);
+
+	    $completedCourses[] = $math_201_id;
 
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
+
 		$sequenceInfo = sortByLevel($sequenceInfo);
 
 		/*************************/
@@ -71,17 +76,31 @@ class CoursesController extends Controller
 		foreach($sequenceInfo as $si2)
 			$sequence = outputByLevel(0, $sequence, $si2);
 
+		foreach ($sequence as &$semester){
+			foreach ($semester as $key => &$programCourse){
+				foreach ($completedCourses as $completeCourse){
+					if ($programCourse != null && $completeCourse == $programCourse->id){
+						echo $semester[$key]->name;
+						$semester[$key] = null;
+						break;
+					}
+				}
+			}
+		}
+
+
 		for ($i = 0; $i < sizeof($sequence); $i++)
 			compressIt($sequenceInfo, $sequence, $i, []);
 
 		foreach ($sequence as $key => $semester){
+			if (!empty($semester))
 				if ($semester[0] == null)
 					unset($sequence[$key]);
 		}
 
-	rearrangeSemester($sequence);
+		rearrangeSemester($sequence);
 
-	 foreach ($sequence as $key => $semester){
+	 	foreach ($sequence as $key => $semester){
 				if ($semester[0] == null)
 					array_shift($sequence);
 		}
@@ -130,8 +149,8 @@ function compressIt($sequenceInfo, &$sequence, $rowNumber, $requiredSoFar){
 				if ($realGhetto == 1)
 					break;
 				}
-				if ($realGhetto == 1)
-					break;
+			if ($realGhetto == 1)
+				break;
 			}
 		}
 	}
