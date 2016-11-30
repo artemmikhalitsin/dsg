@@ -34,6 +34,7 @@
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                             @if ($sequence != null)
+                            @if (!empty($sequence[0]))
                                 <thead>
                                     <tr>
                                         <th>Semester</th>
@@ -65,6 +66,7 @@
                                 <div>
                                     Looks like you haven't selected any classes yet.
                                 </div>
+                            @endif
                             @endif
                             </table>
                             <!-- /.table-responsive -->
