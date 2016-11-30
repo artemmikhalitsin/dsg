@@ -30,8 +30,12 @@ class ScheduleController extends Controller
             ->leftJoin('completedCourses', function ($join) {
                 $join->on('courses.course_id', '=', 'completedCourses.course_id')
                      ->on('users.id', '=', 'completedCourses.user_id');
+            })->leftJoin('schedule', function ($join) {
+                $join->on('courses.course_id', '=', 'schedule.course_id')
+                     ->on('users.id', '=', 'schedule.user_id');
             })->select('courses.*', 'courseProgram.course_type')
             ->whereNull('completedCourses.course_id')
+            ->whereNull('schedule.user_id')
             ->where([
                 ['programs.program_id', Auth::user()->program_id],
                 ['users.id', Auth::user()->id],
