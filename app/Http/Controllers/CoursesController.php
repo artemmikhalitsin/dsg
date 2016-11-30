@@ -57,10 +57,10 @@ class CoursesController extends Controller
 	    //hacky fix to convert from collection object to array
 	    $completedCourses = json_decode(json_encode($completedCourses));
 	    foreach ($completedCourses as $key => $completeCourse){
-	    	echo $completeCourse->course_code.'<br>';
+	    	//echo $completeCourse->course_code.'<br>';
 	    	$completedCourses[$key] = $completedCourses[$key]->course_id;
 	    }
-
+	    //perma add math 201 to completed
 	    $completedCourses[] = $math_201_id;
 
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
@@ -80,7 +80,6 @@ class CoursesController extends Controller
 			foreach ($semester as $key => &$programCourse){
 				foreach ($completedCourses as $completeCourse){
 					if ($programCourse != null && $completeCourse == $programCourse->id){
-						echo $semester[$key]->name;
 						$semester[$key] = null;
 						break;
 					}

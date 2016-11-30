@@ -100,11 +100,6 @@
         <br>
     @endforeach
 
-    <br>
-    <br>
-    <br>
-
-    {{json_encode($sequenceInfo)}}
 @endsection
 
 
