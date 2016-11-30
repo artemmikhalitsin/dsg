@@ -10,6 +10,58 @@
 
 @section('content')
 
+<<<<<<< Updated upstream
+=======
+
+<td class="post">
+  <div class="panel-body">
+    <div id="wrapper">
+           <div id="page-wrapper">
+               <div class="row">
+                   <div class="col-md-10 col-md-offset-1">
+                       <div class="panel panel-primary">
+                           <div class="panel-heading" id="add-course">
+                               Add course to schedule
+                           </div>
+                           <!-- /.panel-heading -->
+                           <div class="panel-body" id="answer1" style="display:none;">
+                               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                   <thead>
+                                       <tr>
+                                           <th>Code</th>
+                                           <th>Name</th>
+                                           <th>Type</th>
+                                           <th>Credits</th>
+                                           <th>Option</th>
+                                       </tr>
+                                   </thead>
+                                   <tbody>
+                                    @foreach($courses as $course)
+                                       <tr class="odd gradeX" id="classrow-{{$course->course_id}}">
+                                           <td>{{ $course->course_code }}</td>
+                                           <td>{{ $course->course_name }}</td>
+                                           <td>{{ $course->course_type }}</td>
+                                           <td style="text-align: center;">{{ $course->credits }}</td>
+                                           <td style="text-align: center;">
+                                            <button class="btn btn-primary btn-xs add-course" value="{{$course->course_id}}">
+                                            <span class="glyphicon glyphicon-plus"></span> Add</button>
+                                           </td>
+                                       </tr>
+                                       @endforeach
+                                   </tbody>
+                               </table>
+                               <!-- /.table-responsive -->
+                           </div>
+                           <!-- /.panel-body -->
+                       </div>
+                       <!-- /.panel -->
+                   </div>
+                   <!-- /.col-lg-12 -->
+               </div>
+               <!--/.row-->
+
+</td>
+>>>>>>> Stashed changes
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -178,4 +230,52 @@
 	}
 </script>
 <script src="/js/schedule/main.js"></script>
+<script src="/js/dataTables/jquery.dataTables.min.js"></script>
+<script src="/js/dataTables/dataTables.bootstrap.min.js"></script>
+<script src="/js/dataTables/dataTables.responsive.js"></script>
+
+<script>
+
+ $(document).ready(function() {
+       var table = $('#dataTables-example').DataTable({
+           responsive: true
+      });
+
+      $('#add-course').on('click', function(){
+          var elem = $('#answer1');
+          if(elem.css('display') == 'none')
+          {
+               elem.css('display','block');
+          }
+          else
+          {
+               elem.css('display','none');
+          }
+      })
+
+      $('#dataTables-example tbody').on('click', 'td button', function(){
+         var course_id = $(this).val();
+
+           $.ajax({
+               url: '/completedCourses',
+               type: 'POST',
+               data: {
+                    course_id: course_id
+               },
+               success: function (data) {
+                   console.log(data);
+                   if(data['response'] == true)
+                   {
+                        var row = document.getElementById('classrow-'+course_id);
+                        $('#dataTables-example').DataTable()
+                                                   .row(row)
+                                                   .remove()
+                                                   .draw(false);
+                   }
+                }
+           });
+      });
+});
+
+</script>
 @endsection
