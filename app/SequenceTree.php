@@ -8,16 +8,32 @@ use Illuminate\Support\Facades\Auth;
 
 use DB;
 
+use App\User;
+
+use App\Preferences;
+
+use App\Http\Controllers\UserController;
+
 class SequenceTree extends Model
 {
   //Everything starts here:
   public static function getOutput($userProgram){
+
     $listOfCourseTrees = [];
 
     foreach ($userProgram as $userCourse){
-      $listOfCourseTrees[] = $course = new Course ($userCourse, $listOfCourseTrees);
+      $already = false;
+      foreach ($listOfCourseTrees as $course){
+        if ($course->id == $userCourse){
+          $already = true;
+        }
+      }
+
+      if (!$already){
+        $listOfCourseTrees[] = $course = new Course ($userCourse, $listOfCourseTrees);
+      }
     }
-	
+
     foreach ($listOfCourseTrees as &$course){
       $currentPrereq = array();
       foreach ($course->prerequisiteList as $key => &$p){
@@ -28,13 +44,13 @@ class SequenceTree extends Model
           array_push($currentPrereq, $p->prereq_id);
       }
     }
-	
-	
+
+
     foreach ($listOfCourseTrees as &$course){
       $course->assignLevel($course);
     }
 
-	
+
     return $listOfCourseTrees;
   }
 }
@@ -46,7 +62,7 @@ class Course
   var $id;
   var $winter;
   var $fall;
-  var $level = -1;  
+  var $level = -1;
 
   function __construct($id, &$listOfCourseTrees) {
 
@@ -102,7 +118,7 @@ class Course
   function assignLevel($rootCourse) {
     if ($this->level == -1){
       $maxLevel = -1; //OVER 9000
-      if (empty($this->prerequisiteList)) 
+      if (empty($this->prerequisiteList))
         $this-> level = 0;
       else {
         foreach($this->prerequisiteList as $prerequisite){
@@ -119,13 +135,13 @@ class Course
 
   function getPrq()
   {
-    if (property_exists($this, 'prerequisiteList')) 
+    if (property_exists($this, 'prerequisiteList'))
       return $this->prerequisiteList;
   }
 
   function getId()
   {
-    if (property_exists($this, 'id')) 
+    if (property_exists($this, 'id'))
       return $this->id;
   }
 
@@ -149,7 +165,7 @@ class Course
     $this->corequisites = $crq;
     $this->level = -1;
   }
-  
+
   function addCrq($crq)
   {
     $this->corequisites[]=$crq;
@@ -159,7 +175,7 @@ class Course
   {
     $this->prerequisiteList[]->prerequisite=$prq;
   }
-  
+
   function setPrqs($prqs)
   {
     $this->prerequisiteList= $prqs;
@@ -167,7 +183,7 @@ class Course
 
   function getCrq()
   {
-    if (property_exists($this, 'corequisites')) 
+    if (property_exists($this, 'corequisites'))
       return $this -> corequisites;
     }
   */
@@ -188,7 +204,7 @@ class Prerequisite
   function __construct($prerequisite, $parent_id, &$listOfCourseTrees){
     $this->prerequisiteChoices[] = $prerequisite;
     $this->parent_id = $parent_id;
-    
+
     $prereqInfo = DB::table('prerequisites')
     ->select('prereq_id', 'iscorequisite')
     ->where('prerequisite', '=', $prerequisite->id)
@@ -198,7 +214,15 @@ class Prerequisite
     $this->prereq_id = $prereqInfo[0]->prereq_id;
     $this->isCorequisite = $prereqInfo[0]->iscorequisite;
     //this gets the other options
-    $this->getOrReq($listOfCourseTrees);
+
+    //THIS IS IMPORTANT FOR OR-PRREQUISITES
+    //THIS IS IMPORTANT FOR OR-PRREQUISITES
+    //THIS IS IMPORTANT FOR OR-PRREQUISITES
+    //THIS IS IMPORTANT FOR OR-PRREQUISITES
+    //THIS IS IMPORTANT FOR OR-PRREQUISITES
+    //but we it's not accounted for in sequencing
+
+    //$this->getOrReq($listOfCourseTrees);
   }
 
   function getOrReq(&$listOfCourseTrees){
@@ -220,7 +244,8 @@ class Prerequisite
         }
       }
       if (!$already){
-        $this->prerequisiteChoices[] = new Course ($orReq->course_id, $listOfCourseTrees);
+        $listOfCourseTrees[] = $course = new Course ($orReq->course_id, $listOfCourseTrees);
+        $this->prerequisiteChoices[] = $course;
       }
     }
 

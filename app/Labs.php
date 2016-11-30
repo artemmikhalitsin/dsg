@@ -13,4 +13,9 @@ class Labs extends Model
     {
     	return $this->belongsTo('App\Lectures', 'lecture_id', 'lecture_id');
     }
+
+    public function getCourse()
+    {
+         return $this->lecture->course;
+    }
 }
