@@ -22,8 +22,8 @@
                 <div class="panel-body">
                  <div class="form-group">
                       <div class="cold-md-10">
-                      {!! Form::open(['url'=> 'schedule/addCourse', 'method'=>'get']) !!}
-                      {!! Form::submit('Add courses to the schedule', ['class' => '"btn btn-success btn-lg']) !!}
+                      {!! Form::open(['url'=> 'schedule/addCourse', 'method'=>'get', 'id'=> 'addCourse-form']) !!}
+                      {!! Form::button('<i class="fa fa-calendar-plus-o fa-lg" aria-hidden="true"></i> Add courses to the schedule', ['id' => 'addCourse-button', 'class' => '"btn btn-success btn-lg']) !!}
                       {!! Form::close() !!}
                       <br>
                                <select id="semester" name="semester_id" class="form-control selectpicker" title="Please select a semester ...">
@@ -204,6 +204,11 @@
               $("div[semester-id]").hide();
               $("div[semester-id=" + semester_id + "]").show();
         })
+
+        $('#addCourse-button').on('click', function()
+        {
+             $('#addCourse-form').submit();
+        });
 
          $('.event-modal').on('click', '#modal-delete-button', function(){
 
