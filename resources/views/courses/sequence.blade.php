@@ -36,20 +36,21 @@
                                 <thead>
                                     <tr>
                                         <th>Semester</th>
-                                        <th>0</th>
-                                        <th>1</th>
-                                        <th>2</th>
-                                        <th>3</th>
+                                        @for ($i = 0; $i < sizeof($sequence[0]); $i++)
+                                        <th>
+                                          {{$i+1}}
+                                        </th>
+                                        @endfor
                                     </tr>
                                 </thead>
                                 <tbody>
                                   <?php
-                                    //$sequence = array_reverse($sequence)
+                                    $sequence = array_reverse($sequence)
                                   ?>
                                   @for ($i = 0; $i < sizeof($sequence); $i++)
                                     <tr class="odd gradeX" >
                                       <td>
-                                        Semester {{$i}}
+                                        Semester {{$i + 1}}
                                       </td>
                                       @foreach ($sequence[$i] as $course)
                                           <td>

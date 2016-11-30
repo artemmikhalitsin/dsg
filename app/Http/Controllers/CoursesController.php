@@ -34,19 +34,39 @@ class CoursesController extends Controller
 
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
 		$sequenceInfo = sortByLevel($sequenceInfo);
-		$courseLoad=4;
+
+		/*************************/
+		$courseLoad=5;
+		/*************************/
 
 		$sequence = initSequence($courseLoad);
+
 		foreach($sequenceInfo as $si2)
 			$sequence = outputByLevel(0, $sequence, $si2);
 
 		for ($i = 0; $i < sizeof($sequence); $i++)
 			compressIt($sequenceInfo, $sequence, $i, []);
 
+		foreach ($sequence as $key => $semester){
+				if ($semester[0] == null)
+					unset($sequence[$key]);
+		}
+
 		//printSeq($sequence);
-		//$sequence=compressSequence($sequence);
+	//$sequence=compressSequence($sequence);
+	rearrangeSemester($sequence);
+
+	 foreach ($sequence as $key => $semester){
+				if ($semester[0] == null)
+					array_shift($sequence);
+		}
+
+
+
 		//printSeq($sequence);
 		//moveCourse($sequence[1][0], $sequence[1], $sequence[0]);
+
+
 
 		return view('courses.sequence')->with(['sequence'=>$sequence, 'sequenceInfo'=>$sequenceInfo]);
 
@@ -160,14 +180,44 @@ function moveCourse($course, &$source, &$destination){
 			$source[$key] = null;
 		}
 	}
-	foreach ($destination as $key => $here){
-		if ($here == null){
-			$destination[$key] = $course;
+	for ($i = 0; $i < sizeof($destination) ; $i++){
+		if ($destination[$i] == null){
+			$destination[$i] = $course;
 			break;
+		}
+		/*foreach ($destination as $key => $here){
+			if ($here == null){
+				$destination[$key] = $course;
+				break;
+		*/
+	}
+}
+function rearrangeSemester(&$sequence){
+	$sizeSequence = count($sequence);
+	$coursesToBeMoved = array();
+	$courseLoad = count($sequence[0]);
+	for ($i = 0; $i < $sizeSequence; $i++){
+		if (findNumberOfPlaces($sequence, $i) != 0){
+			$courseCount = 0;
+			foreach($sequence[$i] as $slot){
+				if (!is_null($slot)){ //if not null, save the course
+					$coursesToBeMoved [$courseCount] = $slot;
+					$courseCount++;
+				}
+			}
+			$sequence[$i] = array();
+			for ($j = 0; $j < $courseLoad; $j++){
+				if (array_key_exists($j, $coursesToBeMoved)){
+					$sequence[$i][$j] = $coursesToBeMoved[$j];
+				}
+				else{
+					$sequence[$i][$j] = null;
+				}
+			}
+			$coursesToBeMoved = array(); //setting empty
 		}
 	}
 }
-
 /**
  * Returns earliest empty semester
  */
@@ -432,10 +482,10 @@ function compressSequence($seq)
 				//echo "ceci n'est pas un null";
 				if(!is_null($co -> prerequisiteList))
 				{
-					//echo " ".$co -> name." ";
+					echo " ".$co -> name." ";
 					foreach($co -> prerequisiteList as $p) //extract prerequistes and corequistes
 					{
-						//echo " prqCount: ".count($co -> prerequisiteList)." ";
+						echo " prqCount: ".count($co -> prerequisiteList)." ";
 						//echo "prqID: ".$p -> prerequisiteChoices[0]->name."\n";
 						if($p ->isCorequisite == 0)
 							$prereqs = array_merge($prereqs, $p -> prerequisiteChoices);
@@ -448,11 +498,11 @@ function compressSequence($seq)
 
 				if((max($highestprq, $highestcrq) == $highestprq || $highestprq == $highestcrq) && $highestprq != -1) //if the lates prereq is after the latest coreq
 				{
-					//echo " prq rule: ".$highestprq."<br>";
+					echo " prq rule: ".$highestprq."<br>";
 					//echo "height: $height ,highest prereq: $highestprq";
 					for($a = $highestprq-1; $a>$height; $a--) //from the semester after the highest prq to the current semester
 					{
-						//echo " place num: ".findNumberOfPlaces($seq, $a);
+						echo " place num: ".findNumberOfPlaces($seq, $a);
 						if(findNumberOfPlaces($seq, $a) > 0) //if there is room in the verified semester
 						{
 							//echo " got if prq ";
