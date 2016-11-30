@@ -36,7 +36,7 @@ class CoursesController extends Controller
 		$sequenceInfo = sortByLevel($sequenceInfo);
 
 		/*************************/
-		$courseLoad=5;
+		$courseLoad=4;
 		/*************************/
 
 		$sequence = initSequence($courseLoad);
@@ -192,6 +192,7 @@ function moveCourse($course, &$source, &$destination){
 		*/
 	}
 }
+
 function rearrangeSemester(&$sequence){
 	$sizeSequence = count($sequence);
 	$coursesToBeMoved = array();
@@ -218,84 +219,10 @@ function rearrangeSemester(&$sequence){
 		}
 	}
 }
-/**
- * Returns earliest empty semester
- */
-function findLastEmptySemester($s) //initialized sequence as input
-{
-	$rows = (count($s)); //these are our total semeseters
-	$cols = (count($s[0])); //these are our slots per semester
-	$ret = $rows-1;
-
-	for($a = $rows-1; $a >= 0; $a--)
-	{
-		for($b = (count($s[$a]))-1; $b >= 0; $b--)
-		{
-			if(($s[$a][$b]) == '')
-				return $ret;
-		}
-		$ret = $ret-1;
-	}
-	return 0;
-}
-
-/**
-* Returns whether or not a course is in an array based on its id
-*/
-function inArrayCourse($c, $cl)
-{
-	for ($i=0; $i<count($cl); $i++)
-	{
-		if($c->getId() == $cl[$i]->id)
-			return true;
-	}
-	return false;
-}
-
-/**
- * Initializes a sequence based on course load
- */
-function initSequence($cLoad)
-{
-	$sequence = array();
-	$sequence[0]=array();  //0 is the last semester
-	for($b = 0; ($b < $cLoad); $b++)
-		$sequence[0][$b]= null ;
-	return $sequence;
-}
-
-/**
- * Checks if a course is contained in a semester
- */
-function notContain($co, $seq)
-{
-	$rows=count($seq);
-	$courseId = $co -> id;
-	$objToTest;
-
-	for ($a=0; $a<$rows; $a++){
-		for($b=0; $b<count($seq[$a]); $b++){
-			if(is_object($seq[$a][$b]))
-			{
-				if($courseId==($seq[$a][$b] -> id))
-					return false;
-			}
-		}
-	}
-	return true;
-}
-
-function sortByLevel($cl)
-{
-	for($i = 0; $i< count($cl); $i++)
-		$cl=sortaSorter($i, $cl);
-
-	return $cl;
-}
 
 /**
  * courses at index $i are placed in relative position to courses with indexes lower than $i based on their levels
- */
+*/
 function sortaSorter($i, $cl) //position in array and array
 {
 	$placeholder ='';
@@ -327,8 +254,85 @@ function findNumberOfPlaces($seq, $sem)//sequence and semester
 }
 
 /**
- * This function plants a course and their their prereq/coreq trees within a sequence starting at a specified semeseter
+ * Returns earliest empty semester
+
+function findLastEmptySemester($s) //initialized sequence as input
+{
+	$rows = (count($s)); //these are our total semeseters
+	$cols = (count($s[0])); //these are our slots per semester
+	$ret = $rows-1;
+
+	for($a = $rows-1; $a >= 0; $a--)
+	{
+		for($b = (count($s[$a]))-1; $b >= 0; $b--)
+		{
+			if(($s[$a][$b]) == '')
+				return $ret;
+		}
+		$ret = $ret-1;
+	}
+	return 0;
+}
  */
+ 
+/**
+* Returns whether or not a course is in an array based on its id
+
+function inArrayCourse($c, $cl)
+{
+	for ($i=0; $i<count($cl); $i++)
+	{
+		if($c->getId() == $cl[$i]->id)
+			return true;
+	}
+	return false;
+}
+*/
+/**
+ * Initializes a sequence based on course load
+ */
+function initSequence($cLoad)
+{
+	$sequence = array();
+	$sequence[0]=array();  //0 is the last semester
+	for($b = 0; ($b < $cLoad); $b++)
+		$sequence[0][$b]= null ;
+	return $sequence;
+}
+
+/**
+ * Checks if a course is contained in a semester
+
+function notContain($co, $seq)
+{
+	$rows=count($seq);
+	$courseId = $co -> id;
+	$objToTest;
+
+	for ($a=0; $a<$rows; $a++){
+		for($b=0; $b<count($seq[$a]); $b++){
+			if(is_object($seq[$a][$b]))
+			{
+				if($courseId==($seq[$a][$b] -> id))
+					return false;
+			}
+		}
+	}
+	return true;
+}
+ */
+
+function sortByLevel($cl)
+{
+	for($i = 0; $i< count($cl); $i++)
+		$cl=sortaSorter($i, $cl);
+
+	return $cl;
+}
+
+/**
+ * This function plants a course and their their prereq/coreq trees within a sequence starting at a specified semeseter
+ 
 function plantTrees($start, $seq, $co) // semester, sequence, and current course.
 {
 	$prereqs= array();
@@ -406,7 +410,7 @@ function plantTrees($start, $seq, $co) // semester, sequence, and current course
 	}
 	return $seq;
 }
-
+*/
 function outputByLevel($start, $seq, $co)
 {
 	$courseload = count($seq[0]);
@@ -460,6 +464,7 @@ function printSeq($seqs) //prints sequence I guess
 	}
 }
 
+/*
 function compressSequence($seq)
 {
 	$seqsize = count($seq);
@@ -548,7 +553,7 @@ function compressSequence($seq)
 			echo $x;
 			unset($seq[$x]);
 		}
-		*/
+		
 	}
 
 	return $seq;
@@ -621,7 +626,7 @@ function tryPlaceCourse($seq, $co, $sem)
 
 /**
  * Finds the highest semester of a list of multiple courses
- */
+ 
 function findHighestSem($rq, $seq)
 {
 	//echo "<br> rq size: ".count($rq)."\n";
@@ -662,7 +667,7 @@ function findSemester($co, $s)
 	}
 	return 0;
 }
-
+*/
 
 
 ?>
