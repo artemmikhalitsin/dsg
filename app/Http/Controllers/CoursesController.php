@@ -3,40 +3,67 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests;
-
 use App\Courses;
-
 use App\SequenceTree;
+use App\User;
+use App\Preferences;
 
 use DB;
 
-//include (app_path().'\Daniel\phpFunctions.php');
-
 class CoursesController extends Controller
 {
+	// sends a list of courses that are left to do for the logged in user to a view
+    public function addCompletedCourses()
+    {
+        $courses = Courses::getOneProgramCoursesList();
+        return view('courses.completedCourses', compact('courses'));
+    }
+
 	public function __construct()
     {
         $this->middleware('auth');
     }
 
 	public function generateSequence(){
+		/*
+	    $user = Auth::user();
+	    $pref = Preferences::where('user_id', $user->id);
+	    $exists = $pref->exists();
+	    $preferences = array();
+	    if ($exists) {
+	      $pref_id = $pref->value('preference_id');
+	      $preferences = Preferences::find($pref_id);
+	      $days_off = explode("|", $preferences->days_off);
+	      $preferences->days_off = $days_off;
+	    }
+	    */
 
-    $userProgram = DB::table('courses')
+    	$userProgram = DB::table('courses')
 		->join('courseprogram' , 'courses.course_id', '=' , 'courseprogram.course_id')
 		->where('program_id','=','1')
 		->where('course_type','=','program_course')
         ->lists('courses.course_id');
-    //$userProgram = array('218');//,'218','39','174'
+    	//$userProgram = array('218');//,'218','39','174'
+
+    	//gets completed courses
+	    $completedCourses = User::getCompletedCourses();
+	    //hacky fix to convert from collection object to array
+	    $completedCourses = json_decode(json_encode($completedCourses));
+	    foreach ($completedCourses as $key => $completeCourse){
+	    	echo $completeCourse->course_code.'<br>';
+	    	$completedCourses[$key] = $completedCourses[$key]->course_id;
+	    }
+	    //removes completed courses from program
+	    $userProgram = array_diff($userProgram, $completedCourses);
 
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
 		$sequenceInfo = sortByLevel($sequenceInfo);
 
 		/*************************/
-		$courseLoad=4;
+		$courseLoad = 4;
 		/*************************/
 
 		$sequence = initSequence($courseLoad);
@@ -52,8 +79,6 @@ class CoursesController extends Controller
 					unset($sequence[$key]);
 		}
 
-		//printSeq($sequence);
-	//$sequence=compressSequence($sequence);
 	rearrangeSemester($sequence);
 
 	 foreach ($sequence as $key => $semester){
@@ -61,33 +86,9 @@ class CoursesController extends Controller
 					array_shift($sequence);
 		}
 
-
-
-		//printSeq($sequence);
-		//moveCourse($sequence[1][0], $sequence[1], $sequence[0]);
-
-
-
 		return view('courses.sequence')->with(['sequence'=>$sequence, 'sequenceInfo'=>$sequenceInfo]);
 
 	}
-		/*
-    // this will be removed
-    public function index()
-    {
-        $electives = Courses::getProgramElectivesList();
-        $courses = Courses::getProgramCoursesList();
-
-    	return view('courses.index', compact('courses', 'electives'));
-    }
-
-    // sends a list of courses that are left to do for the logged in user to a view
-    public function addCompletedCourses()
-    {
-        $courses = Courses::getOneProgramCoursesList();
-        return view('courses.completedCourses', compact('courses'));
-    }
-		*/
 }
 
 function compressIt($sequenceInfo, &$sequence, $rowNumber, $requiredSoFar){
@@ -185,37 +186,34 @@ function moveCourse($course, &$source, &$destination){
 			$destination[$i] = $course;
 			break;
 		}
-		/*foreach ($destination as $key => $here){
-			if ($here == null){
-				$destination[$key] = $course;
-				break;
-		*/
 	}
 }
 
 function rearrangeSemester(&$sequence){
-	$sizeSequence = count($sequence);
-	$coursesToBeMoved = array();
-	$courseLoad = count($sequence[0]);
-	for ($i = 0; $i < $sizeSequence; $i++){
-		if (findNumberOfPlaces($sequence, $i) != 0){
-			$courseCount = 0;
-			foreach($sequence[$i] as $slot){
-				if (!is_null($slot)){ //if not null, save the course
-					$coursesToBeMoved [$courseCount] = $slot;
-					$courseCount++;
+	if (!empty($sequence[0])){
+		$sizeSequence = count($sequence);
+		$coursesToBeMoved = array();
+		$courseLoad = count($sequence[0]);
+		for ($i = 0; $i < $sizeSequence; $i++){
+			if (findNumberOfPlaces($sequence, $i) != 0){
+				$courseCount = 0;
+				foreach($sequence[$i] as $slot){
+					if (!is_null($slot)){ //if not null, save the course
+						$coursesToBeMoved [$courseCount] = $slot;
+						$courseCount++;
+					}
 				}
+				$sequence[$i] = array();
+				for ($j = 0; $j < $courseLoad; $j++){
+					if (array_key_exists($j, $coursesToBeMoved)){
+						$sequence[$i][$j] = $coursesToBeMoved[$j];
+					}
+					else{
+						$sequence[$i][$j] = null;
+					}
+				}
+				$coursesToBeMoved = array(); //setting empty
 			}
-			$sequence[$i] = array();
-			for ($j = 0; $j < $courseLoad; $j++){
-				if (array_key_exists($j, $coursesToBeMoved)){
-					$sequence[$i][$j] = $coursesToBeMoved[$j];
-				}
-				else{
-					$sequence[$i][$j] = null;
-				}
-			}
-			$coursesToBeMoved = array(); //setting empty
 		}
 	}
 }
@@ -223,8 +221,8 @@ function rearrangeSemester(&$sequence){
 /**
  * courses at index $i are placed in relative position to courses with indexes lower than $i based on their levels
 */
-function sortaSorter($i, $cl) //position in array and array
-{
+//position in array and array
+function sortaSorter($i, $cl){
 	$placeholder ='';
 	if($i-1>=0)
 	{
@@ -242,8 +240,8 @@ function sortaSorter($i, $cl) //position in array and array
 /**
  * Finds number of empty places in a semester
  */
-function findNumberOfPlaces($seq, $sem)//sequence and semester
-{
+//sequence and semester
+function findNumberOfPlaces($seq, $sem){
 	$ret = 0;
 	for($b = 0; $b<count($seq[$sem]); $b++)
 	{
@@ -251,6 +249,76 @@ function findNumberOfPlaces($seq, $sem)//sequence and semester
 			$ret += 1;
 	}
 	return $ret;
+}
+
+function sortByLevel($cl)
+{
+	for($i = 0; $i< count($cl); $i++)
+		$cl=sortaSorter($i, $cl);
+
+	return $cl;
+}
+
+function initSequence($cLoad)
+{
+	$sequence = array();
+	$sequence[0]=array();  //0 is the last semester
+	for($b = 0; ($b < $cLoad); $b++)
+		$sequence[0][$b]= null ;
+	return $sequence;
+}
+
+function outputByLevel($start, $seq, $co)
+{
+	$courseload = count($seq[0]);
+	if(!array_key_exists($start, $seq)) //if the current semester doesn't exists, we create it. haha :)
+	{
+		$seq[]=array();
+		for($a=0; $a<count($seq[0]); $a++)
+			$seq[$start][$a]=null;
+	}
+	$spotsOnLevel = findNumberOfPlaces($seq, $start);
+	if($spotsOnLevel != $courseload) //if there are unclaimed spots on this row
+	{
+		if($co -> level != $seq[$start][0]->level || $spotsOnLevel == 0)// if current course
+			$seq = outputByLevel($start+1, $seq, $co);
+		else
+		{
+			for($b = 0; $b<count($seq[$start]); $b++)  //find room and place course
+			{
+				if(is_null($seq[$start][$b]))
+				{
+					$seq[$start][$b]=$co;
+					$b=count($seq[$start]);
+				}
+			}
+		}
+	}
+	else
+	{
+		for($b = 0; $b<count($seq[$start]); $b++)  //find room and place course
+		{
+			if(is_null($seq[$start][$b]))
+			{
+				$seq[$start][$b]=$co;
+				$b=count($seq[$start]);
+			}
+		}
+	}
+	return $seq;
+}
+
+function printSeq($seqs) //prints sequence I guess
+{
+	for($a = 0; $a<count($seqs); $a++)
+	{
+		for($b = 0; $b<count($seqs[$a]); $b++)
+		{
+			if(!is_null($seqs[$a][$b]))
+				echo $seqs[$a][$b] -> name." ";
+		}
+		echo '<br>';
+	}
 }
 
 /**
@@ -291,14 +359,7 @@ function inArrayCourse($c, $cl)
 /**
  * Initializes a sequence based on course load
  */
-function initSequence($cLoad)
-{
-	$sequence = array();
-	$sequence[0]=array();  //0 is the last semester
-	for($b = 0; ($b < $cLoad); $b++)
-		$sequence[0][$b]= null ;
-	return $sequence;
-}
+
 
 /**
  * Checks if a course is contained in a semester
@@ -322,13 +383,6 @@ function notContain($co, $seq)
 }
  */
 
-function sortByLevel($cl)
-{
-	for($i = 0; $i< count($cl); $i++)
-		$cl=sortaSorter($i, $cl);
-
-	return $cl;
-}
 
 /**
  * This function plants a course and their their prereq/coreq trees within a sequence starting at a specified semeseter
@@ -411,58 +465,7 @@ function plantTrees($start, $seq, $co) // semester, sequence, and current course
 	return $seq;
 }
 */
-function outputByLevel($start, $seq, $co)
-{
-	$courseload = count($seq[0]);
-	if(!array_key_exists($start, $seq)) //if the current semester doesn't exists, we create it. haha :)
-	{
-		$seq[]=array();
-		for($a=0; $a<count($seq[0]); $a++)
-			$seq[$start][$a]=null;
-	}
-	$spotsOnLevel = findNumberOfPlaces($seq, $start);
-	if($spotsOnLevel != $courseload) //if there are unclaimed spots on this row
-	{
-		if($co -> level != $seq[$start][0]->level || $spotsOnLevel == 0)// if current course
-			$seq = outputByLevel($start+1, $seq, $co);
-		else
-		{
-			for($b = 0; $b<count($seq[$start]); $b++)  //find room and place course
-			{
-				if(is_null($seq[$start][$b]))
-				{
-					$seq[$start][$b]=$co;
-					$b=count($seq[$start]);
-				}
-			}
-		}
-	}
-	else
-	{
-		for($b = 0; $b<count($seq[$start]); $b++)  //find room and place course
-		{
-			if(is_null($seq[$start][$b]))
-			{
-				$seq[$start][$b]=$co;
-				$b=count($seq[$start]);
-			}
-		}
-	}
-	return $seq;
-}
 
-function printSeq($seqs) //prints sequence I guess
-{
-	for($a = 0; $a<count($seqs); $a++)
-	{
-		for($b = 0; $b<count($seqs[$a]); $b++)
-		{
-			if(!is_null($seqs[$a][$b]))
-				echo $seqs[$a][$b] -> name." ";
-		}
-		echo '<br>';
-	}
-}
 
 /*
 function compressSequence($seq)
@@ -668,6 +671,5 @@ function findSemester($co, $s)
 	return 0;
 }
 */
-
 
 ?>

@@ -8,10 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 use DB;
 
+use App\User;
+
+use App\Preferences;
+
+use App\Http\Controllers\UserController;
+
 class SequenceTree extends Model
 {
   //Everything starts here:
   public static function getOutput($userProgram){
+
     $listOfCourseTrees = [];
 
     foreach ($userProgram as $userCourse){

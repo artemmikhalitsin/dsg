@@ -33,6 +33,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            @if ($sequence != null)
                                 <thead>
                                     <tr>
                                         <th>Semester</th>
@@ -60,6 +61,11 @@
                                     </tr>
                                   @endfor
                                 </tbody>
+                            @else
+                                <div>
+                                    Looks like you haven't selected any classes yet.
+                                </div>
+                            @endif
                             </table>
                             <!-- /.table-responsive -->
                         </div>
