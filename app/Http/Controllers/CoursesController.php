@@ -10,6 +10,10 @@ use App\Courses;
 use App\SequenceTree;
 use App\User;
 use App\Preferences;
+use App\Lectures;
+use App\Tutorials;
+use App\Labs;
+
 
 use DB;
 
