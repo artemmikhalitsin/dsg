@@ -17,6 +17,9 @@
                 <div class="panel-heading">Your Schedule</div>
 
                 <div class="panel-body">
+                     {!! Form::open(['url'=> 'schedule/addCourse', 'method'=>'get']) !!}
+                     {!! Form::submit('Add courses to the schedule', ['class' => '"btn btn-success btn-xs']) !!}
+                     {!! Form::close() !!}
                     <div id="schedule-reset">
                     	<div id="schedule">
                     		<div class="cd-schedule loading">
