@@ -12,12 +12,8 @@ use App\Courses;
 use App\Lectures;
 use App\Tutorials;
 use App\Labs;
-
 use App\SequenceTree;
-
 use App\Semesters;
-
-use App\Lectures;
 
 class CoursesController extends Controller
 {
@@ -30,7 +26,6 @@ class CoursesController extends Controller
 		$sequenceInfo = SequenceTree::getOutput();
 		return view('courses.sequence', compact('sequenceInfo'));
 	}
-
     // this will be removed
     public function index()
     {
