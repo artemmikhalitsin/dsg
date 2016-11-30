@@ -81,7 +81,7 @@ class User extends Authenticatable
         }
         return array($start_time, $end_time);
     }
-    public static function getUserSchedule()
+    public static function getSemesterSchedule($semester_id)
     {
        $schedule = User::join('schedule', 'users.id', '=', 'schedule.user_id')
            ->leftJoin('tutorials', 'schedule.tutorial_id', '=', 'tutorials.tutorial_id')
@@ -89,6 +89,7 @@ class User extends Authenticatable
            ->leftJoin('lectures', 'schedule.lecture_id', '=', 'lectures.lecture_id')
            ->join('courses', 'lectures.course_id', '=', 'courses.course_id')
            ->where('users.id', Auth::user()->id)
+           ->where('schedule.semester_id', $semester_id)
            ->get(
                [
                    'courses.course_code', 'courses.course_name',

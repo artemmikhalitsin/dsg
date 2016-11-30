@@ -20,6 +20,14 @@ class ScheduleController extends Controller
         return view('courses.addCourse', compact('semesters'));
     }
 
+    public function removeCourse(Request $request)
+    {
+         $user_id = Auth::user()->id;
+         $course_id = $request->input('course_id');
+         $response = Schedule::removeCourse($user_id, $course_id);
+         return response()->json(['success'=>$response]);
+    }
+
     public function getCoursesList(Request $request)
     {
         $semester_id = $request->input('semester_id');
