@@ -65,6 +65,8 @@ class ScheduleController extends Controller
 
     public function store(Request $request)
     {
+        //ARTEM: should check whether class already exists in schedule?
+        //ARTEM: should schedule controller do this? Seems like a job for the model.
         //return $request->all();
         $tutorial_id = $request->input('tutorial_id');
         $lab_id = $request->input('lab_id');
@@ -85,5 +87,5 @@ class ScheduleController extends Controller
                 'semester_id' => $request->input('semester_id')
             ]);
         return redirect('/schedule');
-    }
+   }
 }

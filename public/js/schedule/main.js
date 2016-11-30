@@ -105,6 +105,8 @@ jQuery(document).ready(function($){
 		this.element.removeClass('loading');
 	};
 
+	//NOTE: If we are to reuse this script for VIEWING COURSE INFO, perhaps it's
+	//and not include a delete button, perhaps it's best to make another copy of this .js
 	SchedulePlan.prototype.openModal = function(event) {
 		var self = this;
 		var mq = self.mq();
@@ -118,6 +120,9 @@ jQuery(document).ready(function($){
 		//update event content
 		this.modalBody.find('.event-info').load('courseinfo/' + event.parent().attr('data-event') + '/' + event.parent().attr('data-content') + ' .course-info > *', function(data){
 			//once the event content has been loaded
+			var button = "<button class='btn btn-danger btn-sm delete-button'" +
+						"<span class='glyphicon glyphicon-plus'></span> Remove from schedule</button>";
+			$("#modal-delete-button").append(button);
 			self.element.addClass('content-loaded');
 		});
 
