@@ -184,10 +184,7 @@
          $('.event-modal').on('click', '#modal-delete-button', function(){
 
               var course_code = $(this).attr("course-code");
-              var tag = 'p[data-code="' + course_code +'"]';
-              console.log(tag);
-              $(tag).each($(this).remove());
-
+              console.log(course_code);
               $.ajax({
                   url: '/schedule/removeCourse',
                   type: 'POST',
@@ -196,11 +193,7 @@
                   },
                   success: function (data) {
                      console.log(data);
-                     if(data['response'] == true)
-                     {
-                          var tag = 'p[data-code="' + course_code +'"]'
-                          $('#schedule').find(tag).remove();
-                     }
+                     return redirect('/schedule');
                    }
               });
          });
