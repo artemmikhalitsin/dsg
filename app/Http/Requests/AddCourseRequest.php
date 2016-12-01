@@ -24,9 +24,9 @@ class AddCourseRequest extends Request
     public function rules()
     {
         return [
-            'semester_id' => 'required|is_numeric|exists:semesters',
-            'course_id' => 'required|is_numeric|exists:courses',
-            'lecture_id' => 'required|is_numeric|exists:lectures'
+            'semester_id' => 'required|numeric|exists:semesters',
+            'course_id' => 'required|numeric|exists:courses',
+            'lecture_id' => 'required|numeric|exists:lectures'
         ];
     }
 }
