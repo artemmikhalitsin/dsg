@@ -13,6 +13,7 @@
     <link href="/css/dataTables/sb-admin-2.css" rel="stylesheet">
 @endsection
 
+{{ json_encode($sequence) }}
 
 @section('content')
     <div id="wrapper">
