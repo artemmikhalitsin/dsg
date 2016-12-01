@@ -20,6 +20,14 @@ class ScheduleController extends Controller
         return view('courses.addCourse', compact('semesters'));
     }
 
+    public function removeCourse(Request $request)
+    {
+         $user_id = Auth::user()->id;
+         $course_id = $request->input('course_id');
+         $response = Schedule::removeCourse($user_id, $course_id);
+         return response()->json(['success'=>$response]);
+    }
+
     public function getCoursesList(Request $request)
     {
         $semester_id = $request->input('semester_id');
@@ -65,6 +73,8 @@ class ScheduleController extends Controller
 
     public function store(Request $request)
     {
+        //ARTEM: should check whether class already exists in schedule?
+        //ARTEM: should schedule controller do this? Seems like a job for the model.
         //return $request->all();
         $tutorial_id = $request->input('tutorial_id');
         $lab_id = $request->input('lab_id');
@@ -85,5 +95,5 @@ class ScheduleController extends Controller
                 'semester_id' => $request->input('semester_id')
             ]);
         return redirect('/schedule');
-    }
+   }
 }

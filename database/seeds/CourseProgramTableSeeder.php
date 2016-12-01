@@ -734,6 +734,16 @@ class CourseProgramTableSeeder extends Seeder
 				'program_id' => DB::table('programs')->where('program_code', 'COEN')->value('program_id'),
 				'course_type' => 'program_prereq'
 			],
+               [
+				'course_id' => DB::table('courses')->where('course_code', 'ENCS 272')->value('course_id'),
+				'program_id' => DB::table('programs')->where('program_code', 'SOEN')->value('program_id'),
+				'course_type' => 'program_course'
+			],
+               [
+				'course_id' => DB::table('courses')->where('course_code', 'ENCS 272')->value('course_id'),
+				'program_id' => DB::table('programs')->where('program_code', 'COEN')->value('program_id'),
+				'course_type' => 'program_course'
+			],
 			[
 				'course_id' => DB::table('courses')->where('course_code', 'ENCS 282')->value('course_id'),
 				'program_id' => DB::table('programs')->where('program_code', 'SOEN')->value('program_id'),

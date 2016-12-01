@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Semesters;
+use App\User;
+use App\Preferences;
 
 use Auth;
 use DB;
 
-use App\User;
 
-use App\Preferences;
 
 class UserController extends Controller
 {
@@ -46,9 +47,14 @@ class UserController extends Controller
 
     public function schedule()
     {
-        $schedule = User::getUserSchedule();
+        $semesters = Semesters::all();
+        foreach($semesters as $semester)
+        {
+             $semester_id = $semester->semester_id;
+             $schedule[$semester_id] = User::getSemesterSchedule($semester_id);
+        }
 
-        return view('courses.schedule', compact('schedule'));
+        return view('courses.schedule', compact('schedule', 'semesters'));
     }
 
     public function removeCompletedCourse(Request $request)

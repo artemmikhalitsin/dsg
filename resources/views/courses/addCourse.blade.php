@@ -2,7 +2,7 @@
 
 @section('extraCSS')
 <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="{{ asset('/css/preferences/bootstrap-select.min.css') }}">
 @endsection
 
 @section('content')
@@ -67,6 +67,6 @@
 @endsection
 
 @section('extraJS')
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
-	<script src="/js/schedule/addCourse.js"></script>
+	<script src="{{ asset('/js/preferences/bootstrap-select.min.js') }}"></script>
+	<script src="{{ asset('/js/schedule/addCourse.js')}}"></script>
 @endsection
