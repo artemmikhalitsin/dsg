@@ -100,18 +100,21 @@ class Course
 
   //adds a prerequisite object to the current course, checks if that object exists already
   function addPrerequisiteObject($prerequisiteCourseId, $parent_id, &$listOfCourseTrees){
-    $already = false;
-    foreach ($listOfCourseTrees as $course){
-      if ($course->id == $prerequisiteCourseId){
-        $this->prerequisiteList[] = new Prerequisite($course, $this->id, $listOfCourseTrees);
-        $already = true;
-      }
-    }
+       if(!DB::table('completedCourses')->where('course_id', $prerequisiteCourseId)->exists())
+       {
+              $already = false;
+              foreach ($listOfCourseTrees as $course){
+                if ($course->id == $prerequisiteCourseId){
+                  $this->prerequisiteList[] = new Prerequisite($course, $this->id, $listOfCourseTrees);
+                  $already = true;
+                }
+              }
 
-    if (!$already){
-      $listOfCourseTrees[] = $course = new Course ($prerequisiteCourseId, $listOfCourseTrees);
-      $this->prerequisiteList[] = new Prerequisite($course, $this->id, $listOfCourseTrees);
-    }
+              if (!$already){
+                $listOfCourseTrees[] = $course = new Course ($prerequisiteCourseId, $listOfCourseTrees);
+                $this->prerequisiteList[] = new Prerequisite($course, $this->id, $listOfCourseTrees);
+              }
+       }
   }
 
   //a course and the final list of courses to take
