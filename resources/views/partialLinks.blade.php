@@ -4,8 +4,8 @@
 </div>
 
 <div class="img">
-	<a href="{{ url('/preferences') }}"><img src="{{{ asset('pref.png') }}}"></a>
-	<a href="{{ url('/preferences') }}"><div class="desc">ADD PREFERENCES</div></a>
+	<a href="{{ url('/profile') }}"><img src="{{{ asset('pref.png') }}}"></a>
+	<a href="{{ url('/profile') }}"><div class="desc">ADD PREFERENCES</div></a>
 </div>
 
 <div class="img">

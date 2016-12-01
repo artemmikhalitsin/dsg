@@ -20,6 +20,14 @@ class ScheduleController extends Controller
         return view('courses.addCourse', compact('semesters'));
     }
 
+    public function removeCourse(Request $request)
+    {
+         $user_id = Auth::user()->id;
+         $course_id = $request->input('course_id');
+         $response = Schedule::removeCourse($user_id, $course_id);
+         return response()->json(['success'=>$response]);
+    }
+
     public function getCoursesList(Request $request)
     {
         $semester_id = $request->input('semester_id');
@@ -30,8 +38,12 @@ class ScheduleController extends Controller
             ->leftJoin('completedCourses', function ($join) {
                 $join->on('courses.course_id', '=', 'completedCourses.course_id')
                      ->on('users.id', '=', 'completedCourses.user_id');
+            })->leftJoin('schedule', function ($join) {
+                $join->on('courses.course_id', '=', 'schedule.course_id')
+                     ->on('users.id', '=', 'schedule.user_id');
             })->select('courses.*', 'courseProgram.course_type')
             ->whereNull('completedCourses.course_id')
+            ->whereNull('schedule.user_id')
             ->where([
                 ['programs.program_id', Auth::user()->program_id],
                 ['users.id', Auth::user()->id],
@@ -83,5 +95,5 @@ class ScheduleController extends Controller
                 'semester_id' => $request->input('semester_id')
             ]);
         return redirect('/schedule');
-    })
+   }
 }

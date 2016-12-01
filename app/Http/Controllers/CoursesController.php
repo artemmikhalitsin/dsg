@@ -10,6 +10,10 @@ use App\Courses;
 use App\SequenceTree;
 use App\User;
 use App\Preferences;
+use App\Lectures;
+use App\Tutorials;
+use App\Labs;
+use App\Semesters;
 
 use DB;
 
@@ -26,6 +30,31 @@ class CoursesController extends Controller
     {
         $this->middleware('auth');
     }
+
+   public function showInfo(Request $request, $sectiontype, $sectionid)
+   {
+        $sectiontype = strtolower($sectiontype);
+        switch($sectiontype)
+        {
+            case('lecture'):
+                   $section = Lectures::find($sectionid);
+                   $section['instructor_name'] = $section->instructor->name;
+                   $course = $section->getCourse();
+                   break;
+            case('tutorial'):
+                  $section = Tutorials::find($sectionid);
+                  $course = $section->getCourse();
+                   break;
+            case('lab'):
+                  $section = Labs::find($sectionid);
+                  $course = $section->getCourse();
+                   break;
+        }
+
+        $sectiontype = ucwords($sectiontype);
+
+        return view('courses.courseInfo', compact('section', 'course', 'sectiontype'));
+   }
 
 	public function generateSequence(){
 		/*

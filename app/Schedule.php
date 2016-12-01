@@ -15,4 +15,15 @@ class Schedule extends Model
     protected $table = 'schedule';
 
     public $timestamps = false;
+
+    public static function removeCourse($user_id, $course_id)
+    {
+         $course = Schedule::where('user_id', $user_id)->where('course_id', $course_id);
+         if($course->exists())
+         {
+         $course->delete();
+         return true;
+          }
+          return false;
+    }
 }

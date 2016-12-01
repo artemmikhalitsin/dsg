@@ -32,6 +32,7 @@ Route::get('/courseinfo/{type}/{id}', 'CoursesController@showInfo');
 Route::get('/browseCourses', 'CoursesController@browseCourses');
 Route::get('/schedule/addCourse', 'ScheduleController@addCourse');
 
+
 // all the post requests
 Route::post('/completedCourses', 'UserController@addCompletedCourse');
 Route::post('/profile', 'UserController@removeCompletedCourse');
@@ -40,3 +41,4 @@ Route::post('/schedule/getCoursesList', 'ScheduleController@getCoursesList');
 Route::post('/schedule/getLecturesList', 'ScheduleController@getLecturesList');
 Route::post('/schedule/getTutorialsAndLabsList', 'ScheduleController@getTutorialsAndLabsList');
 Route::post('/schedule/addCourse', 'ScheduleController@store');
+Route::post('/schedule/removeCourse','ScheduleController@removeCourse');
