@@ -90,7 +90,7 @@ class CoursesController extends Controller
 	    	$completedCourses[$key] = $completedCourses[$key]->course_id;
 	    }
 	    //perma add math 201 to completed
-	    $completedCourses[] = $math_201_id;
+	    //$completedCourses[] = $math_201_id;
 
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
 
