@@ -78,25 +78,13 @@ class CoursesController extends Controller
         ->lists('courses.course_id');
     	//$userProgram = array('218');//,'218','39','174'
 
-    	//gets completed courses
+    	//gets completed courses, array of ints (course id)
 	    $completedCourses = User::getCompletedCourses();
-	    
-	    /*
-	    $math_201_id = DB::table('courses')
-	    ->where('course_code','=','MATH 201')
-	    ->lists('course_id')[0];
-	    */
-
 	    //hacky fix to convert from collection object to array
-	    /*
 	    $completedCourses = json_decode(json_encode($completedCourses));
 	    foreach ($completedCourses as $key => $completeCourse){
-	    	//echo $completeCourse->course_code.'<br>';
 	    	$completedCourses[$key] = $completedCourses[$key]->course_id;
 	    }
-	    */
-	    //perma add math 201 to completed
-	    //$completedCourses[] = $math_201_id;
 
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
 
@@ -111,18 +99,7 @@ class CoursesController extends Controller
 		foreach($sequenceInfo as $si2)
 			$sequence = outputByLevel(0, $sequence, $si2);
 
-		foreach ($sequence as &$semester){
-			foreach ($semester as $key => &$programCourse){
-				foreach ($completedCourses as $completeCourse){
-					if ($programCourse != null && $completeCourse == $programCourse->id){
-						$semester[$key] = null;
-						break;
-					}
-				}
-			}
-		}
-
-
+		
 		for ($i = 0; $i < sizeof($sequence); $i++)
 			compressIt($sequenceInfo, $sequence, $i, []);
 
@@ -133,6 +110,7 @@ class CoursesController extends Controller
 		}
 
 		rearrangeSemester($sequence);
+		
 
 	 	foreach ($sequence as $key => $semester){
 				if ($semester[0] == null)
