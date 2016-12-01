@@ -1401,7 +1401,7 @@ class PrerequisitesTableSeeder extends Seeder
 			],
 			[
 				'course_id' => DB::table('courses')->where('course_code', 'COMP 346')->value('course_id'),
-				'prerequisite' => DB::table('courses')->where('course_code', 'COMP 228')->value('course_id'),
+				'prerequisite' => DB::table('courses')->where('course_code', 'SOEN 228')->value('course_id'),
 				'iscorequisite' => 0
 			],
 			[
