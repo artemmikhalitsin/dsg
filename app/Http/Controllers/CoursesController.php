@@ -70,6 +70,7 @@ class CoursesController extends Controller
 	    }
 	    */
 
+
     	$userProgram = DB::table('courses')
 		->join('courseprogram' , 'courses.course_id', '=' , 'courseprogram.course_id')
 		->where('program_id','=','1')
@@ -79,16 +80,21 @@ class CoursesController extends Controller
 
     	//gets completed courses
 	    $completedCourses = User::getCompletedCourses();
+	    
+	    /*
 	    $math_201_id = DB::table('courses')
 	    ->where('course_code','=','MATH 201')
 	    ->lists('course_id')[0];
+	    */
 
 	    //hacky fix to convert from collection object to array
+	    /*
 	    $completedCourses = json_decode(json_encode($completedCourses));
 	    foreach ($completedCourses as $key => $completeCourse){
 	    	//echo $completeCourse->course_code.'<br>';
 	    	$completedCourses[$key] = $completedCourses[$key]->course_id;
 	    }
+	    */
 	    //perma add math 201 to completed
 	    //$completedCourses[] = $math_201_id;
 
