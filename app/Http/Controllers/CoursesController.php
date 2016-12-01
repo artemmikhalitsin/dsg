@@ -70,7 +70,6 @@ class CoursesController extends Controller
 	    }
 	    */
 
-
     	$userProgram = DB::table('courses')
 		->join('courseprogram' , 'courses.course_id', '=' , 'courseprogram.course_id')
 		->where('program_id','=','1')
@@ -80,7 +79,7 @@ class CoursesController extends Controller
 
     	//gets completed courses
 	    $completedCourses = User::getCompletedCourses();
-	    
+
 	    /*
 	    $math_201_id = DB::table('courses')
 	    ->where('course_code','=','MATH 201')
@@ -98,6 +97,21 @@ class CoursesController extends Controller
 	    //perma add math 201 to completed
 	    //$completedCourses[] = $math_201_id;
 
+    	$userProgram = Courses::join('courseProgram', 'courses.course_id', '=', 'courseProgram.course_id')
+            ->join('programs', 'courseProgram.program_id', '=', 'programs.program_id')
+            ->join('users', 'programs.program_id', '=', 'users.program_id')
+            ->leftJoin('completedCourses', function ($join) {
+                $join->on('courses.course_id', '=', 'completedCourses.course_id')
+                     ->on('users.id', '=', 'completedCourses.user_id');
+            })->select('courses.*', 'courseProgram.course_type')
+            ->whereNull('completedCourses.course_id')
+            ->where([
+                ['courseProgram.course_type', 'program_course'],
+                ['programs.program_id', Auth::user()->program_id],
+                ['users.id', Auth::user()->id]
+           ])->lists('courses.course_id')->toArray();
+
+    	      //gets completed courses
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
 
 		$sequenceInfo = sortByLevel($sequenceInfo);
@@ -110,17 +124,6 @@ class CoursesController extends Controller
 
 		foreach($sequenceInfo as $si2)
 			$sequence = outputByLevel(0, $sequence, $si2);
-
-		foreach ($sequence as &$semester){
-			foreach ($semester as $key => &$programCourse){
-				foreach ($completedCourses as $completeCourse){
-					if ($programCourse != null && $completeCourse == $programCourse->id){
-						$semester[$key] = null;
-						break;
-					}
-				}
-			}
-		}
 
 
 		for ($i = 0; $i < sizeof($sequence); $i++)
