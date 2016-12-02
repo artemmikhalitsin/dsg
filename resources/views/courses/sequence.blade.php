@@ -13,7 +13,7 @@
     <link href="/css/dataTables/sb-admin-2.css" rel="stylesheet">
 @endsection
 
-{{ json_encode($sequence) }}
+{{-- json_encode($sequence) --}}
 
 @section('content')
     <div id="wrapper">
@@ -84,12 +84,11 @@
     </div>
     <!-- /#wrapper -->
 
+    <br>
+    <br>
+
+
 @endsection
-
-
-
-
-
 
 @section('extraJS')
     <!-- DataTables JavaScript -->
