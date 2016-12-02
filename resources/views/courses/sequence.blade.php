@@ -13,6 +13,7 @@
     <link href="/css/dataTables/sb-admin-2.css" rel="stylesheet">
 @endsection
 
+{{ json_encode($sequence) }}
 
 @section('content')
     <div id="wrapper">
@@ -82,25 +83,6 @@
 
     </div>
     <!-- /#wrapper -->
-
-
-    <br>
-
-    @foreach ($sequenceInfo as $s)
-        {{$s->name}} | {{$s->level}} |
-        @foreach ($s->prerequisiteList as $p)
-        (
-        [{{$p->prereq_id}}] [{{$p->isCorequisite}}]
-            @for ($i = 0; $i < (sizeof($p->prerequisiteChoices) - 1); $i++)
-                {{$p->prerequisiteChoices[$i]->name}} or
-            @endfor
-            {{array_values(array_slice($p->prerequisiteChoices, -1))[0]->name}}
-        )
-        @endforeach
-        <br>
-    @endforeach
-
-    <br>
 
 @endsection
 
