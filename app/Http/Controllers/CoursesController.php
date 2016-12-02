@@ -52,6 +52,13 @@ class CoursesController extends Controller{
 		return view('courses.courseInfo', compact('section', 'course', 'sectiontype'));
 	}
 
+	public function browseCourses()
+	{
+		$courses = Courses::getProgramCoursesList();
+		$electives = Courses::getProgramElectivesList();
+		return view('courses.browseCourses', compact('courses', 'electives'));
+	}
+
 	public function generateSequence(){
 
 		$sequenceInfo = $this->getInfo();
@@ -59,7 +66,7 @@ class CoursesController extends Controller{
 	    $user = Auth::user();
 	    $pref = Preferences::where('user_id', $user->id);
 	    $exists = $pref->exists();
-	    
+
 	    if ($exists) {
 	    	$courseLoad = Preferences::where('user_id', $user->id)
 						->value('course_load');
@@ -125,7 +132,7 @@ class CoursesController extends Controller{
 	    return SequenceTree::getOutput($userProgram);
 	}
 
-	public function generateSequenceView(){	
+	public function generateSequenceView(){
 		$sequenceInfo = $this->getInfo();
 		$sequence = $this->generateSequence($this->getInfo());
 		return view('courses.sequence')->with(['sequence'=>$sequence, 'sequenceInfo'=>$sequenceInfo]);

@@ -5102,6 +5102,399 @@ class TutorialsTableSeeder extends Seeder
 				'end_time' => '5:05PM',
 				'place' => 'TBA'
 			],
+				[
+'lecture_id' => 503,
+'section' => '0101-TUT',
+'day' => '----F-',
+'start_time' => '11:45AM',
+'end_time' => '1:00PM',
+'place' => 'HC 157 LOY'
+],
+	[
+'lecture_id' => 504,
+'section' => '5151-TUT',
+'day' => '--W---',
+'start_time' => '8:30PM',
+'end_time' => '9:45PM',
+'place' => 'SP S110 LOY'
+],
+	[
+'lecture_id' => 505,
+'section' => 'A A-TUT',
+'day' => '----F-',
+'start_time' => '1:15PM',
+'end_time' => '2:30PM',
+'place' => 'H 620 SGW'
+],
+	[
+'lecture_id' => 506,
+'section' => 'BBBB-TUT',
+'day' => '---T--',
+'start_time' => '8:30PM',
+'end_time' => '9:45PM',
+'place' => 'H 561 SGW'
+],
+	[
+'lecture_id' => 507,
+'section' => 'CCCC-TUT',
+'day' => '---T--',
+'start_time' => '8:30PM',
+'end_time' => '9:45PM',
+'place' => 'H 557 SGW'
+],
+	[
+'lecture_id' => 508,
+'section' => '0101-TUT',
+'day' => '-T----',
+'start_time' => '11:45AM',
+'end_time' => '1:00PM',
+'place' => 'CC 310 LOY'
+],
+	[
+'lecture_id' => 509,
+'section' => 'A A-TUT',
+'day' => '----F-',
+'start_time' => '11:45AM',
+'end_time' => '1:00PM',
+'place' => 'H 520 SGW'
+],
+	[
+'lecture_id' => 510,
+'section' => 'B B-TUT',
+'day' => '----F-',
+'start_time' => '11:45AM',
+'end_time' => '1:00PM',
+'place' => 'H 561 SGW'
+],
+	[
+'lecture_id' => 511,
+'section' => 'BBBB-TUT',
+'day' => '----F-',
+'start_time' => '8:30PM',
+'end_time' => '9:45PM',
+'place' => 'H 509 SGW'
+],
+	[
+'lecture_id' => 513,
+'section' => '5151-TUT',
+'day' => '---T--',
+'start_time' => '8:30PM',
+'end_time' => '9:45PM',
+'place' => 'CC 310 LOY'
+],
+	[
+'lecture_id' => 514,
+'section' => 'A A-TUT',
+'day' => '----F-',
+'start_time' => '11:45AM',
+'end_time' => '1:00PM',
+'place' => 'H 1070 SGW'
+],
+	[
+'lecture_id' => 515,
+'section' => 'B B-TUT',
+'day' => '----F-',
+'start_time' => '11:45AM',
+'end_time' => '1:00PM',
+'place' => 'H 411 SGW'
+],
+	[
+'lecture_id' => 516,
+'section' => 'BBBB-TUT',
+'day' => '----F-',
+'start_time' => '6:00PM',
+'end_time' => '7:15PM',
+'place' => 'H 557 SGW'
+],
+	[
+'lecture_id' => 517,
+'section' => '01TL-TL',
+'day' => 'M-----',
+'start_time' => '1:30PM',
+'end_time' => '4:00PM',
+'place' => 'CC 101 LOY'
+],
+	[
+'lecture_id' => 518,
+'section' => '02TL-TL',
+'day' => '-T----',
+'start_time' => '1:30PM',
+'end_time' => '4:00PM',
+'place' => 'CC 312 LOY'
+],
+	[
+'lecture_id' => 518,
+'section' => '03TL-TL',
+'day' => '--W---',
+'start_time' => '1:30PM',
+'end_time' => '4:00PM',
+'place' => 'CC 101 LOY'
+],
+	[
+'lecture_id' => 518,
+'section' => '04TL-TL',
+'day' => '---T--',
+'start_time' => '1:30PM',
+'end_time' => '4:00PM',
+'place' => 'CC 101 LOY'
+],
+	[
+'lecture_id' => 518,
+'section' => '05TL-TL',
+'day' => '----F-',
+'start_time' => '1:30PM',
+'end_time' => '4:00PM',
+'place' => 'CC 305 LOY'
+],
+	[
+'lecture_id' => 518,
+'section' => '06TL-TL',
+'day' => 'M-----',
+'start_time' => '9:00AM',
+'end_time' => '11:30AM',
+'place' => 'CC 101 LOY'
+],
+	[
+'lecture_id' => 519,
+'section' => '51TL-TL',
+'day' => 'M-----',
+'start_time' => '6:30PM',
+'end_time' => '9:00PM',
+'place' => 'CC 101 LOY'
+],
+	[
+'lecture_id' => 519,
+'section' => '52TL-TL',
+'day' => '---T--',
+'start_time' => '6:30PM',
+'end_time' => '9:00PM',
+'place' => 'CC 312 LOY'
+],
+	[
+'lecture_id' => 520,
+'section' => '56TL-TL',
+'day' => 'TBA',
+'start_time' => 'TBA',
+'end_time' => 'TBA',
+'place' => 'TBA'
+],
+	[
+'lecture_id' => 520,
+'section' => '57TL-TL',
+'day' => '-T----',
+'start_time' => '6:30PM',
+'end_time' => '9:00PM',
+'place' => 'CC 106 LOY'
+],
+	[
+'lecture_id' => 526,
+'section' => '0202-TUT',
+'day' => '----F-',
+'start_time' => '11:45AM',
+'end_time' => '1:00PM',
+'place' => 'HC 155 LOY'
+],
+	[
+'lecture_id' => 527,
+'section' => 'B B-TUT',
+'day' => '----F-',
+'start_time' => '10:15AM',
+'end_time' => '11:30AM',
+'place' => 'H 561 SGW'
+],
+	[
+'lecture_id' => 528,
+'section' => 'DDDD-TUT',
+'day' => '-T----',
+'start_time' => '6:00PM',
+'end_time' => '7:15PM',
+'place' => 'GN M100 SGW'
+],
+	[
+'lecture_id' => 529,
+'section' => '5252-TUT',
+'day' => '---T--',
+'start_time' => '8:30PM',
+'end_time' => '9:45PM',
+'place' => 'CC 310 LOY'
+],
+	[
+'lecture_id' => 530,
+'section' => 'CCCC-TUT',
+'day' => 'M-----',
+'start_time' => '8:30PM',
+'end_time' => '9:45PM',
+'place' => 'H 509 SGW'
+],
+	[
+'lecture_id' => 531,
+'section' => 'D D-TUT',
+'day' => '----F-',
+'start_time' => '1:15PM',
+'end_time' => '2:30PM',
+'place' => 'H 561 SGW'
+],
+	[
+'lecture_id' => 532,
+'section' => 'E E-TUT',
+'day' => '----F-',
+'start_time' => '1:15PM',
+'end_time' => '2:30PM',
+'place' => 'H 557 SGW'
+],
+	[
+'lecture_id' => 533,
+'section' => 'F F-TUT',
+'day' => '----F-',
+'start_time' => '1:15PM',
+'end_time' => '2:30PM',
+'place' => 'FG B050 SGW'
+],
+	[
+'lecture_id' => 534,
+'section' => '5151-TUT',
+'day' => '--W---',
+'start_time' => '8:30PM',
+'end_time' => '9:45PM',
+'place' => 'CC 310 LOY'
+],
+	[
+'lecture_id' => 535,
+'section' => 'C C-TUT',
+'day' => '-T----',
+'start_time' => '11:45AM',
+'end_time' => '1:00PM',
+'place' => 'FG B050 SGW'
+],
+	[
+'lecture_id' => 536,
+'section' => 'CCCC-TUT',
+'day' => '----F-',
+'start_time' => '8:30PM',
+'end_time' => '9:45PM',
+'place' => 'H 509 SGW'
+],
+	[
+'lecture_id' => 538,
+'section' => '0101-TUT',
+'day' => '----F-',
+'start_time' => '1:15PM',
+'end_time' => '2:30PM',
+'place' => 'CC 310 LOY'
+],
+	[
+'lecture_id' => 539,
+'section' => '5252-TUT',
+'day' => '-T----',
+'start_time' => '8:30PM',
+'end_time' => '9:45PM',
+'place' => 'CC 310 LOY'
+],
+	[
+'lecture_id' => 540,
+'section' => 'C C-TUT',
+'day' => 'M-----',
+'start_time' => '10:15AM',
+'end_time' => '11:30AM',
+'place' => 'H 820 SGW'
+],
+	[
+'lecture_id' => 541,
+'section' => 'CCCC-TUT',
+'day' => '---T--',
+'start_time' => '8:30PM',
+'end_time' => '9:45PM',
+'place' => 'H 509 SGW'
+],
+	[
+'lecture_id' => 542,
+'section' => 'D D-TUT',
+'day' => 'M-----',
+'start_time' => '10:15AM',
+'end_time' => '11:30AM',
+'place' => 'H 509 SGW'
+],
+	[
+'lecture_id' => 543,
+'section' => 'E E-TUT',
+'day' => 'M-----',
+'start_time' => '10:15AM',
+'end_time' => '11:30AM',
+'place' => 'FG B050 SGW'
+],
+	[
+'lecture_id' => 545,
+'section' => '07TL-TL',
+'day' => 'M-----',
+'start_time' => '9:00AM',
+'end_time' => '11:30AM',
+'place' => 'CC 101 LOY'
+],
+	[
+'lecture_id' => 545,
+'section' => '08TL-TL',
+'day' => '---T--',
+'start_time' => '1:30PM',
+'end_time' => '4:00PM',
+'place' => 'CC 101 LOY'
+],
+	[
+'lecture_id' => 545,
+'section' => '09TL-TL',
+'day' => '----F-',
+'start_time' => '1:30PM',
+'end_time' => '4:00PM',
+'place' => 'CC 101 LOY'
+],
+	[
+'lecture_id' => 545,
+'section' => '10TL-TL',
+'day' => 'M-----',
+'start_time' => '1:30PM',
+'end_time' => '4:00PM',
+'place' => 'CC 204 LOY'
+],
+	[
+'lecture_id' => 545,
+'section' => '11TL-TL',
+'day' => '----F-',
+'start_time' => '9:00AM',
+'end_time' => '11:30AM',
+'place' => 'CC 101 LOY'
+],
+	[
+'lecture_id' => 547,
+'section' => '53TL-TL',
+'day' => 'M-----',
+'start_time' => '6:30PM',
+'end_time' => '9:00PM',
+'place' => 'CC 321 LOY'
+],
+	[
+'lecture_id' => 547,
+'section' => '54TL-TL',
+'day' => '-T----',
+'start_time' => '6:30PM',
+'end_time' => '9:00PM',
+'place' => 'CC 101 LOY'
+],
+	[
+'lecture_id' => 547,
+'section' => '55TL-TL',
+'day' => '--W---',
+'start_time' => '6:30PM',
+'end_time' => '9:00PM',
+'place' => 'CC 101 LOY'
+],
+	[
+'lecture_id' => 547,
+'section' => '56TL-TL',
+'day' => 'TBA',
+'start_time' => 'TBA',
+'end_time' => 'TBA',
+'place' => 'TBA'
+],
+
         ]);
     }
 }

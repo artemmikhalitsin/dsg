@@ -20,19 +20,19 @@
                 <div class="panel-heading">Your Schedule</div>
 
                 <div class="panel-body">
-                 <div class="form-group">
-                      <div class="cold-md-10">
-                      {!! Form::open(['url'=> 'schedule/addCourse', 'method'=>'get', 'id'=> 'addCourse-form']) !!}
-                      {!! Form::button('<i class="fa fa-calendar-plus-o fa-lg" aria-hidden="true"></i> Add courses to the schedule', ['id' => 'addCourse-button', 'class' => '"btn btn-success btn-lg']) !!}
-                      {!! Form::close() !!}
-                      <br>
-                               <select id="semester" name="semester_id" class="form-control selectpicker" title="Please select a semester ...">
-                                    @foreach($semesters as $semester)
-                                         <option value="{{ $semester->semester_id }}">{{ $semester->name }}</option>
-                                    @endforeach
-                               </select>
-                          </div>
-                     </div>
+                      <div class="form-group">
+                        <div class="cold-md-10">
+                          {!! Form::open(['url'=> 'schedule/addCourse', 'method'=>'get', 'id'=> 'addCourse-form']) !!}
+                          {!! Form::button('<i class="fa fa-calendar-plus-o fa-lg" aria-hidden="true"></i> Add courses to the schedule', ['id' => 'addCourse-button', 'class' => '"btn btn-success btn-lg']) !!}
+                          {!! Form::close() !!}
+                          <br>
+                           <select id="semester" name="semester_id" class="form-control selectpicker" title="Please select a semester ...">
+                                @foreach($semesters as $semester)
+                                     <option value="{{ $semester->semester_id }}">{{ $semester->name }}</option>
+                                @endforeach
+                           </select>
+                        </div>
+                      </div>
                     @foreach($semesters as $semester)
                     <div id="schedule-reset">
                     	<div id="schedule" semester-id="{{$semester->semester_id}}" style="display:none;">
