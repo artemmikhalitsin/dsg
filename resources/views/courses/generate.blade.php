@@ -35,7 +35,6 @@
                 <br>
                 {!! Form::button('<i class="fa fa-calendar-plus-o fa-lg" aria-hidden="true"></i> Generate Schedule', ['id' => 'addCourse-button', 'class' => '"btn btn-success btn-lg']) !!}
                 {!! Form::close() !!}
-
                 <br>
 
               </div>
@@ -75,26 +74,8 @@
 
    $('#addCourse-button').on('click', function()
    {
-
      $('#addCourse-form').submit();
    });
-
-   $('.event-modal').on('click', '#modal-delete-button', function(){
-
-    var course_id = $(this).attr("course-id");
-    console.log(course_id);
-    $.ajax({
-      url: '/schedule/removeCourse',
-      type: 'POST',
-      data: {
-       course_id: course_id
-     },
-     success: function (data) {
-       console.log(data);
-       return window.location.replace('/schedule');
-     }
-   });
-  });
  });
 </script>
 <script src="/js/schedule/main.js"></script>

@@ -24,12 +24,11 @@
 
                  <div class="panel-body">
                    <b>  NAME </b><br>
-                     <span contenteditable="">{{ $user->name}}</span> <br> <br>
+                     <span>{{ $user->name}}</span> <br> <br>
                      <b> PROGRAM <br> </b>
-                     <span contenteditable="">{{ $user->program->program_name}}</span>  <br> <br>
+                     <span>{{ $user->program->program_name}}</span>  <br> <br>
                      <b> EMAIL <br> </b>
-                     <span contenteditable="">{{ $user->email}}</span> <br><br>
-                     <a href="#">Change your profile</a>
+                     <span>{{ $user->email}}</span> <br><br>
 
                  </div>
 
