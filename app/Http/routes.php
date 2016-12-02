@@ -26,11 +26,13 @@ Route::get('/home', 'HomeController@index');
 Route::get('/courses', 'CoursesController@index');
 Route::get('/addCompletedCourses', 'CoursesController@addCompletedCourses');
 Route::get('/schedule', 'UserController@schedule');
-Route::get('/sequence', 'CoursesController@generateSequence');
+Route::get('/sequence', 'CoursesController@generateSequenceView');
 Route::get('/profile', 'UserController@profile');
 Route::get('/courseinfo/{type}/{id}', 'CoursesController@showInfo');
 Route::get('/browseCourses', 'CoursesController@browseCourses');
 Route::get('/schedule/addCourse', 'ScheduleController@addCourse');
+Route::get('/schedule/generate', 'GenerateController@addCourse');
+Route::get('/schedule/picked', 'GenerateController@addSequence');
 
 
 // all the post requests

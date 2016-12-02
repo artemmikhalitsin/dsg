@@ -26,4 +26,9 @@ class Schedule extends Model
           }
           return false;
     }
+
+    public static function removeAllCourse($user_id, $course_id)
+    {
+         Schedule::where('user_id', $user_id)->delete();
+    }
 }

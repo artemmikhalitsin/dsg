@@ -39,7 +39,7 @@
                     		<div class="cd-schedule loading">
                     			<div class="timeline">
                     				<ul>
-                                             <li><span>08:00</span></li>
+                              <li><span>08:00</span></li>
                     					<li><span>08:30</span></li>
                     					<li><span>09:00</span></li>
                     					<li><span>09:30</span></li>
@@ -197,8 +197,6 @@
 	}
 
     $(document).ready(function() {
-
-
          $('#semester').on('change', function(){
               var semester_id = $(this).val();
               $("div[semester-id]").hide();
@@ -211,7 +209,6 @@
         });
 
          $('.event-modal').on('click', '#modal-delete-button', function(){
-
               var course_id = $(this).attr("course-id");
               console.log(course_id);
               $.ajax({
