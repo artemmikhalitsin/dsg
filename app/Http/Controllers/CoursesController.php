@@ -17,8 +17,7 @@ use App\Semesters;
 
 use DB;
 
-class CoursesController extends Controller
-{
+class CoursesController extends Controller{
 	// sends a list of courses that are left to do for the logged in user to a view
 	public function addCompletedCourses(){
 		$courses = Courses::getOneProgramCoursesList();
@@ -54,32 +53,43 @@ class CoursesController extends Controller
 	}
 
 	public function generateSequence(){
-		/*
+
+		$sequenceInfo = $this->getInfo();
+
 	    $user = Auth::user();
 	    $pref = Preferences::where('user_id', $user->id);
 	    $exists = $pref->exists();
-	    $preferences = array();
+	    
 	    if ($exists) {
-	      $pref_id = $pref->value('preference_id');
-	      $preferences = Preferences::find($pref_id);
-	      $days_off = explode("|", $preferences->days_off);
-	      $preferences->days_off = $days_off;
-	    }
-	    */
-
-
-    	//$userProgram = array('218');//,'218','39','174'
-
-    	//gets completed courses, array of ints (course id)
-	    $completedCourses = User::getCompletedCourses();
-
-	    //hacky fix to convert from collection object to array
-	    $completedCourses = json_decode(json_encode($completedCourses));
-	    foreach ($completedCourses as $key => $completeCourse){
-	    	$completedCourses[$key] = $completedCourses[$key]->course_id;
+	    	$courseLoad = Preferences::where('user_id', $user->id)
+						->value('course_load');
+	    }else{
+	    	$courseLoad = 4;
 	    }
 
-	    $userProgram = Courses::join('courseProgram', 'courses.course_id', '=', 'courseProgram.course_id')
+	    $sequenceInfo = sortByLevel($sequenceInfo);
+	    $sequence = initSequence($courseLoad);
+
+	    foreach($sequenceInfo as $si2)
+	    	$sequence = outputByLevel(0, $sequence, $si2);
+
+	    for ($i = 0; $i < sizeof($sequence); $i++)
+	    	compressIt($sequenceInfo, $sequence, $i, []);
+
+		cleanIt($sequence);
+
+	    for ($q = sizeof($sequence)-1; $q >= 0; $q--)
+	    	shiftIt($sequenceInfo, $sequence, $q , []);
+
+	    cleanIt($sequence);
+
+	    //rearrangeSemester($sequence);
+
+	    return $sequence;
+	}
+
+	public function getInfo(){
+		$userProgram = Courses::join('courseProgram', 'courses.course_id', '=', 'courseProgram.course_id')
 	    ->join('programs', 'courseProgram.program_id', '=', 'programs.program_id')
 	    ->join('users', 'programs.program_id', '=', 'users.program_id')
 	    ->leftJoin('completedCourses', function ($join) {
@@ -111,37 +121,18 @@ class CoursesController extends Controller
 	    ->where('course_code','=','MECH 221')
 	    ->lists('courses.course_id'));
 
-    	//gets completed courses
-	    $sequenceInfo = SequenceTree::getOutput($userProgram);
-
-	    $sequenceInfo = sortByLevel($sequenceInfo);
-
-	    /*************************/
-	    $courseLoad = 12;
-	    /*************************/
-
-	    $sequence = initSequence($courseLoad);
-
-	    foreach($sequenceInfo as $si2)
-	    	$sequence = outputByLevel(0, $sequence, $si2);
-
-	    for ($i = 0; $i < sizeof($sequence); $i++)
-	    	compressIt($sequenceInfo, $sequence, $i, []);
-
-
-		cleanIt($sequence);
-
-	    for ($q = sizeof($sequence)-1; $q >= 0; $q--)
-	    	shiftIt($sequenceInfo, $sequence, $q , []);
-
-	    cleanIt($sequence);
-
-	    //rearrangeSemester($sequence);
-
-	    return view('courses.sequence')->with(['sequence'=>$sequence, 'sequenceInfo'=>$sequenceInfo]);
-
-	    }
+	    //gets completed courses
+	    return SequenceTree::getOutput($userProgram);
 	}
+
+	public function generateSequenceView(){	
+		$sequenceInfo = $this->getInfo();
+		$sequence = $this->generateSequence($this->getInfo());
+		return view('courses.sequence')->with(['sequence'=>$sequence, 'sequenceInfo'=>$sequenceInfo]);
+	}
+}
+
+
 
 	function cleanIt(&$sequence){
 		foreach ($sequence as $key => $semester){

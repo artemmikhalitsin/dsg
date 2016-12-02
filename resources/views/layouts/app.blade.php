@@ -120,7 +120,7 @@
                         <li><a href="{{ url('/addCompletedCourses') }}"><span class="glyphicon glyphicon-plus"></span> Add Completed Courses</a></li>
                         <li><a href="{{ url('/profile') }}"> <span class="glyphicon glyphicon-cog"></span> Add Preferences</a></li>
                         <li><a href="{{ url('/sequence') }}"> <span class="glyphicon glyphicon-tasks"></span> Generate Sequence</a></li>
-                        <li><a href="#"> <span class="glyphicon glyphicon-calendar"></span> Generate Schedule</a></li>
+                        <li><a href="{{ url('/schedule/generate') }}"> <span class="glyphicon glyphicon-calendar"></span> Generate Schedule</a></li>
                     @endif
                     <li><a href="{{ url('/browseCourses') }}"> <span class="glyphicon glyphicon-list"></span> Browse Courses</a></li>
                 </ul>
