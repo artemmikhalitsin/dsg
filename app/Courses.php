@@ -65,6 +65,17 @@ class Courses extends Model
             ])->get();
     }
 
+    public static function getAllProgramCourses()
+    {
+         return Courses::join('courseProgram', 'courses.course_id', '=', 'courseProgram.course_id')
+                ->join('programs', 'courseProgram.program_id', '=', 'programs.program_id')
+                ->join('users', 'programs.program_id', '=', 'users.program_id')
+                ->where([
+                    ['programs.program_id', Auth::user()->program_id],
+                    ['users.id', Auth::user()->id]
+                ])->get();
+    }
+
     // gets the list of courses to be completed for the logged in user
     public static function getOneProgramCoursesList()
     {

@@ -19,8 +19,8 @@
 </div>
 
 <div class="img">
-	<a href="#"><img src="{{{ asset('schedule.png') }}}"></a>
-	<a href="#"><div class="desc">GENERATE SCHEDULE</div></a>
+	<a href="{{ url('/schedule/generate')}}"><img src="{{{ asset('schedule.png') }}}"></a>
+	<a href="{{ url('/schedule/generate')}}"><div class="desc">GENERATE SCHEDULE</div></a>
 </div>
 
 <div class="img">
