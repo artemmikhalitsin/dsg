@@ -5,7 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Courses;
+use App\Semesters;
 use Auth;
+use DB;
 
 class Schedule extends Model
 {
@@ -65,8 +67,50 @@ class Schedule extends Model
             ]);
     }
 
-    public static function alreadyAdded()
-    {
-        
-    }
+    public static function getSemesterName($semester_id)
+   {
+        return Semesters::find($semester_id)->name;
+   }
+
+   public static function prerequisitesExists($course_id)
+   {
+        return Courses::find($course_id)->prerequisites()->exists();
+   }
+
+   public static function getPrerequisites($course_id)
+   {
+        return Courses::join('prerequisites', 'courses.course_id', '=', 'prerequisites.course_id')
+                    ->leftjoin('orprerequisites', 'prerequisites.prereq_id', '=', 'orprerequisites.prereq_id')
+                    ->whereNull('orprerequisites.orprereq_id')
+                    ->where('courses.course_id', $course_id)
+                    ->select('prerequisites.*')
+                    ->get();
+   }
+
+   public static function getOrprerequisites($course_id)
+   {
+        return Courses::join('prerequisites', 'courses.course_id', '=', 'prerequisites.course_id')
+                    ->leftjoin('orprerequisites', 'prerequisites.prereq_id', '=', 'orprerequisites.prereq_id')
+                    ->whereNotNull('orprerequisites.orprereq_id')
+                    ->where('courses.course_id', $course_id)
+                    ->select('courses.course_id', 'prerequisites.prerequisite', 'orprerequisites.course_id as orprereq')
+                    ->get();
+   }
+
+   public static function checkInCompletedCourses($prerequisite)
+   {
+        return DB::table('completedCourses')->where([
+                    ['user_id', '=', Auth::user()->id],
+                    ['course_id', '=', $prerequisite]
+                ])->exists();
+   }
+
+   public static function checkInSchedule($prerequisite, $semester_id)
+   {
+        return Schedule::where([
+                    ['user_id', '=', Auth::user()->id],
+                    ['course_id', '=', $prerequisite],
+                    ['semester_id', '=', $semester_id]
+                ])->exists();
+   }
 }

@@ -76,6 +76,10 @@ class CompletedCoursesTableSeeder extends Seeder
             ],
             [
                 'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
+                'course_id' => DB::table('courses')->where('course_code', 'ENCS 272')->value('course_id')
+            ],
+            [
+                'user_id' => DB::table('users')->where('email', 'ajmer226@yahoo.ca')->value('id'),
                 'course_id' => DB::table('courses')->where('course_code', 'SOEN 228')->value('course_id')
             ],
             [
