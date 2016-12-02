@@ -3,8 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Illuminate\Support\Facades\Auth;
+
+use App\User;
+use App\Courses;
 
 use DB;
 
@@ -91,6 +93,48 @@ class Courses extends Model
                 ['programs.program_id', Auth::user()->program_id],
                 ['users.id', Auth::user()->id]
             ])->get();
+    }
+
+    public static function checkConflict($value)
+    {
+         $schedule = User::getSemesterSchedule($value->semester_id);
+         $slots = ['0' => [], '1' => [], '2' => [], '3' => [], '4' => [], '5' => [], '6' => []];
+         if ($value->day!= 'TBA' && $value->lecture_id != NULL) {
+           $times = User::getTimeOfCourses($value->start_time, $value->end_time);
+           User::separateCoursesByDay($slots, $value->lecture_id, $value->day, $value->getCourse()->course_code,
+               $value->course_name, $times[0], $times[1], 'Lecture');
+         }
+         if ($value->day != 'TBA' && $value->tutorial_id != NULL) {
+           $times = User::getTimeOfCourses($value->start_time, $value->end_time);
+           User::separateCoursesByDay($slots, $value->tutorial_id, $value->day, $value->getCourse()->course_code,
+                   $value->course_name, $times[0], $times[1], 'Tutorial');
+         }
+         if ($value->day != 'TBA' && $value->lab_id != NULL){
+           $times = User::getTimeOfCourses($value->Lab_STime, $value->Lab_ETime);
+           User::separateCoursesByDay($slots, $value->lab_id, $value->day, $value->getCourse()->course_code,
+                   $value->course_name, $times[0], $times[1], 'Lab');
+         }
+         foreach($slots as $day=>$value)
+         {
+              foreach($value as $key=>$timeslot)
+              {
+                   foreach($schedule[$day] as $scheduleday=>$course)
+                   {
+
+                        if(strtotime($timeslot['end_time']) > strtotime($course['start_time'])
+                         && strtotime($timeslot['end_time']) < strtotime($course['end_time']))
+                         {
+                              return false;
+                         }
+                         if(strtotime($timeslot['end_time']) > strtotime($course['start_time'])
+                          && strtotime($timeslot['end_time']) < strtotime($course['end_time']))
+                         {
+                              return false;
+                         }
+                    }
+              }
+         }
+         return true;
     }
 }
 

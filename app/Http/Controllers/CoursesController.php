@@ -66,12 +66,15 @@ class CoursesController extends Controller{
 	    $user = Auth::user();
 	    $pref = Preferences::where('user_id', $user->id);
 	    $exists = $pref->exists();
-
-	    if ($exists) {
-	    	$courseLoad = Preferences::where('user_id', $user->id)
-						->value('course_load');
-	    }else{
-	    	$courseLoad = 4;
+	    $preferences = Auth::user()->preferences;
+	    if($preferences)
+	    {
+		    $courseLoad = $preferences->course_load;
+	    }
+	    else
+	    {
+		    //by default add 4 courses;
+		    $courseLoad = 4;
 	    }
 
 	    $sequenceInfo = sortByLevel($sequenceInfo);

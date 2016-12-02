@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Http\Requests\AddCourseRequest;
 use App\Courses;
 use App\Semesters;
 use Auth;
@@ -42,7 +42,7 @@ class Schedule extends Model
                 $join->on('courses.course_id', '=', 'completedCourses.course_id')
                      ->on('users.id', '=', 'completedCourses.user_id');
             })->leftJoin('schedule', function ($join) {
-                $join->on('courses.course_id', '=', 'schedule.course_id')
+           $join->on('courses.course_id', '=', 'schedule.course_id')
                      ->on('users.id', '=', 'schedule.user_id');
             })->select('courses.*', 'courseProgram.course_type')
             ->whereNull('completedCourses.course_id')
@@ -118,4 +118,157 @@ class Schedule extends Model
      {
          Schedule::where('user_id', $user_id)->delete();
      }
+
+     /**
+     * add course to the schedule after validation
+     * @param  AddCourseRequest $request [validates the request]
+     * @return redirects the user to schedule view
+     */
+    public static function store(AddCourseRequest $request)
+    {
+         if(!Courses::checkConflict(Lectures::find($request->input('lecture_id'))))
+         {
+              return false;
+         }
+        // retrieving the data from the request
+        $tutorial_id = $request->input('tutorial_id');
+        $lab_id = $request->input('lab_id');
+        $tutorialExists = $request->input('tutorialExists');
+        $labExists = $request->input('labExists');
+        $course_id = $request->input('course_id');
+        $semester_id = $request->input('semester_id');
+
+        // statement used to verify if the tutorial or lab fields have been left empty
+        if (($tutorial_id != NULL && $tutorial_id == "") || ($lab_id != NULL and $lab_id == "")) {
+            return false;
+        }
+        // statement assigning null value to tutorial and lab when a class doesn't have them
+        else{
+            if ($tutorial_id == "") {
+                $tutorial_id = null;
+            }
+            else
+            {
+                 if(!Courses::checkConflict(Tutorials::find($tutorial_id)))
+                 {
+                      return false;
+                 }
+            }
+            if ($lab_id == "") {
+                $lab_id = null;
+            }
+            else {
+                 if(!Courses::checkConflict(Labs::find($lab_id)))
+                 {
+                      return false;
+                 }
+            }
+        }
+
+        // boolean used to find out if any of the orprerequisites classes has been done by the user
+        $orprereqSatisfied = false;
+
+        // checking if the course to be added has prerequisites or no
+        $coursePrerequisitesExist = Schedule::prerequisitesExists($course_id);
+
+        // this statement will execute if the course has prerequisites
+        if ($coursePrerequisitesExist) {
+            // gets all the prerequisites of a course
+            $coursePrerequisites = Schedule::getPrerequisites($course_id);
+
+            // gets all the orprerequisites of a course
+            $orprerequisites = Schedule::getOrprerequisites($course_id);
+
+            // gets the semester name
+            $semester_name = Schedule::getSemesterName($semester_id);
+
+            // this statement executed when adding a course to Winter semester
+            if ($semester_name == "Winter") {
+                $semesters = Semesters::where('name', 'Fall')->get();
+
+                // loop through the prerequisites to check if they are met or not
+                foreach ($coursePrerequisites as $key => $prerequisite) {
+                    $existsInCompletedCourses = Schedule::checkInCompletedCourses($prerequisite->prerequisite);
+                    $existsInSchedule = Schedule::checkInSchedule($prerequisite->prerequisite, $semesters[0]->semester_id);
+
+                    if (!$existsInCompletedCourses && !$existsInSchedule) {
+                        $existsInCurrentSemester = Schedule::checkInSchedule($prerequisite->prerequisite, $semester_id);
+                        if ($prerequisite->iscorequisite && $existsInCurrentSemester) {
+                            // do nothing
+                        }else{
+                            return false;
+                        }
+                    }
+                }
+
+                // if the course does not have orprerequisites then we add the course to schedule
+                if (count($orprerequisites) == 0) {
+                    Schedule::addCourseToSchedule($request, $tutorial_id, $lab_id);
+                    return true;
+                }else{
+                    // need to loop through the orprerequisites to check if one of them is already done by the user
+                    foreach ($orprerequisites as $key => $pre) {
+                        $orprereqExistsInCompletedCourses = Schedule::checkInCompletedCourses($pre->orprereq);
+
+                        // check if the orprereq is added to the previous semester
+                        $orprereqExistsInSchedule = Schedule::checkInSchedule($pre->orprereq, $semesters[0]->semester_id);
+                        $prereqExistsInCompletedCourses = Schedule::checkInCompletedCourses($pre->prerequisite);
+
+                        // check if the prereq is added to the previous semester
+                        $prereqExistsInSchedule = Schedule::checkInSchedule($pre->prerequisite, $semesters[0]->semester_id);
+
+                        if ($orprereqExistsInCompletedCourses || $orprereqExistsInSchedule || $prereqExistsInCompletedCourses || $prereqExistsInSchedule) {
+                            $orprereqSatisfied = true;
+                        }
+                    }
+
+                    // add the course to schedule if the orprerequisites are met
+                    if ($orprereqSatisfied) {
+                        Schedule::addCourseToSchedule($request, $tutorial_id, $lab_id);
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            }else{
+                // repeating the same things for Fall semester, but with some changes (inefficient)
+                foreach ($coursePrerequisites as $key => $prerequisite) {
+                    $existsInCompletedCourses = Schedule::checkInCompletedCourses($prerequisite->prerequisite);
+
+                    if (!$existsInCompletedCourses) {
+                        $existsInCurrentSemester = Schedule::checkInSchedule($prerequisite->prerequisite, $semester_id);
+                        if ($prerequisite->iscorequisite && $existsInCurrentSemester) {
+                            // do nothing
+                        }else{
+                            return false;
+                        }
+                    }
+                }
+                if (count($orprerequisites) == 0) {
+                    Schedule::addCourseToSchedule($request, $tutorial_id, $lab_id);
+                    return true;
+                }else{
+                    foreach ($orprerequisites as $key => $pre) {
+                        $orprereqExistsInCompletedCourses = Schedule::checkInCompletedCourses($pre->orprereq);
+                        $prereqExistsInCompletedCourses = Schedule::checkInCompletedCourses($pre->prerequisite);
+
+                        if ($orprereqExistsInCompletedCourses || $prereqExistsInCompletedCourses) {
+                            $orprereqSatisfied = true;
+                        }
+                    }
+                    if ($orprereqSatisfied) {
+                        Schedule::addCourseToSchedule($request, $tutorial_id, $lab_id);
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            }
+        }
+        else
+        {
+            Schedule::addCourseToSchedule($request, $tutorial_id, $lab_id);
+            return true;
+        }
+   }
 }

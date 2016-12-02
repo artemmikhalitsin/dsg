@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Requests\AddCourseRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Semesters;
@@ -16,40 +16,38 @@ class GenerateController extends Controller
 {
     public function addCourse()
     {
-        $troller = new CoursesController;
+        $controller = new CoursesController;
         $semesters = Semesters::all();
-        $sequence = $troller->generateSequence();
+        $sequence = $controller->generateSequence();
         return view('courses.generate')->with(['sequence'=>$sequence,'semesters'=>$semesters]);
     }
 
     public function addSequence(){
         $user = Auth::user();
-        $semesters = Semesters::all();    
+        $semesters = Semesters::all();
 
         if (isset($_GET['semester_id']) && is_int(intval($_GET['semester_id']))) {
-            
-            //woah dios mio, ghetto00000
+
             $semester_id = ($_GET['semester_id']);
 
             Schedule::where('user_id', $user->id)->where('semester_id', $semester_id)->delete();
 
-
-            $troller = new CoursesController;
-            $sequence = $troller->generateSequence();
+            $controller = new CoursesController;
+            $sequence = $controller->generateSequence();
             $sequence = array_reverse($sequence);
             foreach ($sequence[($semester_id+1)%2] as $course){
                 $classInfo = Courses::join('lectures', 'lectures.course_id', '=', 'courses.course_id')->where('courses.course_id' , $course->id)
                         ->leftjoin('tutorials', 'lectures.lecture_id', '=', 'tutorials.lecture_id')
                         ->leftjoin('labs', 'lectures.lecture_id', '=', 'labs.lecture_id')->select('courses.course_id', 'lectures.lecture_id', 'lab_id', 'tutorial_id')->get();
 
-                $class = array( 
-                    'user_id' => $user->id, 
-                    'lecture_id' => $classInfo[0]->lecture_id,  
-                    'course_id' => $classInfo[0]->course_id,  
-                    'semester_id' => $semester_id, 
-                    'tutorial_id' => $classInfo[0]->tutorial_id, 
-                    'lab_id' => $classInfo[0]->lab_id);
-                Schedule::create($class); 
+               $class = new AddCourseRequest();
+               $class['user_id'] = $user->id;
+               $class['lecture_id'] = $classInfo[0]->lecture_id;
+               $class['course_id'] = $classInfo[0]->course_id;
+               $class['semester_id'] = $semester_id;
+               $class['tutorial_id'] = $classInfo[0]->tutorial_id;
+               $class['lab_id'] = $classInfo[0]->lab_id;
+                Schedule::store($class);
             }
             return view('courses.generate')->with(['sequence'=>$sequence,'semesters'=>$semesters]);
         }else{

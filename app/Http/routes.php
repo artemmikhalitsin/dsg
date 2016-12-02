@@ -42,5 +42,5 @@ Route::post('/updatePreferences', 'PreferencesController@update');
 Route::post('/schedule/getCoursesList', 'ScheduleController@getCoursesList');
 Route::post('/schedule/getLecturesList', 'ScheduleController@getLecturesList');
 Route::post('/schedule/getTutorialsAndLabsList', 'ScheduleController@getTutorialsAndLabsList');
-Route::post('/schedule/addCourse', 'ScheduleController@store');
+Route::post('/schedule/addCourse', 'ScheduleController@addToSchedule');
 Route::post('/schedule/removeCourse','ScheduleController@removeCourse');

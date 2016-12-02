@@ -25,7 +25,7 @@
               <div style="display: inline-block; margin: auto;">
                 {!! Form::open(['url'=> 'schedule/picked', 'method'=>'get', 'id'=> 'addCourse-form']) !!}
                 <select id="semester" name="semester_id" class="form-control selectpicker" title="Please select a semester ...">
-                @foreach($semesters as $semester)                
+                @foreach($semesters as $semester)
                 <option value="{{ $semester->semester_id }}">{{ $semester->name }}</option>
                 @endforeach
                 </select>
@@ -53,7 +53,7 @@
                 <br>
                 <br>
                 <br>
-                <br>            
+                <br>
                 <br>
                 <br>
                 <br>
@@ -72,13 +72,6 @@
   }
 
   $(document).ready(function() {
-
-
-   $('#semester').on('change', function(){
-    var semester_id = $(this).val();
-    $("div[semester-id]").hide();
-    $("div[semester-id=" + semester_id + "]").show();
-  })
 
    $('#addCourse-button').on('click', function()
    {
