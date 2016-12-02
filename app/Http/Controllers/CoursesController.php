@@ -70,7 +70,6 @@ class CoursesController extends Controller
 	    }
 	    */
 
-
     	$userProgram = DB::table('courses')
 		->join('courseprogram' , 'courses.course_id', '=' , 'courseprogram.course_id')
 		->where('program_id','=','1')
@@ -80,12 +79,28 @@ class CoursesController extends Controller
 
     	//gets completed courses, array of ints (course id)
 	    $completedCourses = User::getCompletedCourses();
+
 	    //hacky fix to convert from collection object to array
 	    $completedCourses = json_decode(json_encode($completedCourses));
 	    foreach ($completedCourses as $key => $completeCourse){
 	    	$completedCourses[$key] = $completedCourses[$key]->course_id;
 	    }
 
+    	$userProgram = Courses::join('courseProgram', 'courses.course_id', '=', 'courseProgram.course_id')
+            ->join('programs', 'courseProgram.program_id', '=', 'programs.program_id')
+            ->join('users', 'programs.program_id', '=', 'users.program_id')
+            ->leftJoin('completedCourses', function ($join) {
+                $join->on('courses.course_id', '=', 'completedCourses.course_id')
+                     ->on('users.id', '=', 'completedCourses.user_id');
+            })->select('courses.*', 'courseProgram.course_type')
+            ->whereNull('completedCourses.course_id')
+            ->where([
+                ['courseProgram.course_type', 'program_course'],
+                ['programs.program_id', Auth::user()->program_id],
+                ['users.id', Auth::user()->id]
+           ])->lists('courses.course_id')->toArray();
+
+    	//gets completed courses
 		$sequenceInfo = SequenceTree::getOutput($userProgram);
 
 		$sequenceInfo = sortByLevel($sequenceInfo);
@@ -99,7 +114,6 @@ class CoursesController extends Controller
 		foreach($sequenceInfo as $si2)
 			$sequence = outputByLevel(0, $sequence, $si2);
 
-		
 		for ($i = 0; $i < sizeof($sequence); $i++)
 			compressIt($sequenceInfo, $sequence, $i, []);
 
