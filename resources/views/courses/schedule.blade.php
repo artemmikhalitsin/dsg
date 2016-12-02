@@ -35,7 +35,7 @@
                       </div>
                     @foreach($semesters as $semester)
                     <div id="schedule-reset">
-                    	<div id="schedule" semester-id="{{$semester->semester_id}}">
+                    	<div id="schedule" semester-id="{{$semester->semester_id}}" style="display:none;">
                     		<div class="cd-schedule loading">
                     			<div class="timeline">
                     				<ul>
@@ -197,7 +197,7 @@
 	}
 
     $(document).ready(function() {
-         $("div[semester-id]").hide();
+
 
          $('#semester').on('change', function(){
               var semester_id = $(this).val();
