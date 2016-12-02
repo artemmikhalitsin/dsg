@@ -35,6 +35,9 @@
                 <br>
                 {!! Form::button('<i class="fa fa-calendar-plus-o fa-lg" aria-hidden="true"></i> Generate Schedule', ['id' => 'addCourse-button', 'class' => '"btn btn-success btn-lg']) !!}
                 {!! Form::close() !!}
+
+                <br>
+
               </div>
             </div>
           </div>
@@ -42,7 +45,20 @@
       </div>
     </div>
   </div>
+
 </div>
+                 <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>            
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
 
 @endsection
 

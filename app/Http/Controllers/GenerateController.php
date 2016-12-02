@@ -37,10 +37,7 @@ class GenerateController extends Controller
             $troller = new CoursesController;
             $sequence = $troller->generateSequence();
             $sequence = array_reverse($sequence);
-            echo $user->id.'<br>';
-            echo $semester_id.'<br>';
             foreach ($sequence[($semester_id+1)%2] as $course){
-                echo $course->name.'<br>';
                 $classInfo = Courses::join('lectures', 'lectures.course_id', '=', 'courses.course_id')->where('courses.course_id' , $course->id)
                         ->leftjoin('tutorials', 'lectures.lecture_id', '=', 'tutorials.lecture_id')
                         ->leftjoin('labs', 'lectures.lecture_id', '=', 'labs.lecture_id')->select('courses.course_id', 'lectures.lecture_id', 'lab_id', 'tutorial_id')->get();
