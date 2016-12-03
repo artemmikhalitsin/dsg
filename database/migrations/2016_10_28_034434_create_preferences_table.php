@@ -14,7 +14,7 @@ class CreatePreferencesTable extends Migration
     {
         Schema::create('preferences', function (Blueprint $table) {
             $table->increments('preference_id');
-            $table->string('days_off');
+            $table->string('days_off')->nullable;
             $table->string('starting_time');
             $table->string('finishing_time');
             $table->string('course_load');

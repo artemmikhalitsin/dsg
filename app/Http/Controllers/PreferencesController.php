@@ -23,7 +23,11 @@ class PreferencesController extends Controller
     {
 		$user_id = Auth::user()->id;
 		$input = $request->all();
-		$days = $input['days_off'];
+		if (!empty($input['days_off']))
+			$days = $input['days_off'];
+		else {
+			$days = array();
+		}
 		$days_off = implode("|", $days);
 		$start = date("G:i", strtotime($input['starting_time']));
 		$end = date("G:i", strtotime($input['finishing_time']));
